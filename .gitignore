@@ -1,0 +1,33 @@
+# Ignore Unity-generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+UserSettings/
+
+# Ignore Package Manager cache
+Packages/packages-lock.json
+Library/PackageCache/
+
+# Ignore large platform-specific cache files
+*.dll
+*.dylib
+*.so
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Rider / VSCode / JetBrains
+.vscode/
+.idea/
+*.sln
+*.csproj
+*.user
+*.pidb
+*.suo
+
+
