@@ -102,6 +102,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -184,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ChatGPT_Image_Jun_20__2025__05_00_03_AM-Picsart-AiImageEnhancer-removebg-preview_0: -5721200598595621406
+      ChatGPT_Image_Jun_20__2025__05_00_03_AM-Picsart-AiImageEnhancer-removebg-preview_1: 5257088114668525702
+      ChatGPT_Image_Jun_20__2025__05_00_03_AM-Picsart-AiImageEnhancer-removebg-preview_2: 8772034965602724593
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
