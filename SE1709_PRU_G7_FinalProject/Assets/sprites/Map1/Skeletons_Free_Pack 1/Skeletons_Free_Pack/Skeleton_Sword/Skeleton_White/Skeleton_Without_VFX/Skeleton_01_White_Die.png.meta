@@ -222,6 +222,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1184,7 +1197,50 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Skeleton_01_White_Die_0: 3126683620843890373
+      Skeleton_01_White_Die_1: -4792073381274871194
+      Skeleton_01_White_Die_10: 4151090436001872706
+      Skeleton_01_White_Die_11: -4529498223495090129
+      Skeleton_01_White_Die_12: -7950930363075554929
+      Skeleton_01_White_Die_13: -6240805555082207699
+      Skeleton_01_White_Die_14: -2649349075863083527
+      Skeleton_01_White_Die_15: -5339926127216709289
+      Skeleton_01_White_Die_16: -5949889030747125460
+      Skeleton_01_White_Die_17: 5085853610462903757
+      Skeleton_01_White_Die_18: -6005802875518550437
+      Skeleton_01_White_Die_19: -3032604601866577483
+      Skeleton_01_White_Die_2: -3693591020534159362
+      Skeleton_01_White_Die_20: -7736599243540203539
+      Skeleton_01_White_Die_21: 4942658049051541567
+      Skeleton_01_White_Die_22: 3713730997769844150
+      Skeleton_01_White_Die_23: 4030989905940434525
+      Skeleton_01_White_Die_24: -5349573012897673630
+      Skeleton_01_White_Die_25: -2741990909589972737
+      Skeleton_01_White_Die_26: -7145377627461308073
+      Skeleton_01_White_Die_27: -7397505576419177416
+      Skeleton_01_White_Die_28: -6040227197823628172
+      Skeleton_01_White_Die_29: -3381536099087392220
+      Skeleton_01_White_Die_3: -4190859776521849221
+      Skeleton_01_White_Die_30: -1038625054402965006
+      Skeleton_01_White_Die_31: 6596303679569440041
+      Skeleton_01_White_Die_32: 2692666494999029416
+      Skeleton_01_White_Die_33: -5401594282278338745
+      Skeleton_01_White_Die_34: -3660589905374285995
+      Skeleton_01_White_Die_35: -2803223968981049420
+      Skeleton_01_White_Die_36: 5182269913681719399
+      Skeleton_01_White_Die_37: -6476629973948884033
+      Skeleton_01_White_Die_38: -8403835247490152371
+      Skeleton_01_White_Die_39: 2163424935675260448
+      Skeleton_01_White_Die_4: -2614083693325109951
+      Skeleton_01_White_Die_40: -6091892551713642148
+      Skeleton_01_White_Die_41: 4695474802795208272
+      Skeleton_01_White_Die_42: 7279563930476431150
+      Skeleton_01_White_Die_5: 7666049041284283081
+      Skeleton_01_White_Die_6: 5214378806866150792
+      Skeleton_01_White_Die_7: 6287184137453963316
+      Skeleton_01_White_Die_8: 5098245024391853593
+      Skeleton_01_White_Die_9: -2528561047893845536
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

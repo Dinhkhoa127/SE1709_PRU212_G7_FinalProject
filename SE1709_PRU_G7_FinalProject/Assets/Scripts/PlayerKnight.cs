@@ -1,0 +1,313 @@
+using UnityEngine;
+using System.Collections;
+
+public class PlayerKnight : MonoBehaviour
+{
+    [SerializeField] float m_speed = 4.0f;
+    [SerializeField] float m_jumpForce = 7.5f;
+    [SerializeField] float m_rollForce = 6.0f;
+    [SerializeField] bool m_noBlood = false;
+    [SerializeField] GameObject m_slideDust;
+    [SerializeField] private int maxHealth = 5;
+    [SerializeField] int health = 5;
+
+    [SerializeField] private int attackDamage = 1;
+    [SerializeField] private float attackRange = 0.5f;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private LayerMask enemyLayers;
+
+    private Animator m_animator;
+    private Rigidbody2D m_body2d;
+    private Sensor_HeroKnight m_groundSensor;
+    private Sensor_HeroKnight m_wallSensorR1;
+    private Sensor_HeroKnight m_wallSensorR2;
+    private Sensor_HeroKnight m_wallSensorL1;
+    private Sensor_HeroKnight m_wallSensorL2;
+    private bool m_isWallSliding = false;
+    private bool m_grounded = false;
+    private bool m_rolling = false;
+    private int m_facingDirection = 1;
+    private int m_currentAttack = 0;
+    private float m_timeSinceAttack = 0.0f;
+    private float m_delayToIdle = 0.0f;
+    private float m_rollDuration = 8.0f / 14.0f;
+    private float m_rollCurrentTime;
+    private float inputX = 0f;
+
+    private bool isBlocking = false;
+    private GameObject swordCollider1;
+    private GameObject swordCollider2;
+    private GameObject swordCollider3;
+
+
+    void Start()
+    {
+        swordCollider1 = transform.Find("SwordCollider1").gameObject;
+        swordCollider2 = transform.Find("SwordCollider2").gameObject;
+        swordCollider3 = transform.Find("SwordCollider3").gameObject;
+        swordCollider1.SetActive(false);
+        swordCollider2.SetActive(false);
+        swordCollider3.SetActive(false);
+        m_animator = GetComponent<Animator>();
+        m_body2d = GetComponent<Rigidbody2D>();
+        m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_HeroKnight>();
+        m_wallSensorR1 = transform.Find("WallSensor_R1").GetComponent<Sensor_HeroKnight>();
+        m_wallSensorR2 = transform.Find("WallSensor_R2").GetComponent<Sensor_HeroKnight>();
+        m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_HeroKnight>();
+        m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
+    }
+
+    void Update()
+    {
+        HandleTimers();
+        HandleGroundCheck();
+        HandleMove();
+        HandleWallSlide();
+        HandleAttack();
+        HandleBlock();
+        HandleRoll();
+        HandleJump();
+        HandleRunIdle();
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            Heal(1); // Nhấn H để hồi 1 máu
+        }
+    }
+
+    public int GetHealth() { return health; }
+    public int GetMaxHealth() { return maxHealth; }
+    void HandleTimers()
+    {
+        m_timeSinceAttack += Time.deltaTime;
+        if (m_rolling)
+            m_rollCurrentTime += Time.deltaTime;
+        if (m_rollCurrentTime > m_rollDuration)
+            m_rolling = false;
+    }
+
+    void HandleGroundCheck()
+    {
+        if (!m_grounded && m_groundSensor.State())
+        {
+            m_grounded = true;
+            m_animator.SetBool("Grounded", m_grounded);
+        }
+        if (m_grounded && !m_groundSensor.State())
+        {
+            m_grounded = false;
+            m_animator.SetBool("Grounded", m_grounded);
+        }
+    }
+
+    void HandleMove()
+    {
+        inputX = Input.GetAxis("Horizontal");
+        if (inputX > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+            m_facingDirection = 1;
+            attackPoint.localPosition = new Vector3(Mathf.Abs(attackPoint.localPosition.x), attackPoint.localPosition.y, attackPoint.localPosition.z);
+        }
+        else if (inputX < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+            m_facingDirection = -1;
+            attackPoint.localPosition = new Vector3(-Mathf.Abs(attackPoint.localPosition.x), attackPoint.localPosition.y, attackPoint.localPosition.z);
+        }
+        if (!m_rolling)
+            m_body2d.linearVelocity = new Vector2(inputX * m_speed, m_body2d.linearVelocity.y);
+        m_animator.SetFloat("AirSpeedY", m_body2d.linearVelocity.y);
+    }
+
+    void HandleWallSlide()
+    {
+        m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
+        m_animator.SetBool("WallSlide", m_isWallSliding);
+    }
+
+    //void HandleDeath()
+    //{
+    //    if (Input.GetKeyDown("e") && !m_rolling)
+    //    {
+    //        m_animator.SetBool("noBlood", m_noBlood);
+    //        m_animator.SetTrigger("Death");
+    //    }
+    //}
+
+    //void HandleHurt()
+    //{
+    //    if (Input.GetKeyDown("q") && !m_rolling)
+    //        m_animator.SetTrigger("Hurt");
+    //}
+
+    void HandleAttack()
+    {
+        if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
+        {
+            m_currentAttack++;
+            if (m_currentAttack > 3)
+                m_currentAttack = 1;
+            if (m_timeSinceAttack > 1.0f)
+                m_currentAttack = 1;
+            m_animator.SetTrigger("Attack" + m_currentAttack);
+            m_timeSinceAttack = 0.0f;
+        }
+    }
+
+    void HandleBlock()
+    {
+        if (Input.GetMouseButtonDown(1) && !m_rolling)
+        {
+            m_animator.SetTrigger("Block");
+            m_animator.SetBool("IdleBlock", true);
+            isBlocking = true; // Bắt đầu block
+        }
+        else if (Input.GetMouseButtonUp(1)){
+            m_animator.SetBool("IdleBlock", false);
+            isBlocking = false; // Ngừng block
+        }
+    }
+
+    void HandleRoll()
+    {
+        if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding && m_grounded)
+        {
+            m_rolling = true;
+            m_animator.SetTrigger("Roll");
+            m_body2d.linearVelocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.linearVelocity.y);
+        }
+    }
+
+    void HandleJump()
+    {
+        if (Input.GetKeyDown("space") && m_grounded && !m_rolling)
+        {
+            m_animator.SetTrigger("Jump");
+            m_grounded = false;
+            m_animator.SetBool("Grounded", m_grounded);
+            m_body2d.linearVelocity = new Vector2(m_body2d.linearVelocity.x, m_jumpForce);
+            m_groundSensor.Disable(0.2f);
+        }
+    }
+
+    void HandleRunIdle()
+    {
+        if (Mathf.Abs(inputX) > Mathf.Epsilon)
+        {
+            m_delayToIdle = 0.05f;
+            m_animator.SetInteger("AnimState", 1);
+        }
+        else
+        {
+            m_delayToIdle -= Time.deltaTime;
+            if (m_delayToIdle < 0)
+                m_animator.SetInteger("AnimState", 0);
+        }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        if (isBlocking)
+        {
+            Debug.Log("Đang block");
+        // Có thể thêm hiệu ứng đỡ đòn ở đây nếu muốn
+        return; // Không mất máu nếu đang block
+        }
+        else{
+            health -= amount;
+            Debug.Log("Mất máu: " + amount + " | Máu còn lại: " + health);
+        }
+        if (health <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            m_animator.SetTrigger("Hurt");
+        }
+    }
+
+    void Die()
+    {
+        // Play death animation or effect here if needed
+        m_animator.SetBool("noBlood", m_noBlood);
+        m_animator.SetTrigger("Death");
+    }
+
+    public void DestroyPlayerSelf()
+    {
+        Destroy(gameObject);
+    }
+
+    public void DealDamageToEnemy()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+        }
+    }
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null) return;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+    // Animation Events
+    // Called in slide animation.
+    void AE_SlideDust()
+    {
+        Vector3 spawnPosition;
+        if (m_facingDirection == 1)
+            spawnPosition = m_wallSensorR2.transform.position;
+        else
+            spawnPosition = m_wallSensorL2.transform.position;
+        if (m_slideDust != null)
+        {
+            GameObject dust = Instantiate(m_slideDust, spawnPosition, gameObject.transform.localRotation) as GameObject;
+            dust.transform.localScale = new Vector3(m_facingDirection, 1, 1);
+        }
+    }
+
+    public void Heal(int amount)
+    {
+        health += amount;
+        if (health > maxHealth) health = maxHealth;
+    }
+
+    void EnableSwordCollider1()
+    {
+        Debug.Log(">> EnableSwordCollider CALLED");
+        swordCollider1.SetActive(true);
+    }
+
+    void EnableSwordCollider2()
+    {
+        Debug.Log(">> EnableSwordCollider2 CALLED");
+        swordCollider2.SetActive(true);
+    }
+
+    void EnableSwordCollider3()
+    {
+        Debug.Log(">> EnableSwordCollider3 CALLED");
+        swordCollider3.SetActive(true);
+    }
+
+    void DisableSwordCollider1()
+    {
+        Debug.Log(">> DisableSwordCollider CALLED");
+        swordCollider1.SetActive(false);
+    }
+
+    void DisableSwordCollider2()
+    {
+        Debug.Log(">> DisableSwordCollider2 CALLED");
+        swordCollider2.SetActive(false);
+    }
+
+    void DisableSwordCollider3()
+    {
+        Debug.Log(">> DisableSwordCollider3 CALLED");
+        swordCollider3.SetActive(false);
+    }
+}

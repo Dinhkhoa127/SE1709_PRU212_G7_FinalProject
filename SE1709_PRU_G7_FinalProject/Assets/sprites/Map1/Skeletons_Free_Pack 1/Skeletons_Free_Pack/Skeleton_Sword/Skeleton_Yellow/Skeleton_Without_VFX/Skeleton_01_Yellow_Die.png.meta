@@ -222,6 +222,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1184,7 +1197,50 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Skeleton_01_Yellow_Die_0: 2494774846853025329
+      Skeleton_01_Yellow_Die_1: 3831393223011646040
+      Skeleton_01_Yellow_Die_10: 869996454799417882
+      Skeleton_01_Yellow_Die_11: 5273567746575908027
+      Skeleton_01_Yellow_Die_12: 6968853397244365629
+      Skeleton_01_Yellow_Die_13: 3757588894004311739
+      Skeleton_01_Yellow_Die_14: 5393444282877299335
+      Skeleton_01_Yellow_Die_15: -2870846228115662483
+      Skeleton_01_Yellow_Die_16: 3364989005353650634
+      Skeleton_01_Yellow_Die_17: 4759541974914850239
+      Skeleton_01_Yellow_Die_18: -2711619658922806052
+      Skeleton_01_Yellow_Die_19: -1729298495984881517
+      Skeleton_01_Yellow_Die_2: -1515898675414028899
+      Skeleton_01_Yellow_Die_20: -1672229733721857811
+      Skeleton_01_Yellow_Die_21: -4150035375664949245
+      Skeleton_01_Yellow_Die_22: -7115085816190831750
+      Skeleton_01_Yellow_Die_23: 1939947846001250501
+      Skeleton_01_Yellow_Die_24: 8439831203788461841
+      Skeleton_01_Yellow_Die_25: 4416981522993034559
+      Skeleton_01_Yellow_Die_26: -3130262331222326754
+      Skeleton_01_Yellow_Die_27: -1526553681066107554
+      Skeleton_01_Yellow_Die_28: 2965848572027574236
+      Skeleton_01_Yellow_Die_29: -8112670717838431690
+      Skeleton_01_Yellow_Die_3: 7599585596220693053
+      Skeleton_01_Yellow_Die_30: -9184082415755935922
+      Skeleton_01_Yellow_Die_31: 6949460892921996603
+      Skeleton_01_Yellow_Die_32: 5951777560899493661
+      Skeleton_01_Yellow_Die_33: 3251937201743187564
+      Skeleton_01_Yellow_Die_34: 7315246065685841038
+      Skeleton_01_Yellow_Die_35: 4211668277013153515
+      Skeleton_01_Yellow_Die_36: -6674033519838490585
+      Skeleton_01_Yellow_Die_37: -6614408250168349472
+      Skeleton_01_Yellow_Die_38: 2838544695674535945
+      Skeleton_01_Yellow_Die_39: -3690466972801615454
+      Skeleton_01_Yellow_Die_4: 6097469015885308489
+      Skeleton_01_Yellow_Die_40: 6386635686133855539
+      Skeleton_01_Yellow_Die_41: -5528283396024685939
+      Skeleton_01_Yellow_Die_42: 8950872958146086498
+      Skeleton_01_Yellow_Die_5: -2126774186571446237
+      Skeleton_01_Yellow_Die_6: 353638409393444256
+      Skeleton_01_Yellow_Die_7: -8060850625737981976
+      Skeleton_01_Yellow_Die_8: -3321749983275095541
+      Skeleton_01_Yellow_Die_9: -1041287668580057878
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
