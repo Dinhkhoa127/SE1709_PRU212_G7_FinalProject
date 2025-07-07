@@ -42,7 +42,6 @@ public class PlayerKnight : MonoBehaviour
     private GameObject swordCollider3;
 
 
-
     void Start()
     {
         swordCollider1 = transform.Find("SwordCollider1").gameObject;
@@ -76,6 +75,7 @@ public class PlayerKnight : MonoBehaviour
             Heal(1); // Nhấn H để hồi 1 máu
         }
         HandleSkillBerserk(); // Nhấn R để sử dụng kỹ năng Berserk
+
     }
 
     public int GetHealth() { return health; }
