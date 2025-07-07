@@ -123,6 +123,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -359,7 +372,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Skeleton_01_White_Walk_0: 5818877937026341535
+      Skeleton_01_White_Walk_1: 5246328315798846087
+      Skeleton_01_White_Walk_2: 3875490925452937984
+      Skeleton_01_White_Walk_3: -1103901654903995279
+      Skeleton_01_White_Walk_4: 7424066568700807735
+      Skeleton_01_White_Walk_5: 1407746815664634722
+      Skeleton_01_White_Walk_6: 5212607766992624853
+      Skeleton_01_White_Walk_7: 7226261870076406324
+      Skeleton_01_White_Walk_8: 5214368573968254232
+      Skeleton_01_White_Walk_9: 937194198150492436
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
