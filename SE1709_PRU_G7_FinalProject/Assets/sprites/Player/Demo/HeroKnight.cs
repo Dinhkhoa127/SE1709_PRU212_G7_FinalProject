@@ -25,11 +25,25 @@ public class HeroKnight : MonoBehaviour {
     private float               m_delayToIdle = 0.0f;
     private float               m_rollDuration = 8.0f / 14.0f;
     private float               m_rollCurrentTime;
+    private bool                m_jumping = false; 
+    [SerializeField] GameObject spikePrefab;
+    private GameObject swordCollider1;
+    private GameObject swordCollider2;
+    private GameObject swordCollider3;
+
+
+
 
 
     // Use this for initialization
     void Start ()
     {
+        swordCollider1 = transform.Find("SwordCollider1").gameObject;
+        swordCollider2 = transform.Find("SwordCollider2").gameObject;
+        swordCollider3 = transform.Find("SwordCollider3").gameObject;
+        swordCollider1.SetActive(false);
+        swordCollider2.SetActive(false);
+        swordCollider3.SetActive(false);
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_HeroKnight>();
@@ -58,6 +72,7 @@ public class HeroKnight : MonoBehaviour {
         {
             m_grounded = true;
             m_animator.SetBool("Grounded", m_grounded);
+            m_jumping = false;
         }
 
         //Check if character just started falling
@@ -73,14 +88,13 @@ public class HeroKnight : MonoBehaviour {
         // Swap direction of sprite depending on walk direction
         if (inputX > 0)
         {
-            GetComponent<SpriteRenderer>().flipX = false;
             m_facingDirection = 1;
+            transform.localScale = new Vector3(1, 1, 1);
         }
-            
         else if (inputX < 0)
         {
-            GetComponent<SpriteRenderer>().flipX = true;
             m_facingDirection = -1;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
 
         // Move
@@ -127,7 +141,7 @@ public class HeroKnight : MonoBehaviour {
         }
 
         // Block
-        else if (Input.GetMouseButtonDown(1) && !m_rolling)
+        else if (Input.GetMouseButtonDown(1) && !m_rolling  && !m_jumping)
         {
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
@@ -148,6 +162,7 @@ public class HeroKnight : MonoBehaviour {
         //Jump
         else if (Input.GetKeyDown("space") && m_grounded && !m_rolling)
         {
+            m_jumping = true;
             m_animator.SetTrigger("Jump");
             m_grounded = false;
             m_animator.SetBool("Grounded", m_grounded);
@@ -171,7 +186,95 @@ public class HeroKnight : MonoBehaviour {
                 if(m_delayToIdle < 0)
                     m_animator.SetInteger("AnimState", 0);
         }
+
+        // Skill R hóa berserk increase dame + spike từ ground.
+        if (Input.GetKeyDown("r") && !m_rolling && !m_jumping)
+        {
+            StartCoroutine(SpikeRoutine());
+        }
     }
+
+    IEnumerator SpikeRoutine()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+
+        // Đổi màu sprite thành màu đỏ
+        sr.color = new Color(215f / 255f, 92f / 255f, 92f / 255f);
+
+        m_animator.SetTrigger("Attack3");
+
+        // Đợi 0.2 giây để animation bắt đầu
+        yield return new WaitForSeconds(0.1f);
+
+        // Dừng lại thêm một chút trước khi bắt đầu flicker
+        yield return new WaitForSeconds(0.3f); // Dừng 0.5s trước khi flicker
+
+        // Tạo spike không gắn vào player
+        Vector3 spawnOffset = new Vector3(m_facingDirection * 3.5f, 1.5f, 0);
+        Vector3 spawnPosition = transform.position + spawnOffset;
+        GameObject spike = Instantiate(spikePrefab, spawnPosition, Quaternion.identity);
+        Animator sg = spike.GetComponent<Animator>();
+        sg.SetBool("isSpike", true);
+
+        // Bắt đầu hiệu ứng nhấp nháy cho sprite và giữ spike hoạt động trong cùng thời gian
+        float flickerDuration = 1f; // Thời gian cho spike hoạt động (đồng thời với nhấp nháy)
+        float flickerInterval = 0.1f; // Khoảng thời gian giữa mỗi lần đổi màu
+        float timeElapsed = 0f;
+
+        // Nhấp nháy màu liên tục trong thời gian spike hoạt động
+        while (timeElapsed < flickerDuration)
+        {
+            sr.color = (sr.color == new Color(215f / 255f, 92f / 255f, 92f / 255f)) ? Color.white : new Color(215f / 255f, 92f / 255f, 92f / 255f);
+            timeElapsed += flickerInterval;
+            yield return new WaitForSeconds(flickerInterval);
+        }
+
+        // Đảm bảo màu sprite trở về trắng mặc định sau khi kết thúc
+        sr.color = Color.white;
+
+        // Xử lý spike sau khi hoạt động 1.5 giây
+        sg.SetBool("isSpike", false);
+        Destroy(spike); // Xóa spike
+    }
+
+    void EnableSwordCollider1()
+    {
+        Debug.Log(">> EnableSwordCollider CALLED");
+        swordCollider1.SetActive(true);
+    }
+
+    void EnableSwordCollider2()
+    {
+        Debug.Log(">> EnableSwordCollider2 CALLED");
+        swordCollider2.SetActive(true);
+    }
+
+    void EnableSwordCollider3()
+    {
+        Debug.Log(">> EnableSwordCollider3 CALLED");
+        swordCollider3.SetActive(true);
+    }
+
+    void DisableSwordCollider1()
+    {
+        Debug.Log(">> DisableSwordCollider CALLED");
+        swordCollider1.SetActive(false);
+    }
+
+    void DisableSwordCollider2()
+    {
+        Debug.Log(">> DisableSwordCollider2 CALLED");
+        swordCollider2.SetActive(false);
+    }
+
+    void DisableSwordCollider3()
+    {
+        Debug.Log(">> DisableSwordCollider3 CALLED");
+        swordCollider3.SetActive(false);
+    }
+
+
+
 
     // Animation Events
     // Called in slide animation.
