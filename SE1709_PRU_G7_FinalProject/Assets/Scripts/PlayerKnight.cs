@@ -15,6 +15,7 @@ public class PlayerKnight : MonoBehaviour
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LayerMask enemyLayers;
+    [SerializeField] GameObject spikePrefab;
 
     private Animator m_animator;
     private Rigidbody2D m_body2d;
@@ -26,6 +27,7 @@ public class PlayerKnight : MonoBehaviour
     private bool m_isWallSliding = false;
     private bool m_grounded = false;
     private bool m_rolling = false;
+    private bool m_jumping = false;
     private int m_facingDirection = 1;
     private int m_currentAttack = 0;
     private float m_timeSinceAttack = 0.0f;
@@ -72,6 +74,8 @@ public class PlayerKnight : MonoBehaviour
         {
             Heal(1); // Nhấn H để hồi 1 máu
         }
+        HandleSkillBerserk(); // Nhấn R để sử dụng kỹ năng Berserk
+
     }
 
     public int GetHealth() { return health; }
@@ -91,6 +95,7 @@ public class PlayerKnight : MonoBehaviour
         {
             m_grounded = true;
             m_animator.SetBool("Grounded", m_grounded);
+            m_jumping = false;
         }
         if (m_grounded && !m_groundSensor.State())
         {
@@ -104,15 +109,13 @@ public class PlayerKnight : MonoBehaviour
         inputX = Input.GetAxis("Horizontal");
         if (inputX > 0)
         {
-            GetComponent<SpriteRenderer>().flipX = false;
             m_facingDirection = 1;
-            attackPoint.localPosition = new Vector3(Mathf.Abs(attackPoint.localPosition.x), attackPoint.localPosition.y, attackPoint.localPosition.z);
+            transform.localScale = new Vector3(1, 1, 1);
         }
         else if (inputX < 0)
         {
-            GetComponent<SpriteRenderer>().flipX = true;
             m_facingDirection = -1;
-            attackPoint.localPosition = new Vector3(-Mathf.Abs(attackPoint.localPosition.x), attackPoint.localPosition.y, attackPoint.localPosition.z);
+            transform.localScale = new Vector3(-1, 1, 1);
         }
         if (!m_rolling)
             m_body2d.linearVelocity = new Vector2(inputX * m_speed, m_body2d.linearVelocity.y);
@@ -182,6 +185,7 @@ public class PlayerKnight : MonoBehaviour
     {
         if (Input.GetKeyDown("space") && m_grounded && !m_rolling)
         {
+            m_jumping = true;
             m_animator.SetTrigger("Jump");
             m_grounded = false;
             m_animator.SetBool("Grounded", m_grounded);
@@ -309,5 +313,55 @@ public class PlayerKnight : MonoBehaviour
     {
         Debug.Log(">> DisableSwordCollider3 CALLED");
         swordCollider3.SetActive(false);
+    }
+
+    void HandleSkillBerserk()
+    {
+        if (Input.GetKeyDown("r") && !m_rolling && !m_jumping)
+        {
+            StartCoroutine(SpikeRoutine());
+        }
+    }
+    IEnumerator SpikeRoutine()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+
+        // Đổi màu sprite thành màu đỏ
+        sr.color = new Color(215f / 255f, 92f / 255f, 92f / 255f);
+
+        m_animator.SetTrigger("Attack3");
+
+        // Đợi 0.2 giây để animation bắt đầu
+        yield return new WaitForSeconds(0.1f);
+
+        // Dừng lại thêm một chút trước khi bắt đầu flicker
+        yield return new WaitForSeconds(0.3f); // Dừng 0.5s trước khi flicker
+
+        // Tạo spike không gắn vào player
+        Vector3 spawnOffset = new Vector3(m_facingDirection * 3.5f, 1.5f, 0);
+        Vector3 spawnPosition = transform.position + spawnOffset;
+        GameObject spike = Instantiate(spikePrefab, spawnPosition, Quaternion.identity);
+        Animator sg = spike.GetComponent<Animator>();
+        sg.SetBool("isSpike", true);
+
+        // Bắt đầu hiệu ứng nhấp nháy cho sprite và giữ spike hoạt động trong cùng thời gian
+        float flickerDuration = 1f; // Thời gian cho spike hoạt động (đồng thời với nhấp nháy)
+        float flickerInterval = 0.1f; // Khoảng thời gian giữa mỗi lần đổi màu
+        float timeElapsed = 0f;
+
+        // Nhấp nháy màu liên tục trong thời gian spike hoạt động
+        while (timeElapsed < flickerDuration)
+        {
+            sr.color = (sr.color == new Color(215f / 255f, 92f / 255f, 92f / 255f)) ? Color.white : new Color(215f / 255f, 92f / 255f, 92f / 255f);
+            timeElapsed += flickerInterval;
+            yield return new WaitForSeconds(flickerInterval);
+        }
+
+        // Đảm bảo màu sprite trở về trắng mặc định sau khi kết thúc
+        sr.color = Color.white;
+
+        // Xử lý spike sau khi hoạt động 1.5 giây
+        sg.SetBool("isSpike", false);
+        Destroy(spike); // Xóa spike
     }
 }
