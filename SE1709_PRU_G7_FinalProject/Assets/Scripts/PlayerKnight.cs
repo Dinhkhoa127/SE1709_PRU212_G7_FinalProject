@@ -17,6 +17,25 @@ public class PlayerKnight : MonoBehaviour
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField] GameObject spikePrefab;
 
+    [SerializeField] private int maxArmorShield = 2;
+    [SerializeField] private int maxMagicShield = 2;
+    [SerializeField] private int maxMana = 100;
+
+    private int currentMana;
+    private int currentArmorShield;
+    private int currentMagicShield;
+    private float manaRegenTimer = 0f;
+    public float manaRegenInterval = 1f; // Mỗi 1 giây
+    public int manaRegenAmount = 2; // Hồi 2 mana
+
+    //Thanh Stamina của BlockEffect
+    [SerializeField] private float maxBlockStamina = 100f;
+    [SerializeField] private float blockStamina = 100f;
+    [SerializeField] private float blockStaminaDecreasePerHit = 34f;
+    [SerializeField] private float blockCooldownTime = 10f;
+    private bool isBlockOnCooldown = false;
+    private float blockCooldownTimer = 0f;
+
     private Animator m_animator;
     private Rigidbody2D m_body2d;
     private Sensor_HeroKnight m_groundSensor;
@@ -57,6 +76,9 @@ public class PlayerKnight : MonoBehaviour
         m_wallSensorR2 = transform.Find("WallSensor_R2").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
+        currentArmorShield = maxArmorShield;
+        currentMagicShield = maxMagicShield;
+        currentMana = maxMana;
     }
 
     void Update()
@@ -75,7 +97,25 @@ public class PlayerKnight : MonoBehaviour
             Heal(1); // Nhấn H để hồi 1 máu
         }
         HandleSkillBerserk(); // Nhấn R để sử dụng kỹ năng Berserk
-
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            HandleSkillCast(); // Nhấn Q để chưởng chiêu
+        }
+        manaRegenTimer += Time.deltaTime;
+        if (manaRegenTimer >= manaRegenInterval)
+        {
+            RegenerateMana(manaRegenAmount);
+            manaRegenTimer = 0f;
+        }
+        if (isBlockOnCooldown) //Cooldown block
+        {
+            blockCooldownTimer -= Time.deltaTime;
+            if (blockCooldownTimer <= 0)
+            {
+                isBlockOnCooldown = false;
+                blockStamina = maxBlockStamina;
+            }
+        }
     }
 
     public int GetHealth() { return health; }
@@ -159,13 +199,16 @@ public class PlayerKnight : MonoBehaviour
 
     void HandleBlock()
     {
+        if (isBlockOnCooldown) return; // Không cho block khi cooldown
+
         if (Input.GetMouseButtonDown(1) && !m_rolling)
         {
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
             isBlocking = true; // Bắt đầu block
         }
-        else if (Input.GetMouseButtonUp(1)){
+        else if (Input.GetMouseButtonUp(1))
+        {
             m_animator.SetBool("IdleBlock", false);
             isBlocking = false; // Ngừng block
         }
@@ -211,13 +254,23 @@ public class PlayerKnight : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        if (isBlocking)
+        if (isBlocking && !isBlockOnCooldown)
         {
-            Debug.Log("Đang block");
-        // Có thể thêm hiệu ứng đỡ đòn ở đây nếu muốn
-        return; // Không mất máu nếu đang block
+            blockStamina -= blockStaminaDecreasePerHit;
+            if (blockStamina <= 0)
+            {
+                blockStamina = 0;
+                isBlockOnCooldown = true;
+                blockCooldownTimer = blockCooldownTime;
+                isBlocking = false;
+                m_animator.SetBool("IdleBlock", false);
+                // Có thể thêm hiệu ứng block bị vỡ ở đây
+            }
+            Debug.Log("Block hit! Stamina: " + blockStamina);
+            return;
         }
-        else{
+        else
+        {
             health -= amount;
             Debug.Log("Mất máu: " + amount + " | Máu còn lại: " + health);
         }
@@ -229,6 +282,98 @@ public class PlayerKnight : MonoBehaviour
         {
             m_animator.SetTrigger("Hurt");
         }
+    }
+    public int GetMaxMana() { return maxMana; }
+    public int GetCurrentMana() { return currentMana; }
+    public int GetCurrentArmorShield() => currentArmorShield;
+    public int GetCurrentMagicShield() => currentMagicShield;
+    public float MaxBlockStamina { get { return maxBlockStamina; } }
+    public float BlockStamina { get { return blockStamina; } }
+    public bool IsBlockOnCooldown { get { return isBlockOnCooldown; } }
+    public void TakeMagicDamage(int amount)
+    {
+        if (isBlocking && !isBlockOnCooldown)
+        {
+            blockStamina -= blockStaminaDecreasePerHit;
+            if (blockStamina <= 0)
+            {
+                blockStamina = 0;
+                isBlockOnCooldown = true;
+                blockCooldownTimer = blockCooldownTime;
+                isBlocking = false;
+                m_animator.SetBool("IdleBlock", false);
+                // Có thể thêm hiệu ứng block bị vỡ ở đây
+            }
+            Debug.Log("Block hit! Stamina: " + blockStamina);
+            return;
+        }
+
+        int reducedDamage = Mathf.Max(0, amount - currentMagicShield);
+        health -= reducedDamage;
+        Debug.Log($"Magic shield reduced damage: {amount} -> {reducedDamage}. Health left: {health}");
+
+        if (health <= 0) Die();
+        else m_animator.SetTrigger("Hurt");
+    }
+
+
+    public void TakePhysicalDamage(int amount)
+    {
+        if (isBlocking && !isBlockOnCooldown)
+        {
+            blockStamina -= blockStaminaDecreasePerHit;
+            if (blockStamina <= 0)
+            {
+                blockStamina = 0;
+                isBlockOnCooldown = true;
+                blockCooldownTimer = blockCooldownTime;
+                isBlocking = false;
+                m_animator.SetBool("IdleBlock", false);
+                // Có thể thêm hiệu ứng block bị vỡ ở đây
+            }
+            Debug.Log("Block hit! Stamina: " + blockStamina);
+            return;
+        }
+
+        int damageAfterArmor = Mathf.Max(0, amount - currentArmorShield);
+
+        health -= damageAfterArmor;
+        Debug.Log($"Armor reduced damage: {amount} -> {damageAfterArmor}, remaining health: {health}");
+        Debug.Log($"{currentMagicShield} {currentMagicShield}");
+        if (health <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            m_animator.SetTrigger("Hurt");
+        }
+    }
+    public void HandleSkillCast()
+    {
+        int manaCost = 10;
+
+        if (currentMana >= manaCost)
+        {
+            currentMana -= manaCost;
+            //m_animator.SetTrigger("Skill"); // hoặc tên trigger animation của bạn
+            Debug.Log("Đã chưởng chiêu, còn lại mana: " + currentMana);
+        }
+        else
+        {
+            Debug.Log(" Không đủ mana!");
+        }
+    }
+    public void RegenerateMana(int amount)
+    {
+        currentMana += amount;
+        if (currentMana > maxMana)
+        {
+            currentMana = maxMana;
+            return;
+        }
+
+        Debug.Log($" Đã hồi {amount} mana. Mana hiện tại: {currentMana}/{maxMana}");
     }
 
     void Die()

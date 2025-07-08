@@ -167,7 +167,8 @@ public class Enemy : MonoBehaviour
             PlayerKnight playerScript = player.GetComponent<PlayerKnight>();
             if (playerScript != null)
             {
-                playerScript.TakeDamage(attackDamage);
+                //playerScript.TakeDamage(attackDamage);
+                playerScript.TakePhysicalDamage(attackDamage);
             }
         }
     }
