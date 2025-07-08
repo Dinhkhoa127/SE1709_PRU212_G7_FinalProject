@@ -1,57 +1,27 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class EnemyHealthBar : MonoBehaviour
 {
-    public GameObject healthUnitPrefab; // Prefab ô máu màu đỏ (foreground)
-    public GameObject healthBackgroundPrefab; // Prefab ô máu màu đen (background)
-    public float spacing = 18f; // Khoảng cách giữa các ô máu
-    private List<GameObject> healthUnits = new List<GameObject>(); // Ô màu đỏ
-    private List<GameObject> healthBackgrounds = new List<GameObject>(); // Ô màu đen
+    public Slider healthSlider; // Kéo Slider vào đây trong Inspector
 
+    // Gọi khi khởi tạo hoặc khi Enemy đổi max máu
     public void Setup(int maxHealth)
     {
-        // Xóa các ô cũ nếu có
-        foreach (var unit in healthUnits)
-            Destroy(unit);
-        foreach (var bg in healthBackgrounds)
-            Destroy(bg);
-        healthUnits.Clear();
-        healthBackgrounds.Clear();
-
-        // Tính toán vị trí bắt đầu để căn giữa
-        float totalWidth = (maxHealth - 1) * spacing;
-        float startX = -totalWidth / 2f;
-
-        // Tạo các ô mới
-        for (int i = 0; i < maxHealth; i++)
+        if (healthSlider != null)
         {
-            Vector2 position = new Vector2(startX + i * spacing, 0);
-            
-            // Tạo ô nền (màu đen)
-            if (healthBackgroundPrefab != null)
-            {
-                GameObject background = Instantiate(healthBackgroundPrefab, transform);
-                RectTransform bgRt = background.GetComponent<RectTransform>();
-                bgRt.anchoredPosition = position;
-                healthBackgrounds.Add(background);
-            }
-            
-            // Tạo ô máu (màu đỏ) - đặt sau để nằm trên ô nền
-            GameObject unit = Instantiate(healthUnitPrefab, transform);
-            RectTransform rt = unit.GetComponent<RectTransform>();
-            rt.anchoredPosition = position;
-            healthUnits.Add(unit);
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = maxHealth;
         }
     }
 
+    // Gọi mỗi khi máu thay đổi
     public void UpdateHealth(int currentHealth)
     {
-        for (int i = 0; i < healthUnits.Count; i++)
+        if (healthSlider != null)
         {
-            // Chỉ ẩn/hiện ô màu đỏ (foreground)
-            // Ô màu đen (background) luôn hiển thị
-            healthUnits[i].SetActive(i < currentHealth);
+            healthSlider.value = currentHealth;
         }
     }
 }
