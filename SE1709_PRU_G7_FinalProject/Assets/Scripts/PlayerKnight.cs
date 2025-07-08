@@ -28,6 +28,14 @@ public class PlayerKnight : MonoBehaviour
     public float manaRegenInterval = 1f; // Mỗi 1 giây
     public int manaRegenAmount = 2; // Hồi 2 mana
 
+    //Thanh Stamina của BlockEffect
+    [SerializeField] private float maxBlockStamina = 100f;
+    [SerializeField] private float blockStamina = 100f;
+    [SerializeField] private float blockStaminaDecreasePerHit = 34f;
+    [SerializeField] private float blockCooldownTime = 10f;
+    private bool isBlockOnCooldown = false;
+    private float blockCooldownTimer = 0f;
+
     private Animator m_animator;
     private Rigidbody2D m_body2d;
     private Sensor_HeroKnight m_groundSensor;
@@ -98,6 +106,15 @@ public class PlayerKnight : MonoBehaviour
         {
             RegenerateMana(manaRegenAmount);
             manaRegenTimer = 0f;
+        }
+        if (isBlockOnCooldown) //Cooldown block
+        {
+            blockCooldownTimer -= Time.deltaTime;
+            if (blockCooldownTimer <= 0)
+            {
+                isBlockOnCooldown = false;
+                blockStamina = maxBlockStamina;
+            }
         }
     }
 
@@ -182,13 +199,16 @@ public class PlayerKnight : MonoBehaviour
 
     void HandleBlock()
     {
+        if (isBlockOnCooldown) return; // Không cho block khi cooldown
+
         if (Input.GetMouseButtonDown(1) && !m_rolling)
         {
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
             isBlocking = true; // Bắt đầu block
         }
-        else if (Input.GetMouseButtonUp(1)){
+        else if (Input.GetMouseButtonUp(1))
+        {
             m_animator.SetBool("IdleBlock", false);
             isBlocking = false; // Ngừng block
         }
@@ -234,13 +254,23 @@ public class PlayerKnight : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        if (isBlocking)
+        if (isBlocking && !isBlockOnCooldown)
         {
-            Debug.Log("Đang block");
-        // Có thể thêm hiệu ứng đỡ đòn ở đây nếu muốn
-        return; // Không mất máu nếu đang block
+            blockStamina -= blockStaminaDecreasePerHit;
+            if (blockStamina <= 0)
+            {
+                blockStamina = 0;
+                isBlockOnCooldown = true;
+                blockCooldownTimer = blockCooldownTime;
+                isBlocking = false;
+                m_animator.SetBool("IdleBlock", false);
+                // Có thể thêm hiệu ứng block bị vỡ ở đây
+            }
+            Debug.Log("Block hit! Stamina: " + blockStamina);
+            return;
         }
-        else{
+        else
+        {
             health -= amount;
             Debug.Log("Mất máu: " + amount + " | Máu còn lại: " + health);
         }
@@ -257,9 +287,26 @@ public class PlayerKnight : MonoBehaviour
     public int GetCurrentMana() { return currentMana; }
     public int GetCurrentArmorShield() => currentArmorShield;
     public int GetCurrentMagicShield() => currentMagicShield;
+    public float MaxBlockStamina { get { return maxBlockStamina; } }
+    public float BlockStamina { get { return blockStamina; } }
+    public bool IsBlockOnCooldown { get { return isBlockOnCooldown; } }
     public void TakeMagicDamage(int amount)
     {
-        if (isBlocking) return;
+        if (isBlocking && !isBlockOnCooldown)
+        {
+            blockStamina -= blockStaminaDecreasePerHit;
+            if (blockStamina <= 0)
+            {
+                blockStamina = 0;
+                isBlockOnCooldown = true;
+                blockCooldownTimer = blockCooldownTime;
+                isBlocking = false;
+                m_animator.SetBool("IdleBlock", false);
+                // Có thể thêm hiệu ứng block bị vỡ ở đây
+            }
+            Debug.Log("Block hit! Stamina: " + blockStamina);
+            return;
+        }
 
         int reducedDamage = Mathf.Max(0, amount - currentMagicShield);
         health -= reducedDamage;
@@ -272,7 +319,21 @@ public class PlayerKnight : MonoBehaviour
 
     public void TakePhysicalDamage(int amount)
     {
-        if (isBlocking) return;
+        if (isBlocking && !isBlockOnCooldown)
+        {
+            blockStamina -= blockStaminaDecreasePerHit;
+            if (blockStamina <= 0)
+            {
+                blockStamina = 0;
+                isBlockOnCooldown = true;
+                blockCooldownTimer = blockCooldownTime;
+                isBlocking = false;
+                m_animator.SetBool("IdleBlock", false);
+                // Có thể thêm hiệu ứng block bị vỡ ở đây
+            }
+            Debug.Log("Block hit! Stamina: " + blockStamina);
+            return;
+        }
 
         int damageAfterArmor = Mathf.Max(0, amount - currentArmorShield);
 
@@ -307,7 +368,10 @@ public class PlayerKnight : MonoBehaviour
     {
         currentMana += amount;
         if (currentMana > maxMana)
+        {
             currentMana = maxMana;
+            return;
+        }
 
         Debug.Log($" Đã hồi {amount} mana. Mana hiện tại: {currentMana}/{maxMana}");
     }
