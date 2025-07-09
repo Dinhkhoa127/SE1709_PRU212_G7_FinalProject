@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic; // Đảm bảo có ở đầu file nếu dùng List
-using TMPro; // Ở đầu file
+using TMPro;
+using Assets.Scripts; // Ở đầu file
 
 public class PlayerKnight : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class PlayerKnight : MonoBehaviour
     [SerializeField] private int maxMagicShield = 2;
     [SerializeField] private int maxMana = 100;
 
+    private int manaCost = 10;
+    public GameObject skillProjectilePrefab;
+    public Transform castPoint;
     private int currentMana;
     private int currentArmorShield;
     private int currentMagicShield;
@@ -111,7 +115,7 @@ public class PlayerKnight : MonoBehaviour
         HandleSkillBerserk(); // Nhấn R để sử dụng kỹ năng Berserk
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            HandleSkillCast(); // Nhấn Q để chưởng chiêu
+            HandleSkillCast(manaCost); // Nhấn Q để chưởng chiêu
         }
         manaRegenTimer += Time.deltaTime;
         if (manaRegenTimer >= manaRegenInterval)
@@ -373,19 +377,29 @@ public class PlayerKnight : MonoBehaviour
             m_animator.SetTrigger("Hurt");
         }
     }
-    public void HandleSkillCast()
+    public void HandleSkillCast(int manaCost)
     {
-        int manaCost = 10;
-
         if (currentMana >= manaCost)
         {
             currentMana -= manaCost;
-            //m_animator.SetTrigger("Skill"); // hoặc tên trigger animation của bạn
-            Debug.Log("Đã chưởng chiêu, còn lại mana: " + currentMana);
+
+            GameObject projectile = Instantiate(skillProjectilePrefab, castPoint.position, Quaternion.identity);
+
+            // Xác định hướng
+            Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
+            projectile.GetComponent<SkillProjectile>().SetDirection(direction);
+
+            // Lật hình nếu nhân vật quay trái
+            Vector3 scale = projectile.transform.localScale;
+            scale.x = transform.localScale.x > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+            projectile.transform.localScale = scale;
+
+            // Option: animation chưởng
+            // m_animator.SetTrigger("Cast");
         }
         else
         {
-            Debug.Log(" Không đủ mana!");
+            Debug.Log("Không đủ mana để chưởng!");
         }
     }
     public void RegenerateMana(int amount)

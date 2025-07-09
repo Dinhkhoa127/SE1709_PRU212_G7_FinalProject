@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: 7b2658144655a8149adcb9707e4b1ef3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7606188251810147069
+    second: gollux_attack_A_0
+  - first:
+      213: 5351144188614273574
+    second: gollux_attack_A_1
+  - first:
+      213: 5260539047886297587
+    second: gollux_attack_A_2
+  - first:
+      213: -3508845490649197168
+    second: gollux_attack_A_3
+  - first:
+      213: -3841651386647199725
+    second: gollux_attack_A_4
+  - first:
+      213: -6893946874756084434
+    second: gollux_attack_A_5
+  - first:
+      213: -5498229757174357669
+    second: gollux_attack_A_6
+  - first:
+      213: 3063846753339825229
+    second: gollux_attack_A_7
+  - first:
+      213: 553233239409531214
+    second: gollux_attack_A_8
+  - first:
+      213: -7301461373744743240
+    second: gollux_attack_A_9
+  - first:
+      213: -9067196587607690856
+    second: gollux_attack_A_10
+  - first:
+      213: 2845679970571595772
+    second: gollux_attack_A_11
+  - first:
+      213: 4810199194015195605
+    second: gollux_attack_A_12
+  - first:
+      213: -4593452618713996554
+    second: gollux_attack_A_13
+  - first:
+      213: -5179444378307752419
+    second: gollux_attack_A_14
+  - first:
+      213: -5586713510048073135
+    second: gollux_attack_A_15
+  - first:
+      213: 2790767580082029862
+    second: gollux_attack_A_16
+  - first:
+      213: 6065186409242453575
+    second: gollux_attack_A_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: gollux_attack_A_0
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 0
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3055b149514617690800000000000000
+      internalID: -7606188251810147069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_1
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 0
+        width: 59
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62aef38b945134a40800000000000000
+      internalID: 5351144188614273574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_2
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 0
+        width: 60
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f9955c7460310940800000000000000
+      internalID: 5260539047886297587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_3
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 0
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0959f1eed931e4fc0800000000000000
+      internalID: -3508845490649197168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_4
+      rect:
+        serializedVersion: 2
+        x: 1698
+        y: 0
+        width: 69
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 310c104fa66bfaac0800000000000000
+      internalID: -3841651386647199725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_5
+      rect:
+        serializedVersion: 2
+        x: 2082
+        y: 0
+        width: 72
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2dcfb5d7d7c350a0800000000000000
+      internalID: -6893946874756084434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_6
+      rect:
+        serializedVersion: 2
+        x: 2466
+        y: 0
+        width: 73
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b51e32eaa2d52b3b0800000000000000
+      internalID: -5498229757174357669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_7
+      rect:
+        serializedVersion: 2
+        x: 2530
+        y: 15
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4cdd03a368f48a20800000000000000
+      internalID: 3063846753339825229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_8
+      rect:
+        serializedVersion: 2
+        x: 2850
+        y: 0
+        width: 74
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4991f833ba7da700800000000000000
+      internalID: 553233239409531214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_9
+      rect:
+        serializedVersion: 2
+        x: 3234
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bc75bcb09ffbaa90800000000000000
+      internalID: -7301461373744743240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_10
+      rect:
+        serializedVersion: 2
+        x: 3618
+        y: 0
+        width: 67
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 891720f5eb8da2280800000000000000
+      internalID: -9067196587607690856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_11
+      rect:
+        serializedVersion: 2
+        x: 4002
+        y: 0
+        width: 67
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cff2d5e2bd2ed7720800000000000000
+      internalID: 2845679970571595772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_12
+      rect:
+        serializedVersion: 2
+        x: 4386
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d165227ea241c240800000000000000
+      internalID: 4810199194015195605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_13
+      rect:
+        serializedVersion: 2
+        x: 4770
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f2e6f03e27c040c0800000000000000
+      internalID: -4593452618713996554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_14
+      rect:
+        serializedVersion: 2
+        x: 5154
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1e8211a7caee18b0800000000000000
+      internalID: -5179444378307752419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_15
+      rect:
+        serializedVersion: 2
+        x: 5538
+        y: 0
+        width: 67
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15a75bb89a10872b0800000000000000
+      internalID: -5586713510048073135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_16
+      rect:
+        serializedVersion: 2
+        x: 5922
+        y: 0
+        width: 67
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6254775f35ccab620800000000000000
+      internalID: 2790767580082029862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_attack_A_17
+      rect:
+        serializedVersion: 2
+        x: 6306
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7466c6b87eedb2450800000000000000
+      internalID: 6065186409242453575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      gollux_attack_A_0: -7606188251810147069
+      gollux_attack_A_1: 5351144188614273574
+      gollux_attack_A_10: -9067196587607690856
+      gollux_attack_A_11: 2845679970571595772
+      gollux_attack_A_12: 4810199194015195605
+      gollux_attack_A_13: -4593452618713996554
+      gollux_attack_A_14: -5179444378307752419
+      gollux_attack_A_15: -5586713510048073135
+      gollux_attack_A_16: 2790767580082029862
+      gollux_attack_A_17: 6065186409242453575
+      gollux_attack_A_2: 5260539047886297587
+      gollux_attack_A_3: -3508845490649197168
+      gollux_attack_A_4: -3841651386647199725
+      gollux_attack_A_5: -6893946874756084434
+      gollux_attack_A_6: -5498229757174357669
+      gollux_attack_A_7: 3063846753339825229
+      gollux_attack_A_8: 553233239409531214
+      gollux_attack_A_9: -7301461373744743240
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

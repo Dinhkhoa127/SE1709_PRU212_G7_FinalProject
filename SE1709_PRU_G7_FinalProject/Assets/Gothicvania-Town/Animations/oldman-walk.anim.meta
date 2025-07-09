@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d9759412b0d4a4223aa041fae611c237
+timeCreated: 1506610636
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 101407
+  packageName: GothicVania Town
+  packageVersion: 1.0
+  assetPath: Assets/Gothicvania-Town/Animations/oldman-walk.anim
+  uploadId: 205982

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a68971cf14dd442a7b5cad1dd1dd7544
+timeCreated: 1506610673
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 101407
+  packageName: GothicVania Town
+  packageVersion: 1.0
+  assetPath: Assets/Gothicvania-Town/Animations/woman-idle-5.controller
+  uploadId: 205982
