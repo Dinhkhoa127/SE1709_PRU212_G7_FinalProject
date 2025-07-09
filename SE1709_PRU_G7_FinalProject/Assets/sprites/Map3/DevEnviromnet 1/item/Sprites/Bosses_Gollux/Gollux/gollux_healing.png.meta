@@ -1,0 +1,1105 @@
+fileFormatVersion: 2
+guid: 54a68a695978f2043a1d5083c165ec06
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8048320586349093073
+    second: gollux_healing_0
+  - first:
+      213: -8341347199849433646
+    second: gollux_healing_1
+  - first:
+      213: -2365832194334974459
+    second: gollux_healing_2
+  - first:
+      213: -6405803699936365035
+    second: gollux_healing_3
+  - first:
+      213: 8983480699367597361
+    second: gollux_healing_4
+  - first:
+      213: -3279454421849929655
+    second: gollux_healing_5
+  - first:
+      213: -3782715065398924974
+    second: gollux_healing_6
+  - first:
+      213: -8135512726821197738
+    second: gollux_healing_7
+  - first:
+      213: 4334251039223269416
+    second: gollux_healing_8
+  - first:
+      213: -3173870971395297216
+    second: gollux_healing_9
+  - first:
+      213: 6709456184948232001
+    second: gollux_healing_10
+  - first:
+      213: -2999229994738722743
+    second: gollux_healing_11
+  - first:
+      213: -6220658365014078884
+    second: gollux_healing_12
+  - first:
+      213: -1927722377455940028
+    second: gollux_healing_13
+  - first:
+      213: -2763064822497115220
+    second: gollux_healing_14
+  - first:
+      213: -3359336054680303366
+    second: gollux_healing_15
+  - first:
+      213: 5991147637866139583
+    second: gollux_healing_16
+  - first:
+      213: 1330033305513988495
+    second: gollux_healing_17
+  - first:
+      213: -764672287751709933
+    second: gollux_healing_18
+  - first:
+      213: -5964738036620527963
+    second: gollux_healing_19
+  - first:
+      213: 7050261146839744836
+    second: gollux_healing_20
+  - first:
+      213: -7314302001253348233
+    second: gollux_healing_21
+  - first:
+      213: -508030311821503517
+    second: gollux_healing_22
+  - first:
+      213: -273492231125488055
+    second: gollux_healing_23
+  - first:
+      213: 7943423056646138514
+    second: gollux_healing_24
+  - first:
+      213: -5699983358356646451
+    second: gollux_healing_25
+  - first:
+      213: -210425896387633638
+    second: gollux_healing_26
+  - first:
+      213: 6913971913278285138
+    second: gollux_healing_27
+  - first:
+      213: -7077712530739196781
+    second: gollux_healing_28
+  - first:
+      213: -151314474447020414
+    second: gollux_healing_29
+  - first:
+      213: 659304097605297629
+    second: gollux_healing_30
+  - first:
+      213: -8492440952576628825
+    second: gollux_healing_31
+  - first:
+      213: -3841276334190352587
+    second: gollux_healing_32
+  - first:
+      213: 7338531855758415602
+    second: gollux_healing_33
+  - first:
+      213: -615586246742539145
+    second: gollux_healing_34
+  - first:
+      213: 2175251721020962719
+    second: gollux_healing_35
+  - first:
+      213: -8690735426839394471
+    second: gollux_healing_36
+  - first:
+      213: -8485277191583221977
+    second: gollux_healing_37
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: gollux_healing_0
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2fd23c811f9e4090800000000000000
+      internalID: -8048320586349093073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_1
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d576c48ae49d3c80800000000000000
+      internalID: -8341347199849433646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_2
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 0
+        width: 67
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50e1b7a6720ea2fd0800000000000000
+      internalID: -2365832194334974459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_3
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 0
+        width: 67
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 516f86c69730a17a0800000000000000
+      internalID: -6405803699936365035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_4
+      rect:
+        serializedVersion: 2
+        x: 1698
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 135226c791cbbac70800000000000000
+      internalID: 8983480699367597361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_5
+      rect:
+        serializedVersion: 2
+        x: 2082
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9480d8024990d72d0800000000000000
+      internalID: -3279454421849929655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_6
+      rect:
+        serializedVersion: 2
+        x: 2466
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 259e06090b8118bc0800000000000000
+      internalID: -3782715065398924974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_7
+      rect:
+        serializedVersion: 2
+        x: 2850
+        y: 0
+        width: 67
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 658272c574ad81f80800000000000000
+      internalID: -8135512726821197738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_8
+      rect:
+        serializedVersion: 2
+        x: 3234
+        y: 0
+        width: 67
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82845483b5a562c30800000000000000
+      internalID: 4334251039223269416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_9
+      rect:
+        serializedVersion: 2
+        x: 3618
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0403f0bda2524f3d0800000000000000
+      internalID: -3173870971395297216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_10
+      rect:
+        serializedVersion: 2
+        x: 4002
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14f03eb1ad6cc1d50800000000000000
+      internalID: 6709456184948232001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_11
+      rect:
+        serializedVersion: 2
+        x: 4386
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 948d6ebd5389066d0800000000000000
+      internalID: -2999229994738722743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_12
+      rect:
+        serializedVersion: 2
+        x: 4770
+        y: 0
+        width: 67
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5a064cec28cba9a0800000000000000
+      internalID: -6220658365014078884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_13
+      rect:
+        serializedVersion: 2
+        x: 5154
+        y: 0
+        width: 67
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44eca2216ba5f35e0800000000000000
+      internalID: -1927722377455940028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_14
+      rect:
+        serializedVersion: 2
+        x: 5538
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca38eabee2f97a9d0800000000000000
+      internalID: -2763064822497115220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_15
+      rect:
+        serializedVersion: 2
+        x: 5600
+        y: 13
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af84e9328ad3161d0800000000000000
+      internalID: -3359336054680303366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_16
+      rect:
+        serializedVersion: 2
+        x: 5922
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbf8eefb805d42350800000000000000
+      internalID: 5991147637866139583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_17
+      rect:
+        serializedVersion: 2
+        x: 5983
+        y: 32
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f81999a9e3a357210800000000000000
+      internalID: 1330033305513988495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_18
+      rect:
+        serializedVersion: 2
+        x: 5993
+        y: 23
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31b59fe0b965365f0800000000000000
+      internalID: -764672287751709933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_19
+      rect:
+        serializedVersion: 2
+        x: 6306
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a6f8f4bb5ef83da0800000000000000
+      internalID: -5964738036620527963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_20
+      rect:
+        serializedVersion: 2
+        x: 6366
+        y: 34
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4410f1fb82f87d160800000000000000
+      internalID: 7050261146839744836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_21
+      rect:
+        serializedVersion: 2
+        x: 6377
+        y: 26
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77c8d5b25116e7a90800000000000000
+      internalID: -7314302001253348233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_22
+      rect:
+        serializedVersion: 2
+        x: 6690
+        y: 0
+        width: 67
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e39fb08f1d13f8f0800000000000000
+      internalID: -508030311821503517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_23
+      rect:
+        serializedVersion: 2
+        x: 6747
+        y: 33
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94eafeac34c543cf0800000000000000
+      internalID: -273492231125488055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_24
+      rect:
+        serializedVersion: 2
+        x: 6760
+        y: 26
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29a6a081f25bc3e60800000000000000
+      internalID: 7943423056646138514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_25
+      rect:
+        serializedVersion: 2
+        x: 7074
+        y: 0
+        width: 76
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc5938bd55795e0b0800000000000000
+      internalID: -5699983358356646451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_26
+      rect:
+        serializedVersion: 2
+        x: 7458
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1e954a13ca641df0800000000000000
+      internalID: -210425896387633638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_27
+      rect:
+        serializedVersion: 2
+        x: 7842
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 255eaf5c2dc53ff50800000000000000
+      internalID: 6913971913278285138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_28
+      rect:
+        serializedVersion: 2
+        x: 8226
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39c85fed3f9e6cd90800000000000000
+      internalID: -7077712530739196781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_29
+      rect:
+        serializedVersion: 2
+        x: 8610
+        y: 0
+        width: 67
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28ed535894c66edf0800000000000000
+      internalID: -151314474447020414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_30
+      rect:
+        serializedVersion: 2
+        x: 8994
+        y: 0
+        width: 67
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd529b86591562900800000000000000
+      internalID: 659304097605297629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_31
+      rect:
+        serializedVersion: 2
+        x: 9378
+        y: 0
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a7a0b1d2f9c42a80800000000000000
+      internalID: -8492440952576628825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_32
+      rect:
+        serializedVersion: 2
+        x: 5219
+        y: 0
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5372878a68b01bac0800000000000000
+      internalID: -3841276334190352587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_33
+      rect:
+        serializedVersion: 2
+        x: 6006
+        y: 10
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f65e5377d3b7d560800000000000000
+      internalID: 7338531855758415602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_34
+      rect:
+        serializedVersion: 2
+        x: 6390
+        y: 12
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7748b42f19ff477f0800000000000000
+      internalID: -615586246742539145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_35
+      rect:
+        serializedVersion: 2
+        x: 6766
+        y: 15
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f97f2805aeb003e10800000000000000
+      internalID: 2175251721020962719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_36
+      rect:
+        serializedVersion: 2
+        x: 4838
+        y: 0
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 957c55ebc2e446780800000000000000
+      internalID: -8690735426839394471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gollux_healing_37
+      rect:
+        serializedVersion: 2
+        x: 5622
+        y: 0
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72735f6e95d3e3a80800000000000000
+      internalID: -8485277191583221977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      gollux_healing_0: -8048320586349093073
+      gollux_healing_1: -8341347199849433646
+      gollux_healing_10: 6709456184948232001
+      gollux_healing_11: -2999229994738722743
+      gollux_healing_12: -6220658365014078884
+      gollux_healing_13: -1927722377455940028
+      gollux_healing_14: -2763064822497115220
+      gollux_healing_15: -3359336054680303366
+      gollux_healing_16: 5991147637866139583
+      gollux_healing_17: 1330033305513988495
+      gollux_healing_18: -764672287751709933
+      gollux_healing_19: -5964738036620527963
+      gollux_healing_2: -2365832194334974459
+      gollux_healing_20: 7050261146839744836
+      gollux_healing_21: -7314302001253348233
+      gollux_healing_22: -508030311821503517
+      gollux_healing_23: -273492231125488055
+      gollux_healing_24: 7943423056646138514
+      gollux_healing_25: -5699983358356646451
+      gollux_healing_26: -210425896387633638
+      gollux_healing_27: 6913971913278285138
+      gollux_healing_28: -7077712530739196781
+      gollux_healing_29: -151314474447020414
+      gollux_healing_3: -6405803699936365035
+      gollux_healing_30: 659304097605297629
+      gollux_healing_31: -8492440952576628825
+      gollux_healing_32: -3841276334190352587
+      gollux_healing_33: 7338531855758415602
+      gollux_healing_34: -615586246742539145
+      gollux_healing_35: 2175251721020962719
+      gollux_healing_36: -8690735426839394471
+      gollux_healing_37: -8485277191583221977
+      gollux_healing_4: 8983480699367597361
+      gollux_healing_5: -3279454421849929655
+      gollux_healing_6: -3782715065398924974
+      gollux_healing_7: -8135512726821197738
+      gollux_healing_8: 4334251039223269416
+      gollux_healing_9: -3173870971395297216
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

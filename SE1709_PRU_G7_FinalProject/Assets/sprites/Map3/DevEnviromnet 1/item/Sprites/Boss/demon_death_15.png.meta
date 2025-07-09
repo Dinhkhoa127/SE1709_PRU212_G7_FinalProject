@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: e33126728b0d4c34ab9df7651a4a41ff
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2329484481656884522
+    second: demon_death_15_0
+  - first:
+      213: 703920824810440192
+    second: demon_death_15_1
+  - first:
+      213: -1750724162057330692
+    second: demon_death_15_2
+  - first:
+      213: -7725029276601987814
+    second: demon_death_15_3
+  - first:
+      213: -356568798835288566
+    second: demon_death_15_4
+  - first:
+      213: 8313507216204070131
+    second: demon_death_15_5
+  - first:
+      213: 7986277403289165314
+    second: demon_death_15_6
+  - first:
+      213: 4099019271152890030
+    second: demon_death_15_7
+  - first:
+      213: 1961967699412873423
+    second: demon_death_15_8
+  - first:
+      213: 3575004695693418192
+    second: demon_death_15_9
+  - first:
+      213: -9079407375913194175
+    second: demon_death_15_10
+  - first:
+      213: -8827236978727903332
+    second: demon_death_15_11
+  - first:
+      213: 14361739223882093
+    second: demon_death_15_12
+  - first:
+      213: 5953154866691972816
+    second: demon_death_15_13
+  - first:
+      213: -1365397598251325627
+    second: demon_death_15_14
+  - first:
+      213: -5292693463094273138
+    second: demon_death_15_15
+  - first:
+      213: 7653038186281335590
+    second: demon_death_15_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: -0.8}
+  spritePixelsToUnits: 10
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: demon_death_15_0
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 104
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2d81fe3bcdf35020800000000000000
+      internalID: 2329484481656884522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: demon_death_15_1
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 91
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00683d8b244d4c900800000000000000
+      internalID: 703920824810440192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: demon_death_15_2
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 95
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cff11ec76ad24b7e0800000000000000
+      internalID: -1750724162057330692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: demon_death_15_3
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 81
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1d45a84dce2bc490800000000000000
+      internalID: -7725029276601987814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: demon_death_15_4
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 74
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a065f6f01963d0bf0800000000000000
+      internalID: -356568798835288566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: demon_death_15_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 70
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fc7d7b24c28f5370800000000000000
+      internalID: 8313507216204070131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: demon_death_15_6
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 72
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20e97c43cf4f4de60800000000000000
+      internalID: 7986277403289165314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: demon_death_15_7
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 14
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea07c804f44a2e830800000000000000
+      internalID: 4099019271152890030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: demon_death_15_8
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 15
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc07b484a3f4a3b10800000000000000
+      internalID: 1961967699412873423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: demon_death_15_9
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 0
+        width: 25
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ded82d54d7fc9130800000000000000
+      internalID: 3575004695693418192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: demon_death_15_10
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 29
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14de1aba8177ff180800000000000000
+      internalID: -9079407375913194175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: demon_death_15_11
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 17
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9f1bbe8cba5f7580800000000000000
+      internalID: -8827236978727903332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: demon_death_15_12
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 7
+        width: 17
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d69dbccfce5033000800000000000000
+      internalID: 14361739223882093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: demon_death_15_13
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 27
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0de10126fcadd9250800000000000000
+      internalID: 5953154866691972816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: demon_death_15_14
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 0
+        width: 52
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 547ee0b5e122d0de0800000000000000
+      internalID: -1365397598251325627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: demon_death_15_15
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 0
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8bdb3356539c86b0800000000000000
+      internalID: -5292693463094273138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: demon_death_15_16
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 6
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62b7cc1dead053a60800000000000000
+      internalID: 7653038186281335590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      demon_death_15_0: 2329484481656884522
+      demon_death_15_1: 703920824810440192
+      demon_death_15_10: -9079407375913194175
+      demon_death_15_11: -8827236978727903332
+      demon_death_15_12: 14361739223882093
+      demon_death_15_13: 5953154866691972816
+      demon_death_15_14: -1365397598251325627
+      demon_death_15_15: -5292693463094273138
+      demon_death_15_16: 7653038186281335590
+      demon_death_15_2: -1750724162057330692
+      demon_death_15_3: -7725029276601987814
+      demon_death_15_4: -356568798835288566
+      demon_death_15_5: 8313507216204070131
+      demon_death_15_6: 7986277403289165314
+      demon_death_15_7: 4099019271152890030
+      demon_death_15_8: 1961967699412873423
+      demon_death_15_9: 3575004695693418192
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
