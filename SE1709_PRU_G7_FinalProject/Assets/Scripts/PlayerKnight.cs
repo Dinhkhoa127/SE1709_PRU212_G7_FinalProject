@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic; // Đảm bảo có ở đầu file nếu dùng List
+using TMPro; // Ở đầu file
 
 public class PlayerKnight : MonoBehaviour
 {
@@ -63,7 +65,13 @@ public class PlayerKnight : MonoBehaviour
     private GameObject swordCollider2;
     private GameObject swordCollider3;
 
+    public List<string> learnedSkills = new List<string>(); // Nếu chưa có thì thêm
 
+    public TMP_Text autosaveText; // Thêm vào class PlayerKnight
+
+    public int gold = 0;
+    public string currentStage = "Stage1"; // hoặc tên scene mặc định đầu tiên
+    public List<string> inventory = new List<string>();
     void Start()
     {
         swordCollider1 = transform.Find("SwordCollider1").gameObject;
@@ -119,6 +127,18 @@ public class PlayerKnight : MonoBehaviour
                 isBlockOnCooldown = false;
                 blockStamina = maxBlockStamina;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            SaveGame();
+        }
+        if (Input.GetKeyDown(KeyCode.F9))
+        {
+            LoadGame();
+        }
+        if (Input.GetKeyDown(KeyCode.F6))
+        {
+            PrintSaveData();
         }
     }
 
@@ -542,5 +562,80 @@ public class PlayerKnight : MonoBehaviour
             onMovingGround = false;
             currentGround = null;
         }
+    }
+    /// <summary>
+    /// Lưu toàn bộ chỉ số hiện tại của Player.
+    /// </summary>
+    public void SaveGame()
+    {
+        PlayerData data = new PlayerData();
+        data.maxHealth = maxHealth;
+        data.health = health;
+        data.maxArmorShield = maxArmorShield;
+        data.currentArmorShield = currentArmorShield;
+        data.maxMagicShield = maxMagicShield;
+        data.currentMagicShield = currentMagicShield;
+        data.maxMana = maxMana;
+        data.currentMana = currentMana;
+        data.attackDamage = attackDamage;
+        data.maxBlockStamina = maxBlockStamina;
+        data.blockStamina = blockStamina;
+        data.learnedSkills = learnedSkills;
+        data.gold = gold;
+        data.currentStage = currentStage;
+        data.inventory = inventory;
+
+        SaveManager.Save(data);
+        Debug.Log("Game Saved!");
+        if (autosaveText != null)
+        {
+            autosaveText.text = "Đã tự động lưu!";
+            CancelInvoke(nameof(HideAutosaveText)); // Đảm bảo không bị chồng lệnh
+            Invoke(nameof(HideAutosaveText), 2f); // Ẩn sau 2 giây
+        }
+    }
+
+    /// <summary>
+    /// Tải lại toàn bộ chỉ số đã lưu cho Player.
+    /// </summary>
+    public void LoadGame()
+    {
+        PlayerData data = SaveManager.Load();
+        if (data != null)
+        {
+            maxHealth = data.maxHealth;
+            health = data.health;
+            maxArmorShield = data.maxArmorShield;
+            currentArmorShield = data.currentArmorShield;
+            maxMagicShield = data.maxMagicShield;
+            currentMagicShield = data.currentMagicShield;
+            maxMana = data.maxMana;
+            currentMana = data.currentMana;
+            attackDamage = data.attackDamage;
+            maxBlockStamina = data.maxBlockStamina;
+            blockStamina = data.blockStamina;
+            learnedSkills = data.learnedSkills ?? new List<string>();
+            gold = data.gold;
+            currentStage = data.currentStage;
+            inventory = data.inventory ?? new List<string>();
+
+            Debug.Log("Game Loaded!");
+        }
+        else
+        {
+            Debug.Log("No save data found!");
+        }
+    }
+
+    void HideAutosaveText()
+    {
+        if (autosaveText != null)
+            autosaveText.text = "";
+    }
+
+    public void PrintSaveData()
+    {
+        string json = PlayerPrefs.GetString("playerData", "Chưa có save");
+        Debug.Log("Nội dung save hiện tại: " + json);
     }
 }
