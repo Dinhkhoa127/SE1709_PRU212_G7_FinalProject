@@ -111,7 +111,7 @@ public class PlayerKnight : MonoBehaviour
         {
             Heal(1); // Nhấn H để hồi 1 máu
         }
-        // KHÓA ĐÒN ĐÁNH VÀ KỸ NĂNG Ở MAP ĐẶC BIỆT
+       // KHÓA ĐÒN ĐÁNH VÀ KỸ NĂNG Ở MAP ĐẶC BIỆT
         if (!IsAttackLockedScene())
         {
             HandleAttack();
@@ -665,4 +665,5 @@ public class PlayerKnight : MonoBehaviour
         // Đổi "MapRest" thành đúng tên scene bạn muốn khóa
         return SceneManager.GetActiveScene().name == "MapRest";
     }
+
 }
