@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d5d1fe1901a3543aa87a1aec6ca53a04
+timeCreated: 1506610466
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 101407
+  packageName: GothicVania Town
+  packageVersion: 1.0
+  assetPath: Assets/Gothicvania-Town/Animations/hat-man-idle-2.controller
+  uploadId: 205982
