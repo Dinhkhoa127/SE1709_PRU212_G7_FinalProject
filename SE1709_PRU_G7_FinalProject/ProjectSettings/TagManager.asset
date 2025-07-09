@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - MovingGround
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -54,6 +56,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1195976015
+    locked: 0
+  - name: Skill
+    uniqueID: 1401934399
     locked: 0
   m_RenderingLayers:
   - Default
