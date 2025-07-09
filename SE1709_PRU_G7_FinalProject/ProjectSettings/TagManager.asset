@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - MovingGround
   - Bullet
+  - NPC_MapRest
   layers:
   - Default
   - TransparentFX
@@ -54,11 +55,14 @@ TagManager:
   - name: Enemy
     uniqueID: 810683083
     locked: 0
-  - name: Player
-    uniqueID: 1195976015
-    locked: 0
   - name: Skill
     uniqueID: 1401934399
+    locked: 0
+  - name: NPC_MapRest
+    uniqueID: 653751443
+    locked: 0
+  - name: Player
+    uniqueID: 1195976015
     locked: 0
   m_RenderingLayers:
   - Default
