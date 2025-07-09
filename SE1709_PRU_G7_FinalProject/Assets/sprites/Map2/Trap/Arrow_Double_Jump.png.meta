@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 7704590caf3a9ae4a81e09eafc75168d
+guid: 2489b263d37e1cb4a95d5b7c4521007a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8929192845918048064
-    second: Tile_45_0
+      213: -9041025670605977064
+    second: Arrow_Double_Jump_0
+  - first:
+      213: -4689751220084810137
+    second: Arrow_Double_Jump_1
+  - first:
+      213: -4384431355798985864
+    second: Arrow_Double_Jump_2
+  - first:
+      213: 3602956118696444326
+    second: Arrow_Double_Jump_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,12 +55,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tile_45_0
+      name: Arrow_Double_Jump_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 04f87ef959ddaeb70800000000000000
-      internalID: 8929192845918048064
+      spriteID: 81ac752dd03d78280800000000000000
+      internalID: -9041025670605977064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arrow_Double_Jump_1
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 0
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76ed3e9dc18aaeeb0800000000000000
+      internalID: -4689751220084810137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arrow_Double_Jump_2
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 873648f59ee5723c0800000000000000
+      internalID: -4384431355798985864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arrow_Double_Jump_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a1c83c2085400230800000000000000
+      internalID: 3602956118696444326
       vertices: []
       indices: 
       edges: []
@@ -138,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tile_45_0: 8929192845918048064
+      Arrow_Double_Jump_0: -9041025670605977064
+      Arrow_Double_Jump_1: -4689751220084810137
+      Arrow_Double_Jump_2: -4384431355798985864
+      Arrow_Double_Jump_3: 3602956118696444326
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

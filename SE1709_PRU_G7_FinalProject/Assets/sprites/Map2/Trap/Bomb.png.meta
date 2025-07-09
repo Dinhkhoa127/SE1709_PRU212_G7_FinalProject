@@ -1,16 +1,28 @@
 fileFormatVersion: 2
-guid: 0b08237c954440d49b9fda416b4d81b8
+guid: 7ecbe3ab9699e9f42b4a9560b52037d0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2099055159055310883
-    second: Trap_0
+      213: -1483665779731714255
+    second: Bomb_0
   - first:
-      213: 3333967470306039257
-    second: Trap_1
+      213: -1902917897002446259
+    second: Bomb_1
   - first:
-      213: 6168736975187873401
-    second: Trap_2
+      213: -5839540051515997725
+    second: Bomb_2
+  - first:
+      213: -5337159410277229379
+    second: Bomb_3
+  - first:
+      213: 4119226490080697988
+    second: Bomb_4
+  - first:
+      213: -3851982506454002795
+    second: Bomb_5
+  - first:
+      213: 6209065506319696928
+    second: Bomb_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,12 +64,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 150
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -78,10 +90,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 3
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -119,13 +131,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Trap_0
+      name: Bomb_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 114
-        width: 161
-        height: 236
+        x: 9
+        y: 0
+        width: 15
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 320617fbb87512d10800000000000000
-      internalID: 2099055159055310883
+      spriteID: 13f20b985d5f86be0800000000000000
+      internalID: -1483665779731714255
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Trap_1
+      name: Bomb_1
       rect:
         serializedVersion: 2
-        x: 207
-        y: 115
-        width: 85
-        height: 235
+        x: 41
+        y: 0
+        width: 15
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9d59c4800c1a44e20800000000000000
-      internalID: 3333967470306039257
+      spriteID: d429f68314a7795e0800000000000000
+      internalID: -1902917897002446259
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Trap_2
+      name: Bomb_2
       rect:
         serializedVersion: 2
-        x: 300
-        y: 114
-        width: 161
-        height: 236
+        x: 44
+        y: 17
+        width: 6
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +190,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 97e04e67891cb9550800000000000000
-      internalID: 6168736975187873401
+      spriteID: 3e109b92349c5fea0800000000000000
+      internalID: -5839540051515997725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb_3
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 18
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbcdac83bc99ee5b0800000000000000
+      internalID: -5337159410277229379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb_4
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48e93aa0bae6a2930800000000000000
+      internalID: 4119226490080697988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb_5
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 0
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5935acda1520b8ac0800000000000000
+      internalID: -3851982506454002795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb_6
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 0
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02401535e280b2650800000000000000
+      internalID: 6209065506319696928
       vertices: []
       indices: 
       edges: []
@@ -188,7 +288,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +298,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Trap_0: 2099055159055310883
-      Trap_1: 3333967470306039257
-      Trap_2: 6168736975187873401
+      Bomb_0: -1483665779731714255
+      Bomb_1: -1902917897002446259
+      Bomb_2: -5839540051515997725
+      Bomb_3: -5337159410277229379
+      Bomb_4: 4119226490080697988
+      Bomb_5: -3851982506454002795
+      Bomb_6: 6209065506319696928
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

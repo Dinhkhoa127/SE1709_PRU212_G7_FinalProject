@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 7704590caf3a9ae4a81e09eafc75168d
+guid: 4fc2780f13ccbae499f608cfe8904558
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8929192845918048064
-    second: Tile_45_0
+      213: -2041049398770351245
+    second: spr_torch_0
+  - first:
+      213: 6669048238204813977
+    second: spr_torch_1
+  - first:
+      213: -9166855071109187563
+    second: spr_torch_2
+  - first:
+      213: -3584869903303768925
+    second: spr_torch_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +55,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 10
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tile_45_0
+      name: spr_torch_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 6
+        y: 6
+        width: 9
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 04f87ef959ddaeb70800000000000000
-      internalID: 8929192845918048064
+      spriteID: 373c441c26cbca3e0800000000000000
+      internalID: -2041049398770351245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_torch_1
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 6
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 992842cd9083d8c50800000000000000
+      internalID: 6669048238204813977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_torch_2
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 6
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5187c0381e9c8c080800000000000000
+      internalID: -9166855071109187563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_torch_3
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 6
+        width: 9
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a4079ff0dbff3ec0800000000000000
+      internalID: -3584869903303768925
       vertices: []
       indices: 
       edges: []
@@ -138,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tile_45_0: 8929192845918048064
+      spr_torch_0: -2041049398770351245
+      spr_torch_1: 6669048238204813977
+      spr_torch_2: -9166855071109187563
+      spr_torch_3: -3584869903303768925
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

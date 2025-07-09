@@ -1,16 +1,28 @@
 fileFormatVersion: 2
-guid: 0b08237c954440d49b9fda416b4d81b8
+guid: 955047158f04792478dc25c936ba3b89
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2099055159055310883
-    second: Trap_0
+      213: -6955790032328933191
+    second: Suriken_0
   - first:
-      213: 3333967470306039257
-    second: Trap_1
+      213: 6773459715169517474
+    second: Suriken_1
   - first:
-      213: 6168736975187873401
-    second: Trap_2
+      213: 6726424302046983146
+    second: Suriken_2
+  - first:
+      213: 1062175669879547232
+    second: Suriken_3
+  - first:
+      213: 6272456057867270974
+    second: Suriken_4
+  - first:
+      213: 5296617233920379225
+    second: Suriken_5
+  - first:
+      213: -8662503132835019991
+    second: Suriken_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,12 +64,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 150
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -78,10 +90,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 3
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -119,13 +131,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Trap_0
+      name: Suriken_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 114
-        width: 161
-        height: 236
+        x: 0
+        y: 0
+        width: 33
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 320617fbb87512d10800000000000000
-      internalID: 2099055159055310883
+      spriteID: 9b0c4d6a1d1187f90800000000000000
+      internalID: -6955790032328933191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Trap_1
+      name: Suriken_1
       rect:
         serializedVersion: 2
-        x: 207
-        y: 115
-        width: 85
-        height: 235
+        x: 31
+        y: 0
+        width: 34
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9d59c4800c1a44e20800000000000000
-      internalID: 3333967470306039257
+      spriteID: 2aff81f39b9200e50800000000000000
+      internalID: 6773459715169517474
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Trap_2
+      name: Suriken_2
       rect:
         serializedVersion: 2
-        x: 300
-        y: 114
-        width: 161
-        height: 236
+        x: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +190,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 97e04e67891cb9550800000000000000
-      internalID: 6168736975187873401
+      spriteID: ae3b01cb34f095d50800000000000000
+      internalID: 6726424302046983146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Suriken_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 065ab34e42b9dbe00800000000000000
+      internalID: 1062175669879547232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Suriken_4
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 0
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3bfc6e3d8d3c0750800000000000000
+      internalID: 6272456057867270974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Suriken_5
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 0
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9594903cf4d518940800000000000000
+      internalID: 5296617233920379225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Suriken_6
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 0
+        width: 65
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92309adeb4b98c780800000000000000
+      internalID: -8662503132835019991
       vertices: []
       indices: 
       edges: []
@@ -188,7 +288,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +298,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Trap_0: 2099055159055310883
-      Trap_1: 3333967470306039257
-      Trap_2: 6168736975187873401
+      Suriken_0: -6955790032328933191
+      Suriken_1: 6773459715169517474
+      Suriken_2: 6726424302046983146
+      Suriken_3: 1062175669879547232
+      Suriken_4: 6272456057867270974
+      Suriken_5: 5296617233920379225
+      Suriken_6: -8662503132835019991
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

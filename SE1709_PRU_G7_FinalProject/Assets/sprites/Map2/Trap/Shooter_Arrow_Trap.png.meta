@@ -1,16 +1,28 @@
 fileFormatVersion: 2
-guid: 0b08237c954440d49b9fda416b4d81b8
+guid: df148f777a069ef4997423966ab73174
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2099055159055310883
-    second: Trap_0
+      213: 5664317421379508311
+    second: Shooter_Arrow_Trap_0
   - first:
-      213: 3333967470306039257
-    second: Trap_1
+      213: 2664446938899218892
+    second: Shooter_Arrow_Trap_1
   - first:
-      213: 6168736975187873401
-    second: Trap_2
+      213: -3242719409127367225
+    second: Shooter_Arrow_Trap_2
+  - first:
+      213: 8452858929953208293
+    second: Shooter_Arrow_Trap_3
+  - first:
+      213: 9024367733721590576
+    second: Shooter_Arrow_Trap_4
+  - first:
+      213: 3996180061049761737
+    second: Shooter_Arrow_Trap_5
+  - first:
+      213: 2426697223069408470
+    second: Shooter_Arrow_Trap_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,12 +64,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 150
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -78,10 +90,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 3
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -119,13 +131,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Trap_0
+      name: Shooter_Arrow_Trap_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 114
-        width: 161
-        height: 236
+        x: 0
+        y: 4
+        width: 15
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 320617fbb87512d10800000000000000
-      internalID: 2099055159055310883
+      spriteID: 758d1641fa2bb9e40800000000000000
+      internalID: 5664317421379508311
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Trap_1
+      name: Shooter_Arrow_Trap_1
       rect:
         serializedVersion: 2
-        x: 207
-        y: 115
-        width: 85
-        height: 235
+        x: 16
+        y: 5
+        width: 15
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9d59c4800c1a44e20800000000000000
-      internalID: 3333967470306039257
+      spriteID: cc107f3cf540af420800000000000000
+      internalID: 2664446938899218892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Trap_2
+      name: Shooter_Arrow_Trap_2
       rect:
         serializedVersion: 2
-        x: 300
-        y: 114
-        width: 161
-        height: 236
+        x: 32
+        y: 1
+        width: 15
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +190,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 97e04e67891cb9550800000000000000
-      internalID: 6168736975187873401
+      spriteID: 7cdd2b8c0eb8ff2d0800000000000000
+      internalID: -3242719409127367225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shooter_Arrow_Trap_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 8
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e7795069669e4570800000000000000
+      internalID: 8452858929953208293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shooter_Arrow_Trap_4
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 1
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03be8f204aefc3d70800000000000000
+      internalID: 9024367733721590576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shooter_Arrow_Trap_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 8
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cfae55c798457730800000000000000
+      internalID: 3996180061049761737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shooter_Arrow_Trap_6
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 7
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dc9a76644c5da120800000000000000
+      internalID: 2426697223069408470
       vertices: []
       indices: 
       edges: []
@@ -188,7 +288,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +298,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Trap_0: 2099055159055310883
-      Trap_1: 3333967470306039257
-      Trap_2: 6168736975187873401
+      Shooter_Arrow_Trap_0: 5664317421379508311
+      Shooter_Arrow_Trap_1: 2664446938899218892
+      Shooter_Arrow_Trap_2: -3242719409127367225
+      Shooter_Arrow_Trap_3: 8452858929953208293
+      Shooter_Arrow_Trap_4: 9024367733721590576
+      Shooter_Arrow_Trap_5: 3996180061049761737
+      Shooter_Arrow_Trap_6: 2426697223069408470
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
