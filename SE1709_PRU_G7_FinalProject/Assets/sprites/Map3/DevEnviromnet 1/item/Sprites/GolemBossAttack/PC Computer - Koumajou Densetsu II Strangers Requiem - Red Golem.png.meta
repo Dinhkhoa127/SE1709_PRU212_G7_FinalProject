@@ -1,0 +1,642 @@
+fileFormatVersion: 2
+guid: 7e00babb08d3059418e506412ab66c4c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5190966835759963246
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_0
+  - first:
+      213: -2664835702201001620
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_1
+  - first:
+      213: 479743712842783863
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_2
+  - first:
+      213: -1219896916261618389
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_3
+  - first:
+      213: 8948078446462349979
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_4
+  - first:
+      213: -5025505472936468921
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_5
+  - first:
+      213: 4597574980268459560
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_6
+  - first:
+      213: 7145392650220105167
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_7
+  - first:
+      213: 6894578648146081197
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_8
+  - first:
+      213: 1835140217211984591
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_9
+  - first:
+      213: -3204988401254078697
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_10
+  - first:
+      213: -6216354585484314485
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_11
+  - first:
+      213: 7924657955625546890
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_12
+  - first:
+      213: -9012353208417581385
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_13
+  - first:
+      213: 8013622392442584183
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_14
+  - first:
+      213: -5254727485189271035
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_15
+  - first:
+      213: -485722741990392003
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_16
+  - first:
+      213: -3294807764488368593
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_17
+  - first:
+      213: -6023502451501133913
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_18
+  - first:
+      213: -8951949908029241726
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_19
+  - first:
+      213: -5506010530444707451
+    second: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_0
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 640
+        width: 70
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 293a1b17a2bf5f7b0800000000000000
+      internalID: -5190966835759963246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 640
+        width: 90
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c69d7893c0a940bd0800000000000000
+      internalID: -2664835702201001620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_2
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 640
+        width: 107
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77c98337d5468a600800000000000000
+      internalID: 479743712842783863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_3
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 640
+        width: 107
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2db1abc73e021fe0800000000000000
+      internalID: -1219896916261618389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_4
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 512
+        width: 64
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b92b7b720f5fd2c70800000000000000
+      internalID: 8948078446462349979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_5
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 512
+        width: 57
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74e17dc0661d14ab0800000000000000
+      internalID: -5025505472936468921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_6
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 513
+        width: 48
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8260027e51eddcf30800000000000000
+      internalID: 4597574980268459560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_7
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 514
+        width: 63
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcd6e09e1c8892360800000000000000
+      internalID: 7145392650220105167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_8
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 386
+        width: 68
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da57dbe50c67eaf50800000000000000
+      internalID: 6894578648146081197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_9
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 386
+        width: 63
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fca14f7fd4ab77910800000000000000
+      internalID: 1835140217211984591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_10
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 385
+        width: 48
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 717e002a7089583d0800000000000000
+      internalID: -3204988401254078697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_11
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 384
+        width: 57
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b88365ea0721bb9a0800000000000000
+      internalID: -6216354585484314485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_12
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 256
+        width: 103
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a84b88b8c6a0afd60800000000000000
+      internalID: 7924657955625546890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_13
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 256
+        width: 101
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b60be5a180bde280800000000000000
+      internalID: -9012353208417581385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_14
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 256
+        width: 162
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77cf7a1ab1b163f60800000000000000
+      internalID: 8013622392442584183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_15
+      rect:
+        serializedVersion: 2
+        x: 841
+        y: 256
+        width: 155
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 502dfc561357317b0800000000000000
+      internalID: -5254727485189271035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_16
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 128
+        width: 107
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3f75585dbd5249f0800000000000000
+      internalID: -485722741990392003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_17
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 128
+        width: 113
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2ec87a7bcd7642d0800000000000000
+      internalID: -3294807764488368593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_18
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 46
+        width: 58
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7af849a2f68386ca0800000000000000
+      internalID: -6023502451501133913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_19
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 37
+        width: 59
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28683d4fcf844c380800000000000000
+      internalID: -8951949908029241726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Koumajou Densetsu II Strangers Requiem - Red Golem_20
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 7
+        width: 113
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 589784b3898b693b0800000000000000
+      internalID: -5506010530444707451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
