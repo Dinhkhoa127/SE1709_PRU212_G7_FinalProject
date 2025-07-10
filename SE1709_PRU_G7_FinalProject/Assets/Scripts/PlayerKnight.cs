@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic; // Đảm bảo có ở đầu file nếu dùng List
 using TMPro;
 using Assets.Scripts; // Ở đầu file
+using UnityEngine.SceneManagement; // Đặt ở đầu file nếu chưa có
 
 public class PlayerKnight : MonoBehaviour
 {
@@ -103,8 +104,6 @@ public class PlayerKnight : MonoBehaviour
         HandleGroundCheck();
         HandleMove();
         HandleWallSlide();
-        HandleAttack();
-        HandleBlock();
         HandleRoll();
         HandleJump();
         HandleRunIdle();
@@ -112,10 +111,16 @@ public class PlayerKnight : MonoBehaviour
         {
             Heal(1); // Nhấn H để hồi 1 máu
         }
-        HandleSkillBerserk(); // Nhấn R để sử dụng kỹ năng Berserk
-        if (Input.GetKeyDown(KeyCode.Q))
+       // KHÓA ĐÒN ĐÁNH VÀ KỸ NĂNG Ở MAP ĐẶC BIỆT
+        if (!IsAttackLockedScene())
         {
-            HandleSkillCast(manaCost); // Nhấn Q để chưởng chiêu
+            HandleAttack();
+            HandleBlock();
+            HandleSkillBerserk();
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                HandleSkillCast(manaCost);
+            }
         }
         manaRegenTimer += Time.deltaTime;
         if (manaRegenTimer >= manaRegenInterval)
@@ -148,6 +153,8 @@ public class PlayerKnight : MonoBehaviour
 
     public int GetHealth() { return health; }
     public int GetMaxHealth() { return maxHealth; }
+    public void RestoreFullMana() { currentMana = maxMana; }
+    public void RestoreFullStamina() { blockStamina = maxBlockStamina; }
     void HandleTimers()
     {
         m_timeSinceAttack += Time.deltaTime;
@@ -652,4 +659,11 @@ public class PlayerKnight : MonoBehaviour
         string json = PlayerPrefs.GetString("playerData", "Chưa có save");
         Debug.Log("Nội dung save hiện tại: " + json);
     }
+
+    private bool IsAttackLockedScene()
+    {
+        // Đổi "MapRest" thành đúng tên scene bạn muốn khóa
+        return SceneManager.GetActiveScene().name == "MapRest";
+    }
+
 }
