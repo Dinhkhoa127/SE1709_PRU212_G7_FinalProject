@@ -5,7 +5,6 @@ public class NPCController : MonoBehaviour
     [SerializeField] private float speed = 2f;
     [SerializeField] private float distance = 2f;
     private Animator animator;
-
     private Vector3 startPos;
     private bool moveRight = true;
     private bool facingRight = true;
