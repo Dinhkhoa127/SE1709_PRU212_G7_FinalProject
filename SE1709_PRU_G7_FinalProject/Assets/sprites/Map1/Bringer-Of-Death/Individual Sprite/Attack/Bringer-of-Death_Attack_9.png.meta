@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 6e359db78a5bec146bc024a11a10d648
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2990122378051729481
+    second: Bringer-of-Death_Attack_9_0
+  - first:
+      213: -7382975060597904626
+    second: Bringer-of-Death_Attack_9_1
+  - first:
+      213: -2296790381873118713
+    second: Bringer-of-Death_Attack_9_2
+  - first:
+      213: -9134138655723727345
+    second: Bringer-of-Death_Attack_9_3
+  - first:
+      213: 1059036664191365472
+    second: Bringer-of-Death_Attack_9_4
+  - first:
+      213: 4102940762815721441
+    second: Bringer-of-Death_Attack_9_5
+  - first:
+      213: -2334784897017958998
+    second: Bringer-of-Death_Attack_9_6
+  - first:
+      213: -7395419768308273280
+    second: Bringer-of-Death_Attack_9_7
+  - first:
+      213: -7346367903477691008
+    second: Bringer-of-Death_Attack_9_8
+  - first:
+      213: -2698006787476460580
+    second: Bringer-of-Death_Attack_9_9
+  - first:
+      213: -3594843495167897463
+    second: Bringer-of-Death_Attack_9_10
+  - first:
+      213: 5309775186519154070
+    second: Bringer-of-Death_Attack_9_11
+  - first:
+      213: -3326228293198959578
+    second: Bringer-of-Death_Attack_9_12
+  - first:
+      213: 4121217530598547489
+    second: Bringer-of-Death_Attack_9_13
+  - first:
+      213: 7130972867183466336
+    second: Bringer-of-Death_Attack_9_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 35
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_9_0
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 68
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94838b2e57c0f7920800000000000000
+      internalID: 2990122378051729481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_9_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 75
+        width: 17
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b6e7f8c476a8990800000000000000
+      internalID: -7382975060597904626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_9_2
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 48
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7024bec01592020e0800000000000000
+      internalID: -2296790381873118713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_9_3
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 60
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f065c6099450d3180800000000000000
+      internalID: -9134138655723727345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_9_4
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 50
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 061bd3d2c3472be00800000000000000
+      internalID: 1059036664191365472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_9_5
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 31
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1efe91ea2e290f830800000000000000
+      internalID: 4102940762815721441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_9_6
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 46
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aad2c42a18d299fd0800000000000000
+      internalID: -2334784897017958998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_9_7
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 26
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08f651147e03e5990800000000000000
+      internalID: -7395419768308273280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_9_8
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 28
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08d81e380557c0a90800000000000000
+      internalID: -7346367903477691008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_9_9
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 38
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdb6fd61f11ce8ad0800000000000000
+      internalID: -2698006787476460580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_9_10
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 0
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 980d46f23ec8c1ec0800000000000000
+      internalID: -3594843495167897463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_9_11
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 13
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69d58a5566c10b940800000000000000
+      internalID: 5309775186519154070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_9_12
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 14
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62ca50e8dfcd6d1d0800000000000000
+      internalID: -3326228293198959578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_9_13
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 12
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12060794281813930800000000000000
+      internalID: 4121217530598547489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_9_14
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 20
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0675b6b8a0e46f260800000000000000
+      internalID: 7130972867183466336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Bringer-of-Death_Attack_9_0: 2990122378051729481
+      Bringer-of-Death_Attack_9_1: -7382975060597904626
+      Bringer-of-Death_Attack_9_10: -3594843495167897463
+      Bringer-of-Death_Attack_9_11: 5309775186519154070
+      Bringer-of-Death_Attack_9_12: -3326228293198959578
+      Bringer-of-Death_Attack_9_13: 4121217530598547489
+      Bringer-of-Death_Attack_9_14: 7130972867183466336
+      Bringer-of-Death_Attack_9_2: -2296790381873118713
+      Bringer-of-Death_Attack_9_3: -9134138655723727345
+      Bringer-of-Death_Attack_9_4: 1059036664191365472
+      Bringer-of-Death_Attack_9_5: 4102940762815721441
+      Bringer-of-Death_Attack_9_6: -2334784897017958998
+      Bringer-of-Death_Attack_9_7: -7395419768308273280
+      Bringer-of-Death_Attack_9_8: -7346367903477691008
+      Bringer-of-Death_Attack_9_9: -2698006787476460580
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
