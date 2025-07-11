@@ -181,7 +181,6 @@ public class InventoryManager : MonoBehaviour
         else
         {
             OpenInventory();
-
         }
     }
 }

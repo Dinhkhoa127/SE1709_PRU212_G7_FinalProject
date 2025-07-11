@@ -16,7 +16,6 @@ public class NPCInteractable : MonoBehaviour
     public int itemPrice = 3;               // Giá mỗi vật phẩm
     public int buyAmount = 1;                // Số lượng mua mỗi lần
 
-
     [Header("Training Area Settings")]
     [Tooltip("Scene name để load khi vào training area")]
     public string trainingSceneName = "Example";
@@ -34,8 +33,6 @@ public class NPCInteractable : MonoBehaviour
     public string mapPortalSceneName = "Map1";
     [Tooltip("Text hiển thị khi player đến gần map portal")]
     public string mapPortalPromptText = "Press F - Enter Dungeon";
-
-
 
     void OnTriggerEnter2D(Collider2D other)
     {
