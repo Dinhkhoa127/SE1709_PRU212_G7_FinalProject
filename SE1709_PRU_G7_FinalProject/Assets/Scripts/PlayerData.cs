@@ -21,5 +21,5 @@ public class PlayerData
     public int gold; // Thêm vàng
     public string currentStage; // Màn hiện tại (hoặc string stageName)
     public List<string> learnedSkills = new List<string>(); // Kỹ năng đã học
-    public List<string> inventory = new List<string>(); // Vật phẩm đã mua/nhặt
+    public List<ItemData> inventory = new List<ItemData>();
 }

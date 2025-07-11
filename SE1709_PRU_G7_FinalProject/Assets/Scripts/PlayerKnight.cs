@@ -76,7 +76,7 @@ public class PlayerKnight : MonoBehaviour
 
     public int gold = 0;
     public string currentStage = "Stage1"; // hoặc tên scene mặc định đầu tiên
-    public List<string> inventory = new List<string>();
+    public List<ItemData> inventory = new List<ItemData>();
     void Start()
     {
         swordCollider1 = transform.Find("SwordCollider1").gameObject;
@@ -99,6 +99,7 @@ public class PlayerKnight : MonoBehaviour
 
     void Update()
     {
+        if (InventoryManager.IsInventoryOpen) return; // Không xử lý input khi inventory mở
         if (isDead) return;
         HandleTimers();
         HandleGroundCheck();
@@ -148,6 +149,16 @@ public class PlayerKnight : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F6))
         {
             PrintSaveData();
+        }
+        
+        // Test sử dụng items với phím số
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            UseItem("Health Potion"); // Phím số 1 để test hồi máu
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            UseItem("Mana Potion"); // Phím số 2 để test hồi mana
         }
     }
 
@@ -229,6 +240,7 @@ public class PlayerKnight : MonoBehaviour
                 m_currentAttack = 1;
             m_animator.SetTrigger("Attack" + m_currentAttack);
             m_timeSinceAttack = 0.0f;
+            AudioController.instance.PlayAttackSound();
         }
     }
 
@@ -241,6 +253,7 @@ public class PlayerKnight : MonoBehaviour
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
             isBlocking = true; // Bắt đầu block
+            AudioController.instance.PlayBlockSound();
         }
         else if (Input.GetMouseButtonUp(1))
         {
@@ -256,6 +269,7 @@ public class PlayerKnight : MonoBehaviour
             m_rolling = true;
             m_animator.SetTrigger("Roll");
             m_body2d.linearVelocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.linearVelocity.y);
+            AudioController.instance.PlayRollSound();
         }
     }
 
@@ -269,6 +283,7 @@ public class PlayerKnight : MonoBehaviour
             m_animator.SetBool("Grounded", m_grounded);
             m_body2d.linearVelocity = new Vector2(m_body2d.linearVelocity.x, m_jumpForce);
             m_groundSensor.Disable(0.2f);
+            AudioController.instance.PlayJumpSound();
         }
     }
 
@@ -348,7 +363,11 @@ public class PlayerKnight : MonoBehaviour
         Debug.Log($"Magic shield reduced damage: {amount} -> {reducedDamage}. Health left: {health}");
 
         if (health <= 0) Die();
-        else m_animator.SetTrigger("Hurt");
+        else
+        {
+            m_animator.SetTrigger("Hurt");
+            AudioController.instance.PlayHurtSound();
+        }
     }
 
 
@@ -382,6 +401,7 @@ public class PlayerKnight : MonoBehaviour
         else
         {
             m_animator.SetTrigger("Hurt");
+            AudioController.instance.PlayHurtSound();
         }
     }
     public void HandleSkillCast(int manaCost)
@@ -400,7 +420,7 @@ public class PlayerKnight : MonoBehaviour
             Vector3 scale = projectile.transform.localScale;
             scale.x = transform.localScale.x > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
             projectile.transform.localScale = scale;
-
+            AudioController.instance.PlaySkillCastSound();
             // Option: animation chưởng
             // m_animator.SetTrigger("Cast");
         }
@@ -417,7 +437,6 @@ public class PlayerKnight : MonoBehaviour
             currentMana = maxMana;
             return;
         }
-
         Debug.Log($" Đã hồi {amount} mana. Mana hiện tại: {currentMana}/{maxMana}");
     }
 
@@ -428,6 +447,7 @@ public class PlayerKnight : MonoBehaviour
         isDead = true;
         m_animator.SetBool("noBlood", m_noBlood);
         m_animator.SetTrigger("Death");
+        AudioController.instance.PlayDeathSound();
     }
 
     public void DestroyPlayerSelf()
@@ -441,6 +461,7 @@ public class PlayerKnight : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            AudioController.instance.PlayEnemyTakeDame();
         }
     }
     void OnDrawGizmosSelected()
@@ -467,8 +488,116 @@ public class PlayerKnight : MonoBehaviour
 
     public void Heal(int amount)
     {
+        AudioController.instance.PlayHealSound();
         health += amount;
         if (health > maxHealth) health = maxHealth;
+    }
+
+    public void AddItem(string itemName, int amount)
+    {
+        var item = inventory.Find(i => i.itemName == itemName);
+        if (item != null)
+            item.quantity += amount;
+        else
+            inventory.Add(new ItemData(itemName, amount));
+    }
+
+    public bool RemoveItem(string itemName, int amount)
+    {
+        var item = inventory.Find(i => i.itemName == itemName);
+        if (item != null && item.quantity >= amount)
+        {
+            item.quantity -= amount;
+            if (item.quantity == 0)
+                inventory.Remove(item);
+            return true;
+        }
+        return false;
+    }
+
+    public int GetItemQuantity(string itemName)
+    {
+        var item = inventory.Find(i => i.itemName == itemName);
+        return item != null ? item.quantity : 0;
+    }
+
+    // Phương thức sử dụng item với hiệu ứng thật
+    public bool UseItem(ItemInfo itemInfo)
+    {
+        if (GetItemQuantity(itemInfo.itemName) <= 0) return false;
+        
+        // Áp dụng hiệu ứng
+        switch (itemInfo.itemType)
+        {
+            case ItemType.HealthPotion:
+                if (health < maxHealth)
+                {
+                    Heal(itemInfo.effectValue);
+                    RemoveItem(itemInfo.itemName, 1);
+                    Debug.Log($"Đã sử dụng {itemInfo.itemName}, hồi {itemInfo.effectValue} HP");
+                    
+                    // Cập nhật inventory UI ngay lập tức
+                    UpdateInventoryUI();
+                    
+                    // Lưu game sau khi sử dụng item
+                    SaveGame();
+                    return true;
+                }
+                break;
+                
+            case ItemType.ManaPotion:
+                if (currentMana < maxMana)
+                {
+                    AudioController.instance.PlayHealSound();
+                    RegenerateMana(itemInfo.effectValue);
+                    RemoveItem(itemInfo.itemName, 1);
+                    Debug.Log($"Đã sử dụng {itemInfo.itemName}, hồi {itemInfo.effectValue} MP");
+                    
+                    // Cập nhật inventory UI ngay lập tức
+                    UpdateInventoryUI();
+                    
+                    // Lưu game sau khi sử dụng item
+                    SaveGame();
+                    return true;
+                }
+                break;
+        }
+        
+        return false; // Không thể sử dụng (full health/mana hoặc không hợp lệ)
+    }
+
+    // Overload để sử dụng với tên item (tìm ItemInfo từ ItemManager global)
+    public bool UseItem(string itemName)
+    {
+        // Tìm ItemInfo từ ItemManager global
+        if (ItemManager.Instance != null)
+        {
+            var itemInfo = ItemManager.Instance.GetItemInfo(itemName);
+            if (itemInfo != null)
+            {
+                return UseItem(itemInfo);
+            }
+        }
+        
+        Debug.Log($"Không tìm thấy thông tin cho item: {itemName}");
+        return false;
+    }
+
+    // Cập nhật inventory UI khi có thay đổi
+    void UpdateInventoryUI()
+    {
+        var inventoryUI = FindObjectOfType<InventoryUI>();
+        if (inventoryUI != null)
+        {
+            inventoryUI.UpdateUI();
+        }
+        
+        // Cập nhật QuickSlots UI
+        var quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
+        if (quickSlotsUI != null)
+        {
+            quickSlotsUI.ForceUpdate();
+        }
     }
 
     void EnableSwordCollider1()
@@ -638,7 +767,7 @@ public class PlayerKnight : MonoBehaviour
             learnedSkills = data.learnedSkills ?? new List<string>();
             gold = data.gold;
             currentStage = data.currentStage;
-            inventory = data.inventory ?? new List<string>();
+            inventory = data.inventory ?? new List<ItemData>(); // Load as ItemData
 
             Debug.Log("Game Loaded!");
         }
