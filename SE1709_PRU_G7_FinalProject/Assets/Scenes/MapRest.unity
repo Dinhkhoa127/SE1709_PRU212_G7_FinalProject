@@ -581,14 +581,20 @@ MonoBehaviour:
   itemName: HealthPotion
   itemPrice: 3
   buyAmount: 1
+<<<<<<< HEAD
+=======
 
+>>>>>>> f5e40dbd5df31384ae96fa7645cdbf0ef45e1396
   trainingSceneName: Example
   trainingPromptText: Come To Training Area
   exitSceneName: MapRest
   exitPromptText: Press F - Return to Village
   mapPortalSceneName: Map1
   mapPortalPromptText: Press F - Enter Dungeon
+<<<<<<< HEAD
+=======
 
+>>>>>>> f5e40dbd5df31384ae96fa7645cdbf0ef45e1396
 --- !u!1 &127189553
 GameObject:
   m_ObjectHideFlags: 0
@@ -6017,7 +6023,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+=======
 
+>>>>>>> f5e40dbd5df31384ae96fa7645cdbf0ef45e1396
 --- !u!1 &1060472583
 
 GameObject:
@@ -12214,7 +12223,10 @@ RectTransform:
   m_AnchoredPosition: {x: -428.59, y: -299.69}
   m_SizeDelta: {x: 8.0258, y: 0.6529}
   m_Pivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
+=======
 
+>>>>>>> f5e40dbd5df31384ae96fa7645cdbf0ef45e1396
 --- !u!1 &2097251458
 GameObject:
   m_ObjectHideFlags: 0
@@ -12663,9 +12675,7 @@ SceneRoots:
   - {fileID: 292168735}
   - {fileID: 1059501572}
   - {fileID: 1726947127}
-
   - {fileID: 1052237882}
   - {fileID: 1431411512}
   - {fileID: 1155663358}
   - {fileID: 788722077}
-
