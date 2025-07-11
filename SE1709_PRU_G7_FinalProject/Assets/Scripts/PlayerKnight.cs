@@ -448,6 +448,9 @@ public class PlayerKnight : MonoBehaviour
         m_animator.SetBool("noBlood", m_noBlood);
         m_animator.SetTrigger("Death");
         AudioController.instance.PlayDeathSound();
+        
+        // Thêm dòng này
+        GameManager.Instance.OnPlayerDied();
     }
 
     public void DestroyPlayerSelf()
