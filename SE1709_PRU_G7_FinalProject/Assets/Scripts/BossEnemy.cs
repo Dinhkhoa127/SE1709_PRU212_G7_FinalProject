@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class BossEnemy : MonoBehaviour
 {
     [SerializeField] private float speed = 2f;
     [SerializeField] private float distance = 5f;
-    [SerializeField] private float detectionRange = 5f; // Khoảng cách phát hiện Player
-    [SerializeField] private float attackRange = 1f;    // Khoảng cách tấn công
+    [SerializeField] private float detectionRange = 5f;
+    [SerializeField] private float attackRange = 1f;
     [SerializeField] private float health = 3f;
     [SerializeField] private float maxHealth = 3f;
-    [SerializeField] private float healDelay = 3f; // Thời gian chờ trước khi hồi máu
-    [SerializeField] private float healRate = 1f;  // Số máu hồi mỗi giây
+    [SerializeField] private float healDelay = 3f;
+    [SerializeField] private float healRate = 1f;
 
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LayerMask playerLayers;
@@ -21,17 +21,18 @@ public class Enemy : MonoBehaviour
     private Transform player;
     private Animator animator;
     private bool isAttacking = false;
-    private float attackCooldown = 1.0f; // thời gian giữa các đòn tấn công
+    private float attackCooldown = 1.0f;
     private float lastAttackTime = -999f;
     private float lastTimeSawPlayer = -999f;
     private bool hasHealed = false;
 
     [SerializeField] public EnemyHealthBar healthBar;
+    public GameObject portal;
 
     void Start()
     {
         startPos = transform.position;
-        player = GameObject.FindGameObjectWithTag("Player").transform; // Đảm bảo HeroKnight có tag là "Player"
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         animator = GetComponent<Animator>();
         health = maxHealth;
         if (healthBar != null)
@@ -68,7 +69,7 @@ public class Enemy : MonoBehaviour
                 {
                     isAttacking = true;
                     animator.SetTrigger("isAttack");
-                    Debug.Log("Enemy is attacking Player");
+                    Debug.Log("Boss is attacking Player");
                 }
             }
         }
@@ -140,6 +141,8 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        if (portal != null)
+            portal.SetActive(true);
         Destroy(gameObject);
     }
 
@@ -170,7 +173,7 @@ public class Enemy : MonoBehaviour
             hasHealed = true;
             if (healthBar != null)
                 healthBar.UpdateHealth((int)health);
-            Debug.Log($"Enemy fully healed after {healDelay} seconds: current health = {health}");
+            Debug.Log($"Boss fully healed after {healDelay} seconds: current health = {health}");
         }
     }
-}
+} 
