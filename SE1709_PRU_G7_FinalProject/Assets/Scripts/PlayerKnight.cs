@@ -240,6 +240,7 @@ public class PlayerKnight : MonoBehaviour
                 m_currentAttack = 1;
             m_animator.SetTrigger("Attack" + m_currentAttack);
             m_timeSinceAttack = 0.0f;
+            AudioController.instance.PlayAttackSound();
         }
     }
 
@@ -252,6 +253,7 @@ public class PlayerKnight : MonoBehaviour
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
             isBlocking = true; // Bắt đầu block
+            AudioController.instance.PlayBlockSound();
         }
         else if (Input.GetMouseButtonUp(1))
         {
@@ -267,6 +269,7 @@ public class PlayerKnight : MonoBehaviour
             m_rolling = true;
             m_animator.SetTrigger("Roll");
             m_body2d.linearVelocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.linearVelocity.y);
+            AudioController.instance.PlayRollSound();
         }
     }
 
@@ -280,6 +283,7 @@ public class PlayerKnight : MonoBehaviour
             m_animator.SetBool("Grounded", m_grounded);
             m_body2d.linearVelocity = new Vector2(m_body2d.linearVelocity.x, m_jumpForce);
             m_groundSensor.Disable(0.2f);
+            AudioController.instance.PlayJumpSound();
         }
     }
 
@@ -359,7 +363,11 @@ public class PlayerKnight : MonoBehaviour
         Debug.Log($"Magic shield reduced damage: {amount} -> {reducedDamage}. Health left: {health}");
 
         if (health <= 0) Die();
-        else m_animator.SetTrigger("Hurt");
+        else
+        {
+            m_animator.SetTrigger("Hurt");
+            AudioController.instance.PlayHurtSound();
+        }
     }
 
 
@@ -393,6 +401,7 @@ public class PlayerKnight : MonoBehaviour
         else
         {
             m_animator.SetTrigger("Hurt");
+            AudioController.instance.PlayHurtSound();
         }
     }
     public void HandleSkillCast(int manaCost)
@@ -411,7 +420,7 @@ public class PlayerKnight : MonoBehaviour
             Vector3 scale = projectile.transform.localScale;
             scale.x = transform.localScale.x > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
             projectile.transform.localScale = scale;
-
+            AudioController.instance.PlaySkillCastSound();
             // Option: animation chưởng
             // m_animator.SetTrigger("Cast");
         }
@@ -428,7 +437,6 @@ public class PlayerKnight : MonoBehaviour
             currentMana = maxMana;
             return;
         }
-
         Debug.Log($" Đã hồi {amount} mana. Mana hiện tại: {currentMana}/{maxMana}");
     }
 
@@ -439,6 +447,7 @@ public class PlayerKnight : MonoBehaviour
         isDead = true;
         m_animator.SetBool("noBlood", m_noBlood);
         m_animator.SetTrigger("Death");
+        AudioController.instance.PlayDeathSound();
     }
 
     public void DestroyPlayerSelf()
@@ -452,6 +461,7 @@ public class PlayerKnight : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            AudioController.instance.PlayEnemyTakeDame();
         }
     }
     void OnDrawGizmosSelected()
@@ -478,6 +488,7 @@ public class PlayerKnight : MonoBehaviour
 
     public void Heal(int amount)
     {
+        AudioController.instance.PlayHealSound();
         health += amount;
         if (health > maxHealth) health = maxHealth;
     }
@@ -537,6 +548,7 @@ public class PlayerKnight : MonoBehaviour
             case ItemType.ManaPotion:
                 if (currentMana < maxMana)
                 {
+                    AudioController.instance.PlayHealSound();
                     RegenerateMana(itemInfo.effectValue);
                     RemoveItem(itemInfo.itemName, 1);
                     Debug.Log($"Đã sử dụng {itemInfo.itemName}, hồi {itemInfo.effectValue} MP");
