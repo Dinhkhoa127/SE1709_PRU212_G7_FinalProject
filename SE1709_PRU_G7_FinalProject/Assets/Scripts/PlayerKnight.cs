@@ -76,7 +76,7 @@ public class PlayerKnight : MonoBehaviour
 
     public int gold = 0;
     public string currentStage = "Stage1"; // hoặc tên scene mặc định đầu tiên
-    public List<string> inventory = new List<string>();
+    public List<ItemData> inventory = new List<ItemData>();
     void Start()
     {
         swordCollider1 = transform.Find("SwordCollider1").gameObject;
@@ -99,6 +99,7 @@ public class PlayerKnight : MonoBehaviour
 
     void Update()
     {
+        if (InventoryManager.IsInventoryOpen) return; // Không xử lý input khi inventory mở
         if (isDead) return;
         HandleTimers();
         HandleGroundCheck();
@@ -111,7 +112,7 @@ public class PlayerKnight : MonoBehaviour
         {
             Heal(1); // Nhấn H để hồi 1 máu
         }
-        // KHÓA ĐÒN ĐÁNH VÀ KỸ NĂNG Ở MAP ĐẶC BIỆT
+       // KHÓA ĐÒN ĐÁNH VÀ KỸ NĂNG Ở MAP ĐẶC BIỆT
         if (!IsAttackLockedScene())
         {
             HandleAttack();
@@ -148,6 +149,16 @@ public class PlayerKnight : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F6))
         {
             PrintSaveData();
+        }
+        
+        // Test sử dụng items với phím số
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            UseItem("Health Potion"); // Phím số 1 để test hồi máu
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            UseItem("Mana Potion"); // Phím số 2 để test hồi mana
         }
     }
 
@@ -471,6 +482,112 @@ public class PlayerKnight : MonoBehaviour
         if (health > maxHealth) health = maxHealth;
     }
 
+    public void AddItem(string itemName, int amount)
+    {
+        var item = inventory.Find(i => i.itemName == itemName);
+        if (item != null)
+            item.quantity += amount;
+        else
+            inventory.Add(new ItemData(itemName, amount));
+    }
+
+    public bool RemoveItem(string itemName, int amount)
+    {
+        var item = inventory.Find(i => i.itemName == itemName);
+        if (item != null && item.quantity >= amount)
+        {
+            item.quantity -= amount;
+            if (item.quantity == 0)
+                inventory.Remove(item);
+            return true;
+        }
+        return false;
+    }
+
+    public int GetItemQuantity(string itemName)
+    {
+        var item = inventory.Find(i => i.itemName == itemName);
+        return item != null ? item.quantity : 0;
+    }
+
+    // Phương thức sử dụng item với hiệu ứng thật
+    public bool UseItem(ItemInfo itemInfo)
+    {
+        if (GetItemQuantity(itemInfo.itemName) <= 0) return false;
+        
+        // Áp dụng hiệu ứng
+        switch (itemInfo.itemType)
+        {
+            case ItemType.HealthPotion:
+                if (health < maxHealth)
+                {
+                    Heal(itemInfo.effectValue);
+                    RemoveItem(itemInfo.itemName, 1);
+                    Debug.Log($"Đã sử dụng {itemInfo.itemName}, hồi {itemInfo.effectValue} HP");
+                    
+                    // Cập nhật inventory UI ngay lập tức
+                    UpdateInventoryUI();
+                    
+                    // Lưu game sau khi sử dụng item
+                    SaveGame();
+                    return true;
+                }
+                break;
+                
+            case ItemType.ManaPotion:
+                if (currentMana < maxMana)
+                {
+                    RegenerateMana(itemInfo.effectValue);
+                    RemoveItem(itemInfo.itemName, 1);
+                    Debug.Log($"Đã sử dụng {itemInfo.itemName}, hồi {itemInfo.effectValue} MP");
+                    
+                    // Cập nhật inventory UI ngay lập tức
+                    UpdateInventoryUI();
+                    
+                    // Lưu game sau khi sử dụng item
+                    SaveGame();
+                    return true;
+                }
+                break;
+        }
+        
+        return false; // Không thể sử dụng (full health/mana hoặc không hợp lệ)
+    }
+
+    // Overload để sử dụng với tên item (tìm ItemInfo từ ItemManager global)
+    public bool UseItem(string itemName)
+    {
+        // Tìm ItemInfo từ ItemManager global
+        if (ItemManager.Instance != null)
+        {
+            var itemInfo = ItemManager.Instance.GetItemInfo(itemName);
+            if (itemInfo != null)
+            {
+                return UseItem(itemInfo);
+            }
+        }
+        
+        Debug.Log($"Không tìm thấy thông tin cho item: {itemName}");
+        return false;
+    }
+
+    // Cập nhật inventory UI khi có thay đổi
+    void UpdateInventoryUI()
+    {
+        var inventoryUI = FindObjectOfType<InventoryUI>();
+        if (inventoryUI != null)
+        {
+            inventoryUI.UpdateUI();
+        }
+        
+        // Cập nhật QuickSlots UI
+        var quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
+        if (quickSlotsUI != null)
+        {
+            quickSlotsUI.ForceUpdate();
+        }
+    }
+
     void EnableSwordCollider1()
     {
         Debug.Log(">> EnableSwordCollider CALLED");
@@ -638,7 +755,7 @@ public class PlayerKnight : MonoBehaviour
             learnedSkills = data.learnedSkills ?? new List<string>();
             gold = data.gold;
             currentStage = data.currentStage;
-            inventory = data.inventory ?? new List<string>();
+            inventory = data.inventory ?? new List<ItemData>(); // Load as ItemData
 
             Debug.Log("Game Loaded!");
         }
@@ -665,4 +782,5 @@ public class PlayerKnight : MonoBehaviour
         // Đổi "MapRest" thành đúng tên scene bạn muốn khóa
         return SceneManager.GetActiveScene().name == "MapRest";
     }
+
 }

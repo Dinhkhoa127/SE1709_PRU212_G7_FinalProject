@@ -5,10 +5,10 @@ public class NPCController : MonoBehaviour
     [SerializeField] private float speed = 2f;
     [SerializeField] private float distance = 2f;
     private Animator animator;
-
     private Vector3 startPos;
     private bool moveRight = true;
     private bool facingRight = true;
+    [SerializeField] private Transform uiCanvas; // Kéo FPrompt vào đây
 
     void Start()
     {
@@ -23,7 +23,6 @@ public class NPCController : MonoBehaviour
 
     void Patrol()
     {
-        // Đảm bảo hướng nhìn đúng với hướng di chuyển
         if (moveRight && !facingRight) Flip();
         if (!moveRight && facingRight) Flip();
 
@@ -38,7 +37,7 @@ public class NPCController : MonoBehaviour
             {
                 moveRight = false;
                 Flip();
-                animator.SetBool("isWalk", false); // Đứng lại khi đổi hướng
+                animator.SetBool("isWalk", false);
             }
         }
         else
@@ -49,7 +48,7 @@ public class NPCController : MonoBehaviour
             {
                 moveRight = true;
                 Flip();
-                animator.SetBool("isWalk", false); // Đứng lại khi đổi hướng
+                animator.SetBool("isWalk", false);
             }
         }
     }
@@ -60,5 +59,18 @@ public class NPCController : MonoBehaviour
         scaler.x *= -1;
         transform.localScale = scaler;
         facingRight = !facingRight;
+
+        // Đảo lại scale.x của FPrompt để text luôn đúng chiều
+        if (uiCanvas != null)
+        {
+            Vector3 canvasScale = uiCanvas.localScale;
+            canvasScale.x *= -1;
+            uiCanvas.localScale = canvasScale;
+
+            // Đảo lại localPosition.x để text luôn đúng vị trí trên đầu NPC
+            Vector3 pos = uiCanvas.localPosition;
+            pos.x *= -1;
+            uiCanvas.localPosition = pos;
+        }
     }
 }
