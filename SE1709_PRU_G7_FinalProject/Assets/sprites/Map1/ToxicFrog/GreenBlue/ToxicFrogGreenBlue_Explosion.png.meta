@@ -584,7 +584,26 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ToxicFrogGreenBlue_Explosion_0: -6544051866445445002
+      ToxicFrogGreenBlue_Explosion_1: -990525472860147769
+      ToxicFrogGreenBlue_Explosion_10: -8222033297944217233
+      ToxicFrogGreenBlue_Explosion_11: 5285704495590666756
+      ToxicFrogGreenBlue_Explosion_12: -5210514287921114126
+      ToxicFrogGreenBlue_Explosion_13: -1394505991499537301
+      ToxicFrogGreenBlue_Explosion_14: -4758672465374068989
+      ToxicFrogGreenBlue_Explosion_15: -6032381312651126729
+      ToxicFrogGreenBlue_Explosion_16: 2677818780504948694
+      ToxicFrogGreenBlue_Explosion_17: -2545166132384871473
+      ToxicFrogGreenBlue_Explosion_18: 8314012597236620743
+      ToxicFrogGreenBlue_Explosion_2: 3552204007042334232
+      ToxicFrogGreenBlue_Explosion_3: 4079537073365116491
+      ToxicFrogGreenBlue_Explosion_4: 104085869591338148
+      ToxicFrogGreenBlue_Explosion_5: -8874089631685858087
+      ToxicFrogGreenBlue_Explosion_6: 3528592208851572558
+      ToxicFrogGreenBlue_Explosion_7: 7151527775820209013
+      ToxicFrogGreenBlue_Explosion_8: 8180765296379662621
+      ToxicFrogGreenBlue_Explosion_9: 5196164258128438619
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -284,7 +284,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ToxicFrogBlueBrown_Hop_0: -5464788883909743233
+      ToxicFrogBlueBrown_Hop_1: -3650259574171309120
+      ToxicFrogBlueBrown_Hop_2: -3675167495664653734
+      ToxicFrogBlueBrown_Hop_3: 5190758201556361357
+      ToxicFrogBlueBrown_Hop_4: -5210819018689614316
+      ToxicFrogBlueBrown_Hop_5: 142972374242597309
+      ToxicFrogBlueBrown_Hop_6: -3364281444323240027
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
