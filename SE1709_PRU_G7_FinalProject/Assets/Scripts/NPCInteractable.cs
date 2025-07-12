@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NPCInteractable : MonoBehaviour
 {
-    public enum NPCType { Statue, Shop, Item }
+    public enum NPCType { Statue, Shop, Item, Training, Exit, MapPortal }
     public NPCType npcType = NPCType.Statue;
     public GameObject shopPanel;
     [Tooltip("FPrompt là GameObject chứa TextMeshPro, sẽ hiện trên đầu NPC khi lại gần.")]
@@ -15,12 +16,73 @@ public class NPCInteractable : MonoBehaviour
     public int itemPrice = 3;               // Giá mỗi vật phẩm
     public int buyAmount = 1;                // Số lượng mua mỗi lần
 
+
+    [Header("Training Area Settings")]
+    [Tooltip("Scene name để load khi vào training area")]
+    public string trainingSceneName = "Example";
+    [Tooltip("Text hiển thị khi player đến gần training area")]
+    public string trainingPromptText = "Come To Training Area";
+
+    [Header("Exit Portal Settings")]
+    [Tooltip("Scene name để load khi exit")]
+    public string exitSceneName = "MapRest";
+    [Tooltip("Text hiển thị khi player đến gần exit")]
+    public string exitPromptText = "Press F - Return to Village";
+
+    [Header("Map Portal Settings")]
+    [Tooltip("Scene name để load khi vào map portal (Map1, Map2, Map3)")]
+    public string mapPortalSceneName = "Map1";
+    [Tooltip("Text hiển thị khi player đến gần map portal")]
+    public string mapPortalPromptText = "Press F - Enter Dungeon";
+
+
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
-            if (fPrompt != null) fPrompt.SetActive(true);
+            
+            // Hiển thị prompt với custom text cho training area
+            if (fPrompt != null) 
+            {
+                fPrompt.SetActive(true);
+                
+                // Update prompt text for training area, exit, or map portal
+                if (npcType == NPCType.Training || npcType == NPCType.Exit || npcType == NPCType.MapPortal)
+                {
+                    string promptText = "";
+                    switch (npcType)
+                    {
+                        case NPCType.Training:
+                            promptText = trainingPromptText;
+                            break;
+                        case NPCType.Exit:
+                            promptText = exitPromptText;
+                            break;
+                        case NPCType.MapPortal:
+                            promptText = mapPortalPromptText;
+                            break;
+                    }
+                    
+                    // Try TextMeshPro first
+                    var tmpText = fPrompt.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+                    if (tmpText != null)
+                    {
+                        tmpText.text = promptText;
+                    }
+                    else
+                    {
+                        // Fallback to legacy UI Text
+                        var uiText = fPrompt.GetComponentInChildren<UnityEngine.UI.Text>();
+                        if (uiText != null)
+                        {
+                            uiText.text = promptText;
+                        }
+                    }
+                }
+            }
+            
             // Lưu lại tham chiếu PlayerKnight để dùng khi bấm F
             playerKnight = other.GetComponent<PlayerKnight>();
         }
@@ -121,6 +183,84 @@ public class NPCInteractable : MonoBehaviour
                             if (fPrompt != null) fPrompt.SetActive(false); // ẩn F khi shop đang mở
                         }
                     }
+                    break;
+                    
+                case NPCType.Training:
+                    Debug.Log("Entering Training Area...");
+                    if (fPrompt != null) fPrompt.SetActive(false);
+                    
+                    // Auto-save trước khi chuyển scene
+                    if (playerKnight != null)
+                    {
+                        playerKnight.SaveGame();
+                    }
+                    
+                    // Load training scene thông qua GameManager
+                    if (GameManager.Instance != null)
+                    {
+                        GameManager.Instance.LoadScene(trainingSceneName);
+                    }
+                    else
+                    {
+                        // Fallback nếu không có GameManager
+                        SceneManager.LoadScene(trainingSceneName);
+                    }
+                    
+                    Debug.Log($"Loading training scene: {trainingSceneName}");
+                    break;
+                    
+                case NPCType.Exit:
+                    Debug.Log("Using Exit Portal...");
+                    if (fPrompt != null) fPrompt.SetActive(false);
+                    
+                    // Auto-save trước khi chuyển scene
+                    if (playerKnight != null)
+                    {
+                        playerKnight.SaveGame();
+                    }
+                    
+                    // Load exit scene thông qua GameManager
+                    if (GameManager.Instance != null)
+                    {
+                        GameManager.Instance.LoadScene(exitSceneName);
+                    }
+                    else
+                    {
+                        // Fallback nếu không có GameManager
+                        SceneManager.LoadScene(exitSceneName);
+                    }
+                    
+                    Debug.Log($"Loading exit scene: {exitSceneName}");
+                    break;
+
+                case NPCType.MapPortal:
+                    Debug.Log("Entering Map Portal...");
+                    if (fPrompt != null) fPrompt.SetActive(false);
+                    
+                    // Auto-save trước khi chuyển scene
+                    if (playerKnight != null)
+                    {
+                        playerKnight.SaveGame();
+                        
+                        // Set checkpoint tại MapRest trước khi vào dungeon
+                        if (GameManager.Instance != null)
+                        {
+                            GameManager.Instance.SetCheckpoint(playerKnight.transform.position);
+                        }
+                    }
+                    
+                    // Load map scene thông qua GameManager
+                    if (GameManager.Instance != null)
+                    {
+                        GameManager.Instance.LoadScene(mapPortalSceneName);
+                    }
+                    else
+                    {
+                        // Fallback nếu không có GameManager
+                        SceneManager.LoadScene(mapPortalSceneName);
+                    }
+                    
+                    Debug.Log($"Loading map scene: {mapPortalSceneName}");
                     break;
             }
         }
