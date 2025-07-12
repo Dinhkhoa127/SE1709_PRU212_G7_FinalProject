@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: 4685a0a570ab1b64d9e9f5745207d031
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8859071070502595128
+    second: Bringer-of-Death_Attack_8_0
+  - first:
+      213: -1983750236170253434
+    second: Bringer-of-Death_Attack_8_1
+  - first:
+      213: 2171855511084175186
+    second: Bringer-of-Death_Attack_8_2
+  - first:
+      213: -6086701186929775849
+    second: Bringer-of-Death_Attack_8_3
+  - first:
+      213: 6355233028377658755
+    second: Bringer-of-Death_Attack_8_4
+  - first:
+      213: -1307592592661542895
+    second: Bringer-of-Death_Attack_8_5
+  - first:
+      213: -5979350223681504507
+    second: Bringer-of-Death_Attack_8_6
+  - first:
+      213: 4441354528499603582
+    second: Bringer-of-Death_Attack_8_7
+  - first:
+      213: -2105982568922860188
+    second: Bringer-of-Death_Attack_8_8
+  - first:
+      213: -542939645033988492
+    second: Bringer-of-Death_Attack_8_9
+  - first:
+      213: 1136068338497456365
+    second: Bringer-of-Death_Attack_8_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 35
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_8_0
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 67
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c5d0ca7cc14e0580800000000000000
+      internalID: -8859071070502595128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_8_1
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 69
+        width: 28
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68b89f9abad4874e0800000000000000
+      internalID: -1983750236170253434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_8_2
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 69
+        width: 23
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25f85a1941bf32e10800000000000000
+      internalID: 2171855511084175186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_8_3
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 56
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71b2a1be481b78ba0800000000000000
+      internalID: -6086701186929775849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_8_4
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 56
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 385c74194c2523850800000000000000
+      internalID: 6355233028377658755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_8_5
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 29
+        width: 20
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1180a73077f7adde0800000000000000
+      internalID: -1307592592661542895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_8_6
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 7
+        width: 30
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50bbfc9c6a4150da0800000000000000
+      internalID: -5979350223681504507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_8_7
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 0
+        width: 73
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e789ac0996cd2ad30800000000000000
+      internalID: 4441354528499603582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_8_8
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 48
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4653034f20c06c2e0800000000000000
+      internalID: -2105982568922860188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_8_9
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 30
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47eb54bf4471778f0800000000000000
+      internalID: -542939645033988492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_8_10
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 16
+        width: 13
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de885bc722024cf00800000000000000
+      internalID: 1136068338497456365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Bringer-of-Death_Attack_8_0: -8859071070502595128
+      Bringer-of-Death_Attack_8_1: -1983750236170253434
+      Bringer-of-Death_Attack_8_10: 1136068338497456365
+      Bringer-of-Death_Attack_8_2: 2171855511084175186
+      Bringer-of-Death_Attack_8_3: -6086701186929775849
+      Bringer-of-Death_Attack_8_4: 6355233028377658755
+      Bringer-of-Death_Attack_8_5: -1307592592661542895
+      Bringer-of-Death_Attack_8_6: -5979350223681504507
+      Bringer-of-Death_Attack_8_7: 4441354528499603582
+      Bringer-of-Death_Attack_8_8: -2105982568922860188
+      Bringer-of-Death_Attack_8_9: -542939645033988492
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
