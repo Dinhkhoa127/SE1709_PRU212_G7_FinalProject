@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class NPCInteractable : MonoBehaviour
 {
-    public enum NPCType { Statue, Shop, Item, Training, Exit, MapPortal }
+    public enum NPCType { Statue, Shop, Item, Training, Exit, MapPortal, EquipmentShop }
     public NPCType npcType = NPCType.Statue;
     public GameObject shopPanel;
     [Tooltip("FPrompt là GameObject chứa TextMeshPro, sẽ hiện trên đầu NPC khi lại gần.")]
@@ -15,6 +15,7 @@ public class NPCInteractable : MonoBehaviour
     public string itemName = "HealthPotion"; // Tên vật phẩm bán
     public int itemPrice = 3;               // Giá mỗi vật phẩm
     public int buyAmount = 1;                // Số lượng mua mỗi lần
+
 
     [Header("Training Area Settings")]
     [Tooltip("Scene name để load khi vào training area")]
@@ -34,6 +35,15 @@ public class NPCInteractable : MonoBehaviour
     [Tooltip("Text hiển thị khi player đến gần map portal")]
     public string mapPortalPromptText = "Press F - Enter Dungeon";
 
+    [Header("Equipment Shop Settings")]
+    [Tooltip("Text hiển thị khi player đến gần equipment shop")]
+    public string equipmentShopPromptText = "Press F - Equipment Shop";
+
+    void Start()
+    {
+        // Auto-setup can be done here if needed
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -45,8 +55,8 @@ public class NPCInteractable : MonoBehaviour
             {
                 fPrompt.SetActive(true);
                 
-                // Update prompt text for training area, exit, or map portal
-                if (npcType == NPCType.Training || npcType == NPCType.Exit || npcType == NPCType.MapPortal)
+                // Update prompt text for training area, exit, map portal, or equipment shop
+                if (npcType == NPCType.Training || npcType == NPCType.Exit || npcType == NPCType.MapPortal || npcType == NPCType.EquipmentShop)
                 {
                     string promptText = "";
                     switch (npcType)
@@ -59,6 +69,9 @@ public class NPCInteractable : MonoBehaviour
                             break;
                         case NPCType.MapPortal:
                             promptText = mapPortalPromptText;
+                            break;
+                        case NPCType.EquipmentShop:
+                            promptText = equipmentShopPromptText;
                             break;
                     }
                     
@@ -92,12 +105,13 @@ public class NPCInteractable : MonoBehaviour
             playerInRange = false;
             if (fPrompt != null) fPrompt.SetActive(false);
             playerKnight = null;
-            // Tự động đóng shop khi rời khỏi NPC
+            
+            // Tự động đóng shop khi rời khỏi NPC (works for both Shop and EquipmentShop)
             if (shopPanel != null && shopPanel.activeSelf)
             {
                 shopPanel.SetActive(false);
                 Time.timeScale = 1f;
-            }   
+            }
         }
     }
 
@@ -258,6 +272,29 @@ public class NPCInteractable : MonoBehaviour
                     }
                     
                     Debug.Log($"Loading map scene: {mapPortalSceneName}");
+                    break;
+
+                case NPCType.EquipmentShop:
+                    // Handle Equipment Shop exactly like normal Shop
+                    if (shopPanel != null)
+                    {
+                        bool isActive = shopPanel.activeSelf;
+                        if (fPrompt != null) fPrompt.SetActive(false);
+                        if (isActive)
+                        {
+                            // Nếu đang mở thì đóng
+                            shopPanel.SetActive(false);
+                            Time.timeScale = 1f;
+                            if (fPrompt != null) fPrompt.SetActive(true); // hiện lại F để tương tác tiếp
+                        }
+                        else
+                        {
+                            // Nếu đang tắt thì mở
+                            shopPanel.SetActive(true);
+                            Time.timeScale = 0f;
+                            if (fPrompt != null) fPrompt.SetActive(false); // ẩn F khi shop đang mở
+                        }
+                    }
                     break;
             }
         }

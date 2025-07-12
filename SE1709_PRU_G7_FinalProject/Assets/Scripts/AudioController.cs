@@ -21,6 +21,7 @@ public class AudioController : MonoBehaviour
     public AudioClip enemyTakeDame;
     public AudioClip click;
     public AudioClip footSteep;
+    public AudioClip menu;
     public AudioClip map1Music;
     public AudioClip map2Music;
     public AudioClip map3Music;
@@ -178,22 +179,32 @@ public class AudioController : MonoBehaviour
             musicSource.volume = volume;
             musicSource.Play();
         }
+        else if (!musicSource.isPlaying)
+        {
+            // Nếu đúng clip nhưng đã bị dừng thì phát lại
+            musicSource.Play();
+        }
     }
+
     public void PlayRestMapMusic()
     {
-        PlayMapMusic(restMapMusic, 0.04f);
+        PlayMapMusic(restMapMusic, 0.1f);
+    }
+    public void PlayMenuMusic()
+    {
+        PlayMapMusic(menu, 0.1f);
     }
     public void PlayMap1Music()
     {
-        PlayMapMusic(map1Music, 0.1f);
+        PlayMapMusic(map1Music, 0.3f);
     }
     public void PlayMap2Music()
     {
-        PlayMapMusic(map2Music, 0.05f);
+        PlayMapMusic(map2Music, 0.2f);
     }
     public void PlayMap3Music()
     {
-        PlayMapMusic(map3Music, 0.05f);
+        PlayMapMusic(map3Music, 0.2f);
     }
     public void PlayClickSound()
     {
