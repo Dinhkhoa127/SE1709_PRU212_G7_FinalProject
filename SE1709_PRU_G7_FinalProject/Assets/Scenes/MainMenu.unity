@@ -2221,7 +2221,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.9
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2317,8 +2317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52bbe379be2907c4f893d156c68fa6c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxSource: {fileID: 1394990894}
-  musicSource: {fileID: 1394990893}
+  sfxSource: {fileID: 0}
+  musicSource: {fileID: 0}
   attackSFX: {fileID: 0}
   jumpSFX: {fileID: 0}
   hurtSFX: {fileID: 0}
@@ -2330,6 +2330,7 @@ MonoBehaviour:
   enemyTakeDame: {fileID: 0}
   click: {fileID: 0}
   footSteep: {fileID: 0}
+  menu: {fileID: 0}
   map1Music: {fileID: 0}
   map2Music: {fileID: 0}
   map3Music: {fileID: 0}

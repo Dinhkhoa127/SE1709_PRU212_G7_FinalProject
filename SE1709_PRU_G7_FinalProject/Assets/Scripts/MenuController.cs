@@ -234,7 +234,6 @@ public class MenuController : MonoBehaviour
     private void LoadMenuScene(string sceneName)
     {
         PlayClickSound();
-        
         if (GameManager.Instance != null)
         {
             GameManager.Instance.LoadScene(sceneName);

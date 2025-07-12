@@ -448,7 +448,7 @@ public class GameManager : MonoBehaviour
     
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log($"Scene loaded: {scene.name}");
+        Debug.Log($"Scene loaded: {scene.name}");   
         
         // Find player in new scene
         if (scene.name != mainMenuScene)
