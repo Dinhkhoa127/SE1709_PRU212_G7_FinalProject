@@ -2636,7 +2636,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
-<<<<<<< HEAD
 --- !u!114 &451778730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2681,8 +2680,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
-=======
->>>>>>> 9f2166a8bd9613a6dc460f70f78b0638b5e89874
 --- !u!1 &491929360
 GameObject:
   m_ObjectHideFlags: 0
@@ -12458,9 +12455,5 @@ SceneRoots:
   - {fileID: 1052237882}
   - {fileID: 1431411512}
   - {fileID: 1155663358}
-<<<<<<< HEAD
   - {fileID: 788722077}
   - {fileID: 1652413206}
-=======
-  - {fileID: 788722077}
->>>>>>> 9f2166a8bd9613a6dc460f70f78b0638b5e89874
