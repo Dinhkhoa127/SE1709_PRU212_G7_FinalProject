@@ -12,8 +12,18 @@ public class PlayerKnight : MonoBehaviour
     [SerializeField] float m_rollForce = 6.0f;
     [SerializeField] bool m_noBlood = false;
     [SerializeField] GameObject m_slideDust;
-    [SerializeField] private int maxHealth = 5;
+    [SerializeField] public int maxHealth = 5; // Có thể chỉnh trong Play Mode
     [SerializeField] int health = 5;
+    
+    [Header("Debug - Play Mode Editable")]
+    [SerializeField] private int debugMaxHealth = 20; // Có thể chỉnh trong Play Mode
+    
+    // Base stats để save/load (không bao gồm equipment bonus)
+    private int baseMaxHealth;
+    private int baseAttackDamage;
+    private int baseMaxArmorShield;
+    private int baseMaxMagicShield;
+    private int baseMaxMana;
 
     [SerializeField] private int attackDamage = 1;
     [SerializeField] private float attackRange = 0.5f;
@@ -77,6 +87,30 @@ public class PlayerKnight : MonoBehaviour
     public int gold = 0;
     public string currentStage = "Stage1"; // hoặc tên scene mặc định đầu tiên
     public List<ItemData> inventory = new List<ItemData>();
+    
+    // Equipment System
+    [Header("Equipment")]
+    public Dictionary<EquipmentType, ItemInfo> equippedItems = new Dictionary<EquipmentType, ItemInfo>();
+    
+    [Header("Equipment Settings")]
+    [Tooltip("Khi trang bị tăng maxHealth, có tự động tăng health hiện tại không?")]
+    public bool autoIncreaseCurrentHealth = false;
+    
+    [Header("Debug Settings")]
+    [Tooltip("Hiện debug logs?")]
+    public bool enableDebugLogs = true;
+    
+    // Calculated stats (base + equipment bonuses)
+    private int totalAttackDamage;
+    private int totalArmor;
+    private int totalMagicResist;
+    private int totalMaxHealth;
+    private int totalMaxMana;
+    
+    // Debug tracking
+    private float lastRecalculateTime = 0f;
+    private float lastDebugCommandTime = 0f;
+    
     void Start()
     {
         swordCollider1 = transform.Find("SwordCollider1").gameObject;
@@ -95,6 +129,241 @@ public class PlayerKnight : MonoBehaviour
         currentArmorShield = maxArmorShield;
         currentMagicShield = maxMagicShield;
         currentMana = maxMana;
+        
+        // Initialize base stats for save/load
+        baseMaxHealth = maxHealth;
+        baseAttackDamage = attackDamage;
+        baseMaxArmorShield = maxArmorShield;
+        baseMaxMagicShield = maxMagicShield;
+        baseMaxMana = maxMana;
+        
+        // Initialize equipment system
+        InitializeEquipmentSystem();
+        RecalculateStats();
+    }
+    
+    // Tự động cập nhật khi thay đổi maxHealth trong Inspector (cả Play Mode)
+    void OnValidate()
+    {
+        if (Application.isPlaying)
+        {
+            // Đảm bảo values hợp lệ
+            if (maxHealth < 1) maxHealth = 1;
+            if (attackDamage < 1) attackDamage = 1;
+            if (maxArmorShield < 0) maxArmorShield = 0;
+            if (maxMagicShield < 0) maxMagicShield = 0;
+            if (maxMana < 0) maxMana = 0;
+            
+            // Cập nhật base values khi thay đổi trong Inspector
+            baseMaxHealth = maxHealth;
+            baseAttackDamage = attackDamage;
+            baseMaxArmorShield = maxArmorShield;
+            baseMaxMagicShield = maxMagicShield;
+            baseMaxMana = maxMana;
+            
+            // Recalculate khi thay đổi trong Play Mode
+            if (equippedItems != null)
+            {
+                RecalculateStats();
+                Debug.Log($"💡 Stats changed in Play Mode! MaxHP: {totalMaxHealth}, Attack: {totalAttackDamage}, Mana: {totalMaxMana}");
+            }
+        }
+    }
+    
+    void InitializeEquipmentSystem()
+    {
+        // Initialize equipped items dictionary
+        equippedItems = new Dictionary<EquipmentType, ItemInfo>();
+        
+        // Initialize all equipment slots as empty
+        System.Array equipmentTypes = System.Enum.GetValues(typeof(EquipmentType));
+        foreach (EquipmentType equipType in equipmentTypes)
+        {
+            equippedItems[equipType] = null;
+        }
+        
+        // Initialize total stats to base values
+        totalAttackDamage = baseAttackDamage;
+        totalArmor = baseMaxArmorShield;
+        totalMagicResist = baseMaxMagicShield;
+        totalMaxHealth = baseMaxHealth;
+        totalMaxMana = baseMaxMana;
+    }
+    
+    public void EquipItem(ItemInfo item)
+    {
+        if (item == null || item.itemType != ItemType.Equipment) return;
+        
+        // Unequip current item if any
+        if (equippedItems[item.equipmentType] != null)
+        {
+            UnequipItem(item.equipmentType);
+        }
+        
+        // Equip new item
+        equippedItems[item.equipmentType] = item;
+        
+        // Remove from inventory
+        RemoveItem(item.itemName, 1);
+        
+        // Recalculate stats
+        RecalculateStats();
+        
+        // Update equipment UI
+        UpdateEquipmentUI();
+        
+        // Auto-save after equipping item
+        SaveGame();
+        
+        Debug.Log($"Equipped {item.itemName} to {item.equipmentType} slot");
+    }
+    
+    public void UnequipItem(EquipmentType equipType)
+    {
+        if (equippedItems[equipType] == null) return;
+        
+        ItemInfo item = equippedItems[equipType];
+        
+        // Add back to inventory
+        AddItem(item.itemName, 1);
+        
+        // Remove from equipped
+        equippedItems[equipType] = null;
+        
+        // Recalculate stats
+        RecalculateStats();
+        
+        // Update equipment UI
+        UpdateEquipmentUI();
+        
+        // Auto-save after unequipping item
+        SaveGame();
+        
+        Debug.Log($"Unequipped {item.itemName} from {equipType} slot");
+    }
+    
+    void RecalculateStats()
+    {
+        // Lưu old maxHealth để tính toán
+        int oldMaxHealth = totalMaxHealth;
+        
+        // Reset to base stats
+        totalAttackDamage = baseAttackDamage;
+        totalArmor = baseMaxArmorShield;
+        totalMagicResist = baseMaxMagicShield;
+        totalMaxHealth = baseMaxHealth;
+        totalMaxMana = baseMaxMana;
+        
+        // Add equipment bonuses
+        foreach (var equippedItem in equippedItems.Values)
+        {
+            if (equippedItem != null)
+            {
+                totalAttackDamage += equippedItem.attackBonus;
+                totalArmor += equippedItem.armorBonus;
+                totalMagicResist += equippedItem.magicResistBonus;
+                totalMaxHealth += equippedItem.healthBonus;
+                totalMaxMana += equippedItem.manaBonus;
+            }
+        }
+        
+        // CẬP NHẬT maxHealth field trong Inspector để đồng bộ
+        maxHealth = totalMaxHealth;
+        
+        // Update current shields to new calculated values
+        currentArmorShield = totalArmor;
+        currentMagicShield = totalMagicResist;
+        
+        // Handle health increase option
+        if (autoIncreaseCurrentHealth && oldMaxHealth > 0 && totalMaxHealth > oldMaxHealth)
+        {
+            // Tăng current health theo tỷ lệ equipment bonus
+            int healthIncrease = totalMaxHealth - oldMaxHealth;
+            health += healthIncrease;
+            Debug.Log($"Auto-increased current health by {healthIncrease} due to equipment bonus");
+        }
+        
+        // Ensure current health/mana don't exceed new max values
+        if (health > totalMaxHealth)
+            health = totalMaxHealth;
+        if (currentMana > totalMaxMana)
+            currentMana = totalMaxMana;
+        
+        // Cập nhật Inspector values để đồng bộ với total values
+        maxHealth = totalMaxHealth;
+        attackDamage = totalAttackDamage;
+        maxArmorShield = totalArmor;
+        maxMagicShield = totalMagicResist;
+        maxMana = totalMaxMana;
+        
+        // Force update all UI elements that depend on health/mana
+        UpdateAllHealthUI();
+        
+        // Debug log khi có thay đổi
+        if (enableDebugLogs)
+        {
+            Debug.Log($"Stats recalculated - MaxHP: {totalMaxHealth}, HP: {health}");
+        }
+    }
+    
+    void UpdateAllHealthUI()
+    {
+        // Update main health bar - đơn giản và trực tiếp
+        var healthBarUI = FindObjectOfType<PlayerHealthBarUI>();
+        if (healthBarUI != null)
+        {
+            healthBarUI.UpdateSliderValues();
+        }
+        
+        // Update character stats UI in inventory
+        var characterStatsUI = FindObjectOfType<CharacterStatsUI>();
+        if (characterStatsUI != null)
+        {
+            characterStatsUI.UpdateCharacterStats();
+        }
+        
+        Debug.Log($"Health UI updated - MaxHP: {totalMaxHealth}, HP: {health}");
+    }
+    
+    void UpdateEquipmentUI()
+    {
+        // Update equipment slots UI
+        var equipmentUI = FindObjectOfType<EquipmentSlotsUI>();
+        if (equipmentUI != null)
+        {
+            equipmentUI.UpdateEquipmentDisplay();
+        }
+    }
+    
+    // Updated getters to return total stats (base + equipment bonuses)
+    public int GetAttackDamage() { return totalAttackDamage; }
+    public int GetBaseAttackDamage() { return baseAttackDamage; }
+    public int GetCurrentArmorShield() => totalArmor;
+    public int GetBaseArmorShield() => baseMaxArmorShield;
+    public int GetCurrentMagicShield() => totalMagicResist;
+    public int GetBaseMagicShield() => baseMaxMagicShield;
+    
+    // Health getters - phân biệt rõ ràng
+    public int GetMaxHealth() { return totalMaxHealth; } // Tổng maxHealth (base + equipment)
+    public int GetBaseMaxHealth() { return baseMaxHealth; } // MaxHealth gốc (không có equipment)
+    public int GetCurrentHealth() { return health; } // Máu hiện tại
+    public int GetHealth() { return health; } // Backward compatibility
+    
+    // Mana getters
+    public int GetMaxMana() { return totalMaxMana; }
+    public int GetBaseMana() { return baseMaxMana; }
+    public int GetCurrentMana() { return currentMana; }
+    
+    // Stamina getters
+    public float MaxBlockStamina { get { return maxBlockStamina; } }
+    public float BlockStamina { get { return blockStamina; } }
+    public bool IsBlockOnCooldown { get { return isBlockOnCooldown; } }
+    
+    public ItemInfo GetEquippedItem(EquipmentType equipType)
+    {
+        if (equippedItems.ContainsKey(equipType))
+            return equippedItems[equipType];
+        return null;
     }
 
     void Update()
@@ -160,11 +429,40 @@ public class PlayerKnight : MonoBehaviour
         {
             UseItem("Mana Potion"); // Phím số 2 để test hồi mana
         }
+        
+        // Test health stats with G key
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            PrintHealthStats();
+        }
+        
+        // Debug commands với cooldown
+        if (Time.time - lastDebugCommandTime > 0.3f) // Cooldown 0.3 giây
+        {
+            // Debug: Increase maxHealth with + key
+            if (Input.GetKeyDown(KeyCode.Equals) || Input.GetKeyDown(KeyCode.Plus))
+            {
+                DebugIncreaseMaxHealth(5);
+                lastDebugCommandTime = Time.time;
+            }
+            
+            // Debug: Decrease maxHealth with - key
+            if (Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.Underscore))
+            {
+                DebugDecreaseMaxHealth(5);
+                lastDebugCommandTime = Time.time;
+            }
+            
+            // Debug: Apply debugMaxHealth with U key
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                ApplyDebugMaxHealth();
+                lastDebugCommandTime = Time.time;
+            }
+        }
     }
 
-    public int GetHealth() { return health; }
-    public int GetMaxHealth() { return maxHealth; }
-    public void RestoreFullMana() { currentMana = maxMana; }
+    public void RestoreFullMana() { currentMana = totalMaxMana; }
     public void RestoreFullStamina() { blockStamina = maxBlockStamina; }
     void HandleTimers()
     {
@@ -333,13 +631,7 @@ public class PlayerKnight : MonoBehaviour
             m_animator.SetTrigger("Hurt");
         }
     }
-    public int GetMaxMana() { return maxMana; }
-    public int GetCurrentMana() { return currentMana; }
-    public int GetCurrentArmorShield() => currentArmorShield;
-    public int GetCurrentMagicShield() => currentMagicShield;
-    public float MaxBlockStamina { get { return maxBlockStamina; } }
-    public float BlockStamina { get { return blockStamina; } }
-    public bool IsBlockOnCooldown { get { return isBlockOnCooldown; } }
+    // Removed duplicate getters - using the updated ones above
     public void TakeMagicDamage(int amount)
     {
         if (isBlocking && !isBlockOnCooldown)
@@ -432,12 +724,12 @@ public class PlayerKnight : MonoBehaviour
     public void RegenerateMana(int amount)
     {
         currentMana += amount;
-        if (currentMana > maxMana)
+        if (currentMana > totalMaxMana)
         {
-            currentMana = maxMana;
+            currentMana = totalMaxMana;
             return;
         }
-        Debug.Log($" Đã hồi {amount} mana. Mana hiện tại: {currentMana}/{maxMana}");
+        Debug.Log($" Đã hồi {amount} mana. Mana hiện tại: {currentMana}/{totalMaxMana}");
     }
 
     void Die()
@@ -465,7 +757,7 @@ public class PlayerKnight : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            enemy.GetComponent<Enemy>().TakeDamage(totalAttackDamage);
             AudioController.instance.PlayEnemyTakeDame();
         }
     }
@@ -495,7 +787,12 @@ public class PlayerKnight : MonoBehaviour
     {
         AudioController.instance.PlayHealSound();
         health += amount;
-        if (health > maxHealth) health = maxHealth;
+        if (health > totalMaxHealth) health = totalMaxHealth;
+        
+        // Force update UI after healing
+        UpdateAllHealthUI();
+        
+        Debug.Log($"Healed {amount} HP. Current: {health}/{totalMaxHealth}");
     }
 
     public void AddItem(string itemName, int amount)
@@ -505,6 +802,8 @@ public class PlayerKnight : MonoBehaviour
             item.quantity += amount;
         else
             inventory.Add(new ItemData(itemName, amount));
+            
+        Debug.Log($"Added {amount}x {itemName} to inventory");
     }
 
     public bool RemoveItem(string itemName, int amount)
@@ -535,7 +834,7 @@ public class PlayerKnight : MonoBehaviour
         switch (itemInfo.itemType)
         {
             case ItemType.HealthPotion:
-                if (health < maxHealth)
+                if (health < totalMaxHealth)
                 {
                     Heal(itemInfo.effectValue);
                     RemoveItem(itemInfo.itemName, 1);
@@ -551,7 +850,7 @@ public class PlayerKnight : MonoBehaviour
                 break;
                 
             case ItemType.ManaPotion:
-                if (currentMana < maxMana)
+                if (currentMana < totalMaxMana)
                 {
                     AudioController.instance.PlayHealSound();
                     RegenerateMana(itemInfo.effectValue);
@@ -603,6 +902,13 @@ public class PlayerKnight : MonoBehaviour
         {
             quickSlotsUI.ForceUpdate();
         }
+    }
+    
+    // Public method để force refresh inventory UI
+    public void ForceUpdateInventoryUI()
+    {
+        UpdateInventoryUI();
+        Debug.Log("🔄 Force updated inventory UI");
     }
 
     void EnableSwordCollider1()
@@ -724,24 +1030,50 @@ public class PlayerKnight : MonoBehaviour
     public void SaveGame()
     {
         PlayerData data = new PlayerData();
-        data.maxHealth = maxHealth;
+        // Save base stats (not total stats)
+        data.maxHealth = baseMaxHealth;
         data.health = health;
-        data.maxArmorShield = maxArmorShield;
+        data.maxArmorShield = baseMaxArmorShield;
         data.currentArmorShield = currentArmorShield;
-        data.maxMagicShield = maxMagicShield;
+        data.maxMagicShield = baseMaxMagicShield;
         data.currentMagicShield = currentMagicShield;
-        data.maxMana = maxMana;
+        data.maxMana = baseMaxMana;
         data.currentMana = currentMana;
-        data.attackDamage = attackDamage;
+        data.attackDamage = baseAttackDamage;
         data.maxBlockStamina = maxBlockStamina;
         data.blockStamina = blockStamina;
         data.learnedSkills = learnedSkills;
         data.gold = gold;
         data.currentStage = currentStage;
         data.inventory = inventory;
+        
+        // Save equipped items với detailed debug
+        data.equippedItems = new List<EquippedItemData>();
+        Debug.Log("🛡️ === SAVING EQUIPPED ITEMS ===");
+        foreach (var equippedItem in equippedItems)
+        {
+            if (equippedItem.Value != null)
+            {
+                var equippedData = new EquippedItemData(equippedItem.Key, equippedItem.Value);
+                data.equippedItems.Add(equippedData);
+                Debug.Log($"⚔️ SAVING EQUIPMENT: {equippedItem.Value.itemName} ({equippedItem.Key}) - ATK+{equippedItem.Value.attackBonus}, ARM+{equippedItem.Value.armorBonus}, HP+{equippedItem.Value.healthBonus}");
+            }
+        }
+        Debug.Log($"🛡️ Total equipment saved: {data.equippedItems.Count}");
 
         SaveManager.Save(data);
-        Debug.Log("Game Saved!");
+        Debug.Log($"✅ SAVE COMPLETED: Equipment: {data.equippedItems.Count}, Inventory: {inventory.Count}, Gold: {gold}");
+        
+        // Debug inventory contents
+        if (inventory.Count > 0)
+        {
+            Debug.Log("📦 INVENTORY SAVED:");
+            foreach (var item in inventory)
+            {
+                Debug.Log($"  - {item.itemName}: {item.quantity}");
+            }
+        }
+        
         if (autosaveText != null)
         {
             autosaveText.text = "Đã tự động lưu!";
@@ -758,28 +1090,153 @@ public class PlayerKnight : MonoBehaviour
         PlayerData data = SaveManager.Load();
         if (data != null)
         {
-            maxHealth = data.maxHealth;
+            // Load base stats
+            baseMaxHealth = data.maxHealth;
             health = data.health;
-            maxArmorShield = data.maxArmorShield;
+            baseMaxArmorShield = data.maxArmorShield;
             currentArmorShield = data.currentArmorShield;
-            maxMagicShield = data.maxMagicShield;
+            baseMaxMagicShield = data.maxMagicShield;
             currentMagicShield = data.currentMagicShield;
-            maxMana = data.maxMana;
+            baseMaxMana = data.maxMana;
             currentMana = data.currentMana;
-            attackDamage = data.attackDamage;
+            baseAttackDamage = data.attackDamage;
             maxBlockStamina = data.maxBlockStamina;
             blockStamina = data.blockStamina;
             learnedSkills = data.learnedSkills ?? new List<string>();
-            gold = data.gold;
             currentStage = data.currentStage;
-            inventory = data.inventory ?? new List<ItemData>(); // Load as ItemData
+            
+            // 🔧 SMART INVENTORY LOADING - Merge current và save data
+            int currentInventoryCount = inventory.Count;
+            int currentGold = gold;
+            string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            
+            if (data.inventory != null && data.inventory.Count > 0)
+            {
+                // Nếu đang ở MapRest - luôn load save data (hub scene)
+                if (currentScene == "MapRest")
+                {
+                    inventory = data.inventory;
+                    Debug.Log($"🏠 LOAD GAME: MapRest - loaded {data.inventory.Count} inventory items from save data");
+                }
+                // Nếu ở scene khác - chỉ load nếu save data tốt hơn
+                else if (currentInventoryCount == 0 || data.inventory.Count > currentInventoryCount)
+                {
+                    inventory = data.inventory;
+                    Debug.Log($"🔧 LOAD GAME: Loaded {data.inventory.Count} inventory items from save data");
+                }
+                else
+                {
+                    Debug.Log($"⚠️ PRESERVING CURRENT INVENTORY: Current({currentInventoryCount}) >= Save({data.inventory.Count})");
+                }
+                
+                // Debug loaded inventory contents
+                if (inventory == data.inventory)
+                {
+                    Debug.Log("📦 INVENTORY LOADED:");
+                    foreach (var item in inventory)
+                    {
+                        Debug.Log($"  - {item.itemName}: {item.quantity}");
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("⚠️ No inventory data in save file - keeping current inventory");
+            }
+            
+            // 🔧 SMART GOLD LOADING - Merge current và save data
+            if (currentScene == "MapRest")
+            {
+                // Nếu đang ở MapRest - luôn load save data (hub scene)
+                gold = data.gold;
+                Debug.Log($"🏠 GOLD LOADED: MapRest - loaded {data.gold} gold from save data");
+            }
+            else if (data.gold > currentGold || currentGold == 0)
+            {
+                // Nếu ở scene khác - chỉ load nếu save data tốt hơn
+                gold = data.gold;
+                Debug.Log($"🔧 GOLD LOADED: {currentGold} -> {gold}");
+            }
+            else
+            {
+                Debug.Log($"⚠️ PRESERVING CURRENT GOLD: {currentGold} (save had {data.gold})");
+            }
+            
+            // Load equipped items
+            LoadEquippedItems(data.equippedItems);
+            
+            // Recalculate stats after loading equipment
+            RecalculateStats();
+            
+            // 🔧 FORCE UPDATE Equipment UI - đảm bảo sprites hiển thị
+            Debug.Log("🔄 Force updating Equipment UI...");
+            UpdateEquipmentUI();
+            
+            // Force update inventory UI để sync equipped state
+            Debug.Log("🔄 Force updating Inventory UI...");
+            UpdateInventoryUI();
+            
+            // 🔧 Additional force update with delay to ensure UI is ready
+            StartCoroutine(DelayedUIUpdate());
 
-            Debug.Log("Game Loaded!");
+            Debug.Log($"Game Loaded! Equipment count: {data.equippedItems?.Count ?? 0}, Inventory items: {inventory.Count}");
         }
         else
         {
-            Debug.Log("No save data found!");
+            Debug.Log("No save data found - keeping current player state!");
         }
+    }
+    
+    void LoadEquippedItems(List<EquippedItemData> savedEquipment)
+    {
+        // Clear current equipped items
+        InitializeEquipmentSystem();
+        
+        Debug.Log("🛡️ === LOADING EQUIPPED ITEMS ===");
+        if (savedEquipment == null || savedEquipment.Count == 0)
+        {
+            Debug.Log("⚠️ No equipped items to load");
+            return;
+        }
+        
+        Debug.Log($"🔄 Loading {savedEquipment.Count} equipped items...");
+        foreach (var savedItem in savedEquipment)
+        {
+            // 🔧 FIX: Tìm ItemInfo gốc từ ItemManager thay vì tạo mới (để giữ sprite)
+            ItemInfo originalItem = null;
+            if (ItemManager.Instance != null)
+            {
+                originalItem = ItemManager.Instance.GetItemInfo(savedItem.itemName);
+            }
+            
+            ItemInfo itemToEquip = null;
+            if (originalItem != null)
+            {
+                // Sử dụng ItemInfo gốc (có sprite)
+                itemToEquip = originalItem;
+                Debug.Log($"🎨 Using original ItemInfo for {savedItem.itemName} (has sprite: {originalItem.itemSprite != null})");
+            }
+            else
+            {
+                // Fallback: Recreate ItemInfo từ saved data (không có sprite)
+                itemToEquip = ScriptableObject.CreateInstance<ItemInfo>();
+                itemToEquip.itemName = savedItem.itemName;
+                itemToEquip.itemType = ItemType.Equipment;
+                itemToEquip.equipmentType = savedItem.equipmentType;
+                itemToEquip.attackBonus = savedItem.attackBonus;
+                itemToEquip.armorBonus = savedItem.armorBonus;
+                itemToEquip.magicResistBonus = savedItem.magicResistBonus;
+                itemToEquip.healthBonus = savedItem.healthBonus;
+                itemToEquip.manaBonus = savedItem.manaBonus;
+                Debug.LogWarning($"⚠️ Recreated ItemInfo for {savedItem.itemName} (no sprite available)");
+            }
+            
+            // Equip the item (but don't remove from inventory since it's already removed)
+            equippedItems[savedItem.equipmentType] = itemToEquip;
+            
+            Debug.Log($"✅ LOADED EQUIPMENT: {savedItem.itemName} ({savedItem.equipmentType}) - ATK+{savedItem.attackBonus}, ARM+{savedItem.armorBonus}, HP+{savedItem.healthBonus}");
+        }
+        Debug.Log($"🛡️ Total equipment loaded: {savedEquipment.Count}");
     }
 
     void HideAutosaveText()
@@ -787,11 +1244,92 @@ public class PlayerKnight : MonoBehaviour
         if (autosaveText != null)
             autosaveText.text = "";
     }
+    
+    // 🔧 Coroutine để update UI sau một chút delay
+    System.Collections.IEnumerator DelayedUIUpdate()
+    {
+        yield return new WaitForSeconds(0.1f); // Wait 1 frame
+        
+        Debug.Log("🔄 === DELAYED UI UPDATE ===");
+        
+        // Force update equipment UI again
+        UpdateEquipmentUI();
+        
+        // Force update inventory UI again
+        var inventoryUI = FindObjectOfType<InventoryUI>();
+        if (inventoryUI != null)
+        {
+            inventoryUI.UpdateUI();
+            Debug.Log("🔄 Delayed inventory UI update completed");
+        }
+        
+        // Update character stats UI
+        var characterStatsUI = FindObjectOfType<CharacterStatsUI>();
+        if (characterStatsUI != null)
+        {
+            characterStatsUI.UpdateCharacterStats();
+            Debug.Log("🔄 Delayed character stats UI update completed");
+        }
+        
+        Debug.Log("✅ All delayed UI updates completed");
+    }
 
     public void PrintSaveData()
     {
         string json = PlayerPrefs.GetString("playerData", "Chưa có save");
         Debug.Log("Nội dung save hiện tại: " + json);
+    }
+    
+    public void PrintHealthStats()
+    {
+        Debug.Log("=== PLAYER STATS DEBUG ===");
+        Debug.Log($"Base MaxHealth: {baseMaxHealth} -> Total: {totalMaxHealth}");
+        Debug.Log($"Base Attack: {baseAttackDamage} -> Total: {totalAttackDamage}");
+        Debug.Log($"Base Armor: {baseMaxArmorShield} -> Total: {totalArmor}");
+        Debug.Log($"Base Magic Resist: {baseMaxMagicShield} -> Total: {totalMagicResist}");
+        Debug.Log($"Base MaxMana: {baseMaxMana} -> Total: {totalMaxMana}");
+        Debug.Log($"Current Health: {health}/{totalMaxHealth} ({(float)health / totalMaxHealth * 100:F1}%)");
+        Debug.Log($"Current Mana: {currentMana}/{totalMaxMana} ({(float)currentMana / totalMaxMana * 100:F1}%)");
+        Debug.Log("==============================");
+    }
+    
+    [ContextMenu("Debug: Increase MaxHealth")]
+    public void DebugIncreaseMaxHealth(int amount = 5)
+    {
+        baseMaxHealth += amount;
+        maxHealth = baseMaxHealth; // Sync Inspector
+        RecalculateStats();
+        // Debug log đã được handled trong RecalculateStats()
+    }
+    
+    [ContextMenu("Debug: Decrease MaxHealth")]
+    public void DebugDecreaseMaxHealth(int amount = 5)
+    {
+        baseMaxHealth = Mathf.Max(1, baseMaxHealth - amount); // Không để baseMaxHealth < 1
+        maxHealth = baseMaxHealth; // Sync Inspector
+        RecalculateStats();
+        // Debug log đã được handled trong RecalculateStats()
+    }
+    
+    [ContextMenu("Debug: Set MaxHealth to 100")]
+    public void DebugSetMaxHealth100()
+    {
+        baseMaxHealth = 100;
+        maxHealth = baseMaxHealth; // Sync Inspector
+        RecalculateStats();
+        Debug.Log($"DEBUG: Set base maxHealth to 100. Total: {totalMaxHealth}");
+    }
+    
+    [ContextMenu("Debug: Apply Debug MaxHealth")]
+    public void ApplyDebugMaxHealth()
+    {
+        if (debugMaxHealth > 0)
+        {
+            baseMaxHealth = debugMaxHealth;
+            maxHealth = baseMaxHealth; // Sync Inspector
+            RecalculateStats();
+            Debug.Log($"DEBUG: Applied debugMaxHealth {debugMaxHealth} to baseMaxHealth. Total: {totalMaxHealth}");
+        }
     }
 
     private bool IsAttackLockedScene()

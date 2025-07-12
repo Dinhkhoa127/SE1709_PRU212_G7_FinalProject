@@ -94,7 +94,7 @@ public class MenuController : MonoBehaviour
             }
             
             // Load game data và chuyển scene
-            GameManager.Instance.LoadGameData();
+            GameManager.Instance.ForceLoadGameData();
             GameManager.Instance.LoadScene(targetScene);
         }
         else
