@@ -949,6 +949,8 @@ MonoBehaviour:
   mapPortalSceneName: Map1
   mapPortalPromptText: Press F - Enter Dungeon
   equipmentShopPromptText: Press F - Equipment Shop
+  goldAmount: 300
+  openChest: Press F - Open Chest
 --- !u!1 &107522493
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,7 +2103,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288.04343, y: -8.845108}
+  m_AnchoredPosition: {x: 288.04343, y: -8.845123}
   m_SizeDelta: {x: 95.0293, y: 17.6901}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &186475105
@@ -3017,6 +3019,8 @@ MonoBehaviour:
   mapPortalSceneName: Map1
   mapPortalPromptText: Press F - Enter Dungeon
   equipmentShopPromptText: Press F - Equipment Shop
+  goldAmount: 300
+  openChest: Press F - Open Chest
 --- !u!1 &292168733
 GameObject:
   m_ObjectHideFlags: 0
@@ -3239,7 +3243,7 @@ Transform:
   m_GameObject: {fileID: 312139469}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.2, y: -45, z: -10}
+  m_LocalPosition: {x: 0.18, y: -45.1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4323,7 +4327,7 @@ Transform:
   m_GameObject: {fileID: 451778724}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.2000027, y: -40.270164, z: -10}
+  m_LocalPosition: {x: 2.7316751, y: -40.270164, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6687,6 +6691,8 @@ MonoBehaviour:
   mapPortalSceneName: Map3
   mapPortalPromptText: Press F - Enter Dungeon
   equipmentShopPromptText: Press F - Equipment Shop
+  goldAmount: 300
+  openChest: Press F - Open Chest
 --- !u!61 &788722081
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7218,11 +7224,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3517910093235666848, guid: e83dcce0cc7d4324ab78400c4301196c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.2
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 3517910093235666848, guid: e83dcce0cc7d4324ab78400c4301196c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -45
+      value: -45.1
       objectReference: {fileID: 0}
     - target: {fileID: 3517910093235666848, guid: e83dcce0cc7d4324ab78400c4301196c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9839,6 +9845,8 @@ MonoBehaviour:
   mapPortalSceneName: Map2
   mapPortalPromptText: Press F - Enter Dungeon
   equipmentShopPromptText: Press F - Equipment Shop
+  goldAmount: 300
+  openChest: Press F - Open Chest
 --- !u!61 &1155663362
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11846,6 +11854,8 @@ MonoBehaviour:
   mapPortalSceneName: Map1
   mapPortalPromptText: Press F - Enter Dungeon
   equipmentShopPromptText: Press F - Equipment Shop
+  goldAmount: 300
+  openChest: Press F - Open Chest
 --- !u!61 &1334139985
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12330,6 +12340,8 @@ MonoBehaviour:
   mapPortalSceneName: Map1
   mapPortalPromptText: Press F - Enter Dungeon
   equipmentShopPromptText: Press F - Equipment Shop
+  goldAmount: 300
+  openChest: Press F - Open Chest
 --- !u!61 &1431411516
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12629,7 +12641,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5, y: -0.000045776367}
+  m_AnchoredPosition: {x: 5, y: -0.000030517578}
   m_SizeDelta: {x: 25, y: 0.0001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1463081539
@@ -14849,6 +14861,8 @@ MonoBehaviour:
   mapPortalSceneName: Map1
   mapPortalPromptText: Press F - Enter Dungeon
   equipmentShopPromptText: Press F - Equipment Shop
+  goldAmount: 300
+  openChest: Press F - Open Chest
 --- !u!4 &1627636343 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8893287330390304281, guid: 92a08448cd3527a4aaf11bc404e0f1a0, type: 3}

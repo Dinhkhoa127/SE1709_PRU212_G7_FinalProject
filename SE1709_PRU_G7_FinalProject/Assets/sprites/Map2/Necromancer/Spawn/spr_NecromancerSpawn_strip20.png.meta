@@ -1,0 +1,703 @@
+fileFormatVersion: 2
+guid: 17d04e75ed9b26c4dbb3797d69bd39eb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8263516518345711615
+    second: spr_NecromancerSpawn_strip20_0
+  - first:
+      213: 1109223571707968910
+    second: spr_NecromancerSpawn_strip20_1
+  - first:
+      213: -652067743207428002
+    second: spr_NecromancerSpawn_strip20_2
+  - first:
+      213: 7319438543226036429
+    second: spr_NecromancerSpawn_strip20_3
+  - first:
+      213: -2400318309705621599
+    second: spr_NecromancerSpawn_strip20_4
+  - first:
+      213: -297283676478107450
+    second: spr_NecromancerSpawn_strip20_5
+  - first:
+      213: 2258899348834075803
+    second: spr_NecromancerSpawn_strip20_6
+  - first:
+      213: 7173362407304241814
+    second: spr_NecromancerSpawn_strip20_7
+  - first:
+      213: -4761613430588254572
+    second: spr_NecromancerSpawn_strip20_8
+  - first:
+      213: 7761620033335723310
+    second: spr_NecromancerSpawn_strip20_9
+  - first:
+      213: 1274620910276175185
+    second: spr_NecromancerSpawn_strip20_10
+  - first:
+      213: 4785905239221952229
+    second: spr_NecromancerSpawn_strip20_11
+  - first:
+      213: -8798745647032564023
+    second: spr_NecromancerSpawn_strip20_12
+  - first:
+      213: 8057331041162559490
+    second: spr_NecromancerSpawn_strip20_13
+  - first:
+      213: 2893183024947202730
+    second: spr_NecromancerSpawn_strip20_14
+  - first:
+      213: 8366151264538786284
+    second: spr_NecromancerSpawn_strip20_15
+  - first:
+      213: 4082811722497470727
+    second: spr_NecromancerSpawn_strip20_16
+  - first:
+      213: -2609797481688676857
+    second: spr_NecromancerSpawn_strip20_17
+  - first:
+      213: 7332212083438305801
+    second: spr_NecromancerSpawn_strip20_18
+  - first:
+      213: 9010275143344289921
+    second: spr_NecromancerSpawn_strip20_19
+  - first:
+      213: 3723839805993996112
+    second: spr_NecromancerSpawn_strip20_20
+  - first:
+      213: -8345669391019059006
+    second: spr_NecromancerSpawn_strip20_21
+  - first:
+      213: 8864317401238206489
+    second: spr_NecromancerSpawn_strip20_22
+  - first:
+      213: 8834015518086796015
+    second: spr_NecromancerSpawn_strip20_23
+  - first:
+      213: 1162497879166532911
+    second: spr_NecromancerSpawn_strip20_24
+  - first:
+      213: -8093670991350090409
+    second: spr_NecromancerSpawn_strip20_25
+  - first:
+      213: 6335037449296406729
+    second: spr_NecromancerSpawn_strip20_26
+  - first:
+      213: 765662099748868785
+    second: spr_NecromancerSpawn_strip20_27
+  - first:
+      213: -6854395487841438935
+    second: spr_NecromancerSpawn_strip20_28
+  - first:
+      213: 7024874431752150676
+    second: spr_NecromancerSpawn_strip20_29
+  - first:
+      213: -8051799770888446028
+    second: spr_NecromancerSpawn_strip20_30
+  - first:
+      213: 448834746508331704
+    second: spr_NecromancerSpawn_strip20_31
+  - first:
+      213: 7270868332072626156
+    second: spr_NecromancerSpawn_strip20_32
+  - first:
+      213: -372834997668225985
+    second: spr_NecromancerSpawn_strip20_33
+  - first:
+      213: 5842053540425251224
+    second: spr_NecromancerSpawn_strip20_34
+  - first:
+      213: 5902529662693464972
+    second: spr_NecromancerSpawn_strip20_35
+  - first:
+      213: -2547918140608727934
+    second: spr_NecromancerSpawn_strip20_36
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 12
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1006e603287125d80800000000000000
+      internalID: -8263516518345711615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8db42826f0c46f00800000000000000
+      internalID: 1109223571707968910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5071a4a7d363f6f0800000000000000
+      internalID: -652067743207428002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc06a44339ed39560800000000000000
+      internalID: 7319438543226036429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1af512af63b50bed0800000000000000
+      internalID: -2400318309705621599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c010024216dfdbf0800000000000000
+      internalID: -297283676478107450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b94cd965df8395f10800000000000000
+      internalID: 2258899348834075803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 692a2847a17ec8360800000000000000
+      internalID: 7173362407304241814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_8
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 496de0020d95bedb0800000000000000
+      internalID: -4761613430588254572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_9
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2508882c40d6bb60800000000000000
+      internalID: 7761620033335723310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_10
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 155eb44f6fc50b110800000000000000
+      internalID: 1274620910276175185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_11
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ee51805573fa6240800000000000000
+      internalID: 4785905239221952229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_12
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c60c97a37394e580800000000000000
+      internalID: -8798745647032564023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_13
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 200093274e361df60800000000000000
+      internalID: 8057331041162559490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_14
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaa0b28e1a6a62820800000000000000
+      internalID: 2893183024947202730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_15
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce9f404df3a8a1470800000000000000
+      internalID: 8366151264538786284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_16
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 701334441af09a830800000000000000
+      internalID: 4082811722497470727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_17
+      rect:
+        serializedVersion: 2
+        x: 2176
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 706cc38840328cbd0800000000000000
+      internalID: -2609797481688676857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_18
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 902ca2bca0041c560800000000000000
+      internalID: 7332212083438305801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerSpawn_strip20_19
+      rect:
+        serializedVersion: 2
+        x: 2432
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 188719f118dea0d70800000000000000
+      internalID: 9010275143344289921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a49c44447e6164a46979b4df2888c9bf
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":20.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      spr_NecromancerSpawn_strip20_0: -8263516518345711615
+      spr_NecromancerSpawn_strip20_1: 1109223571707968910
+      spr_NecromancerSpawn_strip20_10: 1274620910276175185
+      spr_NecromancerSpawn_strip20_11: 4785905239221952229
+      spr_NecromancerSpawn_strip20_12: -8798745647032564023
+      spr_NecromancerSpawn_strip20_13: 8057331041162559490
+      spr_NecromancerSpawn_strip20_14: 2893183024947202730
+      spr_NecromancerSpawn_strip20_15: 8366151264538786284
+      spr_NecromancerSpawn_strip20_16: 4082811722497470727
+      spr_NecromancerSpawn_strip20_17: -2609797481688676857
+      spr_NecromancerSpawn_strip20_18: 7332212083438305801
+      spr_NecromancerSpawn_strip20_19: 9010275143344289921
+      spr_NecromancerSpawn_strip20_2: -652067743207428002
+      spr_NecromancerSpawn_strip20_3: 7319438543226036429
+      spr_NecromancerSpawn_strip20_4: -2400318309705621599
+      spr_NecromancerSpawn_strip20_5: -297283676478107450
+      spr_NecromancerSpawn_strip20_6: 2258899348834075803
+      spr_NecromancerSpawn_strip20_7: 7173362407304241814
+      spr_NecromancerSpawn_strip20_8: -4761613430588254572
+      spr_NecromancerSpawn_strip20_9: 7761620033335723310
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
