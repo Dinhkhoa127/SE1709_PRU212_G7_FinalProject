@@ -34,7 +34,8 @@ public class PlayerKnight : MonoBehaviour
     [SerializeField] private int maxMagicShield = 2;
     [SerializeField] private int maxMana = 100;
 
-    private int manaCost = 10;
+    private int manaCostR = 100;
+    private int manaCostQ = 10;
     public GameObject skillProjectilePrefab;
     public Transform castPoint;
     private int currentMana;
@@ -411,7 +412,7 @@ public class PlayerKnight : MonoBehaviour
             HandleSkillBerserk();
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                HandleSkillCast(manaCost);
+                HandleSkillCast(manaCostQ);
             }
         }
         manaRegenTimer += Time.deltaTime;
@@ -1042,11 +1043,11 @@ public class PlayerKnight : MonoBehaviour
 
     void HandleSkillBerserk()
     {
-        manaCost = 100;
-        if (Input.GetKeyDown(KeyCode.R) && !m_rolling && !m_jumping && currentMana >= manaCost)
+        manaCostR = 100;
+        if (Input.GetKeyDown(KeyCode.R) && !m_rolling && !m_jumping && currentMana >= manaCostR)
         {
             StartCoroutine(Berserk());
-            currentMana -= manaCost; // Trừ mana khi sử dụng kỹ năng
+            currentMana -= manaCostR; // Trừ mana khi sử dụng kỹ năng
         }
         else
         {
