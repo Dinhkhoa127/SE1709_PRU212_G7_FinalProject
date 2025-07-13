@@ -312,7 +312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3318270803871613910, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
       propertyPath: m_SortingLayerID
-      value: 52167783
+      value: 454065949
       objectReference: {fileID: 0}
     - target: {fileID: 3593120963358456493, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
       propertyPath: m_AnchoredPosition.x

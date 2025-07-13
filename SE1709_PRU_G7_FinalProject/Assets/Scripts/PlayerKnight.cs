@@ -777,33 +777,46 @@ public class PlayerKnight : MonoBehaviour
     }
 
     public void DealDamageToEnemy()
+{
+    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+    foreach (Collider2D enemy in hitEnemies)
     {
-
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        foreach (Collider2D enemy in hitEnemies)
+        // First check for IDamageable interface
+        var damageable = enemy.GetComponent<IDamageable>();
+        if (damageable != null)
         {
-            Enemy enemyScript = enemy.GetComponent<Enemy>();
-            if (enemyScript != null)
-            {
-                enemyScript.TakeDamage(totalAttackDamage);
-                AudioController.instance.PlayEnemyTakeDame();
-                continue;
-            }
+            damageable.TakeDamage(totalAttackDamage);
+            AudioController.instance.PlayEnemyTakeDame();
+            continue;
+        }
 
-            PaladinBoss bossScript = enemy.GetComponent<PaladinBoss>();
-            if (bossScript != null)
-            {
-                bossScript.TakeDamage(totalAttackDamage);
-                AudioController.instance.PlayEnemyTakeDame();
-            }
-            NecromancerBoss necromancerScript = enemy.GetComponent<NecromancerBoss>();
-            if (necromancerScript != null)
-            {
-                necromancerScript.TakeDamage(totalAttackDamage);
-                AudioController.instance.PlayEnemyTakeDame();
-            }
+        // Fallback checks for specific enemy types
+        Enemy enemyScript = enemy.GetComponent<Enemy>();
+        if (enemyScript != null)
+        {
+            enemyScript.TakeDamage(totalAttackDamage);
+            AudioController.instance.PlayEnemyTakeDame();
+            continue;
+        }
+
+        // Check for boss types
+        PaladinBoss paladinBoss = enemy.GetComponent<PaladinBoss>();
+        if (paladinBoss != null)
+        {
+            paladinBoss.TakeDamage(totalAttackDamage);
+            AudioController.instance.PlayEnemyTakeDame();
+            continue;
+        }
+
+        NecromancerBoss necromancerBoss = enemy.GetComponent<NecromancerBoss>();
+        if (necromancerBoss != null)
+        {
+            necromancerBoss.TakeDamage(totalAttackDamage);
+            AudioController.instance.PlayEnemyTakeDame();
+            continue;
         }
     }
+}
 
     void OnDrawGizmosSelected()
     {
