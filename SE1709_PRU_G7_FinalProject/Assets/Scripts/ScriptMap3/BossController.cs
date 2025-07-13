@@ -228,6 +228,21 @@ private void Start()
     {
         Instantiate(miniEnemy, transform.position, Quaternion.identity);
     }
+    //public void FireCircle()
+    //{
+    //    const int bulletCount = 24;
+    //    float angleStep = 360f / bulletCount;
+
+    //    for (int i = 0; i < bulletCount; i++)
+    //    {
+    //        float angle = i * angleStep;
+    //        Vector3 bulletDirection = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle), 0);
+
+    //        GameObject bullet = Instantiate(bulletPrefab1, firePoint1.position, Quaternion.identity);
+    //        EnemyBullet enemyBullet = bullet.AddComponent<EnemyBullet>();
+    //        enemyBullet.SetMovementDirection(bulletDirection.normalized * vongTron);
+    //    }
+    //}
     public void FireCircle()
     {
         const int bulletCount = 24;
@@ -240,6 +255,9 @@ private void Start()
 
             GameObject bullet = Instantiate(bulletPrefab1, firePoint1.position, Quaternion.identity);
             EnemyBullet enemyBullet = bullet.AddComponent<EnemyBullet>();
+
+            // Thiết lập damage cho đạn
+            enemyBullet.SetDamage(damgeFire); // Thêm dòng này
             enemyBullet.SetMovementDirection(bulletDirection.normalized * vongTron);
         }
     }
