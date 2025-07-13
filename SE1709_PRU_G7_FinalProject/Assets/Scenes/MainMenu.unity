@@ -154,8 +154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 791, y: -479}
-  m_SizeDelta: {x: 155, y: 155}
+  m_AnchoredPosition: {x: 389.54, y: -245.47}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: -0.08711872}
 --- !u!114 &172910076
 MonoBehaviour:
@@ -286,8 +286,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -126}
-  m_SizeDelta: {x: 292, y: 96}
+  m_AnchoredPosition: {x: -0.074402, y: -75.8}
+  m_SizeDelta: {x: 150, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &270519703
 MonoBehaviour:
@@ -332,7 +332,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 270519704}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 360723559}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: ContinueGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &270519704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,6 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c590aeacfe9b1974493aeb2259176b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playClickSound: 1
 --- !u!4 &360723560
 Transform:
   m_ObjectHideFlags: 0
@@ -858,6 +871,77 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520985223}
   m_CullTransparentMesh: 1
+--- !u!1 &607819440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 607819442}
+  - component: {fileID: 607819441}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &607819441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607819440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892b4d3a87f0d3d4f8906f98b1539387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGameState: 0
+  pauseMenuPanel: {fileID: 0}
+  levelCompletePanel: {fileID: 0}
+  loadingPanel: {fileID: 0}
+  hudPanel: {fileID: 0}
+  levelCompleteText: {fileID: 0}
+  loadingText: {fileID: 0}
+  checkpointText: {fileID: 0}
+  pauseResumeButton: {fileID: 0}
+  pauseMainMenuButton: {fileID: 0}
+  levelCompleteNextButton: {fileID: 0}
+  levelCompleteMainMenuButton: {fileID: 0}
+  endGameScene: EndGame
+  player: {fileID: 0}
+  lastCheckpointPosition: {x: 0, y: 0, z: 0}
+  lastCheckpointScene: 
+  completedLevels: []
+  autoSaveEnabled: 1
+  autoSaveInterval: 30
+  gameScenes:
+  - Map1
+  - Map2
+  - Map3
+  - MapRest
+  - Example
+  mainMenuScene: MainMenu
+  currentLevel: 
+--- !u!4 &607819442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607819440}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 611.3919, y: 308.69922, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &664527957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,8 +1335,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -300}
-  m_SizeDelta: {x: 292, y: 96}
+  m_AnchoredPosition: {x: -0.074402, y: -188.5}
+  m_SizeDelta: {x: 150, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1014298826
 MonoBehaviour:
@@ -1384,8 +1468,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 791, y: -37.503}
-  m_SizeDelta: {x: 155, y: 155}
+  m_AnchoredPosition: {x: 389.54, y: -23.6}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: -0.08711872}
 --- !u!114 &1083160500
 MonoBehaviour:
@@ -1529,8 +1613,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 791, y: -265.5}
-  m_SizeDelta: {x: 155, y: 155}
+  m_AnchoredPosition: {x: 389.54, y: -140}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: -0.08711872}
 --- !u!114 &1108737376
 MonoBehaviour:
@@ -2137,7 +2221,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.9
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2233,8 +2317,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52bbe379be2907c4f893d156c68fa6c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxSource: {fileID: 1394990894}
-  musicSource: {fileID: 1394990893}
+  sfxSource: {fileID: 0}
+  musicSource: {fileID: 0}
+  attackSFX: {fileID: 0}
+  jumpSFX: {fileID: 0}
+  hurtSFX: {fileID: 0}
+  deathSFX: {fileID: 0}
+  rollSFX: {fileID: 0}
+  blockSFX: {fileID: 0}
+  healManaSFX: {fileID: 0}
+  skillCastSFX: {fileID: 0}
+  enemyTakeDame: {fileID: 0}
+  click: {fileID: 0}
+  footSteep: {fileID: 0}
+  menu: {fileID: 0}
+  map1Music: {fileID: 0}
+  map2Music: {fileID: 0}
+  map3Music: {fileID: 0}
+  restMapMusic: {fileID: 0}
   isSoundOn: 1
   isMusicOn: 1
 --- !u!4 &1394990896
@@ -2796,8 +2896,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -86.5}
-  m_SizeDelta: {x: 1920, y: 1253}
+  m_AnchoredPosition: {x: 2.4003, y: -12.186}
+  m_SizeDelta: {x: 936.3536, y: 545.8808}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1722863834
 MonoBehaviour:
@@ -3269,8 +3369,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 24}
-  m_SizeDelta: {x: 292, y: 96}
+  m_AnchoredPosition: {x: -0.074402, y: 28.1}
+  m_SizeDelta: {x: 150, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2065984142
 MonoBehaviour:
@@ -3316,9 +3416,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2065984145}
-        m_TargetAssemblyTypeName: SettingPopup, Assembly-CSharp
-        m_MethodName: ShowPopup
+      - m_Target: {fileID: 360723559}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: NewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3430,3 +3530,4 @@ SceneRoots:
   - {fileID: 312612453}
   - {fileID: 360723560}
   - {fileID: 1394990896}
+  - {fileID: 607819442}

@@ -9,6 +9,23 @@ public class AudioController : MonoBehaviour
     public AudioSource musicSource;    // Dùng cho nhạc nền
 
 
+    [Header("Sound Effects")]
+    public AudioClip attackSFX;
+    public AudioClip jumpSFX;
+    public AudioClip hurtSFX;
+    public AudioClip deathSFX;
+    public AudioClip rollSFX;
+    public AudioClip blockSFX;
+    public AudioClip healManaSFX;
+    public AudioClip skillCastSFX;
+    public AudioClip enemyTakeDame;
+    public AudioClip click;
+    public AudioClip footSteep;
+    public AudioClip menu;
+    public AudioClip map1Music;
+    public AudioClip map2Music;
+    public AudioClip map3Music;
+    public AudioClip restMapMusic;
 
     public bool isSoundOn = true;
     public bool isMusicOn = true;
@@ -91,4 +108,108 @@ public class AudioController : MonoBehaviour
         PlayerPrefs.SetInt("MusicOn", on ? 1 : 0);
         PlayerPrefs.Save();
     }
+
+
+    public void PlayAttackSound()
+    {
+        PlaySFX(attackSFX, 0.9f); // Giảm âm thanh tấn công
+    }
+    public void PlayFootStep()
+    {
+        if (isSoundOn && sfxSource != null && footSteep != null)
+        {
+            sfxSource.PlayOneShot(footSteep, 0.7f); // âm lượng tùy chỉnh
+        }
+    }
+
+    public void PlayEnemyTakeDame()
+    {
+        PlaySFX(enemyTakeDame, 0.9f);
+    }
+
+    public void PlayJumpSound()
+    {
+        PlaySFX(jumpSFX, 0.9f);
+    }
+
+    public void PlayHurtSound()
+    {
+        PlaySFX(hurtSFX, 0.8f);
+    }
+
+    public void PlayDeathSound()
+    {
+        PlaySFX(deathSFX, 0.8f);
+    }
+
+    public void PlayRollSound()
+    {
+        PlaySFX(rollSFX, 0.9f);
+    }
+
+    public void PlayBlockSound()
+    {
+        PlaySFX(blockSFX, 0.8f);
+    }
+
+    public void PlayHealSound()
+    {
+        PlaySFX(healManaSFX, 0.8f);
+    }
+
+    public void PlaySkillCastSound()
+    {
+        PlaySFX(skillCastSFX, 0.8f);
+    }
+
+    private void PlaySFX(AudioClip clip, float volume = 1f)
+    {
+        if (isSoundOn && sfxSource != null && clip != null)
+            sfxSource.PlayOneShot(clip, volume);
+    }
+
+    public void PlayMapMusic(AudioClip music, float volume = 1f)
+    {
+        if (!isMusicOn || musicSource == null || music == null) return;
+
+        if (musicSource.clip != music)
+        {
+            musicSource.clip = music;
+            musicSource.loop = true;
+            musicSource.volume = volume;
+            musicSource.Play();
+        }
+        else if (!musicSource.isPlaying)
+        {
+            // Nếu đúng clip nhưng đã bị dừng thì phát lại
+            musicSource.Play();
+        }
+    }
+
+    public void PlayRestMapMusic()
+    {
+        PlayMapMusic(restMapMusic, 0.1f);
+    }
+    public void PlayMenuMusic()
+    {
+        PlayMapMusic(menu, 0.1f);
+    }
+    public void PlayMap1Music()
+    {
+        PlayMapMusic(map1Music, 0.3f);
+    }
+    public void PlayMap2Music()
+    {
+        PlayMapMusic(map2Music, 0.2f);
+    }
+    public void PlayMap3Music()
+    {
+        PlayMapMusic(map3Music, 0.2f);
+    }
+    public void PlayClickSound()
+    {
+        PlaySFX(click, 0.3f);
+    }
+
+
 }

@@ -23,23 +23,21 @@ MonoBehaviour:
   - m_enabled: 1
     m_path: Assets/Scenes/MainMenu.unity
   - m_enabled: 1
-    m_path: Assets/Scenes/EndGame.unity
-  - m_enabled: 1
-    m_path: Assets/Scenes/Instruction.unity
-  - m_enabled: 1
-    m_path: Assets/Scenes/LeaderBoard.unity
-  - m_enabled: 1
     m_path: Assets/Scenes/Map1.unity
   - m_enabled: 1
     m_path: Assets/Scenes/Map2.unity
   - m_enabled: 1
     m_path: Assets/Scenes/Map3.unity
   - m_enabled: 1
-    m_path: Assets/Scenes/Map4.unity
-  - m_enabled: 1
-    m_path: Assets/Scenes/Map5.unity
+    m_path: Assets/Scenes/MapRest.unity
   - m_enabled: 1
     m_path: Assets/Scenes/Example.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/EndGame.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Instruction.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/LeaderBoard.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings: []

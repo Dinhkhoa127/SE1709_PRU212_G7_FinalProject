@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: c47bd3f1a68ca4caca94bbbebf69ba0e
+timeCreated: 1506610391
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 101407
+  packageName: GothicVania Town
+  packageVersion: 1.0
+  assetPath: Assets/Gothicvania-Town/Animations/bearded-idle-3.controller
+  uploadId: 205982

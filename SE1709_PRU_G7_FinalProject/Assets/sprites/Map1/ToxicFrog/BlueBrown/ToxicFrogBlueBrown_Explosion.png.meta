@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: e8560377affbcad448fb8a0909be5028
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9104046814778786325
+    second: ToxicFrogBlueBrown_Explosion_0
+  - first:
+      213: 8493275809342429865
+    second: ToxicFrogBlueBrown_Explosion_1
+  - first:
+      213: 4121793987462033879
+    second: ToxicFrogBlueBrown_Explosion_2
+  - first:
+      213: -1621401839460399084
+    second: ToxicFrogBlueBrown_Explosion_3
+  - first:
+      213: 1312387492484844374
+    second: ToxicFrogBlueBrown_Explosion_4
+  - first:
+      213: -5177494390187732806
+    second: ToxicFrogBlueBrown_Explosion_5
+  - first:
+      213: 5703270362967413544
+    second: ToxicFrogBlueBrown_Explosion_6
+  - first:
+      213: 6984342338519477353
+    second: ToxicFrogBlueBrown_Explosion_7
+  - first:
+      213: -3220224029122782803
+    second: ToxicFrogBlueBrown_Explosion_8
+  - first:
+      213: -441517484958101264
+    second: ToxicFrogBlueBrown_Explosion_9
+  - first:
+      213: 4194957902515030775
+    second: ToxicFrogBlueBrown_Explosion_10
+  - first:
+      213: 7692590178775864523
+    second: ToxicFrogBlueBrown_Explosion_11
+  - first:
+      213: 6666187030014348138
+    second: ToxicFrogBlueBrown_Explosion_12
+  - first:
+      213: -2634483243541885055
+    second: ToxicFrogBlueBrown_Explosion_13
+  - first:
+      213: -9098417793640904291
+    second: ToxicFrogBlueBrown_Explosion_14
+  - first:
+      213: 7577975197400892886
+    second: ToxicFrogBlueBrown_Explosion_15
+  - first:
+      213: -5774427865838385070
+    second: ToxicFrogBlueBrown_Explosion_16
+  - first:
+      213: 2626604614286062515
+    second: ToxicFrogBlueBrown_Explosion_17
+  - first:
+      213: -4144481466580565599
+    second: ToxicFrogBlueBrown_Explosion_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 14
+        width: 23
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bed759248ade7a180800000000000000
+      internalID: -9104046814778786325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_1
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 14
+        width: 25
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9aa164b695d2ed570800000000000000
+      internalID: 8493275809342429865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_2
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 14
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d1f30c1bcd833930800000000000000
+      internalID: 4121793987462033879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_3
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 15
+        width: 27
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4184cc81e9f9f79e0800000000000000
+      internalID: -1621401839460399084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_4
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 28
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65b89399879863210800000000000000
+      internalID: 1312387492484844374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_5
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 24
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab0584e9848d528b0800000000000000
+      internalID: -5177494390187732806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_6
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 16
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8239faa8d26162f40800000000000000
+      internalID: 5703270362967413544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_7
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 16
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96cac2d2a5e5de060800000000000000
+      internalID: 6984342338519477353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_8
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 17
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da995f69e477f43d0800000000000000
+      internalID: -3220224029122782803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_9
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 26
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f0d2facf2a6fd9f0800000000000000
+      internalID: -441517484958101264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_10
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 21
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fa402b8cfb773a30800000000000000
+      internalID: 4194957902515030775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_11
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 26
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc41890b20291ca60800000000000000
+      internalID: 7692590178775864523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_12
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 17
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6b425ae8cd038c50800000000000000
+      internalID: 6666187030014348138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_13
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 24
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18f87f5b27f607bd0800000000000000
+      internalID: -2634483243541885055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_14
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 18
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d99c0ffd83debb180800000000000000
+      internalID: -9098417793640904291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_15
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 19
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d50dcdca406a2960800000000000000
+      internalID: 7577975197400892886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_16
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 19
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2580693437c1ddfa0800000000000000
+      internalID: -5774427865838385070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_17
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 19
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b33ce7faf2937420800000000000000
+      internalID: 2626604614286062515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToxicFrogBlueBrown_Explosion_18
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 22
+        width: 51
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a186468018db76c0800000000000000
+      internalID: -4144481466580565599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ToxicFrogBlueBrown_Explosion_0: -9104046814778786325
+      ToxicFrogBlueBrown_Explosion_1: 8493275809342429865
+      ToxicFrogBlueBrown_Explosion_10: 4194957902515030775
+      ToxicFrogBlueBrown_Explosion_11: 7692590178775864523
+      ToxicFrogBlueBrown_Explosion_12: 6666187030014348138
+      ToxicFrogBlueBrown_Explosion_13: -2634483243541885055
+      ToxicFrogBlueBrown_Explosion_14: -9098417793640904291
+      ToxicFrogBlueBrown_Explosion_15: 7577975197400892886
+      ToxicFrogBlueBrown_Explosion_16: -5774427865838385070
+      ToxicFrogBlueBrown_Explosion_17: 2626604614286062515
+      ToxicFrogBlueBrown_Explosion_18: -4144481466580565599
+      ToxicFrogBlueBrown_Explosion_2: 4121793987462033879
+      ToxicFrogBlueBrown_Explosion_3: -1621401839460399084
+      ToxicFrogBlueBrown_Explosion_4: 1312387492484844374
+      ToxicFrogBlueBrown_Explosion_5: -5177494390187732806
+      ToxicFrogBlueBrown_Explosion_6: 5703270362967413544
+      ToxicFrogBlueBrown_Explosion_7: 6984342338519477353
+      ToxicFrogBlueBrown_Explosion_8: -3220224029122782803
+      ToxicFrogBlueBrown_Explosion_9: -441517484958101264
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
