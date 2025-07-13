@@ -143,6 +143,8 @@ public class GameManager : MonoBehaviour
         HandleInput();
         HandleAutoSave();
         UpdateUI();
+        if (currentGameState == GameState.Playing)
+            totalPlayTime += Time.deltaTime;
     }
     
     void HandleInput()
@@ -168,21 +170,45 @@ public class GameManager : MonoBehaviour
         // Quick load với F9
         if (Input.GetKeyDown(KeyCode.F9))
         {
-            LoadGameData();
+            ForceLoadGameData();
             ShowCheckpointMessage("Game Loaded!");
+        }
+        
+        // Debug auto-save status với F8
+        if (Input.GetKeyDown(KeyCode.F8))
+        {
+            float remainingTime = autoSaveInterval - autoSaveTimer;
+            ShowCheckpointMessage($"Next auto-save: {remainingTime:F0}s");
         }
     }
     
     void HandleAutoSave()
     {
-        if (!autoSaveEnabled || currentGameState != GameState.Playing) return;
+        if (!autoSaveEnabled) return;
         
-        autoSaveTimer += Time.unscaledDeltaTime; // Dùng unscaledDeltaTime để hoạt động khi pause
-        if (autoSaveTimer >= autoSaveInterval)
+        // Auto-save trong playing state hoặc khi inventory/shop mở (vì có thể mua/sử dụng items)
+        bool shouldCountTimer = (currentGameState == GameState.Playing || 
+                                currentGameState == GameState.InventoryOpen || 
+                                currentGameState == GameState.ShopOpen);
+        
+        if (shouldCountTimer)
         {
-            autoSaveTimer = 0f;
-            SaveGameData();
-            ShowCheckpointMessage("Auto Saved!");
+            autoSaveTimer += Time.unscaledDeltaTime; // Dùng unscaledDeltaTime để hoạt động khi pause
+            
+            if (autoSaveTimer >= autoSaveInterval)
+            {
+                autoSaveTimer = 0f;
+                SaveGameData();
+                ShowCheckpointMessage("Auto Saved!");
+            }
+        }
+        else
+        {
+            // Reset timer nếu không ở state thích hợp
+            if (autoSaveTimer > 0)
+            {
+                autoSaveTimer = 0f;
+            }
         }
     }
     
@@ -294,6 +320,10 @@ public class GameManager : MonoBehaviour
     {
         if (currentGameState == GameState.GameOver) return; // Prevent multiple calls
         
+        // Auto-save before death để preserve progress
+        SaveGameData();
+        Debug.Log("💀 AUTO-SAVE: Player died - progress saved!");
+        
         ChangeGameState(GameState.GameOver);
         
         // Fire death event
@@ -364,8 +394,11 @@ public class GameManager : MonoBehaviour
         if (!completedLevels.Contains(levelName))
         {
             completedLevels.Add(levelName);
-            SaveGameData(); // Save progress
         }
+        
+        // Always save when completing level
+        SaveGameData();
+        Debug.Log($"🎉 AUTO-SAVE: Level {levelName} completed and saved!");
         
         ChangeGameState(GameState.LevelComplete);
         
@@ -419,9 +452,14 @@ public class GameManager : MonoBehaviour
         if (loadingText != null)
             loadingText.text = $"Loading {sceneName}...";
         
-        // Save before changing scene
-        if (currentGameState != GameState.MainMenu)
+        // Save before changing scene - CRITICAL for inventory persistence
+        if (currentGameState != GameState.MainMenu && player != null)
+        {
+            string currentScene = SceneManager.GetActiveScene().name;
+            Debug.Log($"💾 AUTO-SAVE: Saving progress before leaving {currentScene}...");
             SaveGameData();
+            Debug.Log($"✅ AUTO-SAVE: Progress saved! Items: {player.inventory.Count}, Gold: {player.gold}");
+        }
         
         yield return new WaitForSecondsRealtime(0.5f); // Minimum loading time for UX
         
@@ -448,7 +486,7 @@ public class GameManager : MonoBehaviour
     
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log($"Scene loaded: {scene.name}");
+        Debug.Log($"Scene loaded: {scene.name}");   
         
         // Find player in new scene
         if (scene.name != mainMenuScene)
@@ -478,7 +516,63 @@ public class GameManager : MonoBehaviour
         yield return null; // Wait 1 frame
         if (player != null)
         {
-            LoadGameData();
+            // 🧠 SMART AUTO-LOAD - Chỉ load khi thực sự cần thiết
+            string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            
+            // Check if this is a fresh start or respawn situation
+            bool shouldAutoLoad = false;
+            
+            // Auto-load trong các trường hợp sau:
+            if (player.inventory.Count == 0 && player.gold == 0 && player.GetMaxHealth() <= 100)
+            {
+                // Player mới hoặc chưa có data gì
+                shouldAutoLoad = true;
+            }
+            else if (currentScene == "EndGame" || currentScene == "MainMenu")
+            {
+                // Từ EndGame hoặc MainMenu - có thể cần load save
+                shouldAutoLoad = true;
+            }
+            else if (currentScene == "MapRest")
+            {
+                // Luôn auto-load khi vào MapRest - đây là hub scene
+                shouldAutoLoad = true;
+            }
+            else if (currentScene == lastCheckpointScene)
+            {
+                // Respawn tại checkpoint
+                shouldAutoLoad = true;
+            }
+            else if (player.GetHealth() <= 0)
+            {
+                // Player chết - cần load để restore health
+                shouldAutoLoad = true;
+            }
+            
+            if (shouldAutoLoad)
+            {
+                LoadGameData();
+            }
+            else
+            {
+                // Đảm bảo equipment UI luôn hiển thị đúng khi không auto-load
+                // Load equipped items từ save data để equipment UI có thể hiển thị
+                PlayerData savedData = SaveManager.Load();
+                if (savedData != null && savedData.equippedItems != null)
+                {
+                    player.LoadEquippedItems(savedData.equippedItems);
+                    
+                    // Force update equipment slots UI immediately
+                    var equipmentSlotsUI = FindObjectOfType<EquipmentSlotsUI>();
+                    if (equipmentSlotsUI != null)
+                    {
+                        equipmentSlotsUI.UpdateEquipmentDisplay();
+                    }
+                }
+                
+                // Schedule equipment UI update for next inventory open
+                player.ScheduleEquipmentUIUpdate();
+            }
         }
     }
     
@@ -533,6 +627,22 @@ public class GameManager : MonoBehaviour
     {
         if (player != null)
         {
+            // DETAILED DEBUG - Trước khi save
+            Debug.Log("💾 === STARTING SAVE PROCESS ===");
+            Debug.Log($"📊 Current Player State: Gold: {player.gold}, Inventory: {player.inventory.Count} items");
+            
+            // Debug equipped items trước khi save
+            int equippedCount = 0;
+            foreach (var kvp in player.equippedItems)
+            {
+                if (kvp.Value != null)
+                {
+                    equippedCount++;
+                    Debug.Log($"⚔️ Equipped: {kvp.Value.itemName} in {kvp.Key} slot");
+                }
+            }
+            Debug.Log($"🛡️ Total equipped items: {equippedCount}");
+            
             // Use existing PlayerKnight save system
             player.SaveGame();
             
@@ -545,8 +655,20 @@ public class GameManager : MonoBehaviour
             // Save completed levels
             string completedLevelsString = string.Join(",", completedLevels);
             PlayerPrefs.SetString("CompletedLevels", completedLevelsString);
+
+            // Save total play time
+            PlayerPrefs.SetFloat("TotalPlayTime", totalPlayTime);
+            PlayerPrefs.SetInt("TotalEnemiesKilled", totalEnemiesKilled);
+            PlayerPrefs.SetInt("TotalEnemiesInGame", totalEnemiesInGame);
             
             PlayerPrefs.Save();
+            
+            Debug.Log($"✅ GAMEMANAGER SAVE COMPLETED: Gold: {player.gold}, Inventory: {player.inventory.Count} items, Equipment: {equippedCount}");
+            Debug.Log("💾 === SAVE PROCESS FINISHED ===");
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ Cannot save - Player not found!");
         }
     }
     
@@ -572,6 +694,21 @@ public class GameManager : MonoBehaviour
         {
             completedLevels = new List<string>(completedLevelsString.Split(','));
         }
+
+        // Load total play time
+        totalPlayTime = PlayerPrefs.GetFloat("TotalPlayTime", 0f);
+        totalEnemiesKilled = PlayerPrefs.GetInt("TotalEnemiesKilled", 0);
+        totalEnemiesInGame = PlayerPrefs.GetInt("TotalEnemiesInGame", 0);
+    }
+    
+    /// <summary>
+    /// Force load game data - chỉ dùng cho Continue Game hoặc F9
+    /// </summary>
+    public void ForceLoadGameData()
+    {
+        Debug.Log("🔄 FORCE LOADING GAME DATA...");
+        LoadGameData();
+        Debug.Log("✅ Force load completed");
     }
     
     /// <summary>
@@ -583,6 +720,9 @@ public class GameManager : MonoBehaviour
         lastCheckpointScene = "";
         lastCheckpointPosition = Vector3.zero;
         completedLevels.Clear();
+        totalPlayTime = 0f;
+        totalEnemiesKilled = 0;
+        totalEnemiesInGame = 0;
         
         // Clear save data
         SaveManager.DeleteSave();
@@ -593,6 +733,9 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.DeleteKey("LastCheckpointY");
         PlayerPrefs.DeleteKey("LastCheckpointZ");
         PlayerPrefs.DeleteKey("CompletedLevels");
+        PlayerPrefs.DeleteKey("TotalPlayTime");
+        PlayerPrefs.DeleteKey("TotalEnemiesKilled");
+        PlayerPrefs.DeleteKey("TotalEnemiesInGame");
         PlayerPrefs.Save();
         
         Debug.Log("Game data reset for NEW GAME");
@@ -636,4 +779,15 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
     #endregion
+
+    public float totalPlayTime = 0f;
+    public int totalEnemiesKilled = 0;
+    public int totalEnemiesInGame = 0; // Sẽ cộng dồn khi load từng map
+
+    public void OnEnemyKilled()
+    {
+        totalEnemiesKilled++;
+    }
+
+    public Dictionary<string, int> enemiesPerMap = new Dictionary<string, int>();
 } 

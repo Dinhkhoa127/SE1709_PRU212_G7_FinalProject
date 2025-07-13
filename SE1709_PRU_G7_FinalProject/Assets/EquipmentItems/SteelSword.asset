@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7684586311a974d9295bfe5896d9a5, type: 3}
+  m_Name: SteelSword
+  m_EditorClassIdentifier: 
+  itemName: Steel Sword
+  itemSprite: {fileID: 21300000, guid: 789e518168d493d4396ec984b1b5bcb3, type: 3}
+  basePrice: 100
+  itemType: 2
+  effectValue: 0
+  equipmentType: 4
+  attackBonus: 2
+  armorBonus: 0
+  magicResistBonus: 0
+  healthBonus: 1
+  manaBonus: 0
+  description: A sharp steel sword that increases attack power.
+  isAvailableInShop: 1
+  maxStackSize: 99

@@ -11,6 +11,9 @@ public class EndGameController : MonoBehaviour
     public Button mainMenuButton;
     public Button quitButton;
     
+    public TMPro.TextMeshProUGUI playTimeText;
+    public TMPro.TextMeshProUGUI enemiesKilledText;
+    
     void Start()
     {
         // Setup button events
@@ -22,6 +25,21 @@ public class EndGameController : MonoBehaviour
             
         if (quitButton != null)
             quitButton.onClick.AddListener(QuitGame);
+
+        if (playTimeText != null)
+        {
+            float time = GameManager.Instance.totalPlayTime;
+            int hours = Mathf.FloorToInt(time / 3600f);
+            int minutes = Mathf.FloorToInt((time % 3600f) / 60f);
+            int seconds = Mathf.FloorToInt(time % 60f);
+            playTimeText.text = $"Play Time: {hours:00}:{minutes:00}:{seconds:00}";
+        }
+        if (enemiesKilledText != null)
+        {
+            int killed = GameManager.Instance.totalEnemiesKilled;
+            int total = GameManager.Instance.totalEnemiesInGame;
+            enemiesKilledText.text = $"Enemies Defeated: {killed}/{total}";
+        }
     }
     
     public void RestartGame()
