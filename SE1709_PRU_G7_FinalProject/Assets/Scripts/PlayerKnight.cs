@@ -112,11 +112,9 @@ public class PlayerKnight : MonoBehaviour
     
     // Equipment UI update flag
     private bool shouldUpdateEquipmentUIOnInventoryOpen = false;
-
     //BerserkTime
     [Header("Berserk Skill")]
     public float berserkDuration = 6.5f; // Thời gian Berserk
-
     void Start()
     {
         swordCollider1 = transform.Find("SwordCollider1").gameObject;

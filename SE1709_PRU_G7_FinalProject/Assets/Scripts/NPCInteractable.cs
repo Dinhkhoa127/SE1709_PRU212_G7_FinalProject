@@ -46,8 +46,6 @@ public class NPCInteractable : MonoBehaviour
     public string openChest = "Press F - Open Chest";
 
     private Animator animator;
-
-
     void Start()
     {
         // Auto-setup can be done here if needed
@@ -66,6 +64,7 @@ public class NPCInteractable : MonoBehaviour
                 fPrompt.SetActive(true);
                 
                 // Update prompt text for training area, exit, map portal, or equipment shop
+
                 if (npcType == NPCType.Training || npcType == NPCType.Exit || npcType == NPCType.MapPortal || npcType == NPCType.EquipmentShop || npcType == NPCType.Chest)
 
                 {
