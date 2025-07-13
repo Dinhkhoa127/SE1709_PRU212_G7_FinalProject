@@ -80,7 +80,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 810683083
-  m_SortingLayer: 7
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7075343948941584853, guid: bfc999d48b5b98245b20e613b2f146c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -192,15 +192,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkSpeed: 2
-  RunSpeed: 4
-  FlySpeed: 5
-  Hp: 100
+  RunSpeed: 3
+  FlySpeed: 3
+  Hp: 50
   Mana: 100
   Defend: 0
-  PhysicalDame: 0
+  PhysicalDame: 10
   AttackSpeed: 0
-  AttackRange: 30
-  IsAttackRange: 30
+  AttackRange: 20
+  IsAttackRange: 20
   MagicDame: 0
   PatrolRange: 10
   attackCooldown: 0.5
@@ -223,6 +223,7 @@ MonoBehaviour:
     m_Bits: 1024
   attackPoint: {fileID: 4782643472145331249}
   attackRadius: 2
+  healthBar: {fileID: 6287211739595735784}
 --- !u!1 &5288865913765556232
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,7 +277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3318270803871613910, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
       propertyPath: m_SortingLayerID
-      value: 454065949
+      value: 52167783
       objectReference: {fileID: 0}
     - target: {fileID: 3593120963358456493, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
       propertyPath: m_AnchoredPosition.x

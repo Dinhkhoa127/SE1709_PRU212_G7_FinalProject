@@ -157,21 +157,37 @@ private void Start()
         }
 
         // ✔️ Bắn đạn vòng tròn theo thời gian
+        //if (circleFireTimer >= circleFireInterval && Vector2.Distance(transform.position, player.position) <= checkPlayerDistance)
+        //{
+        //    int skill = Random.Range(0, 3); // 0 = FireCircle, 1 = SinhEnemy, 2 = HoiMau
+
+        //    if (skill == 0)
+        //    {
+        //        FireCircle();
+        //    }
+        //    else if (skill == 1)
+        //    {
+        //        SinhEnemy();
+        //    }
+        //    else
+        //    {
+        //        HoiMau(15f);
+        //    }
+
+        //    circleFireTimer = 0f;
+        //}
+        // Trong phương thức Update(), sửa đoạn chọn skill ngẫu nhiên:
         if (circleFireTimer >= circleFireInterval && Vector2.Distance(transform.position, player.position) <= checkPlayerDistance)
         {
-            int skill = Random.Range(0, 3); // 0 = FireCircle, 1 = SinhEnemy, 2 = HoiMau
+            int skill = Random.Range(0, 2); // Đổi từ (0, 3) thành (0, 2)
 
             if (skill == 0)
             {
-                FireCircle();
-            }
-            else if (skill == 1)
-            {
-                SinhEnemy();
+                FireCircle(); // Skill bắn đạn vòng tròn
             }
             else
             {
-                HoiMau(15f);
+                HoiMau(15f); // Skill hồi máu
             }
 
             circleFireTimer = 0f;
