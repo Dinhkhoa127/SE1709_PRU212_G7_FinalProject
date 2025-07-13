@@ -19,8 +19,23 @@ public class EquipmentSlotsUI : MonoBehaviour
     
     void Start()
     {
-        player = FindObjectOfType<PlayerKnight>();
+        RefreshPlayerReference();
         InitializeSlots();
+    }
+    
+    void OnEnable()
+    {
+        // Always update when UI becomes active - NO DELAY
+        RefreshPlayerReference();
+        UpdateEquipmentDisplay();
+    }
+    
+    void RefreshPlayerReference()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerKnight>();
+        }
     }
     
     void InitializeSlots()
@@ -38,6 +53,9 @@ public class EquipmentSlotsUI : MonoBehaviour
     
     public void UpdateEquipmentDisplay()
     {
+        // Always refresh player reference first
+        RefreshPlayerReference();
+        
         if (player == null) return;
         
         // Update each equipment slot with equipped items
@@ -55,6 +73,9 @@ public class EquipmentSlotsUI : MonoBehaviour
     {
         if (slot == null) return;
         
+        // Refresh player reference in slot as well
+        slot.RefreshPlayerReference();
+        
         ItemInfo equippedItem = player.GetEquippedItem(equipType);
         if (equippedItem != null)
         {
@@ -71,16 +92,14 @@ public class EquipmentSlotsUI : MonoBehaviour
     {
         if (slot == null) return;
         
+        RefreshPlayerReference();
+        if (player == null) return;
+        
         ItemInfo currentItem = slot.GetEquippedItem();
         if (currentItem != null)
         {
             // Unequip item
             player.UnequipItem(slot.allowedType);
-            Debug.Log($"Unequipped {currentItem.itemName}");
-        }
-        else
-        {
-            Debug.Log($"No item equipped in {slot.allowedType} slot");
         }
     }
 } 

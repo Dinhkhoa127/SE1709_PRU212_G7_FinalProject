@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
     public string lastCheckpointScene;
     public List<string> completedLevels = new List<string>();
     public bool autoSaveEnabled = true;
-    public float autoSaveInterval = 10f; // Auto-save mỗi 10 giây (để test dễ hơn)
+    public float autoSaveInterval = 30f; // Auto-save mỗi 30 giây
     private float autoSaveTimer = 0f;
     #endregion
 
@@ -176,11 +176,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F8))
         {
             float remainingTime = autoSaveInterval - autoSaveTimer;
-            Debug.Log($"🔍 AUTO-SAVE STATUS:");
-            Debug.Log($"  ⏰ Timer: {autoSaveTimer:F1}s / {autoSaveInterval}s");
-            Debug.Log($"  ⏳ Next save in: {remainingTime:F1}s");
-            Debug.Log($"  🎮 Game State: {currentGameState}");
-            Debug.Log($"  ✅ Auto-save enabled: {autoSaveEnabled}");
             ShowCheckpointMessage($"Next auto-save: {remainingTime:F0}s");
         }
     }
@@ -198,20 +193,9 @@ public class GameManager : MonoBehaviour
         {
             autoSaveTimer += Time.unscaledDeltaTime; // Dùng unscaledDeltaTime để hoạt động khi pause
             
-            // Debug auto-save timer mỗi 10 giây để track
-            if (Mathf.FloorToInt(autoSaveTimer) % 10 == 0 && Mathf.FloorToInt(autoSaveTimer) > 0)
-            {
-                float remainingTime = autoSaveInterval - autoSaveTimer;
-                if (remainingTime > 0)
-                {
-                    Debug.Log($"⏰ AUTO-SAVE: {remainingTime:F0}s until next save (State: {currentGameState})");
-                }
-            }
-            
             if (autoSaveTimer >= autoSaveInterval)
             {
                 autoSaveTimer = 0f;
-                Debug.Log($"🔔 AUTO-SAVE TRIGGERED: {autoSaveInterval}s elapsed (State: {currentGameState})");
                 SaveGameData();
                 ShowCheckpointMessage("Auto Saved!");
             }
@@ -221,7 +205,6 @@ public class GameManager : MonoBehaviour
             // Reset timer nếu không ở state thích hợp
             if (autoSaveTimer > 0)
             {
-                Debug.Log($"⏸️ AUTO-SAVE PAUSED: Incompatible game state ({currentGameState})");
                 autoSaveTimer = 0f;
             }
         }
@@ -542,45 +525,51 @@ public class GameManager : MonoBehaviour
             {
                 // Player mới hoặc chưa có data gì
                 shouldAutoLoad = true;
-                Debug.Log("🔄 AUTO-LOAD: Fresh player detected");
             }
             else if (currentScene == "EndGame" || currentScene == "MainMenu")
             {
                 // Từ EndGame hoặc MainMenu - có thể cần load save
                 shouldAutoLoad = true;
-                Debug.Log("🔄 AUTO-LOAD: Coming from EndGame/MainMenu");
             }
             else if (currentScene == "MapRest")
             {
                 // Luôn auto-load khi vào MapRest - đây là hub scene
                 shouldAutoLoad = true;
-                Debug.Log("🏠 AUTO-LOAD: Entering MapRest - loading all saved progress");
             }
             else if (currentScene == lastCheckpointScene)
             {
                 // Respawn tại checkpoint
                 shouldAutoLoad = true;
-                Debug.Log("♻️ AUTO-LOAD: Respawn at checkpoint");
             }
             else if (player.GetHealth() <= 0)
             {
                 // Player chết - cần load để restore health
                 shouldAutoLoad = true;
-                Debug.Log("💀 AUTO-LOAD: Player dead - restoring health");
             }
             
             if (shouldAutoLoad)
             {
-                Debug.Log("🔄 AUTO-LOADING save data...");
                 LoadGameData();
             }
             else
             {
-                Debug.Log("⚠️ AUTO-LOAD SKIPPED - Preserving current player state");
-                Debug.Log($"📦 Current inventory: {player.inventory.Count} items, Gold: {player.gold}");
+                // Đảm bảo equipment UI luôn hiển thị đúng khi không auto-load
+                // Load equipped items từ save data để equipment UI có thể hiển thị
+                PlayerData savedData = SaveManager.Load();
+                if (savedData != null && savedData.equippedItems != null)
+                {
+                    player.LoadEquippedItems(savedData.equippedItems);
+                    
+                    // Force update equipment slots UI immediately
+                    var equipmentSlotsUI = FindObjectOfType<EquipmentSlotsUI>();
+                    if (equipmentSlotsUI != null)
+                    {
+                        equipmentSlotsUI.UpdateEquipmentDisplay();
+                    }
+                }
                 
-                // Chỉ force update UI để sync với current state
-                player.ForceUpdateInventoryUI();
+                // Schedule equipment UI update for next inventory open
+                player.ScheduleEquipmentUIUpdate();
             }
         }
     }

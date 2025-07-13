@@ -25,8 +25,65 @@ public class InventoryUI : MonoBehaviour
 
     void OnEnable()
     {
+        // Refresh player reference first - critical for scene transitions
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerKnight>();
+        }
+        
         UpdateUI();
         UpdateCharacterPanel();
+        
+        // Notify player that inventory is opened (for equipment UI update)
+        if (player != null)
+        {
+            player.OnInventoryOpened();
+        }
+        
+        // Force update equipment slots when inventory opens
+        if (equipmentSlotsUI != null)
+        {
+            equipmentSlotsUI.UpdateEquipmentDisplay();
+        }
+        
+        // CRITICAL: Direct force update of all equipment slots as immediate fallback
+        DirectForceUpdateEquipmentSlots();
+        
+        // Additional force update with a tiny delay to ensure everything is ready
+        StartCoroutine(ForceEquipmentUpdateAfterFrame());
+    }
+    
+    void DirectForceUpdateEquipmentSlots()
+    {
+        // Find and update all equipment slots directly - no coroutines, no delays
+        var equipmentSlots = FindObjectsOfType<EquipmentSlot>();
+        foreach (var slot in equipmentSlots)
+        {
+            if (player != null && slot != null)
+            {
+                slot.RefreshPlayerReference();
+                var equippedItem = player.GetEquippedItem(slot.allowedType);
+                if (equippedItem != null)
+                {
+                    slot.EquipItem(equippedItem);
+                }
+                else
+                {
+                    slot.ClearSlot();
+                }
+            }
+        }
+    }
+    
+    System.Collections.IEnumerator ForceEquipmentUpdateAfterFrame()
+    {
+        yield return null; // Wait one frame
+        
+        // Force update equipment slots again after one frame
+        if (equipmentSlotsUI != null)
+        {
+            equipmentSlotsUI.UpdateEquipmentDisplay();
+        }
     }
 
     public void UpdateUI()
@@ -109,7 +166,7 @@ public class InventoryUI : MonoBehaviour
             characterStatsUI.UpdateCharacterStats();
         }
         
-        // Update equipment display if available
+        // Force update equipment display immediately - NO DELAY
         if (equipmentSlotsUI != null)
         {
             equipmentSlotsUI.UpdateEquipmentDisplay();
