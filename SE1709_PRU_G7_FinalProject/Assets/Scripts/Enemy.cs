@@ -127,7 +127,7 @@ public class Enemy : MonoBehaviour
         lastAttackTime = Time.time;
     }
 
-    public void TakeDamage(int amount)
+    public virtual void TakeDamage(int amount)
     {
         health -= amount;
         if (healthBar != null)
@@ -140,6 +140,14 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        // Gọi MapManager cập nhật số quái
+        MapManager mapManager = FindObjectOfType<MapManager>();
+        if (mapManager != null)
+        {
+            mapManager.OnEnemyKilled();
+        }
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnEnemyKilled();
         Destroy(gameObject);
     }
 

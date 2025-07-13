@@ -4,22 +4,22 @@ using UnityEngine.UI;
 
 public class BossController : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float circleFireInterval = 4f;
-    [SerializeField] private GameObject bulletPrefab1;
-    [SerializeField] private Transform firePoint1;
-    [SerializeField] private float vongTron = 20f;
-    private float circleFireTimer = 0f;
-    [SerializeField] private float Hp = 1000f;
+    [SerializeField] private float circleFireInterval = 4f;  // Thời gian giữa các lần bắn đạn vòng tròn
+[SerializeField] private GameObject bulletPrefab1;       // Prefab của đạn
+[SerializeField] private Transform firePoint1;           // Vị trí bắn đạn
+[SerializeField] private float vongTron = 20f;          // Tốc độ đạn vòng tròn
+private float circleFireTimer = 0f;                     // Đếm thời gian giữa các lần bắn
+    [SerializeField] private float Hp = 1000f;   // Máu tối đa của boss
     [SerializeField] private GameObject miniEnemy;
-    private float currentHealth;
-    private float maxHp;
+    private float currentHealth; // Máu hiện tại
+    private float maxHp;// Lưu trữ máu tối đa
 
-    public static bool IsBossDefeated { get; private set; }
+    public static bool IsBossDefeated { get; private set; }  // Trạng thái boss đã bị đánh bai
 
     [Header("Di chuyển")]
-    public float minPatrolDistance = 0.5f;
-    public float maxPatrolDistance = 6f;
-    public float patrolHeightVariation = 3f;
+    public float minPatrolDistance = 0.5f;// Khoảng cách tuần tra tối thiểu
+    public float maxPatrolDistance = 6f;// Khoảng cách tuần tra tối đa
+    public float patrolHeightVariation = 3f; // Độ cao thay đổi khi tuần tra
     public float moveSpeed = 2f;
     private Vector2 patrolTarget;
     private bool isMovingToTarget = false;
@@ -29,12 +29,12 @@ public class BossController : MonoBehaviour, IDamageable
 
 
     [Header("Phạm vi & Phát hiện")]
-    public LayerMask groundLayer;
-    public Transform groundCheck;
-    public float groundCheckDistance = 0.5f;
+    public LayerMask groundLayer;// Layer mặt đất để check va chạm
+    public Transform groundCheck;// Điểm check mặt đất
+    public float groundCheckDistance = 0.5f;// Khoảng cách check mặt đất
     public GameObject hpUI;
-    public float checkPlayerDistance = 20f;         // hiện thanh máu khi ở gần
-    public float checkPlayerDistanceSound = 25f;
+    public float checkPlayerDistance = 20f;        // Khoảng cách hiện thanh máu
+    public float checkPlayerDistanceSound = 25f;// Khoảng cách phát âm thanh
 
     [Header("Tấn công")]
     public Transform player;
@@ -71,22 +71,51 @@ public class BossController : MonoBehaviour, IDamageable
     public AudioClip checkPlayerSound;
     public AudioClip attackSound;
 
-    private void Start()
+    private Coroutine smoothCoroutine;
+    //private void Start()
+    //{
+    //    rb = GetComponent<Rigidbody2D>();
+    //    startPosition = transform.position;
+    //    player = GameObject.FindGameObjectWithTag("Player")?.transform;
+    //    animator = GetComponent<Animator>();
+    //    SetNextPatrolTarget();
+    //    effectFire.SetActive(false);
+    //    currentHealth = Hp;
+    //    maxHp = Hp; // Gán giá trị tối đa
+    //    UpdateHp();
+    //    hpUI.SetActive(false);
+    //    audioSource = GetComponent<AudioSource>();
+    //    IsBossDefeated = false;
+    //}
+    // Cập nhật Start() để khởi tạo health đúng cách
+private void Start()
+{
+    rb = GetComponent<Rigidbody2D>();
+    startPosition = transform.position;
+    player = GameObject.FindGameObjectWithTag("Player")?.transform;
+    animator = GetComponent<Animator>();
+    SetNextPatrolTarget();
+    effectFire.SetActive(false);
+    
+    // Khởi tạo health
+    currentHealth = Hp;
+    maxHp = Hp;
+    
+    // Setup health bar
+    if (healthBar != null)
     {
-        rb = GetComponent<Rigidbody2D>();
-        startPosition = transform.position;
-        player = GameObject.FindGameObjectWithTag("Player")?.transform;
-        animator = GetComponent<Animator>();
-        SetNextPatrolTarget();
-        effectFire.SetActive(false);
-        currentHealth = Hp;
-        maxHp = Hp; // Gán giá trị tối đa
-        UpdateHp();
-        hpUI.SetActive(false);
-        audioSource = GetComponent<AudioSource>();
-        IsBossDefeated = false;
+        healthBar.fillAmount = 1f;
+        Debug.Log($"[BossController] Initialized - Max HP: {Hp}, Current: {currentHealth}");
     }
-
+    else
+    {
+        Debug.LogError("[BossController] Health bar reference is missing!");
+    }
+    
+    hpUI.SetActive(false);
+    audioSource = GetComponent<AudioSource>();
+    IsBossDefeated = false;
+}
     private void Update()
     {
         if (player == null) return;
@@ -128,21 +157,37 @@ public class BossController : MonoBehaviour, IDamageable
         }
 
         // ✔️ Bắn đạn vòng tròn theo thời gian
+        //if (circleFireTimer >= circleFireInterval && Vector2.Distance(transform.position, player.position) <= checkPlayerDistance)
+        //{
+        //    int skill = Random.Range(0, 3); // 0 = FireCircle, 1 = SinhEnemy, 2 = HoiMau
+
+        //    if (skill == 0)
+        //    {
+        //        FireCircle();
+        //    }
+        //    else if (skill == 1)
+        //    {
+        //        SinhEnemy();
+        //    }
+        //    else
+        //    {
+        //        HoiMau(15f);
+        //    }
+
+        //    circleFireTimer = 0f;
+        //}
+        // Trong phương thức Update(), sửa đoạn chọn skill ngẫu nhiên:
         if (circleFireTimer >= circleFireInterval && Vector2.Distance(transform.position, player.position) <= checkPlayerDistance)
         {
-            int skill = Random.Range(0, 3); // 0 = FireCircle, 1 = SinhEnemy, 2 = HoiMau
+            int skill = Random.Range(0, 2); // Đổi từ (0, 3) thành (0, 2)
 
             if (skill == 0)
             {
-                FireCircle();
-            }
-            else if (skill == 1)
-            {
-                SinhEnemy();
+                FireCircle(); // Skill bắn đạn vòng tròn
             }
             else
             {
-                HoiMau(15f);
+                HoiMau(15f); // Skill hồi máu
             }
 
             circleFireTimer = 0f;
@@ -183,6 +228,21 @@ public class BossController : MonoBehaviour, IDamageable
     {
         Instantiate(miniEnemy, transform.position, Quaternion.identity);
     }
+    //public void FireCircle()
+    //{
+    //    const int bulletCount = 24;
+    //    float angleStep = 360f / bulletCount;
+
+    //    for (int i = 0; i < bulletCount; i++)
+    //    {
+    //        float angle = i * angleStep;
+    //        Vector3 bulletDirection = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle), 0);
+
+    //        GameObject bullet = Instantiate(bulletPrefab1, firePoint1.position, Quaternion.identity);
+    //        EnemyBullet enemyBullet = bullet.AddComponent<EnemyBullet>();
+    //        enemyBullet.SetMovementDirection(bulletDirection.normalized * vongTron);
+    //    }
+    //}
     public void FireCircle()
     {
         const int bulletCount = 24;
@@ -195,6 +255,9 @@ public class BossController : MonoBehaviour, IDamageable
 
             GameObject bullet = Instantiate(bulletPrefab1, firePoint1.position, Quaternion.identity);
             EnemyBullet enemyBullet = bullet.AddComponent<EnemyBullet>();
+
+            // Thiết lập damage cho đạn
+            enemyBullet.SetDamage(damgeFire); // Thêm dòng này
             enemyBullet.SetMovementDirection(bulletDirection.normalized * vongTron);
         }
     }
@@ -356,31 +419,116 @@ public class BossController : MonoBehaviour, IDamageable
         }
     }
 
+    //public void TakeDamage(float damage)
+    //{
+    //    currentHealth -= damage;
+    //    animator.SetTrigger("hit_2");
+    //    UpdateHp();
+    //    if (currentHealth <= 0)
+    //    {
+    //        Die();
+    //    }
+    //}
     public void TakeDamage(float damage)
     {
+        if (IsBossDefeated) return;
+
+        // Debug trước khi nhận damage
+        Debug.Log($"[BossController Health] Before Damage - Current: {currentHealth}, Max: {Hp}, HealthBar: {healthBar?.fillAmount}");
+
         currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, Hp);
+
+        // Áp dụng smooth health bar
+        if (healthBar != null)
+        {
+            if (smoothCoroutine != null)
+                StopCoroutine(smoothCoroutine);
+
+            float targetFill = currentHealth / Hp;
+            smoothCoroutine = StartCoroutine(SmoothHealthBar(targetFill));
+        }
+
+        // Debug sau khi nhận damage
+        Debug.Log($"[BossController Health] After Damage - Current: {currentHealth}, Max: {Hp}, Target Fill: {currentHealth / Hp}");
+
         animator.SetTrigger("hit_2");
-        UpdateHp();
+
         if (currentHealth <= 0)
         {
+            Debug.Log("[BossController] Boss is dying!");
             Die();
         }
     }
 
-    private void DealDamage(float dame, Collider2D[] hits)
+    //private void DealDamage(float dame, Collider2D[] hits)
+    //{
+    //    //Collider2D[] hits = Physics2D.OverlapCircleAll(attack_Point.position, attackRadius, playerLayer);
+    //    foreach (Collider2D hit in hits)
+    //    {
+    //        IDamageable damageable = hit.GetComponent<IDamageable>();
+    //        if (damageable != null)
+    //        {
+    //            damageable.TakeDamage(dame);
+    //            Debug.Log("Take Dame");
+    //            return;
+    //        }
+    //    }
+
+    //}
+    private void DealDamage(float damage, Collider2D[] hits)
     {
-        //Collider2D[] hits = Physics2D.OverlapCircleAll(attack_Point.position, attackRadius, playerLayer);
+        Debug.Log($"[BossController] Đang thực hiện DealDamage(), Damage: {damage}, Hits: {hits.Length}");
+
         foreach (Collider2D hit in hits)
         {
+            Debug.Log($"[BossController] Collider hit: {hit.gameObject.name}, Layer: {LayerMask.LayerToName(hit.gameObject.layer)}");
+
+            // Check PlayerKnight trước
+            var player = hit.GetComponent<PlayerKnight>();
+            if (player != null)
+            {
+                Debug.Log($"[BossController] Tìm thấy PlayerKnight, máu trước khi đánh: {player.GetCurrentHealth()}");
+
+                if (damage == damge)
+                {
+                    player.TakePhysicalDamage((int)damage);
+                    Debug.Log($"[BossController] Gây {damage} sát thương vật lý!");
+                }
+                else if (damage == damgeFire)
+                {
+                    player.TakeMagicDamage((int)damage);
+                    Debug.Log($"[BossController] Gây {damage} sát thương phép!");
+                }
+
+                Debug.Log($"[BossController] Máu player sau khi đánh: {player.GetCurrentHealth()}");
+                return;
+            }
+
+            // Fallback sang IDamageable
             IDamageable damageable = hit.GetComponent<IDamageable>();
             if (damageable != null)
             {
-                damageable.TakeDamage(dame);
-                Debug.Log("Take Dame");
-                return;
+                Debug.Log($"[BossController] Gây {damage} sát thương qua IDamageable!");
+                damageable.TakeDamage(damage);
             }
         }
+    }
 
+    private IEnumerator SmoothHealthBar(float target)
+    {
+        float currentFill = healthBar.fillAmount;
+        float elapsedTime = 0f;
+        float duration = 0.5f; // Thời gian transition
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            healthBar.fillAmount = Mathf.Lerp(currentFill, target, elapsedTime / duration);
+            yield return null;
+        }
+
+        healthBar.fillAmount = target;
     }
 
 

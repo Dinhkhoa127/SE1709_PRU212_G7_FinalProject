@@ -20,24 +20,50 @@ public class Bat : Enemy1, IDamageable
     private bool movingRight = true;
     private Vector2 startPos;
 
+    private Coroutine smoothCoroutine;
+    //protected override void Start()
+    //{
+    //    base.Start();
+    //    animator = GetComponent<Animator>();
+    //    startPos = transform.position;
+    //    player = GameObject.FindGameObjectWithTag("Player")?.transform;
+    //    currentHealth = Hp;
+
+    //    // Gán thanh máu (nếu chưa gán qua Inspector)
+    //    if (healthBar == null)
+    //    {
+    //        healthBar = transform.Find("Hp")?.GetComponent<Image>();
+    //    }
+
+    //    UpdateHealthBar();
+    //    SetNextPatrolTarget();
+    //}
     protected override void Start()
     {
         base.Start();
         animator = GetComponent<Animator>();
         startPos = transform.position;
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
-        currentHealth = Hp;
+        currentHealth = Hp; // Set full health khi spawn
 
-        // Gán thanh máu (nếu chưa gán qua Inspector)
+        // Kiểm tra và setup health bar
         if (healthBar == null)
         {
             healthBar = transform.Find("Hp")?.GetComponent<Image>();
+            if (healthBar == null)
+            {
+                Debug.LogError("[Bat] Không tìm thấy health bar!");
+            }
         }
 
-        UpdateHealthBar();
+        // Set thanh máu đầy khi spawn
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = 1f;
+        }
+
         SetNextPatrolTarget();
     }
-
     void Update()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
@@ -65,20 +91,57 @@ public class Bat : Enemy1, IDamageable
         }
     }
 
+    //protected override void Attack()
+    //{
+    //    isAttacking = true;
+    //    animator.SetTrigger("Attack");
+    //    Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
+
+    //    foreach (Collider2D hit in hits)
+    //    {
+    //        IDamageable damageable = hit.GetComponent<IDamageable>();
+    //        if (damageable != null)
+    //        {
+    //            damageable.TakeDamage(PhysicalDame);
+    //        }
+    //    }
+    //    lastAttackTime = Time.time;
+    //}
     protected override void Attack()
     {
+        Debug.Log("[Bat] Bắt đầu tấn công!");
         isAttacking = true;
         animator.SetTrigger("Attack");
+
+        // Debug thông tin tấn công
+        Debug.Log($"[Bat] Physical Damage: {PhysicalDame}, Attack Range: {attackRadius}");
+
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
+        Debug.Log($"[Bat] Tìm thấy {hits.Length} colliders trong tầm đánh");
 
         foreach (Collider2D hit in hits)
         {
-            IDamageable damageable = hit.GetComponent<IDamageable>();
-            if (damageable != null)
+            Debug.Log($"[Bat] Collider hit: {hit.gameObject.name}, Layer: {LayerMask.LayerToName(hit.gameObject.layer)}");
+
+            // Check PlayerKnight trước
+            var player = hit.GetComponent<PlayerKnight>();
+            if (player != null)
             {
-                damageable.TakeDamage(PhysicalDame);
+                Debug.Log($"[Bat] Tìm thấy PlayerKnight, máu trước khi đánh: {player.GetCurrentHealth()}");
+                player.TakePhysicalDamage((int)PhysicalDame);
+                Debug.Log($"[Bat] Máu player sau khi đánh: {player.GetCurrentHealth()}");
+                break;
             }
+
+            //// Fallback sang IDamageable
+            //IDamageable damageable = hit.GetComponent<IDamageable>();
+            //if (damageable != null)
+            //{
+            //    Debug.Log("[Bat] Gây sát thương qua IDamageable interface");
+            //    damageable.TakeDamage(PhysicalDame);
+            //}
         }
+
         lastAttackTime = Time.time;
     }
 
@@ -125,14 +188,33 @@ public class Bat : Enemy1, IDamageable
         return hit.collider != null;
     }
 
+    //void Flip(float directionX)
+    //{
+    //    if ((directionX > 0 && transform.localScale.x < 0) || (directionX < 0 && transform.localScale.x > 0))
+    //    {
+    //        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+    //        if (healthBar != null)
+    //        {
+    //            healthBar.transform.localScale = new Vector3(-healthBar.transform.localScale.x, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+    //        }
+    //    }
+    //}
+    // Sửa lại hàm Flip để xử lý health bar
     void Flip(float directionX)
     {
-        if ((directionX > 0 && transform.localScale.x < 0) || (directionX < 0 && transform.localScale.x > 0))
+        if ((directionX > 0 && transform.localScale.x < 0) ||
+            (directionX < 0 && transform.localScale.x > 0))
         {
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
+            // Lật thanh máu theo hướng nhân vật
             if (healthBar != null)
             {
-                healthBar.transform.localScale = new Vector3(-healthBar.transform.localScale.x, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+                healthBar.transform.localScale = new Vector3(
+                    -healthBar.transform.localScale.x,
+                    healthBar.transform.localScale.y,
+                    healthBar.transform.localScale.z
+                );
             }
         }
     }
@@ -150,16 +232,43 @@ public class Bat : Enemy1, IDamageable
         enemy_Pool.ReturnToPool(gameObject);
     }
 
+    //public void TakeDamage(float damage)
+    //{
+    //    currentHealth -= damage;
+    //    UpdateHealthBar();
+    //    if (currentHealth <= 0)
+    //    {
+    //        Die();
+    //    }
+    //}
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        UpdateHealthBar();
+        currentHealth = Mathf.Clamp(currentHealth, 0, Hp); // Giới hạn health hợp lệ
+
+        // Áp dụng smooth health bar
+        if (healthBar != null)
+        {
+            if (smoothCoroutine != null)
+                StopCoroutine(smoothCoroutine);
+
+            float targetFill = currentHealth / Hp;
+            smoothCoroutine = StartCoroutine(SmoothHealthBar(targetFill));
+        }
+        else
+        {
+            Debug.LogWarning("[Bat] healthBar chưa được gán trong Inspector!");
+        }
+
         if (currentHealth <= 0)
         {
             Die();
         }
+        else
+        {
+            animator.SetTrigger("Hurt");
+        }
     }
-
     void UpdateHealthBar()
     {
         if (healthBar != null)
@@ -176,4 +285,21 @@ public class Bat : Enemy1, IDamageable
             Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
         }
     }
+    // Thêm coroutine để smooth health bar
+    private IEnumerator SmoothHealthBar(float target)
+    {
+        float currentFill = healthBar.fillAmount;
+        float elapsedTime = 0f;
+        float duration = 0.5f; // Thời gian transition
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            healthBar.fillAmount = Mathf.Lerp(currentFill, target, elapsedTime / duration);
+            yield return null;
+        }
+
+        healthBar.fillAmount = target; // Đảm bảo đạt đúng giá trị cuối
+    }
+
 }

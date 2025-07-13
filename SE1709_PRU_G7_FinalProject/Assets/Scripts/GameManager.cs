@@ -143,6 +143,8 @@ public class GameManager : MonoBehaviour
         HandleInput();
         HandleAutoSave();
         UpdateUI();
+        if (currentGameState == GameState.Playing)
+            totalPlayTime += Time.deltaTime;
     }
     
     void HandleInput()
@@ -653,6 +655,11 @@ public class GameManager : MonoBehaviour
             // Save completed levels
             string completedLevelsString = string.Join(",", completedLevels);
             PlayerPrefs.SetString("CompletedLevels", completedLevelsString);
+
+            // Save total play time
+            PlayerPrefs.SetFloat("TotalPlayTime", totalPlayTime);
+            PlayerPrefs.SetInt("TotalEnemiesKilled", totalEnemiesKilled);
+            PlayerPrefs.SetInt("TotalEnemiesInGame", totalEnemiesInGame);
             
             PlayerPrefs.Save();
             
@@ -687,6 +694,11 @@ public class GameManager : MonoBehaviour
         {
             completedLevels = new List<string>(completedLevelsString.Split(','));
         }
+
+        // Load total play time
+        totalPlayTime = PlayerPrefs.GetFloat("TotalPlayTime", 0f);
+        totalEnemiesKilled = PlayerPrefs.GetInt("TotalEnemiesKilled", 0);
+        totalEnemiesInGame = PlayerPrefs.GetInt("TotalEnemiesInGame", 0);
     }
     
     /// <summary>
@@ -700,6 +712,10 @@ public class GameManager : MonoBehaviour
     }
     
     /// <summary>
+    /// Force load game data - chỉ dùng cho Continue Game hoặc F9
+    /// </summary>
+    
+    /// <summary>
     /// Reset game data cho New Game - xóa save data và reset về default
     /// </summary>
     public void ResetGameForNewGame()
@@ -708,6 +724,9 @@ public class GameManager : MonoBehaviour
         lastCheckpointScene = "";
         lastCheckpointPosition = Vector3.zero;
         completedLevels.Clear();
+        totalPlayTime = 0f;
+        totalEnemiesKilled = 0;
+        totalEnemiesInGame = 0;
         
         // Clear save data
         SaveManager.DeleteSave();
@@ -718,6 +737,9 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.DeleteKey("LastCheckpointY");
         PlayerPrefs.DeleteKey("LastCheckpointZ");
         PlayerPrefs.DeleteKey("CompletedLevels");
+        PlayerPrefs.DeleteKey("TotalPlayTime");
+        PlayerPrefs.DeleteKey("TotalEnemiesKilled");
+        PlayerPrefs.DeleteKey("TotalEnemiesInGame");
         PlayerPrefs.Save();
         
         Debug.Log("Game data reset for NEW GAME");
@@ -761,4 +783,15 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
     #endregion
+
+    public float totalPlayTime = 0f;
+    public int totalEnemiesKilled = 0;
+    public int totalEnemiesInGame = 0; // Sẽ cộng dồn khi load từng map
+
+    public void OnEnemyKilled()
+    {
+        totalEnemiesKilled++;
+    }
+
+    public Dictionary<string, int> enemiesPerMap = new Dictionary<string, int>();
 } 

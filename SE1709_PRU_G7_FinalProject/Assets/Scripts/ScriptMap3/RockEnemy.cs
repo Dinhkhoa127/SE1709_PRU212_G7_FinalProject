@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RockEnemy : Enemy1, IDamageable
 {
@@ -13,6 +14,8 @@ public class RockEnemy : Enemy1, IDamageable
     private Animator animator;
     private int direction = 1;
     private bool is_Chasing = false;
+    [SerializeField] private Image healthBar;
+    private Coroutine smoothCoroutine;
 
     protected override void Start()
     {
@@ -51,8 +54,21 @@ public class RockEnemy : Enemy1, IDamageable
 
     private bool PlayerInAttackRange()
     {
+        if (player == null || attackPoint == null)
+        {
+            Debug.Log("[RockEnemy] Player hoặc attackPoint là null!");
+            return false;
+        }
+
         float distanceToPlayer = Vector2.Distance(attackPoint.position, player.position);
-        return distanceToPlayer <= attackRange;
+        bool inRange = distanceToPlayer <= attackRange;
+        
+        // Debug để kiểm tra
+        if (inRange)
+        {
+            Debug.Log($"Player trong tầm đánh! Khoảng cách: {distanceToPlayer:F2}");
+        }
+        return inRange;
     }
 
     protected virtual void ChasePlayer()
@@ -74,30 +90,95 @@ public class RockEnemy : Enemy1, IDamageable
     // ✅ Gọi từ Animation Event
     protected override void Attack()
     {
+        Debug.Log("RockEnemy bắt đầu tấn công!");
         DealDamage();
         audioSource?.PlayOneShot(attackSound);
         lastAttackTime = Time.time;
-        isAttacking = false; // Reset để cho phép tấn công lần sau
+        isAttacking = false;
     }
 
     private void DealDamage()
     {
+        //Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
+        //foreach (Collider2D hit in hits)
+        //{
+        //    IDamageable damageable = hit.GetComponent<IDamageable>();
+        //    if (damageable != null)
+        //    {
+        //        damageable.TakeDamage(PhysicalDame);
+        //        Debug.Log("RockEnemy gây sát thương!");
+        //    }
+        //}
+
+        Debug.Log($"[RockEnemy] Đang thực hiện DealDamage(), attackRange: {attackRange}, playerLayer: {playerLayer.value}");
+
+        // Debug vẽ sphere trong scene view
+        Debug.DrawLine(attackPoint.position, attackPoint.position + Vector3.right * attackRange, Color.red, 1f);
+
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
+        Debug.Log($"[RockEnemy] Tìm thấy {hits.Length} colliders trong tầm đánh");
+
         foreach (Collider2D hit in hits)
         {
-            IDamageable damageable = hit.GetComponent<IDamageable>();
-            if (damageable != null)
+            Debug.Log($"[RockEnemy] Collider hit: {hit.gameObject.name}, Layer: {LayerMask.LayerToName(hit.gameObject.layer)}");
+
+            var player = hit.GetComponent<PlayerKnight>();
+            if (player != null)
             {
-                damageable.TakeDamage(PhysicalDame);
-                Debug.Log("RockEnemy gây sát thương!");
+                Debug.Log($"[RockEnemy] Tìm thấy PlayerKnight component, sát thương gây ra: {PhysicalDame}");
+                Debug.Log($"[RockEnemy] Máu player trước khi đánh: {player.GetCurrentHealth()}");
+
+                player.TakePhysicalDamage((int)PhysicalDame);
+
+                Debug.Log($"[RockEnemy] Máu player sau khi đánh: {player.GetCurrentHealth()}");
+                return;
             }
+            else
+            {
+                Debug.Log("[RockEnemy] Không tìm thấy PlayerKnight component trên object bị hit");
+            }
+
+            // Backup check với IDamageable
+            //IDamageable damageable = hit.GetComponent<IDamageable>();
+            //if (damageable != null)
+            //{
+            //    Debug.Log("[RockEnemy] Tìm thấy IDamageable, gây sát thương");
+            //    damageable.TakeDamage(PhysicalDame);
+            //}
         }
     }
 
+    //public void TakeDamage(float damage)
+    //{
+    //    currentHealth -= damage;
+    //    healthBar.fillAmount = currentHealth / Hp;
+
+    //    if (currentHealth <= 0)
+    //    {
+    //        Die();
+    //    }
+
+    //    animator.SetTrigger("Hurt");
+    //    Invoke(nameof(ResetHurt), 0.3f);
+    //}
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        healthBar.fillAmount = currentHealth / Hp;
+        currentHealth = Mathf.Clamp(currentHealth, 0, Hp);
+
+        // Gọi hiệu ứng mượt nếu có thanh máu
+        if (healthBar != null)
+        {
+            if (smoothCoroutine != null)
+                StopCoroutine(smoothCoroutine);
+
+            float target = currentHealth / Hp;
+            smoothCoroutine = StartCoroutine(SmoothHealthBar(target));
+        }
+        else
+        {
+            Debug.LogWarning("[RockEnemy] healthBar chưa được gán trong Inspector!");
+        }
 
         if (currentHealth <= 0)
         {
@@ -145,4 +226,19 @@ public class RockEnemy : Enemy1, IDamageable
     }
 
     protected override void Patrol() { }
+    private IEnumerator SmoothHealthBar(float target)
+    {
+        float currentFill = healthBar.fillAmount;
+        float elapsedTime = 0f;
+        float duration = 0.5f; // Duration for the smooth transition
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            healthBar.fillAmount = Mathf.Lerp(currentFill, target, elapsedTime / duration);
+            yield return null;
+        }
+
+        healthBar.fillAmount = target;
+    }
 }
