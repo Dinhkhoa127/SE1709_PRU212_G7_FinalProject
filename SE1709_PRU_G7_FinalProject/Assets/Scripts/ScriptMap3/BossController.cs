@@ -4,22 +4,22 @@ using UnityEngine.UI;
 
 public class BossController : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float circleFireInterval = 4f;
-    [SerializeField] private GameObject bulletPrefab1;
-    [SerializeField] private Transform firePoint1;
-    [SerializeField] private float vongTron = 20f;
-    private float circleFireTimer = 0f;
-    [SerializeField] private float Hp = 1000f;
+    [SerializeField] private float circleFireInterval = 4f;  // Thời gian giữa các lần bắn đạn vòng tròn
+[SerializeField] private GameObject bulletPrefab1;       // Prefab của đạn
+[SerializeField] private Transform firePoint1;           // Vị trí bắn đạn
+[SerializeField] private float vongTron = 20f;          // Tốc độ đạn vòng tròn
+private float circleFireTimer = 0f;                     // Đếm thời gian giữa các lần bắn
+    [SerializeField] private float Hp = 1000f;   // Máu tối đa của boss
     [SerializeField] private GameObject miniEnemy;
-    private float currentHealth;
-    private float maxHp;
+    private float currentHealth; // Máu hiện tại
+    private float maxHp;// Lưu trữ máu tối đa
 
-    public static bool IsBossDefeated { get; private set; }
+    public static bool IsBossDefeated { get; private set; }  // Trạng thái boss đã bị đánh bai
 
     [Header("Di chuyển")]
-    public float minPatrolDistance = 0.5f;
-    public float maxPatrolDistance = 6f;
-    public float patrolHeightVariation = 3f;
+    public float minPatrolDistance = 0.5f;// Khoảng cách tuần tra tối thiểu
+    public float maxPatrolDistance = 6f;// Khoảng cách tuần tra tối đa
+    public float patrolHeightVariation = 3f; // Độ cao thay đổi khi tuần tra
     public float moveSpeed = 2f;
     private Vector2 patrolTarget;
     private bool isMovingToTarget = false;
@@ -29,12 +29,12 @@ public class BossController : MonoBehaviour, IDamageable
 
 
     [Header("Phạm vi & Phát hiện")]
-    public LayerMask groundLayer;
-    public Transform groundCheck;
-    public float groundCheckDistance = 0.5f;
+    public LayerMask groundLayer;// Layer mặt đất để check va chạm
+    public Transform groundCheck;// Điểm check mặt đất
+    public float groundCheckDistance = 0.5f;// Khoảng cách check mặt đất
     public GameObject hpUI;
-    public float checkPlayerDistance = 20f;         // hiện thanh máu khi ở gần
-    public float checkPlayerDistanceSound = 25f;
+    public float checkPlayerDistance = 20f;        // Khoảng cách hiện thanh máu
+    public float checkPlayerDistanceSound = 25f;// Khoảng cách phát âm thanh
 
     [Header("Tấn công")]
     public Transform player;
@@ -88,34 +88,34 @@ public class BossController : MonoBehaviour, IDamageable
     //    IsBossDefeated = false;
     //}
     // Cập nhật Start() để khởi tạo health đúng cách
-    private void Start()
+private void Start()
+{
+    rb = GetComponent<Rigidbody2D>();
+    startPosition = transform.position;
+    player = GameObject.FindGameObjectWithTag("Player")?.transform;
+    animator = GetComponent<Animator>();
+    SetNextPatrolTarget();
+    effectFire.SetActive(false);
+    
+    // Khởi tạo health
+    currentHealth = Hp;
+    maxHp = Hp;
+    
+    // Setup health bar
+    if (healthBar != null)
     {
-        rb = GetComponent<Rigidbody2D>();
-        startPosition = transform.position;
-        player = GameObject.FindGameObjectWithTag("Player")?.transform;
-        animator = GetComponent<Animator>();
-        SetNextPatrolTarget();
-        effectFire.SetActive(false);
-
-        // Khởi tạo health
-        currentHealth = Hp;
-        maxHp = Hp;
-
-        // Setup health bar
-        if (healthBar != null)
-        {
-            healthBar.fillAmount = 1f;
-            Debug.Log($"[BossController] Initialized - Max HP: {Hp}, Current: {currentHealth}");
-        }
-        else
-        {
-            Debug.LogError("[BossController] Health bar reference is missing!");
-        }
-
-        hpUI.SetActive(false);
-        audioSource = GetComponent<AudioSource>();
-        IsBossDefeated = false;
+        healthBar.fillAmount = 1f;
+        Debug.Log($"[BossController] Initialized - Max HP: {Hp}, Current: {currentHealth}");
     }
+    else
+    {
+        Debug.LogError("[BossController] Health bar reference is missing!");
+    }
+    
+    hpUI.SetActive(false);
+    audioSource = GetComponent<AudioSource>();
+    IsBossDefeated = false;
+}
     private void Update()
     {
         if (player == null) return;

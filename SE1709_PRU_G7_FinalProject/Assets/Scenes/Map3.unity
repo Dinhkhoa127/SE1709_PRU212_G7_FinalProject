@@ -5136,7 +5136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3147881111776848296, guid: d803a9f15d354c642b6f7b515b4b1881, type: 3}
       propertyPath: Hp
-      value: 0
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3147881111776848296, guid: d803a9f15d354c642b6f7b515b4b1881, type: 3}
       propertyPath: hp
@@ -5188,7 +5188,7 @@ PrefabInstance:
       objectReference: {fileID: 170549745}
     - target: {fileID: 3147881111776848296, guid: d803a9f15d354c642b6f7b515b4b1881, type: 3}
       propertyPath: PhysicalDame
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3147881111776848296, guid: d803a9f15d354c642b6f7b515b4b1881, type: 3}
       propertyPath: attack_Point
@@ -9675,7 +9675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5946611662006580194, guid: e83dcce0cc7d4324ab78400c4301196c, type: 3}
       propertyPath: health
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5946611662006580194, guid: e83dcce0cc7d4324ab78400c4301196c, type: 3}
       propertyPath: m_speed
@@ -9687,7 +9687,7 @@ PrefabInstance:
       objectReference: {fileID: 1385624203}
     - target: {fileID: 5946611662006580194, guid: e83dcce0cc7d4324ab78400c4301196c, type: 3}
       propertyPath: maxHealth
-      value: 1000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5946611662006580194, guid: e83dcce0cc7d4324ab78400c4301196c, type: 3}
       propertyPath: m_jumpForce
@@ -9699,7 +9699,11 @@ PrefabInstance:
       objectReference: {fileID: 756498424163324065, guid: 35c516307636da64da170993a3d34921, type: 3}
     - target: {fileID: 5946611662006580194, guid: e83dcce0cc7d4324ab78400c4301196c, type: 3}
       propertyPath: attackDamage
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946611662006580194, guid: e83dcce0cc7d4324ab78400c4301196c, type: 3}
+      propertyPath: debugMaxHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5946611662006580194, guid: e83dcce0cc7d4324ab78400c4301196c, type: 3}
       propertyPath: enemyLayers.m_Bits
@@ -49726,7 +49730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4866125649933338357, guid: 1d3a315755d7e164c8658353977d8b96, type: 3}
       propertyPath: Hp
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4866125649933338357, guid: 1d3a315755d7e164c8658353977d8b96, type: 3}
       propertyPath: hpUI
@@ -54087,7 +54091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3100348727065951564, guid: da68052a76583a746bc5766ad81cdd74, type: 3}
       propertyPath: Hp
-      value: 500
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3100348727065951564, guid: da68052a76583a746bc5766ad81cdd74, type: 3}
       propertyPath: FlySpeed
