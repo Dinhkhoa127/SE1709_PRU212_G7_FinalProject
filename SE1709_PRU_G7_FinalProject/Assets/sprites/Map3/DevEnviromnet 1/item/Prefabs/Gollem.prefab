@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 927867326750801869}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: GroundCeck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 870042238525976246}
   - component: {fileID: 4407044122782548932}
   - component: {fileID: 2592985442977263826}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Gollem
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1923473339
+  m_SortingLayerID: 810683083
   m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 6842999660662438955, guid: 7863f3fd29a72b94ca856c8d271f64bb, type: 3}
@@ -243,7 +243,7 @@ MonoBehaviour:
   AttackRange: 10
   IsAttackRange: 10
   MagicDame: 0
-  PatrolRange: 10000
+  PatrolRange: 100
   attackCooldown: 0.5
   lastAttackTime: 0
   healthBar: {fileID: 457693368522796311}
@@ -255,7 +255,7 @@ MonoBehaviour:
   detectionRange: 15
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   attackPoint: {fileID: 0}
   audioSource: {fileID: 0}
   attackSound: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5298222565886477592}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,13 +298,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3664563896937371379}
     m_Modifications:
+    - target: {fileID: 1705703619297114216, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3230202700902172109, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
       propertyPath: m_Name
       value: Hp
       objectReference: {fileID: 0}
+    - target: {fileID: 3230202700902172109, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3318270803871613910, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
       propertyPath: m_SortingLayerID
-      value: -1409800477
+      value: 454065949
       objectReference: {fileID: 0}
     - target: {fileID: 3593120963358456493, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -405,6 +413,10 @@ PrefabInstance:
     - target: {fileID: 5479332537988671551, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722452020556545427, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9079179243907353795, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
       propertyPath: m_AnchoredPosition.x

@@ -9,6 +9,8 @@ TagManager:
   - MovingGround
   - Bullet
   - NPC_MapRest
+  - Trap
+  - Stone
   layers:
   - Default
   - TransparentFX
@@ -66,6 +68,21 @@ TagManager:
     locked: 0
   - name: Skill
     uniqueID: 1401934399
+    locked: 0
+  - name: Foreground
+    uniqueID: 2942678697
+    locked: 0
+  - name: Light
+    uniqueID: 2155438729
+    locked: 0
+  - name: Background2
+    uniqueID: 181546187
+    locked: 0
+  - name: Fire
+    uniqueID: 1599723615
+    locked: 0
+  - name: Hp3
+    uniqueID: 52167783
     locked: 0
   m_RenderingLayers:
   - Default
