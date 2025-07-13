@@ -19,13 +19,22 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     
     void Start()
     {
-        player = FindObjectOfType<PlayerKnight>();
+        RefreshPlayerReference();
         ClearSlot();
+    }
+    
+    public void RefreshPlayerReference()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerKnight>();
+        }
     }
     
     public void Setup(EquipmentType type)
     {
         allowedType = type;
+        RefreshPlayerReference();
         ClearSlot();
     }
     
@@ -52,42 +61,64 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         
         currentItem = item;
         
-        Debug.Log($"🔧 EQUIPPING: {item.itemName} to {allowedType} slot");
-        Debug.Log($"🎨 Item sprite available: {item.itemSprite != null}");
-        
         if (itemIcon != null)
         {
+            Sprite spriteToUse = null;
+            
+            // Try to find sprite from multiple sources
             if (item.itemSprite != null)
             {
-                itemIcon.sprite = item.itemSprite;
-                itemIcon.color = Color.white; // Visible
-                Debug.Log($"✅ Set sprite for {item.itemName} successfully");
+                spriteToUse = item.itemSprite;
+            }
+            
+            if (spriteToUse == null && ItemManager.Instance != null)
+            {
+                var originalItem = ItemManager.Instance.GetItemInfo(item.itemName);
+                if (originalItem != null && originalItem.itemSprite != null)
+                {
+                    spriteToUse = originalItem.itemSprite;
+                }
+            }
+            
+            if (spriteToUse == null)
+            {
+                var equipmentShopManager = FindObjectOfType<EquipmentShopManager>();
+                if (equipmentShopManager?.equipmentShopItems != null)
+                {
+                    foreach (var shopItem in equipmentShopManager.equipmentShopItems.GetEquipmentItems())
+                    {
+                        if (shopItem.itemName == item.itemName && shopItem.itemSprite != null)
+                        {
+                            spriteToUse = shopItem.itemSprite;
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            if (spriteToUse == null)
+            {
+                var allItems = Resources.LoadAll<ItemInfo>("");
+                foreach (var resourceItem in allItems)
+                {
+                    if (resourceItem.itemName == item.itemName && resourceItem.itemSprite != null)
+                    {
+                        spriteToUse = resourceItem.itemSprite;
+                        break;
+                    }
+                }
+            }
+            
+            // Apply the sprite or clear if none found
+            if (spriteToUse != null)
+            {
+                itemIcon.sprite = spriteToUse;
+                itemIcon.color = Color.white;
             }
             else
             {
-                // Fallback: tìm sprite từ ItemManager
-                if (ItemManager.Instance != null)
-                {
-                    var originalItem = ItemManager.Instance.GetItemInfo(item.itemName);
-                    if (originalItem != null && originalItem.itemSprite != null)
-                    {
-                        itemIcon.sprite = originalItem.itemSprite;
-                        itemIcon.color = Color.white;
-                        Debug.Log($"✅ Found fallback sprite for {item.itemName}");
-                    }
-                    else
-                    {
-                        itemIcon.sprite = null;
-                        itemIcon.color = new Color(1, 1, 1, 0);
-                        Debug.LogWarning($"⚠️ No sprite found for {item.itemName}");
-                    }
-                }
-                else
-                {
-                    itemIcon.sprite = null;
-                    itemIcon.color = new Color(1, 1, 1, 0);
-                    Debug.LogWarning($"⚠️ ItemManager not found, cannot display {item.itemName}");
-                }
+                itemIcon.sprite = null;
+                itemIcon.color = new Color(1, 1, 1, 0);
             }
         }
         else
@@ -97,8 +128,6 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         
         if (itemNameText != null)
             itemNameText.text = item.itemName;
-        
-        Debug.Log($"✅ Equipment UI updated for {item.itemName} in {allowedType} slot");
     }
     
     public void OnDrop(PointerEventData eventData)
@@ -116,12 +145,11 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         // Check if item can be equipped in this slot
         if (itemInfo.equipmentType != allowedType) 
         {
-            Debug.Log($"Cannot equip {itemInfo.itemName} in {allowedType} slot");
             return;
         }
         
-        // Get player reference
-        if (player == null) player = FindObjectOfType<PlayerKnight>();
+        // Refresh player reference
+        RefreshPlayerReference();
         if (player == null) return;
         
         // Check if player has this item
@@ -129,13 +157,13 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         
         // Equip the item
         player.EquipItem(itemInfo);
-        
-        Debug.Log($"Equipped {itemInfo.itemName} to {allowedType} slot");
     }
     
     public void OnPointerClick(PointerEventData eventData)
     {
         // Handle click to unequip
+        RefreshPlayerReference();
+        
         if (currentItem != null && player != null)
         {
             player.UnequipItem(allowedType);

@@ -129,6 +129,9 @@ public class NPCInteractable : MonoBehaviour
                         playerKnight.RestoreFullStamina();
                         Debug.Log("Player được tượng thần ban phước và hồi đầy máu!");
                         playerKnight.SaveGame(); // Tự động lưu sau khi hồi máu
+                        
+                        // Schedule equipment UI update for next inventory open
+                        playerKnight.ScheduleEquipmentUIUpdate();
                     }
                     if (fPrompt != null) fPrompt.SetActive(false);
                     break;

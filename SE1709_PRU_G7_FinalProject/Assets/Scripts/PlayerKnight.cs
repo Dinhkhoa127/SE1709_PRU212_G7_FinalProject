@@ -111,6 +111,9 @@ public class PlayerKnight : MonoBehaviour
     private float lastRecalculateTime = 0f;
     private float lastDebugCommandTime = 0f;
     
+    // Equipment UI update flag
+    private bool shouldUpdateEquipmentUIOnInventoryOpen = false;
+    
     void Start()
     {
         swordCollider1 = transform.Find("SwordCollider1").gameObject;
@@ -203,8 +206,8 @@ public class PlayerKnight : MonoBehaviour
         // Equip new item
         equippedItems[item.equipmentType] = item;
         
-        // Remove from inventory
-        RemoveItem(item.itemName, 1);
+        // DON'T remove from inventory - keep it there for UI display
+        // Equipment items stay in inventory even when equipped
         
         // Recalculate stats
         RecalculateStats();
@@ -214,8 +217,6 @@ public class PlayerKnight : MonoBehaviour
         
         // Auto-save after equipping item
         SaveGame();
-        
-        Debug.Log($"Equipped {item.itemName} to {item.equipmentType} slot");
     }
     
     public void UnequipItem(EquipmentType equipType)
@@ -224,8 +225,7 @@ public class PlayerKnight : MonoBehaviour
         
         ItemInfo item = equippedItems[equipType];
         
-        // Add back to inventory
-        AddItem(item.itemName, 1);
+        // Equipment items are already in inventory, no need to add back
         
         // Remove from equipped
         equippedItems[equipType] = null;
@@ -238,8 +238,6 @@ public class PlayerKnight : MonoBehaviour
         
         // Auto-save after unequipping item
         SaveGame();
-        
-        Debug.Log($"Unequipped {item.itemName} from {equipType} slot");
     }
     
     void RecalculateStats()
@@ -332,6 +330,29 @@ public class PlayerKnight : MonoBehaviour
         if (equipmentUI != null)
         {
             equipmentUI.UpdateEquipmentDisplay();
+        }
+        
+        // Also update inventory UI to refresh equipped items display
+        var inventoryUI = FindObjectOfType<InventoryUI>();
+        if (inventoryUI != null)
+        {
+            inventoryUI.UpdateUI();
+        }
+        
+        // Update individual equipment slots directly as backup
+        var equipmentSlots = FindObjectsOfType<EquipmentSlot>();
+        foreach (var slot in equipmentSlots)
+        {
+            slot.RefreshPlayerReference();
+            var equippedItem = GetEquippedItem(slot.allowedType);
+            if (equippedItem != null)
+            {
+                slot.EquipItem(equippedItem);
+            }
+            else
+            {
+                slot.ClearSlot();
+            }
         }
     }
     
@@ -908,7 +929,45 @@ public class PlayerKnight : MonoBehaviour
     public void ForceUpdateInventoryUI()
     {
         UpdateInventoryUI();
-        Debug.Log("🔄 Force updated inventory UI");
+    }
+    
+    // Public method để force refresh tất cả UI liên quan đến equipment
+    public void ForceUpdateAllEquipmentUI()
+    {
+        // Update equipment UI
+        UpdateEquipmentUI();
+        
+        // Update inventory UI
+        UpdateInventoryUI();
+        
+        // Update character stats
+        var characterStatsUI = FindObjectOfType<CharacterStatsUI>();
+        if (characterStatsUI != null)
+        {
+            characterStatsUI.UpdateCharacterStats();
+        }
+        
+        // Force update equipment slots specifically
+        StartCoroutine(ForceUpdateEquipmentSlotsUI());
+        
+        // Start immediate update coroutine as backup
+        StartCoroutine(ImmediateUIUpdate());
+    }
+    
+    // Schedule equipment UI update for next inventory open
+    public void ScheduleEquipmentUIUpdate()
+    {
+        shouldUpdateEquipmentUIOnInventoryOpen = true;
+    }
+    
+    // Method called when inventory is opened to check if equipment UI needs update
+    public void OnInventoryOpened()
+    {
+        // Always force update equipment UI when inventory is opened - no flag dependency
+        StartCoroutine(ForceUpdateEquipmentSlotsUI());
+        
+        // Reset the flag for future use
+        shouldUpdateEquipmentUIOnInventoryOpen = false;
     }
 
     void EnableSwordCollider1()
@@ -1047,32 +1106,18 @@ public class PlayerKnight : MonoBehaviour
         data.currentStage = currentStage;
         data.inventory = inventory;
         
-        // Save equipped items với detailed debug
+        // Save equipped items
         data.equippedItems = new List<EquippedItemData>();
-        Debug.Log("🛡️ === SAVING EQUIPPED ITEMS ===");
         foreach (var equippedItem in equippedItems)
         {
             if (equippedItem.Value != null)
             {
                 var equippedData = new EquippedItemData(equippedItem.Key, equippedItem.Value);
                 data.equippedItems.Add(equippedData);
-                Debug.Log($"⚔️ SAVING EQUIPMENT: {equippedItem.Value.itemName} ({equippedItem.Key}) - ATK+{equippedItem.Value.attackBonus}, ARM+{equippedItem.Value.armorBonus}, HP+{equippedItem.Value.healthBonus}");
             }
         }
-        Debug.Log($"🛡️ Total equipment saved: {data.equippedItems.Count}");
 
         SaveManager.Save(data);
-        Debug.Log($"✅ SAVE COMPLETED: Equipment: {data.equippedItems.Count}, Inventory: {inventory.Count}, Gold: {gold}");
-        
-        // Debug inventory contents
-        if (inventory.Count > 0)
-        {
-            Debug.Log("📦 INVENTORY SAVED:");
-            foreach (var item in inventory)
-            {
-                Debug.Log($"  - {item.itemName}: {item.quantity}");
-            }
-        }
         
         if (autosaveText != null)
         {
@@ -1105,61 +1150,22 @@ public class PlayerKnight : MonoBehaviour
             learnedSkills = data.learnedSkills ?? new List<string>();
             currentStage = data.currentStage;
             
-            // 🔧 SMART INVENTORY LOADING - Merge current và save data
+            // Smart inventory and gold loading
             int currentInventoryCount = inventory.Count;
             int currentGold = gold;
             string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             
             if (data.inventory != null && data.inventory.Count > 0)
             {
-                // Nếu đang ở MapRest - luôn load save data (hub scene)
-                if (currentScene == "MapRest")
+                if (currentScene == "MapRest" || currentInventoryCount == 0 || data.inventory.Count > currentInventoryCount)
                 {
                     inventory = data.inventory;
-                    Debug.Log($"🏠 LOAD GAME: MapRest - loaded {data.inventory.Count} inventory items from save data");
                 }
-                // Nếu ở scene khác - chỉ load nếu save data tốt hơn
-                else if (currentInventoryCount == 0 || data.inventory.Count > currentInventoryCount)
-                {
-                    inventory = data.inventory;
-                    Debug.Log($"🔧 LOAD GAME: Loaded {data.inventory.Count} inventory items from save data");
-                }
-                else
-                {
-                    Debug.Log($"⚠️ PRESERVING CURRENT INVENTORY: Current({currentInventoryCount}) >= Save({data.inventory.Count})");
-                }
-                
-                // Debug loaded inventory contents
-                if (inventory == data.inventory)
-                {
-                    Debug.Log("📦 INVENTORY LOADED:");
-                    foreach (var item in inventory)
-                    {
-                        Debug.Log($"  - {item.itemName}: {item.quantity}");
-                    }
-                }
-            }
-            else
-            {
-                Debug.Log("⚠️ No inventory data in save file - keeping current inventory");
             }
             
-            // 🔧 SMART GOLD LOADING - Merge current và save data
-            if (currentScene == "MapRest")
+            if (currentScene == "MapRest" || data.gold > currentGold || currentGold == 0)
             {
-                // Nếu đang ở MapRest - luôn load save data (hub scene)
                 gold = data.gold;
-                Debug.Log($"🏠 GOLD LOADED: MapRest - loaded {data.gold} gold from save data");
-            }
-            else if (data.gold > currentGold || currentGold == 0)
-            {
-                // Nếu ở scene khác - chỉ load nếu save data tốt hơn
-                gold = data.gold;
-                Debug.Log($"🔧 GOLD LOADED: {currentGold} -> {gold}");
-            }
-            else
-            {
-                Debug.Log($"⚠️ PRESERVING CURRENT GOLD: {currentGold} (save had {data.gold})");
             }
             
             // Load equipped items
@@ -1168,57 +1174,66 @@ public class PlayerKnight : MonoBehaviour
             // Recalculate stats after loading equipment
             RecalculateStats();
             
-            // 🔧 FORCE UPDATE Equipment UI - đảm bảo sprites hiển thị
-            Debug.Log("🔄 Force updating Equipment UI...");
-            UpdateEquipmentUI();
-            
-            // Force update inventory UI để sync equipped state
-            Debug.Log("🔄 Force updating Inventory UI...");
-            UpdateInventoryUI();
-            
-            // 🔧 Additional force update with delay to ensure UI is ready
-            StartCoroutine(DelayedUIUpdate());
-
-            Debug.Log($"Game Loaded! Equipment count: {data.equippedItems?.Count ?? 0}, Inventory items: {inventory.Count}");
-        }
-        else
-        {
-            Debug.Log("No save data found - keeping current player state!");
+            // Schedule equipment UI update for when inventory is opened
+            ScheduleEquipmentUIUpdate();
         }
     }
     
-    void LoadEquippedItems(List<EquippedItemData> savedEquipment)
+    public void LoadEquippedItems(List<EquippedItemData> savedEquipment)
     {
         // Clear current equipped items
         InitializeEquipmentSystem();
         
-        Debug.Log("🛡️ === LOADING EQUIPPED ITEMS ===");
         if (savedEquipment == null || savedEquipment.Count == 0)
         {
-            Debug.Log("⚠️ No equipped items to load");
+            UpdateEquipmentUI();
             return;
         }
         
-        Debug.Log($"🔄 Loading {savedEquipment.Count} equipped items...");
         foreach (var savedItem in savedEquipment)
         {
-            // 🔧 FIX: Tìm ItemInfo gốc từ ItemManager thay vì tạo mới (để giữ sprite)
-            ItemInfo originalItem = null;
+            ItemInfo itemToEquip = null;
+            
+            // Find original ItemInfo from ItemManager
             if (ItemManager.Instance != null)
             {
-                originalItem = ItemManager.Instance.GetItemInfo(savedItem.itemName);
+                itemToEquip = ItemManager.Instance.GetItemInfo(savedItem.itemName);
             }
             
-            ItemInfo itemToEquip = null;
-            if (originalItem != null)
+            // Find from EquipmentShopItems if ItemManager failed
+            if (itemToEquip == null)
             {
-                // Sử dụng ItemInfo gốc (có sprite)
-                itemToEquip = originalItem;
-                Debug.Log($"🎨 Using original ItemInfo for {savedItem.itemName} (has sprite: {originalItem.itemSprite != null})");
+                var equipmentShopItems = FindObjectOfType<EquipmentShopManager>()?.equipmentShopItems;
+                if (equipmentShopItems != null)
+                {
+                    foreach (var shopItem in equipmentShopItems.GetEquipmentItems())
+                    {
+                        if (shopItem.itemName == savedItem.itemName)
+                        {
+                            itemToEquip = shopItem;
+                            break;
+                        }
+                    }
+                }
             }
-            else
+            
+            // Search all ItemInfo assets in Resources
+            if (itemToEquip == null)
             {
-                // Fallback: Recreate ItemInfo từ saved data (không có sprite)
+                var allItems = Resources.LoadAll<ItemInfo>("");
+                foreach (var item in allItems)
+                {
+                    if (item.itemName == savedItem.itemName)
+                    {
+                        itemToEquip = item;
+                        break;
+                    }
+                }
+            }
+            
+            // Create new ItemInfo with saved data (no sprite)
+            if (itemToEquip == null)
+            {
                 itemToEquip = ScriptableObject.CreateInstance<ItemInfo>();
                 itemToEquip.itemName = savedItem.itemName;
                 itemToEquip.itemType = ItemType.Equipment;
@@ -1228,15 +1243,20 @@ public class PlayerKnight : MonoBehaviour
                 itemToEquip.magicResistBonus = savedItem.magicResistBonus;
                 itemToEquip.healthBonus = savedItem.healthBonus;
                 itemToEquip.manaBonus = savedItem.manaBonus;
-                Debug.LogWarning($"⚠️ Recreated ItemInfo for {savedItem.itemName} (no sprite available)");
             }
             
-            // Equip the item (but don't remove from inventory since it's already removed)
+            // Equip the item
             equippedItems[savedItem.equipmentType] = itemToEquip;
             
-            Debug.Log($"✅ LOADED EQUIPMENT: {savedItem.itemName} ({savedItem.equipmentType}) - ATK+{savedItem.attackBonus}, ARM+{savedItem.armorBonus}, HP+{savedItem.healthBonus}");
+            // CRITICAL: Ensure equipped items are in inventory for UI display
+            if (GetItemQuantity(savedItem.itemName) == 0)
+            {
+                AddItem(savedItem.itemName, 1);
+            }
         }
-        Debug.Log($"🛡️ Total equipment loaded: {savedEquipment.Count}");
+        
+        // Force update all equipment UI components
+        StartCoroutine(ForceUpdateEquipmentSlotsUI());
     }
 
     void HideAutosaveText()
@@ -1245,33 +1265,54 @@ public class PlayerKnight : MonoBehaviour
             autosaveText.text = "";
     }
     
-    // 🔧 Coroutine để update UI sau một chút delay
-    System.Collections.IEnumerator DelayedUIUpdate()
+    // Immediate UI update - no delays
+    System.Collections.IEnumerator ImmediateUIUpdate()
     {
-        yield return new WaitForSeconds(0.1f); // Wait 1 frame
-        
-        Debug.Log("🔄 === DELAYED UI UPDATE ===");
-        
-        // Force update equipment UI again
         UpdateEquipmentUI();
         
-        // Force update inventory UI again
         var inventoryUI = FindObjectOfType<InventoryUI>();
         if (inventoryUI != null)
         {
             inventoryUI.UpdateUI();
-            Debug.Log("🔄 Delayed inventory UI update completed");
         }
         
-        // Update character stats UI
         var characterStatsUI = FindObjectOfType<CharacterStatsUI>();
         if (characterStatsUI != null)
         {
             characterStatsUI.UpdateCharacterStats();
-            Debug.Log("🔄 Delayed character stats UI update completed");
         }
         
-        Debug.Log("✅ All delayed UI updates completed");
+        yield break; // End immediately
+    }
+
+    // Force update equipment slots UI specifically - immediate update
+    System.Collections.IEnumerator ForceUpdateEquipmentSlotsUI()
+    {
+        // Find EquipmentSlotsUI immediately
+        EquipmentSlotsUI equipmentSlotsUI = FindObjectOfType<EquipmentSlotsUI>();
+        
+        if (equipmentSlotsUI != null)
+        {
+            equipmentSlotsUI.UpdateEquipmentDisplay();
+        }
+        
+        // Also direct update each equipment slot as backup
+        var equipmentSlots = FindObjectsOfType<EquipmentSlot>();
+        foreach (var slot in equipmentSlots)
+        {
+            slot.RefreshPlayerReference();
+            var equippedItem = GetEquippedItem(slot.allowedType);
+            if (equippedItem != null)
+            {
+                slot.EquipItem(equippedItem);
+            }
+            else
+            {
+                slot.ClearSlot();
+            }
+        }
+        
+        yield break; // End immediately
     }
 
     public void PrintSaveData()
