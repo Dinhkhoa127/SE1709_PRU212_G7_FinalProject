@@ -36,7 +36,8 @@ public class Boss : Enemy1, IDamageable
     private int maxComboBeforeFire = 4;
     private string savePath;
     private GateController gate;
-
+    private bool isAttackAnimationPlaying = false;  // Thêm biến kiểm tra animation tấn công
+    private float attackDamageDelay = 0.3f;        // Thời gian delay 
     protected override void Start()
     {
         base.Start();
