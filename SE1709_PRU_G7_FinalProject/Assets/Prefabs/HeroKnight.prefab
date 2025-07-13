@@ -142,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 2492647264108111165}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.36, y: 1.6100006, z: 0}
+  m_LocalPosition: {x: -1.45, y: -1.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -155,6 +155,7 @@ Transform:
   - {fileID: 461776300806549886}
   - {fileID: 5912178370273876469}
   - {fileID: 5529492607185778772}
+  - {fileID: 7567154090263918423}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5499195041916595963
@@ -319,25 +320,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32866357953f49439db61c37c3408c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 4
-  m_jumpForce: 7.5
+  m_speed: 6
+  m_jumpForce: 11.5
   m_rollForce: 6
   m_noBlood: 0
   m_slideDust: {fileID: 1038168246061390451, guid: 8b8c8cc6774fb074cb9139cc631b108e, type: 3}
   maxHealth: 10
   health: 10
+  debugMaxHealth: 10
   attackDamage: 1
   attackRange: 1
   attackPoint: {fileID: 8739594540057710793}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
-  spikePrefab: {fileID: 0}
   maxArmorShield: 2
   maxMagicShield: 2
   maxMana: 100
-  skillProjectilePrefab: {fileID: 0}
-  castPoint: {fileID: 0}
+  skillProjectilePrefab: {fileID: 1840849838415273613, guid: 80cbd5ef5a1ea304e8b9dc48f05c08d1, type: 3}
+  castPoint: {fileID: 7567154090263918423}
   manaRegenInterval: 1
   manaRegenAmount: 2
   maxBlockStamina: 100
@@ -347,8 +348,41 @@ MonoBehaviour:
   learnedSkills: []
   autosaveText: {fileID: 0}
   gold: 0
-  currentStage: Stage1
+  currentStage: Stage2
   inventory: []
+  autoIncreaseCurrentHealth: 0
+  enableDebugLogs: 1
+--- !u!1 &4056602861633743307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7567154090263918423}
+  m_Layer: 10
+  m_Name: CastPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7567154090263918423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4056602861633743307}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.26, y: 1.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3517910093235666848}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4823100030779162342
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5912178370273876469
 Transform:
   m_ObjectHideFlags: 0
@@ -472,7 +506,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3b4e730b6b0a88f4f933a641f8b82695, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -793,7 +827,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3b4e730b6b0a88f4f933a641f8b82695, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -845,7 +879,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &461776300806549886
 Transform:
   m_ObjectHideFlags: 0
@@ -871,7 +905,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3b4e730b6b0a88f4f933a641f8b82695, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

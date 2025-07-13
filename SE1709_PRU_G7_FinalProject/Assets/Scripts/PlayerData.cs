@@ -7,6 +7,7 @@ using System.Collections.Generic;
 [Serializable]
 public class PlayerData
 {
+    // Base stats (không bao gồm equipment bonuses)
     public int maxHealth;
     public int health;
     public int maxArmorShield;
@@ -22,4 +23,35 @@ public class PlayerData
     public string currentStage; // Màn hiện tại (hoặc string stageName)
     public List<string> learnedSkills = new List<string>(); // Kỹ năng đã học
     public List<ItemData> inventory = new List<ItemData>();
+    
+    // Equipment system
+    public List<EquippedItemData> equippedItems = new List<EquippedItemData>();
+}
+
+/// <summary>
+/// Lưu trữ thông tin về một item đã được trang bị
+/// </summary>
+[Serializable]
+public class EquippedItemData
+{
+    public EquipmentType equipmentType;
+    public string itemName;
+    public int attackBonus;
+    public int armorBonus;
+    public int magicResistBonus;
+    public int healthBonus;
+    public int manaBonus;
+    
+    public EquippedItemData() { }
+    
+    public EquippedItemData(EquipmentType type, ItemInfo item)
+    {
+        equipmentType = type;
+        itemName = item.itemName;
+        attackBonus = item.attackBonus;
+        armorBonus = item.armorBonus;
+        magicResistBonus = item.magicResistBonus;
+        healthBonus = item.healthBonus;
+        manaBonus = item.manaBonus;
+    }
 }

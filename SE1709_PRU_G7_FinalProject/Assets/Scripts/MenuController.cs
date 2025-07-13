@@ -94,7 +94,7 @@ public class MenuController : MonoBehaviour
             }
             
             // Load game data và chuyển scene
-            GameManager.Instance.LoadGameData();
+            GameManager.Instance.ForceLoadGameData();
             GameManager.Instance.LoadScene(targetScene);
         }
         else
@@ -234,7 +234,6 @@ public class MenuController : MonoBehaviour
     private void LoadMenuScene(string sceneName)
     {
         PlayClickSound();
-        
         if (GameManager.Instance != null)
         {
             GameManager.Instance.LoadScene(sceneName);
