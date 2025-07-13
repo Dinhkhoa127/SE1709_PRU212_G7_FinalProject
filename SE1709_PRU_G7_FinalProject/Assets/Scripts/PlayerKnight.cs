@@ -775,13 +775,34 @@ public class PlayerKnight : MonoBehaviour
 
     public void DealDamageToEnemy()
     {
+        //Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        //foreach (Collider2D enemy in hitEnemies)
+        //{
+        //    enemy.GetComponent<Enemy>().TakeDamage(totalAttackDamage);
+        //    AudioController.instance.PlayEnemyTakeDame();
+        //}
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(totalAttackDamage);
-            AudioController.instance.PlayEnemyTakeDame();
+            // Original code for Enemy type
+            var enemyComponent = enemy.GetComponent<Enemy>();
+            if (enemyComponent != null)
+            {
+                enemyComponent.TakeDamage(totalAttackDamage);
+                AudioController.instance.PlayEnemyTakeDame();
+                continue;
+            }
+
+            // Additional code for RockEnemy and other IDamageable entities
+            var damageable = enemy.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(totalAttackDamage);
+                AudioController.instance.PlayEnemyTakeDame();
+            }
         }
     }
+
     void OnDrawGizmosSelected()
     {
         if (attackPoint == null) return;

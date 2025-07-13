@@ -71,6 +71,23 @@ public class BossController : MonoBehaviour, IDamageable
     public AudioClip checkPlayerSound;
     public AudioClip attackSound;
 
+    private Coroutine smoothCoroutine;
+    //private void Start()
+    //{
+    //    rb = GetComponent<Rigidbody2D>();
+    //    startPosition = transform.position;
+    //    player = GameObject.FindGameObjectWithTag("Player")?.transform;
+    //    animator = GetComponent<Animator>();
+    //    SetNextPatrolTarget();
+    //    effectFire.SetActive(false);
+    //    currentHealth = Hp;
+    //    maxHp = Hp; // Gán giá trị tối đa
+    //    UpdateHp();
+    //    hpUI.SetActive(false);
+    //    audioSource = GetComponent<AudioSource>();
+    //    IsBossDefeated = false;
+    //}
+    // Cập nhật Start() để khởi tạo health đúng cách
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -79,14 +96,26 @@ public class BossController : MonoBehaviour, IDamageable
         animator = GetComponent<Animator>();
         SetNextPatrolTarget();
         effectFire.SetActive(false);
+
+        // Khởi tạo health
         currentHealth = Hp;
-        maxHp = Hp; // Gán giá trị tối đa
-        UpdateHp();
+        maxHp = Hp;
+
+        // Setup health bar
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = 1f;
+            Debug.Log($"[BossController] Initialized - Max HP: {Hp}, Current: {currentHealth}");
+        }
+        else
+        {
+            Debug.LogError("[BossController] Health bar reference is missing!");
+        }
+
         hpUI.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         IsBossDefeated = false;
     }
-
     private void Update()
     {
         if (player == null) return;
@@ -356,31 +385,116 @@ public class BossController : MonoBehaviour, IDamageable
         }
     }
 
+    //public void TakeDamage(float damage)
+    //{
+    //    currentHealth -= damage;
+    //    animator.SetTrigger("hit_2");
+    //    UpdateHp();
+    //    if (currentHealth <= 0)
+    //    {
+    //        Die();
+    //    }
+    //}
     public void TakeDamage(float damage)
     {
+        if (IsBossDefeated) return;
+
+        // Debug trước khi nhận damage
+        Debug.Log($"[BossController Health] Before Damage - Current: {currentHealth}, Max: {Hp}, HealthBar: {healthBar?.fillAmount}");
+
         currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, Hp);
+
+        // Áp dụng smooth health bar
+        if (healthBar != null)
+        {
+            if (smoothCoroutine != null)
+                StopCoroutine(smoothCoroutine);
+
+            float targetFill = currentHealth / Hp;
+            smoothCoroutine = StartCoroutine(SmoothHealthBar(targetFill));
+        }
+
+        // Debug sau khi nhận damage
+        Debug.Log($"[BossController Health] After Damage - Current: {currentHealth}, Max: {Hp}, Target Fill: {currentHealth / Hp}");
+
         animator.SetTrigger("hit_2");
-        UpdateHp();
+
         if (currentHealth <= 0)
         {
+            Debug.Log("[BossController] Boss is dying!");
             Die();
         }
     }
 
-    private void DealDamage(float dame, Collider2D[] hits)
+    //private void DealDamage(float dame, Collider2D[] hits)
+    //{
+    //    //Collider2D[] hits = Physics2D.OverlapCircleAll(attack_Point.position, attackRadius, playerLayer);
+    //    foreach (Collider2D hit in hits)
+    //    {
+    //        IDamageable damageable = hit.GetComponent<IDamageable>();
+    //        if (damageable != null)
+    //        {
+    //            damageable.TakeDamage(dame);
+    //            Debug.Log("Take Dame");
+    //            return;
+    //        }
+    //    }
+
+    //}
+    private void DealDamage(float damage, Collider2D[] hits)
     {
-        //Collider2D[] hits = Physics2D.OverlapCircleAll(attack_Point.position, attackRadius, playerLayer);
+        Debug.Log($"[BossController] Đang thực hiện DealDamage(), Damage: {damage}, Hits: {hits.Length}");
+
         foreach (Collider2D hit in hits)
         {
+            Debug.Log($"[BossController] Collider hit: {hit.gameObject.name}, Layer: {LayerMask.LayerToName(hit.gameObject.layer)}");
+
+            // Check PlayerKnight trước
+            var player = hit.GetComponent<PlayerKnight>();
+            if (player != null)
+            {
+                Debug.Log($"[BossController] Tìm thấy PlayerKnight, máu trước khi đánh: {player.GetCurrentHealth()}");
+
+                if (damage == damge)
+                {
+                    player.TakePhysicalDamage((int)damage);
+                    Debug.Log($"[BossController] Gây {damage} sát thương vật lý!");
+                }
+                else if (damage == damgeFire)
+                {
+                    player.TakeMagicDamage((int)damage);
+                    Debug.Log($"[BossController] Gây {damage} sát thương phép!");
+                }
+
+                Debug.Log($"[BossController] Máu player sau khi đánh: {player.GetCurrentHealth()}");
+                return;
+            }
+
+            // Fallback sang IDamageable
             IDamageable damageable = hit.GetComponent<IDamageable>();
             if (damageable != null)
             {
-                damageable.TakeDamage(dame);
-                Debug.Log("Take Dame");
-                return;
+                Debug.Log($"[BossController] Gây {damage} sát thương qua IDamageable!");
+                damageable.TakeDamage(damage);
             }
         }
+    }
 
+    private IEnumerator SmoothHealthBar(float target)
+    {
+        float currentFill = healthBar.fillAmount;
+        float elapsedTime = 0f;
+        float duration = 0.5f; // Thời gian transition
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            healthBar.fillAmount = Mathf.Lerp(currentFill, target, elapsedTime / duration);
+            yield return null;
+        }
+
+        healthBar.fillAmount = target;
     }
 
 
