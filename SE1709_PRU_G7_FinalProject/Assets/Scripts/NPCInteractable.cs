@@ -67,6 +67,7 @@ public class NPCInteractable : MonoBehaviour
                 
                 // Update prompt text for training area, exit, map portal, or equipment shop
                 if (npcType == NPCType.Training || npcType == NPCType.Exit || npcType == NPCType.MapPortal || npcType == NPCType.EquipmentShop || npcType == NPCType.Chest)
+
                 {
                     string promptText = "";
                     switch (npcType)
