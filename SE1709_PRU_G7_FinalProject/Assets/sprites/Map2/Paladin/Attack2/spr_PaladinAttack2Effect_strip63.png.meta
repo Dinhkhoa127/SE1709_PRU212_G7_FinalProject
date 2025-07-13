@@ -1,0 +1,1274 @@
+fileFormatVersion: 2
+guid: 34fa39cd9713b95468dd3fa0ebdad162
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5609423368225070842
+    second: spr_PaladinAttack2Effect_strip63_0
+  - first:
+      213: -7691541083151693240
+    second: spr_PaladinAttack2Effect_strip63_1
+  - first:
+      213: -1811173083015054112
+    second: spr_PaladinAttack2Effect_strip63_2
+  - first:
+      213: -3197829555541165662
+    second: spr_PaladinAttack2Effect_strip63_3
+  - first:
+      213: -5265473133599533527
+    second: spr_PaladinAttack2Effect_strip63_4
+  - first:
+      213: 880928827609717386
+    second: spr_PaladinAttack2Effect_strip63_5
+  - first:
+      213: -7451204201064029467
+    second: spr_PaladinAttack2Effect_strip63_6
+  - first:
+      213: -5866805443405131020
+    second: spr_PaladinAttack2Effect_strip63_7
+  - first:
+      213: -1348753640200819955
+    second: spr_PaladinAttack2Effect_strip63_8
+  - first:
+      213: -4842687661305053020
+    second: spr_PaladinAttack2Effect_strip63_9
+  - first:
+      213: 4052581321224207640
+    second: spr_PaladinAttack2Effect_strip63_10
+  - first:
+      213: 5687652577118688797
+    second: spr_PaladinAttack2Effect_strip63_11
+  - first:
+      213: 1003777711858958294
+    second: spr_PaladinAttack2Effect_strip63_12
+  - first:
+      213: 1456730129802283037
+    second: spr_PaladinAttack2Effect_strip63_13
+  - first:
+      213: -5095878493295088871
+    second: spr_PaladinAttack2Effect_strip63_14
+  - first:
+      213: -2446150892037388019
+    second: spr_PaladinAttack2Effect_strip63_15
+  - first:
+      213: -7896497511395172055
+    second: spr_PaladinAttack2Effect_strip63_16
+  - first:
+      213: -8819018707167072041
+    second: spr_PaladinAttack2Effect_strip63_17
+  - first:
+      213: 4228615723597529765
+    second: spr_PaladinAttack2Effect_strip63_18
+  - first:
+      213: 5968424304350784021
+    second: spr_PaladinAttack2Effect_strip63_19
+  - first:
+      213: 535441335282605945
+    second: spr_PaladinAttack2Effect_strip63_20
+  - first:
+      213: 2085572902156026678
+    second: spr_PaladinAttack2Effect_strip63_21
+  - first:
+      213: 6701000035046795414
+    second: spr_PaladinAttack2Effect_strip63_22
+  - first:
+      213: -2127086339419596136
+    second: spr_PaladinAttack2Effect_strip63_23
+  - first:
+      213: -8143102035961875540
+    second: spr_PaladinAttack2Effect_strip63_24
+  - first:
+      213: -7454940921644599274
+    second: spr_PaladinAttack2Effect_strip63_25
+  - first:
+      213: -607279794915079961
+    second: spr_PaladinAttack2Effect_strip63_26
+  - first:
+      213: 8065013147657204838
+    second: spr_PaladinAttack2Effect_strip63_27
+  - first:
+      213: -3099804172189172117
+    second: spr_PaladinAttack2Effect_strip63_28
+  - first:
+      213: -5701617543461823927
+    second: spr_PaladinAttack2Effect_strip63_29
+  - first:
+      213: -94937114406268133
+    second: spr_PaladinAttack2Effect_strip63_30
+  - first:
+      213: 2720118697745188642
+    second: spr_PaladinAttack2Effect_strip63_31
+  - first:
+      213: -5906284147962668890
+    second: spr_PaladinAttack2Effect_strip63_32
+  - first:
+      213: 6725155348771910874
+    second: spr_PaladinAttack2Effect_strip63_33
+  - first:
+      213: -5575577918163700409
+    second: spr_PaladinAttack2Effect_strip63_34
+  - first:
+      213: -4781655281006507385
+    second: spr_PaladinAttack2Effect_strip63_35
+  - first:
+      213: -9088955222846298398
+    second: spr_PaladinAttack2Effect_strip63_36
+  - first:
+      213: -3061562328175630981
+    second: spr_PaladinAttack2Effect_strip63_37
+  - first:
+      213: 496136006830741522
+    second: spr_PaladinAttack2Effect_strip63_38
+  - first:
+      213: 8009084671522837613
+    second: spr_PaladinAttack2Effect_strip63_39
+  - first:
+      213: -6401777359701154387
+    second: spr_PaladinAttack2Effect_strip63_40
+  - first:
+      213: -6820338221475935647
+    second: spr_PaladinAttack2Effect_strip63_41
+  - first:
+      213: -3563449082316884604
+    second: spr_PaladinAttack2Effect_strip63_42
+  - first:
+      213: -7944451397569004598
+    second: spr_PaladinAttack2Effect_strip63_43
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_0
+      rect:
+        serializedVersion: 2
+        x: 3297
+        y: 63
+        width: 34
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afe94d955dca8dd40800000000000000
+      internalID: 5609423368225070842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_1
+      rect:
+        serializedVersion: 2
+        x: 3457
+        y: 63
+        width: 43
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84a8b6be228224590800000000000000
+      internalID: -7691541083151693240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_2
+      rect:
+        serializedVersion: 2
+        x: 3623
+        y: 64
+        width: 42
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ec73205dab6dd6e0800000000000000
+      internalID: -1811173083015054112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_3
+      rect:
+        serializedVersion: 2
+        x: 3790
+        y: 71
+        width: 39
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a939b946f60f93d0800000000000000
+      internalID: -3197829555541165662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_4
+      rect:
+        serializedVersion: 2
+        x: 3959
+        y: 80
+        width: 33
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 926df6925184de6b0800000000000000
+      internalID: -5265473133599533527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_5
+      rect:
+        serializedVersion: 2
+        x: 4124
+        y: 85
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8a1412f910b93c00800000000000000
+      internalID: 880928827609717386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_6
+      rect:
+        serializedVersion: 2
+        x: 4143
+        y: 88
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e22eaed141089890800000000000000
+      internalID: -7451204201064029467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_7
+      rect:
+        serializedVersion: 2
+        x: 4288
+        y: 81
+        width: 122
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f2528b688be49ea0800000000000000
+      internalID: -5866805443405131020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_8
+      rect:
+        serializedVersion: 2
+        x: 4553
+        y: 80
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0ba052d5b3484de0800000000000000
+      internalID: -1348753640200819955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_9
+      rect:
+        serializedVersion: 2
+        x: 4714
+        y: 81
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a0cebdca315bccb0800000000000000
+      internalID: -4842687661305053020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_10
+      rect:
+        serializedVersion: 2
+        x: 4873
+        y: 80
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81db3fa7d39ad3830800000000000000
+      internalID: 4052581321224207640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_11
+      rect:
+        serializedVersion: 2
+        x: 5034
+        y: 81
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d169ef862e99eee40800000000000000
+      internalID: 5687652577118688797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_12
+      rect:
+        serializedVersion: 2
+        x: 5193
+        y: 80
+        width: 177
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dfbeccb2822eed00800000000000000
+      internalID: 1003777711858958294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_13
+      rect:
+        serializedVersion: 2
+        x: 5513
+        y: 80
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d184970c558573410800000000000000
+      internalID: 1456730129802283037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_14
+      rect:
+        serializedVersion: 2
+        x: 5674
+        y: 81
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91be79c628dc749b0800000000000000
+      internalID: -5095878493295088871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_15
+      rect:
+        serializedVersion: 2
+        x: 5833
+        y: 80
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d094b1559b68d0ed0800000000000000
+      internalID: -2446150892037388019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_16
+      rect:
+        serializedVersion: 2
+        x: 5994
+        y: 81
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 921e88fc9510a6290800000000000000
+      internalID: -7896497511395172055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_17
+      rect:
+        serializedVersion: 2
+        x: 6153
+        y: 80
+        width: 177
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d038c3063d8c9580800000000000000
+      internalID: -8819018707167072041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_18
+      rect:
+        serializedVersion: 2
+        x: 6473
+        y: 80
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a289a0b89f0faa30800000000000000
+      internalID: 4228615723597529765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_19
+      rect:
+        serializedVersion: 2
+        x: 6634
+        y: 81
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51ae2a1684a14d250800000000000000
+      internalID: 5968424304350784021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_20
+      rect:
+        serializedVersion: 2
+        x: 6793
+        y: 80
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97f949bbe054e6700800000000000000
+      internalID: 535441335282605945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_21
+      rect:
+        serializedVersion: 2
+        x: 6954
+        y: 81
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 633c032318171fc10800000000000000
+      internalID: 2085572902156026678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_22
+      rect:
+        serializedVersion: 2
+        x: 6964
+        y: 92
+        width: 29
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69828d8470cbefc50800000000000000
+      internalID: 6701000035046795414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_23
+      rect:
+        serializedVersion: 2
+        x: 7113
+        y: 80
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89a1f4c7e321b72e0800000000000000
+      internalID: -2127086339419596136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_24
+      rect:
+        serializedVersion: 2
+        x: 7145
+        y: 86
+        width: 23
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca37bb0a7d3edfe80800000000000000
+      internalID: -8143102035961875540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_25
+      rect:
+        serializedVersion: 2
+        x: 7274
+        y: 78
+        width: 56
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 618b9dfcababa8890800000000000000
+      internalID: -7454940921644599274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_26
+      rect:
+        serializedVersion: 2
+        x: 7433
+        y: 80
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e880d87e328297f0800000000000000
+      internalID: -607279794915079961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_27
+      rect:
+        serializedVersion: 2
+        x: 7486
+        y: 67
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66476fe3abeacef60800000000000000
+      internalID: 8065013147657204838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_28
+      rect:
+        serializedVersion: 2
+        x: 7594
+        y: 63
+        width: 62
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6ef36367884bf4d0800000000000000
+      internalID: -3099804172189172117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_29
+      rect:
+        serializedVersion: 2
+        x: 7753
+        y: 80
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94a92dc7d09cfd0b0800000000000000
+      internalID: -5701617543461823927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_30
+      rect:
+        serializedVersion: 2
+        x: 7914
+        y: 63
+        width: 49
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1350db8237beaef0800000000000000
+      internalID: -94937114406268133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_31
+      rect:
+        serializedVersion: 2
+        x: 7963
+        y: 63
+        width: 13
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22700063b8dcfb520800000000000000
+      internalID: 2720118697745188642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_32
+      rect:
+        serializedVersion: 2
+        x: 8073
+        y: 80
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a81a2a3cd9a80ea0800000000000000
+      internalID: -5906284147962668890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_33
+      rect:
+        serializedVersion: 2
+        x: 8106
+        y: 63
+        width: 13
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad43ed6882d845d50800000000000000
+      internalID: 6725155348771910874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_34
+      rect:
+        serializedVersion: 2
+        x: 8125
+        y: 63
+        width: 9
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74537529c619f92b0800000000000000
+      internalID: -5575577918163700409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_35
+      rect:
+        serializedVersion: 2
+        x: 8140
+        y: 63
+        width: 13
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78a8c313bd524adb0800000000000000
+      internalID: -4781655281006507385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_36
+      rect:
+        serializedVersion: 2
+        x: 8234
+        y: 63
+        width: 58
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e6a0d2516b8dd180800000000000000
+      internalID: -9088955222846298398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_37
+      rect:
+        serializedVersion: 2
+        x: 8302
+        y: 63
+        width: 806
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b75af5b88452385d0800000000000000
+      internalID: -3061562328175630981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_38
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 63
+        width: 163
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2185d6fc111a2e600800000000000000
+      internalID: 496136006830741522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_39
+      rect:
+        serializedVersion: 2
+        x: 2345
+        y: 65
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d641526231cf52f60800000000000000
+      internalID: 8009084671522837613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_40
+      rect:
+        serializedVersion: 2
+        x: 2355
+        y: 65
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da5efdfc8615827a0800000000000000
+      internalID: -6401777359701154387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_41
+      rect:
+        serializedVersion: 2
+        x: 2501
+        y: 63
+        width: 664
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16a48e4f58a4951a0800000000000000
+      internalID: -6820338221475935647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_42
+      rect:
+        serializedVersion: 2
+        x: 7799
+        y: 63
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4857f4980f51c8ec0800000000000000
+      internalID: -3563449082316884604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinAttack2Effect_strip63_43
+      rect:
+        serializedVersion: 2
+        x: 7976
+        y: 63
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acb3b80ab83afb190800000000000000
+      internalID: -7944451397569004598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spr_PaladinAttack2Effect_strip63_0: 5609423368225070842
+      spr_PaladinAttack2Effect_strip63_1: -7691541083151693240
+      spr_PaladinAttack2Effect_strip63_10: 4052581321224207640
+      spr_PaladinAttack2Effect_strip63_11: 5687652577118688797
+      spr_PaladinAttack2Effect_strip63_12: 1003777711858958294
+      spr_PaladinAttack2Effect_strip63_13: 1456730129802283037
+      spr_PaladinAttack2Effect_strip63_14: -5095878493295088871
+      spr_PaladinAttack2Effect_strip63_15: -2446150892037388019
+      spr_PaladinAttack2Effect_strip63_16: -7896497511395172055
+      spr_PaladinAttack2Effect_strip63_17: -8819018707167072041
+      spr_PaladinAttack2Effect_strip63_18: 4228615723597529765
+      spr_PaladinAttack2Effect_strip63_19: 5968424304350784021
+      spr_PaladinAttack2Effect_strip63_2: -1811173083015054112
+      spr_PaladinAttack2Effect_strip63_20: 535441335282605945
+      spr_PaladinAttack2Effect_strip63_21: 2085572902156026678
+      spr_PaladinAttack2Effect_strip63_22: 6701000035046795414
+      spr_PaladinAttack2Effect_strip63_23: -2127086339419596136
+      spr_PaladinAttack2Effect_strip63_24: -8143102035961875540
+      spr_PaladinAttack2Effect_strip63_25: -7454940921644599274
+      spr_PaladinAttack2Effect_strip63_26: -607279794915079961
+      spr_PaladinAttack2Effect_strip63_27: 8065013147657204838
+      spr_PaladinAttack2Effect_strip63_28: -3099804172189172117
+      spr_PaladinAttack2Effect_strip63_29: -5701617543461823927
+      spr_PaladinAttack2Effect_strip63_3: -3197829555541165662
+      spr_PaladinAttack2Effect_strip63_30: -94937114406268133
+      spr_PaladinAttack2Effect_strip63_31: 2720118697745188642
+      spr_PaladinAttack2Effect_strip63_32: -5906284147962668890
+      spr_PaladinAttack2Effect_strip63_33: 6725155348771910874
+      spr_PaladinAttack2Effect_strip63_34: -5575577918163700409
+      spr_PaladinAttack2Effect_strip63_35: -4781655281006507385
+      spr_PaladinAttack2Effect_strip63_36: -9088955222846298398
+      spr_PaladinAttack2Effect_strip63_37: -3061562328175630981
+      spr_PaladinAttack2Effect_strip63_38: 496136006830741522
+      spr_PaladinAttack2Effect_strip63_39: 8009084671522837613
+      spr_PaladinAttack2Effect_strip63_4: -5265473133599533527
+      spr_PaladinAttack2Effect_strip63_40: -6401777359701154387
+      spr_PaladinAttack2Effect_strip63_41: -6820338221475935647
+      spr_PaladinAttack2Effect_strip63_42: -3563449082316884604
+      spr_PaladinAttack2Effect_strip63_43: -7944451397569004598
+      spr_PaladinAttack2Effect_strip63_5: 880928827609717386
+      spr_PaladinAttack2Effect_strip63_6: -7451204201064029467
+      spr_PaladinAttack2Effect_strip63_7: -5866805443405131020
+      spr_PaladinAttack2Effect_strip63_8: -1348753640200819955
+      spr_PaladinAttack2Effect_strip63_9: -4842687661305053020
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

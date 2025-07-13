@@ -29,7 +29,6 @@ public class PlayerKnight : MonoBehaviour
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LayerMask enemyLayers;
-    [SerializeField] GameObject spikePrefab;
 
     [SerializeField] private int maxArmorShield = 2;
     [SerializeField] private int maxMagicShield = 2;
@@ -113,7 +112,11 @@ public class PlayerKnight : MonoBehaviour
     
     // Equipment UI update flag
     private bool shouldUpdateEquipmentUIOnInventoryOpen = false;
-    
+
+    //BerserkTime
+    [Header("Berserk Skill")]
+    public float berserkDuration = 6.5f; // Thời gian Berserk
+
     void Start()
     {
         swordCollider1 = transform.Find("SwordCollider1").gameObject;
@@ -775,13 +778,33 @@ public class PlayerKnight : MonoBehaviour
 
     public void DealDamageToEnemy()
     {
+
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(totalAttackDamage);
-            AudioController.instance.PlayEnemyTakeDame();
+            Enemy enemyScript = enemy.GetComponent<Enemy>();
+            if (enemyScript != null)
+            {
+                enemyScript.TakeDamage(totalAttackDamage);
+                AudioController.instance.PlayEnemyTakeDame();
+                continue;
+            }
+
+            PaladinBoss bossScript = enemy.GetComponent<PaladinBoss>();
+            if (bossScript != null)
+            {
+                bossScript.TakeDamage(totalAttackDamage);
+                AudioController.instance.PlayEnemyTakeDame();
+            }
+            NecromancerBoss necromancerScript = enemy.GetComponent<NecromancerBoss>();
+            if (necromancerScript != null)
+            {
+                necromancerScript.TakeDamage(totalAttackDamage);
+                AudioController.instance.PlayEnemyTakeDame();
+            }
         }
     }
+
     void OnDrawGizmosSelected()
     {
         if (attackPoint == null) return;
@@ -1008,39 +1031,47 @@ public class PlayerKnight : MonoBehaviour
 
     void HandleSkillBerserk()
     {
-        if (Input.GetKeyDown("r") && !m_rolling && !m_jumping)
+        manaCost = 100;
+        if (Input.GetKeyDown(KeyCode.R) && !m_rolling && !m_jumping && currentMana >= manaCost)
         {
-            StartCoroutine(SpikeRoutine());
+            StartCoroutine(Berserk());
+            currentMana -= manaCost; // Trừ mana khi sử dụng kỹ năng
         }
+        else
+        {
+            Debug.Log("Không đủ mana để sử dụng kỹ năng Berserk!");
+        }
+
+        
     }
-    IEnumerator SpikeRoutine()
+
+    IEnumerator Berserk()
     {
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
 
-        // Đổi màu sprite thành màu đỏ
-        sr.color = new Color(215f / 255f, 92f / 255f, 92f / 255f);
+        // Lưu lại giá trị gốc
+        int originalAttackDamage = totalAttackDamage;
+        int originalMaxHealth = totalMaxHealth;
+        int oringinCurrentHealth = health;
 
+        // Tăng tạm thời
+        totalAttackDamage += 5;
+        totalMaxHealth += 10;
+        health += 10; // Hồi máu ngay lập tức khi kích hoạt Berserk
+
+        // Đổi màu sprite thành đỏ
+        sr.color = new Color(215f / 255f, 92f / 255f, 92f / 255f);
         m_animator.SetTrigger("Attack3");
 
-        // Đợi 0.2 giây để animation bắt đầu
+        // Đợi animation bắt đầu
         yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
 
-        // Dừng lại thêm một chút trước khi bắt đầu flicker
-        yield return new WaitForSeconds(0.3f); // Dừng 0.5s trước khi flicker
-
-        // Tạo spike không gắn vào player
-        Vector3 spawnOffset = new Vector3(m_facingDirection * 3.5f, 1.5f, 0);
-        Vector3 spawnPosition = transform.position + spawnOffset;
-        GameObject spike = Instantiate(spikePrefab, spawnPosition, Quaternion.identity);
-        Animator sg = spike.GetComponent<Animator>();
-        sg.SetBool("isSpike", true);
-
-        // Bắt đầu hiệu ứng nhấp nháy cho sprite và giữ spike hoạt động trong cùng thời gian
-        float flickerDuration = 1f; // Thời gian cho spike hoạt động (đồng thời với nhấp nháy)
-        float flickerInterval = 0.1f; // Khoảng thời gian giữa mỗi lần đổi màu
+        // Bắt đầu hiệu ứng nhấp nháy
+        float flickerDuration = berserkDuration;
+        float flickerInterval = 0.1f;
         float timeElapsed = 0f;
 
-        // Nhấp nháy màu liên tục trong thời gian spike hoạt động
         while (timeElapsed < flickerDuration)
         {
             sr.color = (sr.color == new Color(215f / 255f, 92f / 255f, 92f / 255f)) ? Color.white : new Color(215f / 255f, 92f / 255f, 92f / 255f);
@@ -1048,12 +1079,13 @@ public class PlayerKnight : MonoBehaviour
             yield return new WaitForSeconds(flickerInterval);
         }
 
-        // Đảm bảo màu sprite trở về trắng mặc định sau khi kết thúc
+        // Trả lại màu trắng
         sr.color = Color.white;
 
-        // Xử lý spike sau khi hoạt động 1.5 giây
-        sg.SetBool("isSpike", false);
-        Destroy(spike); // Xóa spike
+        // Reset lại stats
+        totalAttackDamage = originalAttackDamage;
+        totalMaxHealth = originalMaxHealth;
+        health = oringinCurrentHealth; // Đặt lại máu về giá trị ban đầu
     }
 
     // Hàm LateUpdate để cập nhật vị trí của player khi đứng trên MovingGround

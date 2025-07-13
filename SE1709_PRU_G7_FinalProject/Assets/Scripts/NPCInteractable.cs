@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class NPCInteractable : MonoBehaviour
 {
-    public enum NPCType { Statue, Shop, Item, Training, Exit, MapPortal, EquipmentShop }
+    public enum NPCType { Statue, Shop, Item, Training, Exit, MapPortal, EquipmentShop, Chest }
     public NPCType npcType = NPCType.Statue;
     public GameObject shopPanel;
     [Tooltip("FPrompt là GameObject chứa TextMeshPro, sẽ hiện trên đầu NPC khi lại gần.")]
@@ -39,9 +39,19 @@ public class NPCInteractable : MonoBehaviour
     [Tooltip("Text hiển thị khi player đến gần equipment shop")]
     public string equipmentShopPromptText = "Press F - Equipment Shop";
 
+    [Header("Chest Settings")]
+    public int goldAmount = 300;
+    private bool isOpened = false;
+    [Tooltip("Animator để mở hòm khi tương tác")]
+    public string openChest = "Press F - Open Chest";
+
+    private Animator animator;
+
+
     void Start()
     {
         // Auto-setup can be done here if needed
+        animator = GetComponent<Animator>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -56,7 +66,8 @@ public class NPCInteractable : MonoBehaviour
                 fPrompt.SetActive(true);
                 
                 // Update prompt text for training area, exit, map portal, or equipment shop
-                if (npcType == NPCType.Training || npcType == NPCType.Exit || npcType == NPCType.MapPortal || npcType == NPCType.EquipmentShop)
+                if (npcType == NPCType.Training || npcType == NPCType.Exit || npcType == NPCType.MapPortal || npcType == NPCType.EquipmentShop || npcType == NPCType.Chest)
+
                 {
                     string promptText = "";
                     switch (npcType)
@@ -73,8 +84,12 @@ public class NPCInteractable : MonoBehaviour
                         case NPCType.EquipmentShop:
                             promptText = equipmentShopPromptText;
                             break;
+                        case NPCType.Chest:
+                            promptText = openChest;
+                            break;
+
                     }
-                    
+
                     // Try TextMeshPro first
                     var tmpText = fPrompt.GetComponentInChildren<TMPro.TextMeshProUGUI>();
                     if (tmpText != null)
@@ -299,6 +314,26 @@ public class NPCInteractable : MonoBehaviour
                         }
                     }
                     break;
+
+                case NPCType.Chest:
+                    if (!isOpened && playerKnight != null)
+                    {
+                        playerKnight.gold += goldAmount;
+                        playerKnight.SaveGame();
+                        isOpened = true;
+                        Debug.Log($"Player nhận được {goldAmount} vàng từ hòm!");
+
+                        if (fPrompt != null)
+                            fPrompt.SetActive(false);
+
+                        if (animator != null)
+                            animator.SetTrigger("isOpen");
+
+                        Collider2D col = GetComponent<Collider2D>();
+                        if (col != null) col.enabled = false;
+                    }
+                    break;
+
             }
         }
     }
