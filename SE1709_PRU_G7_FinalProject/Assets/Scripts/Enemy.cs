@@ -127,7 +127,7 @@ public class Enemy : MonoBehaviour
         lastAttackTime = Time.time;
     }
 
-    public void TakeDamage(int amount)
+    public virtual void TakeDamage(int amount)
     {
         health -= amount;
         if (healthBar != null)

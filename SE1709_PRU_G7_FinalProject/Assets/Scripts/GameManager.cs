@@ -712,6 +712,16 @@ public class GameManager : MonoBehaviour
     }
     
     /// <summary>
+    /// Force load game data - chỉ dùng cho Continue Game hoặc F9
+    /// </summary>
+    public void ForceLoadGameData()
+    {
+        Debug.Log("🔄 FORCE LOADING GAME DATA...");
+        LoadGameData();
+        Debug.Log("✅ Force load completed");
+    }
+    
+    /// <summary>
     /// Reset game data cho New Game - xóa save data và reset về default
     /// </summary>
     public void ResetGameForNewGame()

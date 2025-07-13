@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 600.2, y: -2.3, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3564325981693902387}
@@ -82,8 +82,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -81319989
-  m_SortingLayer: 16
+  m_SortingLayerID: 810683083
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: de226db3ca391f542994d5372b8638fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -311,17 +311,25 @@ MonoBehaviour:
   spawnPosition: {x: 0, y: 0}
   enemyEye: {fileID: 0}
   attack_Point: {fileID: 3719113800635547982}
-  attackRadius: 2.5
+  attackRadius: 3.31
   detectionRange: 40
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   audioSource: {fileID: 0}
   attackSound: {fileID: 0}
   bossSound: {fileID: 0}
   soundInterval: 10
   bulletPrefab: {fileID: 0}
   firePoint: {fileID: 0}
+  circleFireInterval: 4
+  hpUI: {fileID: 0}
+  hpBar: {fileID: 0}
+  hp: 1000
+  bulletPrefab1: {fileID: 0}
+  firePoint1: {fileID: 0}
+  speedDan: 20
+  vongTron: 20
 --- !u!1 &6919192963992944825
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +386,7 @@ Transform:
   m_GameObject: {fileID: 8919314707935006620}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.5, y: -7.48, z: 0}
+  m_LocalPosition: {x: -5.79, y: -7.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -394,7 +402,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1555871607089446813, guid: fdf5950002e6c7046807982d43ee4e47, type: 3}
       propertyPath: m_SortingLayer
-      value: 16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1555871607089446813, guid: fdf5950002e6c7046807982d43ee4e47, type: 3}
       propertyPath: m_SortingLayerID
