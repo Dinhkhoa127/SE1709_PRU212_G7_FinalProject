@@ -5,7 +5,7 @@ AssetOrigin:
   productId: 238976
   packageName: SteampunkUI
   packageVersion: 1.0
-  assetPath: Assets/Gentleland/SteampunkUI/Art/Steampunk_UI_Alternative_Colors_5.png
+  assetPath: Assets/sprites/Gentleland/SteampunkUI/Art/Steampunk_UI_Alternative_Colors_5.png
   uploadId: 559104
 TextureImporter:
   internalIDToNameTable:

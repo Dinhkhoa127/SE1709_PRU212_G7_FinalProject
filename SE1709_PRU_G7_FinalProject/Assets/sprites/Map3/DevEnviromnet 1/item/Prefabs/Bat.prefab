@@ -194,7 +194,7 @@ MonoBehaviour:
   WalkSpeed: 2
   RunSpeed: 3
   FlySpeed: 3
-  Hp: 50
+  Hp: 8
   Mana: 100
   Defend: 0
   PhysicalDame: 10
