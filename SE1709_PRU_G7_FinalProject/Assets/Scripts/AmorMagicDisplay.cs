@@ -24,8 +24,8 @@ namespace Assets.Script
         {
             if (player != null)
             {
-                armorText.text = $"Giáp: {player.GetCurrentArmorShield()}";
-                magicShieldText.text = $"Kháng phép: {player.GetCurrentMagicShield()}";
+                armorText.text = $"Armor: {player.GetCurrentArmorShield()}";
+                magicShieldText.text = $"Magic Resist: {player.GetCurrentMagicShield()}";
             }
         }
     }

@@ -43,6 +43,13 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     
     public void OnBeginDrag(PointerEventData eventData)
     {
+        // Check if inventory is still open (prevent drag if inventory closed)
+        if (GameManager.Instance != null && GameManager.Instance.currentGameState != GameManager.GameState.InventoryOpen)
+        {
+            Debug.Log("Drag cancelled - inventory not open");
+            return;
+        }
+        
         // Only allow dragging equipment items
         if (ItemManager.Instance == null) return;
         
@@ -66,11 +73,27 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     
     public void OnDrag(PointerEventData eventData)
     {
+        // Check if inventory is still open during drag
+        if (GameManager.Instance != null && GameManager.Instance.currentGameState != GameManager.GameState.InventoryOpen)
+        {
+            Debug.Log("Drag interrupted - inventory closed");
+            ForceCleanup();
+            return;
+        }
+        
         rectTransform.anchoredPosition += eventData.delta / dragCanvas.scaleFactor;
     }
     
     public void OnEndDrag(PointerEventData eventData)
     {
+        // Check if inventory is still open
+        if (GameManager.Instance != null && GameManager.Instance.currentGameState != GameManager.GameState.InventoryOpen)
+        {
+            Debug.Log("End drag cancelled - inventory not open");
+            ForceCleanup();
+            return;
+        }
+        
         // Restore appearance
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
@@ -142,5 +165,43 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
         // Return to original parent and position
         transform.SetParent(originalParent);
         rectTransform.anchoredPosition = originalPosition;
+    }
+    
+    /// <summary>
+    /// Force cleanup drag state - called when inventory is closed suddenly
+    /// </summary>
+    public void ForceCleanup()
+    {
+        // Restore appearance
+        if (canvasGroup != null)
+        {
+            canvasGroup.alpha = 1f;
+            canvasGroup.blocksRaycasts = true;
+        }
+        
+        // Return to original position if we have valid references
+        if (originalParent != null && rectTransform != null)
+        {
+            transform.SetParent(originalParent);
+            rectTransform.anchoredPosition = originalPosition;
+        }
+        
+        // Clear drag state
+        originalParent = null;
+        originalPosition = Vector2.zero;
+        
+        Debug.Log($"Force cleaned up drag handler for {itemName}");
+    }
+    
+    void OnDisable()
+    {
+        // Cleanup when object is disabled
+        ForceCleanup();
+    }
+    
+    void OnDestroy()
+    {
+        // Cleanup when object is destroyed
+        ForceCleanup();
     }
 } 
