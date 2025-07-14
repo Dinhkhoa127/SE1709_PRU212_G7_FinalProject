@@ -18676,7 +18676,7 @@ Transform:
   m_GameObject: {fileID: 1085843710}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3209076, y: 1.7000027, z: -10}
+  m_LocalPosition: {x: 0.3282318, y: 1.7000027, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36106,6 +36106,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5361040659459461205, guid: 24051b8723d125340a4e162d70b02002, type: 3}
+      propertyPath: attack1Damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361040659459461205, guid: 24051b8723d125340a4e162d70b02002, type: 3}
+      propertyPath: attack2Damage
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6115317018562813223, guid: 24051b8723d125340a4e162d70b02002, type: 3}
       propertyPath: m_LocalPosition.x
       value: 290.2
@@ -36259,6 +36267,14 @@ PrefabInstance:
     - target: {fileID: 3573124304517517498, guid: 4d2d1bfb13a6f1a478b334534b0a3e1e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634617714810701442, guid: 4d2d1bfb13a6f1a478b334534b0a3e1e, type: 3}
+      propertyPath: attack1Damage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634617714810701442, guid: 4d2d1bfb13a6f1a478b334534b0a3e1e, type: 3}
+      propertyPath: attack2Damage
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6659233455619109882, guid: 4d2d1bfb13a6f1a478b334534b0a3e1e, type: 3}
       propertyPath: m_AnchorMax.y
