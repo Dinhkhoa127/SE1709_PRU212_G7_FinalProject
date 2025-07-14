@@ -57,7 +57,7 @@ private float circleFireTimer = 0f;                     // Đếm thời gian gi
     [Header("Điểm tấn công")]
     public Transform attackPoint;
     public float PainAttack = 1f;
-    public int attackDamage = 20;
+    //public int attackDamage = 20; // thua
     public LayerMask playerLayer;
 
     private Animator animator;
