@@ -402,7 +402,7 @@ public class PlayerKnight : MonoBehaviour
         HandleRunIdle();
         if (Input.GetKeyDown(KeyCode.H))
         {
-            Heal(1); // Nhấn H để hồi 1 máu
+            Heal(10); // Nhấn H để hồi 1 máu
         }
        // KHÓA ĐÒN ĐÁNH VÀ KỸ NĂNG Ở MAP ĐẶC BIỆT
         if (!IsAttackLockedScene())
@@ -755,7 +755,7 @@ public class PlayerKnight : MonoBehaviour
         Debug.Log($" Đã hồi {amount} mana. Mana hiện tại: {currentMana}/{totalMaxMana}");
     }
 
-    void Die()
+    public void Die()
     {
         if (isDead) return;
         // Play death animation or effect here if needed
@@ -1417,7 +1417,7 @@ public class PlayerKnight : MonoBehaviour
         }
     }
 
-    private bool IsAttackLockedScene()
+    public bool IsAttackLockedScene()
     {
         // Đổi "MapRest" thành đúng tên scene bạn muốn khóa
         return SceneManager.GetActiveScene().name == "MapRest";

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour, IDamageable
 {
@@ -70,6 +71,11 @@ private float circleFireTimer = 0f;                     // Đếm thời gian gi
     public AudioSource audioSource;
     public AudioClip checkPlayerSound;
     public AudioClip attackSound;
+    
+    [Header("EndGame Settings")]
+    [SerializeField] private bool triggerEndGame = true; // Có trigger EndGame khi chết không
+    [SerializeField] private float delayBeforeEndGame = 3f; // Thời gian chờ trước khi chuyển scene
+    [SerializeField] private string endGameSceneName = "EndGame"; // Tên scene EndGame
 
     private Coroutine smoothCoroutine;
     //private void Start()
@@ -551,7 +557,31 @@ private void Start()
         GetComponent<Collider2D>().enabled = false;
         StopAllCoroutines();
         effectFire.SetActive(false);
-        Destroy(gameObject, 2f);
+        
+        // Kiểm tra nếu cần trigger EndGame
+        if (triggerEndGame)
+        {
+            Debug.Log($"Boss đã chết! Máu hiện tại: {currentHealth}. Chuyển đến EndGame sau {delayBeforeEndGame} giây...");
+            StartCoroutine(LoadEndGameAfterDelay());
+            Destroy(gameObject, delayBeforeEndGame + 1f); // Destroy sau khi đã chuyển scene
+        }
+        else
+        {
+            Destroy(gameObject, 2f);
+        }
+    }
+    
+    private IEnumerator LoadEndGameAfterDelay()
+    {
+        // Chờ animation chết chạy xong
+        yield return new WaitForSeconds(delayBeforeEndGame);
+        
+        // Đảm bảo time scale bình thường
+        Time.timeScale = 1f;
+        
+        // Chuyển đến Scene EndGame
+        Debug.Log($"Chuyển đến Scene: {endGameSceneName}");
+        SceneManager.LoadScene(endGameSceneName);
     }
 
 

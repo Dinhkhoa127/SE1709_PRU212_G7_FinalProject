@@ -2058,7 +2058,7 @@ SortingGroup:
   m_GameObject: {fileID: 5414481257285905747}
   m_Enabled: 1
   m_SortingLayerID: 810683083
-  m_SortingLayer: 7
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!114 &2577032195615448931
@@ -2250,7 +2250,7 @@ MonoBehaviour:
   bulletPrefab1: {fileID: 0}
   firePoint1: {fileID: 0}
   vongTron: 20
-  Hp: 1000
+  Hp: 60
   miniEnemy: {fileID: 0}
   minPatrolDistance: 5
   maxPatrolDistance: 35
@@ -2268,14 +2268,13 @@ MonoBehaviour:
   attackRange: 5
   diveAttackRange: 20
   diveSpeed: 30
-  damge: 15
-  damgeFire: 15
+  damge: 12
+  damgeFire: 12
   enragedThreshold: 0.3
   enragedSpeedMultiplier: 1.5
   healthBar: {fileID: 8564265782103318120}
   attackPoint: {fileID: 621169792565478438}
   PainAttack: 2
-  attackDamage: 20
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
