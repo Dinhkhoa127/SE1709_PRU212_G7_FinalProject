@@ -16,7 +16,7 @@ public class ResultData
     public string Name;
     public string PlayTime;
     public int EnemiesKilled;
- 
+
 }
 
 public class EndGameController : MonoBehaviour
@@ -25,7 +25,7 @@ public class EndGameController : MonoBehaviour
     public Button restartButton;
     public Button mainMenuButton;
     public Button quitButton;
-    
+
     public TMPro.TextMeshProUGUI playTimeText;
     public TMPro.TextMeshProUGUI enemiesKilledText;
     [SerializeField] private TMP_InputField nameInputField;
@@ -36,10 +36,10 @@ public class EndGameController : MonoBehaviour
         // Setup button events
         if (restartButton != null)
             restartButton.onClick.AddListener(RestartGame);
-            
+
         if (mainMenuButton != null)
             mainMenuButton.onClick.AddListener(GoToMainMenu);
-            
+
         if (quitButton != null)
             quitButton.onClick.AddListener(QuitGame);
 
