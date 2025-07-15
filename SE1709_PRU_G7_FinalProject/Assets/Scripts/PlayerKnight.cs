@@ -1051,7 +1051,7 @@ public class PlayerKnight : MonoBehaviour
         }
         else
         {
-            Debug.Log("Không đủ mana để sử dụng kỹ năng Berserk!");
+            //Debug.Log("Không đủ mana để sử dụng kỹ năng Berserk!");
         }
 
         
