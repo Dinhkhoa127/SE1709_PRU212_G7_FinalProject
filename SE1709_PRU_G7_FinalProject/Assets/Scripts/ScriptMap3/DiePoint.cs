@@ -19,17 +19,17 @@ public class DiePoint : MonoBehaviour
             if (player != null)
             {
                 // Gây sát thương cực lớn để đảm bảo chết ngay
-                player.TakeDamage(99999);
+                player.Die();
                 Debug.Log("[DiePoint] Player died!");
                 return;
             }
 
-            // Fallback nếu không tìm thấy PlayerKnight component
-            IDamageable damageable = collision.GetComponent<IDamageable>();
-            if (damageable != null)
-            {
-                damageable.TakeDamage(99999);
-            }
+            //// Fallback nếu không tìm thấy PlayerKnight component
+            //IDamageable damageable = collision.GetComponent<IDamageable>();
+            //if (damageable != null)
+            //{
+            //    damageable.TakeDamage(99999);
+            //}
         }
     }
 }

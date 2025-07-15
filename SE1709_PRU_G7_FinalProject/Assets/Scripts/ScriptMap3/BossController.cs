@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour, IDamageable
 {
     [SerializeField] private float circleFireInterval = 4f;  // Thời gian giữa các lần bắn đạn vòng tròn
-[SerializeField] private GameObject bulletPrefab1;       // Prefab của đạn
-[SerializeField] private Transform firePoint1;           // Vị trí bắn đạn
-[SerializeField] private float vongTron = 20f;          // Tốc độ đạn vòng tròn
-private float circleFireTimer = 0f;                     // Đếm thời gian giữa các lần bắn
+    [SerializeField] private GameObject bulletPrefab1;       // Prefab của đạn
+    [SerializeField] private Transform firePoint1;           // Vị trí bắn đạn
+    [SerializeField] private float vongTron = 20f;          // Tốc độ đạn vòng tròn
+    private float circleFireTimer = 0f;                     // Đếm thời gian giữa các lần bắn
     [SerializeField] private float Hp = 1000f;   // Máu tối đa của boss
     [SerializeField] private GameObject miniEnemy;
     private float currentHealth; // Máu hiện tại
@@ -51,13 +52,13 @@ private float circleFireTimer = 0f;                     // Đếm thời gian gi
     public float enragedSpeedMultiplier = 1.5f;
     private bool isEnraged = false;
 
-    
+
     [SerializeField] private Image healthBar;
 
     [Header("Điểm tấn công")]
     public Transform attackPoint;
     public float PainAttack = 1f;
-    public int attackDamage = 20;
+    //public int attackDamage = 20; // thua
     public LayerMask playerLayer;
 
     private Animator animator;
@@ -70,6 +71,11 @@ private float circleFireTimer = 0f;                     // Đếm thời gian gi
     public AudioSource audioSource;
     public AudioClip checkPlayerSound;
     public AudioClip attackSound;
+
+    [Header("EndGame Settings")]
+    [SerializeField] private bool triggerEndGame = true; // Có trigger EndGame khi chết không
+    [SerializeField] private float delayBeforeEndGame = 3f; // Thời gian chờ trước khi chuyển scene
+    [SerializeField] private string endGameSceneName = "EndGame"; // Tên scene EndGame
 
     private Coroutine smoothCoroutine;
     //private void Start()
@@ -88,34 +94,34 @@ private float circleFireTimer = 0f;                     // Đếm thời gian gi
     //    IsBossDefeated = false;
     //}
     // Cập nhật Start() để khởi tạo health đúng cách
-private void Start()
-{
-    rb = GetComponent<Rigidbody2D>();
-    startPosition = transform.position;
-    player = GameObject.FindGameObjectWithTag("Player")?.transform;
-    animator = GetComponent<Animator>();
-    SetNextPatrolTarget();
-    effectFire.SetActive(false);
-    
-    // Khởi tạo health
-    currentHealth = Hp;
-    maxHp = Hp;
-    
-    // Setup health bar
-    if (healthBar != null)
+    private void Start()
     {
-        healthBar.fillAmount = 1f;
-        Debug.Log($"[BossController] Initialized - Max HP: {Hp}, Current: {currentHealth}");
+        rb = GetComponent<Rigidbody2D>();
+        startPosition = transform.position;
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        animator = GetComponent<Animator>();
+        SetNextPatrolTarget();
+        effectFire.SetActive(false);
+
+        // Khởi tạo health
+        currentHealth = Hp;
+        maxHp = Hp;
+
+        // Setup health bar
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = 1f;
+            Debug.Log($"[BossController] Initialized - Max HP: {Hp}, Current: {currentHealth}");
+        }
+        else
+        {
+            Debug.LogError("[BossController] Health bar reference is missing!");
+        }
+
+        hpUI.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
+        IsBossDefeated = false;
     }
-    else
-    {
-        Debug.LogError("[BossController] Health bar reference is missing!");
-    }
-    
-    hpUI.SetActive(false);
-    audioSource = GetComponent<AudioSource>();
-    IsBossDefeated = false;
-}
     private void Update()
     {
         if (player == null) return;
@@ -551,7 +557,31 @@ private void Start()
         GetComponent<Collider2D>().enabled = false;
         StopAllCoroutines();
         effectFire.SetActive(false);
-        Destroy(gameObject, 2f);
+
+        // Kiểm tra nếu cần trigger EndGame
+        if (triggerEndGame)
+        {
+            Debug.Log($"Boss đã chết! Máu hiện tại: {currentHealth}. Chuyển đến EndGame sau {delayBeforeEndGame} giây...");
+            StartCoroutine(LoadEndGameAfterDelay());
+            Destroy(gameObject, delayBeforeEndGame + 1f); // Destroy sau khi đã chuyển scene
+        }
+        else
+        {
+            Destroy(gameObject, 2f);
+        }
+    }
+
+    private IEnumerator LoadEndGameAfterDelay()
+    {
+        // Chờ animation chết chạy xong
+        yield return new WaitForSeconds(delayBeforeEndGame);
+
+        // Đảm bảo time scale bình thường
+        Time.timeScale = 1f;
+
+        // Chuyển đến Scene EndGame
+        Debug.Log($"Chuyển đến Scene: {endGameSceneName}");
+        SceneManager.LoadScene(endGameSceneName);
     }
 
 

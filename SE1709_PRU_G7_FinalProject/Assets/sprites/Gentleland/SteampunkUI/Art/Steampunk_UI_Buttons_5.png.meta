@@ -1,12 +1,5 @@
 fileFormatVersion: 2
 guid: 67417fc099c9e8043b03895065b4b888
-AssetOrigin:
-  serializedVersion: 1
-  productId: 238976
-  packageName: SteampunkUI
-  packageVersion: 1.0
-  assetPath: Assets/Gentleland/SteampunkUI/Art/Steampunk_UI_Buttons_5.png
-  uploadId: 559104
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -43,7 +36,7 @@ TextureImporter:
       213: 8598377932966410126
     second: Steampunk_UI_Buttons_5_10
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -60,12 +53,11 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMipmapLimit: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -104,10 +96,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  swizzle: 50462976
-  cookieLightType: 1
   platformSettings:
-  - serializedVersion: 4
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -117,10 +107,9 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -130,10 +119,9 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
+  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -143,10 +131,9 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -156,7 +143,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -173,7 +159,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -195,7 +180,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 180, y: 68, z: 210, w: 68}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -217,7 +201,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 180, y: 68, z: 210, w: 68}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -239,7 +222,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 180, y: 68, z: 210, w: 68}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -261,7 +243,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 180, y: 68, z: 210, w: 68}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -283,7 +264,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 180, y: 68, z: 210, w: 68}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -305,7 +285,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 180, y: 68, z: 210, w: 68}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -317,7 +296,6 @@ TextureImporter:
       edges: []
       weights: []
     outline: []
-    customData: 
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
@@ -327,18 +305,24 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    spriteCustomMetadata:
-      entries: []
     nameFileIdTable:
-      Steampunk_UI_Buttons_5_0: -991401099361754322
+      Steampunk_UI_Buttons_5_5: -3633398782271786105
       Steampunk_UI_Buttons_5_1: 8402200662116330782
+      Steampunk_UI_Buttons_5_0: -991401099361754322
+      Steampunk_UI_Buttons_5_4: 274569517077996234
+      Steampunk_UI_Buttons_5_6: -567024156268097549
       Steampunk_UI_Buttons_5_2: -7100797646552663157
       Steampunk_UI_Buttons_5_3: -8625608446024689505
-      Steampunk_UI_Buttons_5_4: 274569517077996234
-      Steampunk_UI_Buttons_5_5: -3633398782271786105
-      Steampunk_UI_Buttons_5_6: -567024156268097549
-  mipmapLimitGroupName: 
+  spritePackingTag: 
   pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238976
+  packageName: SteampunkUI
+  packageVersion: 1.0
+  assetPath: Assets/sprites/Gentleland/SteampunkUI/Art/Steampunk_UI_Buttons_5.png
+  uploadId: 559104

@@ -2,50 +2,51 @@
 
 public class MapMusicController : MonoBehaviour
 {
+    private AudioClip currentMapClip;
+
     void Start()
     {
         string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         Debug.Log("[MapMusicController] Start() in scene: " + sceneName);
+
         if (AudioController.instance != null)
         {
-            Debug.Log("Found AudioController, playing music for: " + sceneName);
             switch (sceneName)
             {
                 case "Map1":
-                    AudioController.instance.PlayMap1Music();
+                    currentMapClip = AudioController.instance.map1Music;
                     break;
                 case "Map2":
-                    AudioController.instance.PlayMap2Music();
+                    currentMapClip = AudioController.instance.map2Music;
                     break;
                 case "Map3":
-                    AudioController.instance.PlayMap3Music();
+                    currentMapClip = AudioController.instance.map3Music;
                     break;
                 case "MapRest":
-                    AudioController.instance.PlayRestMapMusic();
-                    break;
                 case "Example":
-                    AudioController.instance.PlayRestMapMusic();
+                    currentMapClip = AudioController.instance.restMapMusic;
                     break;
                 case "MainMenu":
-                    AudioController.instance.PlayMenuMusic();
-                    break;
                 case "EndGame":
-                    AudioController.instance.PlayMenuMusic();
-                    break;
                 case "Instruction":
-                    AudioController.instance.PlayMenuMusic();
-                    break;
                 case "LeaderBoard":
-                    AudioController.instance.PlayMenuMusic();
+                    currentMapClip = AudioController.instance.menu;
                     break;
                 default:
                     Debug.Log("No music assigned for: " + sceneName);
                     break;
+            }
+
+            // Nếu có nhạc phù hợp thì gọi PlayMapMusic
+            if (currentMapClip != null)
+            {
+                AudioController.instance.PlayMapMusic(currentMapClip);
             }
         }
         else
         {
             Debug.LogWarning("AudioController.instance is null!");
         }
+
     }
 }

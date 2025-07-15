@@ -112,7 +112,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 810683083
-  m_SortingLayer: 7
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 6842999660662438955, guid: 7863f3fd29a72b94ca856c8d271f64bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -235,7 +235,7 @@ MonoBehaviour:
   WalkSpeed: 2
   RunSpeed: 4
   FlySpeed: 5
-  Hp: 100
+  Hp: 10
   Mana: 100
   Defend: 0
   PhysicalDame: 0
@@ -259,6 +259,7 @@ MonoBehaviour:
   attackPoint: {fileID: 0}
   audioSource: {fileID: 0}
   attackSound: {fileID: 0}
+  healthBar: {fileID: 457693368522796311}
 --- !u!1 &6197930379340276400
 GameObject:
   m_ObjectHideFlags: 0

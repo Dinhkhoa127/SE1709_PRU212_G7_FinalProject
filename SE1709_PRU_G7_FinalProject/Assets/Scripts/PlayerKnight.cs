@@ -34,7 +34,8 @@ public class PlayerKnight : MonoBehaviour
     [SerializeField] private int maxMagicShield = 2;
     [SerializeField] private int maxMana = 100;
 
-    private int manaCost = 10;
+    private int manaCostR = 100;
+    private int manaCostQ = 10;
     public GameObject skillProjectilePrefab;
     public Transform castPoint;
     private int currentMana;
@@ -401,7 +402,7 @@ public class PlayerKnight : MonoBehaviour
         HandleRunIdle();
         if (Input.GetKeyDown(KeyCode.H))
         {
-            Heal(1); // Nhấn H để hồi 1 máu
+            Heal(10); // Nhấn H để hồi 1 máu
         }
        // KHÓA ĐÒN ĐÁNH VÀ KỸ NĂNG Ở MAP ĐẶC BIỆT
         if (!IsAttackLockedScene())
@@ -411,7 +412,7 @@ public class PlayerKnight : MonoBehaviour
             HandleSkillBerserk();
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                HandleSkillCast(manaCost);
+                HandleSkillCast(manaCostQ);
             }
         }
         manaRegenTimer += Time.deltaTime;
@@ -725,7 +726,7 @@ public class PlayerKnight : MonoBehaviour
             currentMana -= manaCost;
 
             GameObject projectile = Instantiate(skillProjectilePrefab, castPoint.position, Quaternion.identity);
-
+            Destroy(projectile, 5f);
             // Xác định hướng
             Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
             projectile.GetComponent<SkillProjectile>().SetDirection(direction);
@@ -754,7 +755,7 @@ public class PlayerKnight : MonoBehaviour
         Debug.Log($" Đã hồi {amount} mana. Mana hiện tại: {currentMana}/{totalMaxMana}");
     }
 
-    void Die()
+    public void Die()
     {
         if (isDead) return;
         // Play death animation or effect here if needed
@@ -1042,15 +1043,15 @@ public class PlayerKnight : MonoBehaviour
 
     void HandleSkillBerserk()
     {
-        manaCost = 100;
-        if (Input.GetKeyDown(KeyCode.R) && !m_rolling && !m_jumping && currentMana >= manaCost)
+        manaCostR = 100;
+        if (Input.GetKeyDown(KeyCode.R) && !m_rolling && !m_jumping && currentMana >= manaCostR)
         {
             StartCoroutine(Berserk());
-            currentMana -= manaCost; // Trừ mana khi sử dụng kỹ năng
+            currentMana -= manaCostR; // Trừ mana khi sử dụng kỹ năng
         }
         else
         {
-            Debug.Log("Không đủ mana để sử dụng kỹ năng Berserk!");
+            //Debug.Log("Không đủ mana để sử dụng kỹ năng Berserk!");
         }
 
         
@@ -1416,7 +1417,7 @@ public class PlayerKnight : MonoBehaviour
         }
     }
 
-    private bool IsAttackLockedScene()
+    public bool IsAttackLockedScene()
     {
         // Đổi "MapRest" thành đúng tên scene bạn muốn khóa
         return SceneManager.GetActiveScene().name == "MapRest";

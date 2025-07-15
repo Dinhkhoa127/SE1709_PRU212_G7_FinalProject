@@ -613,7 +613,7 @@ Transform:
   m_GameObject: {fileID: 7597777774212057584}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 212.28, y: -0.88, z: 0}
+  m_LocalPosition: {x: 285.3, y: 45.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -716,7 +716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRange: 13
   attackRange: 3
-  moveSpeed: 7
+  moveSpeed: 14
   attack1Damage: 4
   attack2Damage: 6
   attackCooldown: 2

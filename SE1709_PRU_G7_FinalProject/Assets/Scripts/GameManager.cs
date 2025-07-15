@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq; // Added for .Where()
 
 /// <summary>
 /// GameManager - Quản lý toàn bộ game flow, states, UI, và data persistence
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
         Paused,        // Game bị pause
         InventoryOpen, // Inventory đang mở
         ShopOpen,      // Shop đang mở
+        SettingsOpen,  // Settings đang mở
         GameOver,      // Player chết
         LevelComplete, // Hoàn thành level
         Loading        // Đang loading
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
     #region UI References
     [Header("UI Panels")]
     public GameObject pauseMenuPanel;
+    public GameObject settingsPanel;   // Thêm reference cho Settings Panel
     public GameObject levelCompletePanel;
     public GameObject loadingPanel;
     public GameObject hudPanel; // Health, Mana bars, etc.
@@ -65,6 +68,7 @@ public class GameManager : MonoBehaviour
     public Button pauseMainMenuButton;
     public Button levelCompleteNextButton;
     public Button levelCompleteMainMenuButton;
+    public Button settingsBackButton;  // Thêm button để đóng settings
     
     [Header("EndGame Scene")]
     [Tooltip("Tên scene EndGame để load khi player chết")]
@@ -112,6 +116,13 @@ public class GameManager : MonoBehaviour
         // Initialize UI button events
         SetupUIEvents();
         
+        // Make ONLY Settings Panel persistent, not the entire MainMenu Canvas
+        if (settingsPanel != null)
+        {
+            // Tạo Canvas riêng cho Settings để không cầm cả MainMenu
+            CreatePersistentSettingsCanvas();
+        }
+        
         // Load player data if exists (chỉ load nếu có player)
         if (FindObjectOfType<PlayerKnight>() != null)
         {
@@ -121,19 +132,117 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameManager initialized successfully!");
     }
     
+    void CreatePersistentSettingsCanvas()
+    {
+        // Tạo Canvas mới chỉ cho Settings
+        GameObject persistentSettingsCanvas = new GameObject("PersistentSettingsCanvas");
+        Canvas canvas = persistentSettingsCanvas.AddComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.sortingOrder = 100; // Đảm bảo hiện trên cùng
+        
+        // Add CanvasScaler và GraphicRaycaster
+        persistentSettingsCanvas.AddComponent<CanvasScaler>();
+        persistentSettingsCanvas.AddComponent<GraphicRaycaster>();
+        
+        // Copy Settings Panel sang Canvas mới
+        GameObject newSettingsPanel = Instantiate(settingsPanel, persistentSettingsCanvas.transform);
+        
+        // Cập nhật reference để trỏ đến Settings Panel mới
+        settingsPanel = newSettingsPanel;
+        
+        // Ẩn Settings Panel ban đầu
+        settingsPanel.SetActive(false);
+        
+        // Làm persistent Canvas mới này
+        DontDestroyOnLoad(persistentSettingsCanvas);
+        
+        // Setup lại button events cho Settings Panel mới
+        SetupUIEvents();
+        
+        Debug.Log("Created persistent Settings Canvas separate from MainMenu!");
+    }
+    
     void SetupUIEvents()
     {
-        // Setup pause menu buttons
+        // Setup pause menu buttons - tự động tìm trong Pause Panel
+        if (pauseMenuPanel != null)
+        {
+            Button[] buttonsInPause = pauseMenuPanel.GetComponentsInChildren<Button>(true);
+            foreach (Button btn in buttonsInPause)
+            {
+                string btnName = btn.name.ToLower();
+                
+                // Tìm Resume button
+                if ((btnName.Contains("resume") || btnName.Contains("continue") || btnName.Contains("play")) && pauseResumeButton == null)
+                {
+                    pauseResumeButton = btn;
+                    btn.onClick.RemoveAllListeners();
+                    btn.onClick.AddListener(ResumeGame);
+                    Debug.Log($"Pause Resume button found and connected: {btn.name}");
+                }
+                
+                // Tìm MainMenu button  
+                if ((btnName.Contains("mainmenu") || btnName.Contains("main") || btnName.Contains("menu") || btnName.Contains("quit")) && pauseMainMenuButton == null)
+                {
+                    pauseMainMenuButton = btn;
+                    btn.onClick.RemoveAllListeners();
+                    btn.onClick.AddListener(() => {
+                        Debug.Log("Returning to MainMenu from Pause...");
+                        SaveGameData(); // Save progress trước khi về MainMenu
+                        LoadScene(mainMenuScene);
+                    });
+                    Debug.Log($"Pause MainMenu button found and connected: {btn.name}");
+                }
+            }
+        }
+        
+        // Fallback: Manual assignment từ Inspector
         if (pauseResumeButton != null)
+        {
+            pauseResumeButton.onClick.RemoveAllListeners();
             pauseResumeButton.onClick.AddListener(ResumeGame);
+        }
         if (pauseMainMenuButton != null)
-            pauseMainMenuButton.onClick.AddListener(() => LoadScene(mainMenuScene));
+        {
+            pauseMainMenuButton.onClick.RemoveAllListeners();
+            pauseMainMenuButton.onClick.AddListener(() => {
+                Debug.Log("Returning to MainMenu from Pause...");
+                SaveGameData(); // Save progress trước khi về MainMenu
+                LoadScene(mainMenuScene);
+            });
+        }
             
         // Setup level complete buttons
         if (levelCompleteNextButton != null)
             levelCompleteNextButton.onClick.AddListener(LoadNextLevel);
         if (levelCompleteMainMenuButton != null)
             levelCompleteMainMenuButton.onClick.AddListener(() => LoadScene(mainMenuScene));
+            
+        // Setup settings button - tìm button trong Settings Panel
+        if (settingsPanel != null)
+        {
+            // Tìm button Back/Close trong Settings Panel
+            Button[] buttonsInSettings = settingsPanel.GetComponentsInChildren<Button>(true);
+            foreach (Button btn in buttonsInSettings)
+            {
+                string btnName = btn.name.ToLower();
+                if (btnName.Contains("back") || btnName.Contains("close") || btnName.Contains("exit"))
+                {
+                    settingsBackButton = btn;
+                    btn.onClick.RemoveAllListeners(); // Clear existing listeners
+                    btn.onClick.AddListener(CloseSettings);
+                    Debug.Log($"Settings back button found and connected: {btn.name}");
+                    break;
+                }
+            }
+        }
+        
+        // Fallback: nếu có settingsBackButton reference sẵn
+        if (settingsBackButton != null)
+        {
+            settingsBackButton.onClick.RemoveAllListeners();
+            settingsBackButton.onClick.AddListener(CloseSettings);
+        }
     }
     #endregion
 
@@ -158,6 +267,17 @@ public class GameManager : MonoBehaviour
                 ResumeGame();
             else if (currentGameState == GameState.InventoryOpen || currentGameState == GameState.ShopOpen)
                 ResumeGame(); // Đóng inventory/shop
+            else if (currentGameState == GameState.SettingsOpen)
+                CloseSettings(); // Đóng settings
+        }
+        
+        // Mở Settings với phím P
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (currentGameState == GameState.Playing)
+                OpenSettings();
+            else if (currentGameState == GameState.SettingsOpen)
+                CloseSettings();
         }
         
         // Quick save với F5 (giữ lại tính năng cũ)
@@ -189,7 +309,8 @@ public class GameManager : MonoBehaviour
         // Auto-save trong playing state hoặc khi inventory/shop mở (vì có thể mua/sử dụng items)
         bool shouldCountTimer = (currentGameState == GameState.Playing || 
                                 currentGameState == GameState.InventoryOpen || 
-                                currentGameState == GameState.ShopOpen);
+                                currentGameState == GameState.ShopOpen ||
+                                currentGameState == GameState.SettingsOpen);
         
         if (shouldCountTimer)
         {
@@ -221,6 +342,9 @@ public class GameManager : MonoBehaviour
         if (pauseMenuPanel != null)
             pauseMenuPanel.SetActive(currentGameState == GameState.Paused);
             
+        if (settingsPanel != null)
+            settingsPanel.SetActive(currentGameState == GameState.SettingsOpen);
+            
         if (levelCompletePanel != null)
             levelCompletePanel.SetActive(currentGameState == GameState.LevelComplete);
             
@@ -247,6 +371,7 @@ public class GameManager : MonoBehaviour
             case GameState.Paused:
             case GameState.InventoryOpen:
             case GameState.ShopOpen:
+            case GameState.SettingsOpen:
             case GameState.GameOver:
             case GameState.LevelComplete:
                 Time.timeScale = 0f;
@@ -275,7 +400,8 @@ public class GameManager : MonoBehaviour
     {
         if (currentGameState == GameState.Paused || 
             currentGameState == GameState.InventoryOpen || 
-            currentGameState == GameState.ShopOpen)
+            currentGameState == GameState.ShopOpen ||
+            currentGameState == GameState.SettingsOpen)
         {
             ChangeGameState(GameState.Playing);
             AudioController.instance?.PlayClickSound();
@@ -312,6 +438,32 @@ public class GameManager : MonoBehaviour
         {
             ChangeGameState(GameState.Playing);
         }
+    }
+    
+    public void OpenSettings()
+    {
+        if (currentGameState == GameState.Playing)
+        {
+            ChangeGameState(GameState.SettingsOpen);
+            AudioController.instance?.PlayClickSound();
+        }
+    }
+    
+    public void CloseSettings()
+    {
+        if (currentGameState == GameState.SettingsOpen)
+        {
+            ChangeGameState(GameState.Playing);
+            AudioController.instance?.PlayClickSound();
+        }
+    }
+    
+    public void ReturnToMainMenu()
+    {
+        Debug.Log("Returning to MainMenu...");
+        SaveGameData(); // Lưu progress trước khi về MainMenu
+        AudioController.instance?.PlayClickSound();
+        LoadScene(mainMenuScene);
     }
     #endregion
 
@@ -487,6 +639,49 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log($"Scene loaded: {scene.name}");   
+        
+        // Handle Pause Menu Panel - tự động tìm và setup
+        if (pauseMenuPanel == null && scene.name != mainMenuScene)
+        {
+            // Tìm Pause Panel trong scene mới
+            var allPanels = FindObjectsOfType<GameObject>(true).Where(g => 
+                g.name.ToLower().Contains("pause") && 
+                g.GetComponent<RectTransform>() != null).ToArray();
+                
+            if (allPanels.Length > 0)
+            {
+                pauseMenuPanel = allPanels[0];
+                pauseMenuPanel.SetActive(false); // Ẩn pause menu ban đầu
+                
+                // Setup button events cho pause menu mới
+                SetupUIEvents();
+                
+                Debug.Log($"Pause Menu Panel found: {pauseMenuPanel.name}");
+            }
+        }
+        
+        // Handle Settings Panel - tự động tìm và tạo persistent nếu chưa có
+        if (settingsPanel == null || settingsPanel.transform.parent.name != "PersistentSettingsCanvas")
+        {
+            // Tìm Settings Panel trong scene mới
+            var allPanels = FindObjectsOfType<GameObject>(true).Where(g => 
+                g.name.ToLower().Contains("setting") && 
+                g.GetComponent<RectTransform>() != null).ToArray();
+                
+            if (allPanels.Length > 0)
+            {
+                var foundSettingsPanel = allPanels[0];
+                
+                // Nếu chưa có persistent canvas, tạo mới
+                if (settingsPanel == null)
+                {
+                    settingsPanel = foundSettingsPanel;
+                    CreatePersistentSettingsCanvas();
+                }
+                
+                Debug.Log($"Settings Panel found: {foundSettingsPanel.name}");
+            }
+        }
         
         // Find player in new scene
         if (scene.name != mainMenuScene)
@@ -714,12 +909,6 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Force load game data - chỉ dùng cho Continue Game hoặc F9
     /// </summary>
-    public void ForceLoadGameData()
-    {
-        Debug.Log("🔄 FORCE LOADING GAME DATA...");
-        LoadGameData();
-        Debug.Log("✅ Force load completed");
-    }
     
     /// <summary>
     /// Reset game data cho New Game - xóa save data và reset về default
@@ -767,6 +956,7 @@ public class GameManager : MonoBehaviour
     {
         return currentGameState == GameState.InventoryOpen || 
                currentGameState == GameState.ShopOpen || 
+               currentGameState == GameState.SettingsOpen ||
                currentGameState == GameState.Paused;
     }
     
