@@ -8,38 +8,34 @@ using UnityEngine.UI;
 /// <summary>
 /// Controller cho EndGame scene - xử lý restart và main menu
 /// </summary>
-/// 
-
-[Serializable]
-public class ResultData
-{
-    public string Name;
-    public string PlayTime;
-    public int EnemiesKilled;
-
-}
-
 public class EndGameController : MonoBehaviour
 {
     [Header("UI Buttons")]
     public Button restartButton;
     public Button mainMenuButton;
     public Button quitButton;
-
+    
     public TMPro.TextMeshProUGUI playTimeText;
     public TMPro.TextMeshProUGUI enemiesKilledText;
     [SerializeField] private TMP_InputField nameInputField;
+    [Serializable]
+    public class ResultData
+    {
+        public string Name;
+        public string PlayTime;
+        public int EnemiesKilled;
 
+    }
 
     void Start()
     {
         // Setup button events
         if (restartButton != null)
             restartButton.onClick.AddListener(RestartGame);
-
+            
         if (mainMenuButton != null)
             mainMenuButton.onClick.AddListener(GoToMainMenu);
-
+            
         if (quitButton != null)
             quitButton.onClick.AddListener(QuitGame);
 
@@ -54,15 +50,67 @@ public class EndGameController : MonoBehaviour
         if (enemiesKilledText != null)
         {
             int killed = GameManager.Instance.totalEnemiesKilled;
-            //int total = GameManager.Instance.totalEnemiesInGame;
-            //int totalEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+           
             enemiesKilledText.text = $"{killed}";
         }
-
         if (nameInputField != null)
         {
             nameInputField.onSubmit.AddListener(OnNameSubmitted);
         }
+    }
+    
+    public void RestartGame()
+    {
+        // Sử dụng GameManager để restart
+        if (GameManager.Instance != null)
+        {
+            AudioController.instance?.PlayClickSound();
+            GameManager.Instance.RestartFromEndGame();
+        }
+        else
+        {
+            // Fallback nếu không có GameManager
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Map1");
+        }
+    }
+    
+    public void GoToMainMenu()
+    {
+        // Load main menu
+        if (GameManager.Instance != null)
+        {
+            AudioController.instance?.PlayClickSound();
+            GameManager.Instance.LoadScene("MainMenu");
+        }
+        else
+        {
+            // Fallback nếu không có GameManager
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        }
+    }
+    
+    public void QuitGame()
+    {
+        AudioController.instance?.PlayClickSound();
+        
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.QuitGame();
+        }
+        else
+        {
+            // Fallback quit
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                Application.Quit();
+            #endif
+        }
+    }
+    public void BackLeaderBoard()
+    {
+        AudioController.instance?.PlayClickSound();
+        GameManager.Instance.LoadScene("LeaderBoard");
     }
     private void OnNameSubmitted(string playerName)
     {
@@ -101,58 +149,4 @@ public class EndGameController : MonoBehaviour
 
         Debug.Log($"Result saved to {path}");
     }
-
-    public void RestartGame()
-    {
-        if (AudioController.instance != null)
-            AudioController.instance.PlayClickSound();
-
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.RestartFromEndGame();
-        }
-        else
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Map1");
-        }
-    }
-
-    public void GoToMainMenu()
-    {
-        if (AudioController.instance != null)
-            AudioController.instance.PlayClickSound();
-
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.LoadScene("MainMenu");
-        }
-        else
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
-        }
-    }
-
-    public void QuitGame()
-    {
-        if (AudioController.instance != null)
-            AudioController.instance.PlayClickSound();
-
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.QuitGame();
-        }
-        else
-        {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
-        }
-    }
-    public void BackLeaderBoard()
-    {
-        AudioController.instance?.PlayClickSound();
-        GameManager.Instance.LoadScene("LeaderBoard");
-    }
-}
+} 
