@@ -18,6 +18,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c53ab396cb89ed84cac04c74b61e3221, type: 2}
   - {fileID: 11400000, guid: f31c45ea9d9f0a94eb24cc1b56922c98, type: 2}
   - {fileID: 11400000, guid: 052c4738239bd204494fcbf523da3360, type: 2}
+  - {fileID: 11400000, guid: 64d7069484ce734459e4149e17409253, type: 2}
+  - {fileID: 11400000, guid: 5c7d7eb359ae08649b8a6bc58ba600eb, type: 2}
   helmets:
   - {fileID: 11400000, guid: 3e28fd637e6c203479d40ffb6c80dd1c, type: 2}
   chestArmor:
@@ -29,5 +31,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f31c45ea9d9f0a94eb24cc1b56922c98, type: 2}
   shields:
   - {fileID: 11400000, guid: 052c4738239bd204494fcbf523da3360, type: 2}
-  rings: []
-  necklaces: []
+  rings:
+  - {fileID: 11400000, guid: 64d7069484ce734459e4149e17409253, type: 2}
+  necklaces:
+  - {fileID: 11400000, guid: 5c7d7eb359ae08649b8a6bc58ba600eb, type: 2}
