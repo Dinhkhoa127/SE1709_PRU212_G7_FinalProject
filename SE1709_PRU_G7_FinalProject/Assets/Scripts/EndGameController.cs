@@ -93,4 +93,9 @@ public class EndGameController : MonoBehaviour
             #endif
         }
     }
+    public void BackLeaderBoard()
+    {
+        AudioController.instance?.PlayClickSound();
+        GameManager.Instance.LoadScene("LeaderBoard");
+    }
 } 
