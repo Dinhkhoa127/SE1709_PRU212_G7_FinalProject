@@ -4,27 +4,27 @@ using UnityEngine.UI;
 
 public class enemywalkercontroller : Enemy1, IDamageable
 {
+    private new float lastAttackTime; // Use 'new' keyword to hide the inherited member  
     private int direction = 1;
     private Animator animator;
-    private float lastAttackTime;
-    private Vector2 startPosition; // Lưu vị trí bắt đầu
+    private Vector2 startPosition; // Lưu vị trí bắt đầu  
 
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float bulletSpeed = 10f;
-    [SerializeField] public Image healthBar;
+    //  [SerializeField] public Image healthBar;  
     protected override void Start()
     {
         base.Start();
         animator = GetComponent<Animator>();
-        startPosition = transform.position; // Lưu vị trí bắt đầu
+        startPosition = transform.position; // Lưu vị trí bắt đầu  
     }
 
     void Update()
     {
         if (player != null && CheckInRange())
         {
-            FacePlayer(); // Xoay hướng enemy về phía player
+            FacePlayer(); // Xoay hướng enemy về phía player  
             ShootAtPlayer();
         }
         else
@@ -35,10 +35,10 @@ public class enemywalkercontroller : Enemy1, IDamageable
 
     protected override void Patrol()
     {
-        animator.SetBool("isMoving", true);     
+        animator.SetBool("isMoving", true);
         transform.position += new Vector3(direction * WalkSpeed * Time.deltaTime, 0, 0);
 
-        // Kiểm tra nếu enemy di chuyển quá phạm vi được đặt trước
+        // Kiểm tra nếu enemy di chuyển quá phạm vi được đặt trước  
         if (Mathf.Abs(transform.position.x - startPosition.x) >= PatrolRange)
         {
             Flip();
@@ -61,7 +61,7 @@ public class enemywalkercontroller : Enemy1, IDamageable
                 rb.linearVelocity = directionToPlayer * bulletSpeed;
             }
 
-            // Đảm bảo sau khi bắn, animation chuyển về trạng thái di chuyển
+            // Đảm bảo sau khi bắn, animation chuyển về trạng thái di chuyển  
             Invoke(nameof(ResetToMove), 0.5f);
         }
     }

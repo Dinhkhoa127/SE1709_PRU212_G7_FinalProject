@@ -8,7 +8,7 @@ public class butterflycontroller : Enemy1 , IDamageable
     [SerializeField] private float minPatrolDistance = 5f;
     [SerializeField] private float maxPatrolDistance = 10f;
     [SerializeField] private float patrolHeightVariation = 2f;
-    [SerializeField] protected Image healthBar;
+    //[SerializeField] protected Image healthBar;
 
     // [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private LayerMask obstacleLayer;
