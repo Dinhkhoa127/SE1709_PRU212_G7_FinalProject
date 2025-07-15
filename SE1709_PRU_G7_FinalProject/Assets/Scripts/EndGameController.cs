@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,6 +8,17 @@ using UnityEngine.UI;
 /// <summary>
 /// Controller cho EndGame scene - xử lý restart và main menu
 /// </summary>
+/// 
+
+[Serializable]
+public class ResultData
+{
+    public string Name;
+    public string PlayTime;
+    public int EnemiesKilled;
+ 
+}
+
 public class EndGameController : MonoBehaviour
 {
     [Header("UI Buttons")]
@@ -14,7 +28,7 @@ public class EndGameController : MonoBehaviour
     
     public TMPro.TextMeshProUGUI playTimeText;
     public TMPro.TextMeshProUGUI enemiesKilledText;
-    public TMPro.TextMeshProUGUI nameInputField;
+    [SerializeField] private TMP_InputField nameInputField;
 
 
     void Start()
@@ -40,57 +54,100 @@ public class EndGameController : MonoBehaviour
         if (enemiesKilledText != null)
         {
             int killed = GameManager.Instance.totalEnemiesKilled;
-            int total = GameManager.Instance.totalEnemiesInGame;
-            enemiesKilledText.text = $"{killed}/{total}";
+            //int total = GameManager.Instance.totalEnemiesInGame;
+            //int totalEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+            enemiesKilledText.text = $"{killed}";
+        }
+
+        if (nameInputField != null)
+        {
+            nameInputField.onSubmit.AddListener(OnNameSubmitted);
         }
     }
-    
+    private void OnNameSubmitted(string playerName)
+    {
+        SaveResultToJson(playerName);
+    }
+    private void SaveResultToJson(string playerName)
+    {
+        string path = Path.Combine(Application.persistentDataPath, "result1.json");
+        var dataList = new ResultDataList();
+
+        // Load existing data if file exists
+        if (File.Exists(path))
+        {
+            string existingJson = File.ReadAllText(path);
+            if (!string.IsNullOrWhiteSpace(existingJson) && existingJson.TrimStart().StartsWith("{"))
+            {
+                dataList = JsonUtility.FromJson<ResultDataList>(existingJson);
+            }
+        }
+
+        var newResult = new ResultData
+        {
+            Name = playerName,
+            PlayTime = playTimeText != null ? playTimeText.text : "",
+            EnemiesKilled = (GameManager.Instance != null) ? GameManager.Instance.totalEnemiesKilled : 0,
+        };
+
+        var resultsList = new List<ResultData>();
+        if (dataList.results != null)
+            resultsList.AddRange(dataList.results);
+        resultsList.Add(newResult);
+        dataList.results = resultsList.ToArray();
+
+        string json = JsonUtility.ToJson(dataList, true);
+        File.WriteAllText(path, json);
+
+        Debug.Log($"Result saved to {path}");
+    }
+
     public void RestartGame()
     {
-        // Sử dụng GameManager để restart
+        if (AudioController.instance != null)
+            AudioController.instance.PlayClickSound();
+
         if (GameManager.Instance != null)
         {
-            AudioController.instance?.PlayClickSound();
             GameManager.Instance.RestartFromEndGame();
         }
         else
         {
-            // Fallback nếu không có GameManager
             UnityEngine.SceneManagement.SceneManager.LoadScene("Map1");
         }
     }
-    
+
     public void GoToMainMenu()
     {
-        // Load main menu
+        if (AudioController.instance != null)
+            AudioController.instance.PlayClickSound();
+
         if (GameManager.Instance != null)
         {
-            AudioController.instance?.PlayClickSound();
             GameManager.Instance.LoadScene("MainMenu");
         }
         else
         {
-            // Fallback nếu không có GameManager
             UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
         }
     }
-    
+
     public void QuitGame()
     {
-        AudioController.instance?.PlayClickSound();
-        
+        if (AudioController.instance != null)
+            AudioController.instance.PlayClickSound();
+
         if (GameManager.Instance != null)
         {
             GameManager.Instance.QuitGame();
         }
         else
         {
-            // Fallback quit
-            #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-            #else
-                Application.Quit();
-            #endif
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
     }
     public void BackLeaderBoard()
@@ -98,4 +155,4 @@ public class EndGameController : MonoBehaviour
         AudioController.instance?.PlayClickSound();
         GameManager.Instance.LoadScene("LeaderBoard");
     }
-} 
+}
