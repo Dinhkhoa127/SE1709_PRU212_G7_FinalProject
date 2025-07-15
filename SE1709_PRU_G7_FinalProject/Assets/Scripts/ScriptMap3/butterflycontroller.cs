@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class butterflycontroller : Enemy1 , IDamageable
+public class butterflycontroller : Enemy1, IDamageable
 {
     [SerializeField] private float detectionRange = 5f;
     [SerializeField] private float attackRange = 3f;
     [SerializeField] private float minPatrolDistance = 5f;
     [SerializeField] private float maxPatrolDistance = 10f;
     [SerializeField] private float patrolHeightVariation = 2f;
-    //[SerializeField] protected Image healthBar;
+    // healthBar đã được kế thừa từ Enemy1, không cần khai báo lại
 
     // [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private LayerMask obstacleLayer;
@@ -47,7 +47,7 @@ public class butterflycontroller : Enemy1 , IDamageable
             {
                 Attack();
             }
-            
+
         }
         else
         {
@@ -81,7 +81,7 @@ public class butterflycontroller : Enemy1 , IDamageable
     {
         isAttacking = true;
         animator.SetTrigger("attack");
-        lastAttackTime = Time.time;    
+        lastAttackTime = Time.time;
         Shoot();
     }
 
@@ -150,9 +150,9 @@ public class butterflycontroller : Enemy1 , IDamageable
         if (currentHealth <= 0)
         {
             Die();
-            
+
         }
         animator.SetTrigger("Hurt");
-        
+
     }
 }

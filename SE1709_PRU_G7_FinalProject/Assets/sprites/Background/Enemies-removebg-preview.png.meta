@@ -1,0 +1,234 @@
+fileFormatVersion: 2
+guid: 32a79067542ec6d4e860be9c5ded9578
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5973409986009021720
+    second: Enemies-removebg-preview_0
+  - first:
+      213: 457341374683051543
+    second: Enemies-removebg-preview_1
+  - first:
+      213: 7165676247913940812
+    second: Enemies-removebg-preview_2
+  - first:
+      213: 7664088178106482317
+    second: Enemies-removebg-preview_3
+  - first:
+      213: 7424016360544186614
+    second: Enemies-removebg-preview_4
+  - first:
+      213: -381924538677479470
+    second: Enemies-removebg-preview_5
+  - first:
+      213: 5757973504983264668
+    second: Enemies-removebg-preview_6
+  - first:
+      213: 3220807581413004597
+    second: Enemies-removebg-preview_7
+  - first:
+      213: -8540103433701317339
+    second: Enemies-removebg-preview_8
+  - first:
+      213: 6189715065330908361
+    second: Enemies-removebg-preview_9
+  - first:
+      213: 1777348531486822196
+    second: Enemies-removebg-preview_10
+  - first:
+      213: -5668577466502292542
+    second: Enemies-removebg-preview_11
+  - first:
+      213: -1371347782034675656
+    second: Enemies-removebg-preview_12
+  - first:
+      213: 2688689688042147092
+    second: Enemies-removebg-preview_13
+  - first:
+      213: -2217066210506692961
+    second: Enemies-removebg-preview_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Enemies-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 113
+        width: 405
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e24926244f2a1da0800000000000000
+      internalID: -5973409986009021720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemies-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 22
+        width: 477
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7167213ae8dc85600800000000000000
+      internalID: 457341374683051543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c15d98c2b1f4c6749857b4e84e9a648a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Enemies-removebg-preview_0: -5973409986009021720
+      Enemies-removebg-preview_1: 457341374683051543
+      Enemies-removebg-preview_10: 1777348531486822196
+      Enemies-removebg-preview_11: -5668577466502292542
+      Enemies-removebg-preview_12: -1371347782034675656
+      Enemies-removebg-preview_13: 2688689688042147092
+      Enemies-removebg-preview_14: -2217066210506692961
+      Enemies-removebg-preview_2: 7165676247913940812
+      Enemies-removebg-preview_3: 7664088178106482317
+      Enemies-removebg-preview_4: 7424016360544186614
+      Enemies-removebg-preview_5: -381924538677479470
+      Enemies-removebg-preview_6: 5757973504983264668
+      Enemies-removebg-preview_7: 3220807581413004597
+      Enemies-removebg-preview_8: -8540103433701317339
+      Enemies-removebg-preview_9: 6189715065330908361
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -62,7 +62,7 @@ public class RockEnemy : Enemy1, IDamageable
 
         float distanceToPlayer = Vector2.Distance(attackPoint.position, player.position);
         bool inRange = distanceToPlayer <= attackRange;
-        
+
         // Debug để kiểm tra
         if (inRange)
         {

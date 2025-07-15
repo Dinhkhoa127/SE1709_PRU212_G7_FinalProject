@@ -319,7 +319,7 @@ public class Bat : Enemy1, IDamageable
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRadius = 1f;
-   // [SerializeField] private new Image healthBar; // Sử dụng 'new' để ẩn healthBar của Enemy1
+    // [SerializeField] private new Image healthBar; // Sử dụng 'new' để ẩn healthBar của Enemy1
 
     private Animator animator;
     private Vector2 patrolTarget;

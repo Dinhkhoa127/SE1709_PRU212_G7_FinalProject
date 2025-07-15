@@ -561,7 +561,7 @@ public class PlayerKnight : MonoBehaviour
                 m_currentAttack = 1;
             m_animator.SetTrigger("Attack" + m_currentAttack);
             m_timeSinceAttack = 0.0f;
-           // AudioController.instance.PlayAttackSound();
+            AudioController.instance.PlayAttackSound();
         }
     }
 
@@ -574,7 +574,7 @@ public class PlayerKnight : MonoBehaviour
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
             isBlocking = true; // Bắt đầu block
-            //AudioController.instance.PlayBlockSound();
+            AudioController.instance.PlayBlockSound();
         }
         else if (Input.GetMouseButtonUp(1))
         {
@@ -590,7 +590,7 @@ public class PlayerKnight : MonoBehaviour
             m_rolling = true;
             m_animator.SetTrigger("Roll");
             m_body2d.linearVelocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.linearVelocity.y);
-            //AudioController.instance.PlayRollSound();
+            AudioController.instance.PlayRollSound();
         }
     }
 
@@ -604,7 +604,7 @@ public class PlayerKnight : MonoBehaviour
             m_animator.SetBool("Grounded", m_grounded);
             m_body2d.linearVelocity = new Vector2(m_body2d.linearVelocity.x, m_jumpForce);
             m_groundSensor.Disable(0.2f);
-            //AudioController.instance.PlayJumpSound();
+            AudioController.instance.PlayJumpSound();
         }
     }
 
@@ -681,7 +681,7 @@ public class PlayerKnight : MonoBehaviour
         else
         {
             m_animator.SetTrigger("Hurt");
-            //AudioController.instance.PlayHurtSound();
+            AudioController.instance.PlayHurtSound();
         }
     }
 
@@ -716,7 +716,7 @@ public class PlayerKnight : MonoBehaviour
         else
         {
             m_animator.SetTrigger("Hurt");
-           // AudioController.instance.PlayHurtSound();
+            AudioController.instance.PlayHurtSound();
         }
     }
     public void HandleSkillCast(int manaCost)
@@ -726,7 +726,7 @@ public class PlayerKnight : MonoBehaviour
             currentMana -= manaCost;
 
             GameObject projectile = Instantiate(skillProjectilePrefab, castPoint.position, Quaternion.identity);
-
+            Destroy(projectile, 5f);
             // Xác định hướng
             Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
             projectile.GetComponent<SkillProjectile>().SetDirection(direction);
@@ -735,7 +735,7 @@ public class PlayerKnight : MonoBehaviour
             Vector3 scale = projectile.transform.localScale;
             scale.x = transform.localScale.x > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
             projectile.transform.localScale = scale;
-            //AudioController.instance.PlaySkillCastSound();
+            AudioController.instance.PlaySkillCastSound();
             // Option: animation chưởng
             // m_animator.SetTrigger("Cast");
         }
@@ -762,7 +762,7 @@ public class PlayerKnight : MonoBehaviour
         isDead = true;
         m_animator.SetBool("noBlood", m_noBlood);
         m_animator.SetTrigger("Death");
-       // AudioController.instance.PlayDeathSound();
+        AudioController.instance.PlayDeathSound();
 
         
         // Thêm dòng này
@@ -785,7 +785,7 @@ public class PlayerKnight : MonoBehaviour
         if (damageable != null)
         {
             damageable.TakeDamage(totalAttackDamage);
-           // AudioController.instance.PlayEnemyTakeDame();
+            AudioController.instance.PlayEnemyTakeDame();
             continue;
         }
 
@@ -794,7 +794,7 @@ public class PlayerKnight : MonoBehaviour
         if (enemyScript != null)
         {
             enemyScript.TakeDamage(totalAttackDamage);
-            //AudioController.instance.PlayEnemyTakeDame();
+            AudioController.instance.PlayEnemyTakeDame();
             continue;
         }
 
@@ -803,7 +803,7 @@ public class PlayerKnight : MonoBehaviour
         if (paladinBoss != null)
         {
             paladinBoss.TakeDamage(totalAttackDamage);
-            //AudioController.instance.PlayEnemyTakeDame();
+            AudioController.instance.PlayEnemyTakeDame();
             continue;
         }
 
@@ -811,7 +811,7 @@ public class PlayerKnight : MonoBehaviour
         if (necromancerBoss != null)
         {
             necromancerBoss.TakeDamage(totalAttackDamage);
-           // AudioController.instance.PlayEnemyTakeDame();
+            AudioController.instance.PlayEnemyTakeDame();
             continue;
         }
     }
@@ -841,7 +841,7 @@ public class PlayerKnight : MonoBehaviour
 
     public void Heal(int amount)
     {
-        //AudioController.instance.PlayHealSound();
+        AudioController.instance.PlayHealSound();
         health += amount;
         if (health > totalMaxHealth) health = totalMaxHealth;
         
@@ -908,7 +908,7 @@ public class PlayerKnight : MonoBehaviour
             case ItemType.ManaPotion:
                 if (currentMana < totalMaxMana)
                 {
-                    //AudioController.instance.PlayHealSound();
+                    AudioController.instance.PlayHealSound();
                     RegenerateMana(itemInfo.effectValue);
                     RemoveItem(itemInfo.itemName, 1);
                     Debug.Log($"Đã sử dụng {itemInfo.itemName}, hồi {itemInfo.effectValue} MP");
@@ -1051,7 +1051,7 @@ public class PlayerKnight : MonoBehaviour
         }
         else
         {
-            Debug.Log("Không đủ mana để sử dụng kỹ năng Berserk!");
+            //Debug.Log("Không đủ mana để sử dụng kỹ năng Berserk!");
         }
 
         
