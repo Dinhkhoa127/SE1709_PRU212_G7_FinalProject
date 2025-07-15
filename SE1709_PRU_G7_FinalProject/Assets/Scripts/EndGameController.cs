@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,9 @@ public class EndGameController : MonoBehaviour
     
     public TMPro.TextMeshProUGUI playTimeText;
     public TMPro.TextMeshProUGUI enemiesKilledText;
-    
+    [SerializeField] private TMP_InputField nameInputField;
+
+
     void Start()
     {
         // Setup button events
@@ -32,13 +35,13 @@ public class EndGameController : MonoBehaviour
             int hours = Mathf.FloorToInt(time / 3600f);
             int minutes = Mathf.FloorToInt((time % 3600f) / 60f);
             int seconds = Mathf.FloorToInt(time % 60f);
-            playTimeText.text = $"Play Time: {hours:00}:{minutes:00}:{seconds:00}";
+            playTimeText.text = $"{hours:00}:{minutes:00}:{seconds:00}";
         }
         if (enemiesKilledText != null)
         {
             int killed = GameManager.Instance.totalEnemiesKilled;
             int total = GameManager.Instance.totalEnemiesInGame;
-            enemiesKilledText.text = $"Enemies Defeated: {killed}/{total}";
+            enemiesKilledText.text = $"{killed}/{total}";
         }
     }
     

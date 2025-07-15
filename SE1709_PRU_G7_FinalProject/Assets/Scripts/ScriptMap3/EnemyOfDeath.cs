@@ -13,7 +13,7 @@ public class EnemyOfDeath : Enemy1, IDamageable
 
     private Animator animator;
     private int direction = 1;
-    //private bool isChasing = false;
+    private bool isChasing = false;
     private Coroutine smoothCoroutine;
     //protected override void Start()
     //{
@@ -226,35 +226,12 @@ public class EnemyOfDeath : Enemy1, IDamageable
         StartCoroutine(ReturnToPoolAfterDelay());
     }
 
-    //private IEnumerator ReturnToPoolAfterDelay()
-    //{
-    //    Enemy_Pool pool = Object.FindFirstObjectByType<Enemy_Pool>();
-    //    yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-    //    ResetState();
-    //    pool.ReturnToPool(gameObject);
-    //}
     private IEnumerator ReturnToPoolAfterDelay()
     {
         Enemy_Pool pool = Object.FindFirstObjectByType<Enemy_Pool>();
-
-        float delay = 1.5f; // Giá trị mặc định nếu animator null
-        if (animator != null)
-        {
-            var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-            if (stateInfo.length > 0)
-                delay = stateInfo.length;
-        }
-        else
-        {
-            Debug.LogWarning("[EnemyOfDeath] Animator chưa được gán!");
-        }
-
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         ResetState();
-        if (pool != null)
-            pool.ReturnToPool(gameObject);
-        else
-            Debug.LogWarning("[EnemyOfDeath] Enemy_Pool chưa tồn tại trong scene!");
+        pool.ReturnToPool(gameObject);
     }
 
     protected override void Flip()
