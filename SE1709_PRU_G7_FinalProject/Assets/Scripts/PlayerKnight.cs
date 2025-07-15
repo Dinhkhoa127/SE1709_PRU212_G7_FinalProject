@@ -726,7 +726,7 @@ public class PlayerKnight : MonoBehaviour
             currentMana -= manaCost;
 
             GameObject projectile = Instantiate(skillProjectilePrefab, castPoint.position, Quaternion.identity);
-
+            Destroy(projectile, 5f);
             // Xác định hướng
             Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
             projectile.GetComponent<SkillProjectile>().SetDirection(direction);
@@ -1051,7 +1051,7 @@ public class PlayerKnight : MonoBehaviour
         }
         else
         {
-            Debug.Log("Không đủ mana để sử dụng kỹ năng Berserk!");
+            //Debug.Log("Không đủ mana để sử dụng kỹ năng Berserk!");
         }
 
         

@@ -9418,9 +9418,10 @@ MonoBehaviour:
 
     Space: Jump
 
-    Q: Skill
+    Q: Skill - FireBall
 
-    R: Skill
+    R:
+    Skill - Buff
 
 '
   m_isRightToLeft: 0

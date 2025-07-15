@@ -12,7 +12,7 @@ public class enemywalkercontroller : Enemy1, IDamageable
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float bulletSpeed = 10f;
-    [SerializeField] public Image healthBar;
+    // healthBar đã được kế thừa từ Enemy1, không cần khai báo lại
     protected override void Start()
     {
         base.Start();
@@ -35,7 +35,7 @@ public class enemywalkercontroller : Enemy1, IDamageable
 
     protected override void Patrol()
     {
-        animator.SetBool("isMoving", true);     
+        animator.SetBool("isMoving", true);
         transform.position += new Vector3(direction * WalkSpeed * Time.deltaTime, 0, 0);
 
         // Kiểm tra nếu enemy di chuyển quá phạm vi được đặt trước
