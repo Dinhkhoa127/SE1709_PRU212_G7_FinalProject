@@ -14,7 +14,7 @@ public class EndGameController : MonoBehaviour
     
     public TMPro.TextMeshProUGUI playTimeText;
     public TMPro.TextMeshProUGUI enemiesKilledText;
-    [SerializeField] private TMP_InputField nameInputField;
+    public TMPro.TextMeshProUGUI nameInputField;
 
 
     void Start()
@@ -92,5 +92,10 @@ public class EndGameController : MonoBehaviour
                 Application.Quit();
             #endif
         }
+    }
+    public void BackLeaderBoard()
+    {
+        AudioController.instance?.PlayClickSound();
+        GameManager.Instance.LoadScene("LeaderBoard");
     }
 } 
