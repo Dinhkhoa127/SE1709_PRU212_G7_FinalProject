@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +18,14 @@ public class EndGameController : MonoBehaviour
     public TMPro.TextMeshProUGUI playTimeText;
     public TMPro.TextMeshProUGUI enemiesKilledText;
     [SerializeField] private TMP_InputField nameInputField;
+    [Serializable]
+    public class ResultData
+    {
+        public string Name;
+        public string PlayTime;
+        public int EnemiesKilled;
 
+    }
 
     void Start()
     {
@@ -40,8 +50,12 @@ public class EndGameController : MonoBehaviour
         if (enemiesKilledText != null)
         {
             int killed = GameManager.Instance.totalEnemiesKilled;
-            int total = GameManager.Instance.totalEnemiesInGame;
-            enemiesKilledText.text = $"{killed}/{total}";
+           
+            enemiesKilledText.text = $"{killed}";
+        }
+        if (nameInputField != null)
+        {
+            nameInputField.onSubmit.AddListener(OnNameSubmitted);
         }
     }
     
@@ -92,5 +106,47 @@ public class EndGameController : MonoBehaviour
                 Application.Quit();
             #endif
         }
+    }
+    public void BackLeaderBoard()
+    {
+        AudioController.instance?.PlayClickSound();
+        GameManager.Instance.LoadScene("LeaderBoard");
+    }
+    private void OnNameSubmitted(string playerName)
+    {
+        SaveResultToJson(playerName);
+    }
+    private void SaveResultToJson(string playerName)
+    {
+        string path = Path.Combine(Application.persistentDataPath, "result1.json");
+        var dataList = new ResultDataList();
+
+        // Load existing data if file exists
+        if (File.Exists(path))
+        {
+            string existingJson = File.ReadAllText(path);
+            if (!string.IsNullOrWhiteSpace(existingJson) && existingJson.TrimStart().StartsWith("{"))
+            {
+                dataList = JsonUtility.FromJson<ResultDataList>(existingJson);
+            }
+        }
+
+        var newResult = new ResultData
+        {
+            Name = playerName,
+            PlayTime = playTimeText != null ? playTimeText.text : "",
+            EnemiesKilled = (GameManager.Instance != null) ? GameManager.Instance.totalEnemiesKilled : 0,
+        };
+
+        var resultsList = new List<ResultData>();
+        if (dataList.results != null)
+            resultsList.AddRange(dataList.results);
+        resultsList.Add(newResult);
+        dataList.results = resultsList.ToArray();
+
+        string json = JsonUtility.ToJson(dataList, true);
+        File.WriteAllText(path, json);
+
+        Debug.Log($"Result saved to {path}");
     }
 } 

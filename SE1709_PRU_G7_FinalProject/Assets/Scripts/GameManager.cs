@@ -140,8 +140,14 @@ public class GameManager : MonoBehaviour
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         canvas.sortingOrder = 100; // Đảm bảo hiện trên cùng
         
-        // Add CanvasScaler và GraphicRaycaster
-        persistentSettingsCanvas.AddComponent<CanvasScaler>();
+        // Add CanvasScaler và config đúng settings như MainMenu
+        CanvasScaler canvasScaler = persistentSettingsCanvas.AddComponent<CanvasScaler>();
+        canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        canvasScaler.referenceResolution = new Vector2(1920, 1080);
+        canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+        canvasScaler.matchWidthOrHeight = 0.5f;
+        
+        // Add GraphicRaycaster
         persistentSettingsCanvas.AddComponent<GraphicRaycaster>();
         
         // Copy Settings Panel sang Canvas mới
@@ -159,7 +165,7 @@ public class GameManager : MonoBehaviour
         // Setup lại button events cho Settings Panel mới
         SetupUIEvents();
         
-        Debug.Log("Created persistent Settings Canvas separate from MainMenu!");
+        Debug.Log("Created persistent Settings Canvas separate from MainMenu with proper scaling!");
     }
     
     void SetupUIEvents()
