@@ -234,7 +234,7 @@ MonoBehaviour:
   playerLayers:
     serializedVersion: 2
     m_Bits: 1024
-  attackDamage: 3
+  attackDamage: 5
   healthBar: {fileID: 599528763465817186}
 --- !u!61 &6724452072455269314
 BoxCollider2D:

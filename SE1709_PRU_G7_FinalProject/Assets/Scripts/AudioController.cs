@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿    using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class AudioController : MonoBehaviour
@@ -26,7 +26,8 @@ public class AudioController : MonoBehaviour
     public AudioClip map2Music;
     public AudioClip map3Music;
     public AudioClip restMapMusic;
-
+    public AudioClip winMusic;
+    private AudioClip lastMusicClip;
     public bool isSoundOn = true;
     public bool isMusicOn = true;
 
@@ -90,21 +91,21 @@ public class AudioController : MonoBehaviour
     public void SetMusic(bool on)
     {
         isMusicOn = on;
+
         if (musicSource != null)
         {
-            if (SceneManager.GetActiveScene().name == "MainMenu")
+            musicSource.mute = !on;
+
+            if (on && lastMusicClip != null)
             {
-                musicSource.mute = !on;
-                if (on && !musicSource.isPlaying)
-                    musicSource.Play();
-                else if (!on && musicSource.isPlaying)
-                    musicSource.Stop();
+                PlayMapMusic(lastMusicClip, musicSource.volume); // Phát lại bài cũ
             }
-            else
+            else if (!on)
             {
                 musicSource.Stop();
             }
         }
+
         PlayerPrefs.SetInt("MusicOn", on ? 1 : 0);
         PlayerPrefs.Save();
     }
@@ -124,42 +125,42 @@ public class AudioController : MonoBehaviour
 
     public void PlayEnemyTakeDame()
     {
-        PlaySFX(enemyTakeDame, 0.9f);
+        PlaySFX(enemyTakeDame, 0.5f);
     }
 
     public void PlayJumpSound()
     {
-        PlaySFX(jumpSFX, 0.9f);
+        PlaySFX(jumpSFX, 0.5f);
     }
 
     public void PlayHurtSound()
     {
-        PlaySFX(hurtSFX, 0.8f);
+        PlaySFX(hurtSFX, 0.4f);
     }
 
     public void PlayDeathSound()
     {
-        PlaySFX(deathSFX, 0.8f);
+        PlaySFX(deathSFX, 0.4f);
     }
 
     public void PlayRollSound()
     {
-        PlaySFX(rollSFX, 0.9f);
+        PlaySFX(rollSFX, 0.4f);
     }
 
     public void PlayBlockSound()
     {
-        PlaySFX(blockSFX, 0.8f);
+        PlaySFX(blockSFX, 0.4f);
     }
 
     public void PlayHealSound()
     {
-        PlaySFX(healManaSFX, 0.8f);
+        PlaySFX(healManaSFX, 0.4f);
     }
 
     public void PlaySkillCastSound()
     {
-        PlaySFX(skillCastSFX, 0.8f);
+        PlaySFX(skillCastSFX, 0.4f);
     }
 
     private void PlaySFX(AudioClip clip, float volume = 1f)
@@ -170,7 +171,19 @@ public class AudioController : MonoBehaviour
 
     public void PlayMapMusic(AudioClip music, float volume = 1f)
     {
-        if (!isMusicOn || musicSource == null || music == null) return;
+        if (musicSource == null || music == null)
+        {
+            musicSource?.Stop();
+            return;
+        }
+
+        lastMusicClip = music; // lưu lại bài nhạc
+
+        if (!isMusicOn)
+        {
+            musicSource.Stop();
+            return;
+        }
 
         if (musicSource.clip != music)
         {
@@ -181,7 +194,6 @@ public class AudioController : MonoBehaviour
         }
         else if (!musicSource.isPlaying)
         {
-            // Nếu đúng clip nhưng đã bị dừng thì phát lại
             musicSource.Play();
         }
     }
@@ -196,20 +208,23 @@ public class AudioController : MonoBehaviour
     }
     public void PlayMap1Music()
     {
-        PlayMapMusic(map1Music, 0.3f);
+        PlayMapMusic(map1Music, 1f);
     }
     public void PlayMap2Music()
     {
-        PlayMapMusic(map2Music, 0.2f);
+        PlayMapMusic(map2Music, 1f);
     }
     public void PlayMap3Music()
     {
-        PlayMapMusic(map3Music, 0.2f);
+        PlayMapMusic(map3Music, 1f);
     }
     public void PlayClickSound()
     {
         PlaySFX(click, 0.3f);
     }
 
-
+    public void PlayWinMusic()
+    {
+        PlaySFX(winMusic, 0.8f);
+    }
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Steel Sword
   itemSprite: {fileID: 21300000, guid: 789e518168d493d4396ec984b1b5bcb3, type: 3}
-  basePrice: 100
+  basePrice: 120
   itemType: 2
   effectValue: 0
   equipmentType: 4

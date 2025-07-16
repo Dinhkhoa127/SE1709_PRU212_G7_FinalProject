@@ -1,0 +1,442 @@
+fileFormatVersion: 2
+guid: 00bc1a49d0c917d4889d60cf9b25c429
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -294462647801413683
+    second: spr_PaladinGetHitWithoutEffect_strip12_0
+  - first:
+      213: 6280639089152184779
+    second: spr_PaladinGetHitWithoutEffect_strip12_1
+  - first:
+      213: -1588447783861979246
+    second: spr_PaladinGetHitWithoutEffect_strip12_2
+  - first:
+      213: -6021712367197380647
+    second: spr_PaladinGetHitWithoutEffect_strip12_3
+  - first:
+      213: 3122748826630823477
+    second: spr_PaladinGetHitWithoutEffect_strip12_4
+  - first:
+      213: 7325846450017212828
+    second: spr_PaladinGetHitWithoutEffect_strip12_5
+  - first:
+      213: 3127733109718825068
+    second: spr_PaladinGetHitWithoutEffect_strip12_6
+  - first:
+      213: -5269192364797280578
+    second: spr_PaladinGetHitWithoutEffect_strip12_7
+  - first:
+      213: 3930080447381562615
+    second: spr_PaladinGetHitWithoutEffect_strip12_8
+  - first:
+      213: -6632815289218467116
+    second: spr_PaladinGetHitWithoutEffect_strip12_9
+  - first:
+      213: 5976690843587187447
+    second: spr_PaladinGetHitWithoutEffect_strip12_10
+  - first:
+      213: 4637566404114942059
+    second: spr_PaladinGetHitWithoutEffect_strip12_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_PaladinGetHitWithoutEffect_strip12_0
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 63
+        width: 47
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcffc2e28cbd9ebf0800000000000000
+      internalID: -294462647801413683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinGetHitWithoutEffect_strip12_1
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 63
+        width: 39
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc1595fa9ff492750800000000000000
+      internalID: 6280639089152184779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinGetHitWithoutEffect_strip12_2
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 63
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29776a21823b4f9e0800000000000000
+      internalID: -1588447783861979246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinGetHitWithoutEffect_strip12_3
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 63
+        width: 45
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9df9f95a1849e6ca0800000000000000
+      internalID: -6021712367197380647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinGetHitWithoutEffect_strip12_4
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 63
+        width: 48
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53e1916438b365b20800000000000000
+      internalID: 3122748826630823477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinGetHitWithoutEffect_strip12_5
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 63
+        width: 47
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9915544882aaa560800000000000000
+      internalID: 7325846450017212828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinGetHitWithoutEffect_strip12_6
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 63
+        width: 47
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c68b40d11b0f76b20800000000000000
+      internalID: 3127733109718825068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinGetHitWithoutEffect_strip12_7
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 63
+        width: 47
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebebe0b267110e6b0800000000000000
+      internalID: -5269192364797280578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinGetHitWithoutEffect_strip12_8
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 63
+        width: 47
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f4e2ec28537a8630800000000000000
+      internalID: 3930080447381562615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinGetHitWithoutEffect_strip12_9
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 63
+        width: 47
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4da7a59f2a183f3a0800000000000000
+      internalID: -6632815289218467116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinGetHitWithoutEffect_strip12_10
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 63
+        width: 47
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f2185808a871f250800000000000000
+      internalID: 5976690843587187447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_PaladinGetHitWithoutEffect_strip12_11
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 63
+        width: 47
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b688e8bd212fb5040800000000000000
+      internalID: 4637566404114942059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spr_PaladinGetHitWithoutEffect_strip12_0: -294462647801413683
+      spr_PaladinGetHitWithoutEffect_strip12_1: 6280639089152184779
+      spr_PaladinGetHitWithoutEffect_strip12_10: 5976690843587187447
+      spr_PaladinGetHitWithoutEffect_strip12_11: 4637566404114942059
+      spr_PaladinGetHitWithoutEffect_strip12_2: -1588447783861979246
+      spr_PaladinGetHitWithoutEffect_strip12_3: -6021712367197380647
+      spr_PaladinGetHitWithoutEffect_strip12_4: 3122748826630823477
+      spr_PaladinGetHitWithoutEffect_strip12_5: 7325846450017212828
+      spr_PaladinGetHitWithoutEffect_strip12_6: 3127733109718825068
+      spr_PaladinGetHitWithoutEffect_strip12_7: -5269192364797280578
+      spr_PaladinGetHitWithoutEffect_strip12_8: 3930080447381562615
+      spr_PaladinGetHitWithoutEffect_strip12_9: -6632815289218467116
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

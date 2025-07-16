@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5114631485779656343}
   - component: {fileID: 1131291464047651020}
   - component: {fileID: 3100348727065951564}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Bat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -35,6 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7784362006900479148}
+  - {fileID: 4782643472145331249}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &4772952701430908578
@@ -78,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1923473339
-  m_SortingLayer: 7
+  m_SortingLayerID: 810683083
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7075343948941584853, guid: bfc999d48b5b98245b20e613b2f146c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -191,15 +192,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkSpeed: 2
-  RunSpeed: 4
-  FlySpeed: 5
-  Hp: 100
+  RunSpeed: 3
+  FlySpeed: 3
+  Hp: 8
   Mana: 100
   Defend: 0
-  PhysicalDame: 0
+  PhysicalDame: 10
   AttackSpeed: 0
-  AttackRange: 30
-  IsAttackRange: 30
+  AttackRange: 20
+  IsAttackRange: 20
   MagicDame: 0
   PatrolRange: 10
   attackCooldown: 0.5
@@ -209,7 +210,7 @@ MonoBehaviour:
   expereince: 10
   spawnPosition: {x: 0, y: 0}
   enemyEye: {fileID: 0}
-  detectionRange: 5
+  detectionRange: 15
   attackRange: 3
   minPatrolDistance: 5
   maxPatrolDistance: 10
@@ -219,7 +220,41 @@ MonoBehaviour:
     m_Bits: 0
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
+  attackPoint: {fileID: 4782643472145331249}
+  attackRadius: 2
+  healthBar: {fileID: 6287211739595735784}
+--- !u!1 &5288865913765556232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4782643472145331249}
+  m_Layer: 9
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4782643472145331249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5288865913765556232}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.002, y: -0.016, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 509997713976984927}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2309752774269893779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -228,13 +263,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 509997713976984927}
     m_Modifications:
+    - target: {fileID: 1705703619297114216, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3230202700902172109, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
       propertyPath: m_Name
       value: Hp
       objectReference: {fileID: 0}
+    - target: {fileID: 3230202700902172109, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3318270803871613910, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
       propertyPath: m_SortingLayerID
-      value: -1409800477
+      value: 52167783
       objectReference: {fileID: 0}
     - target: {fileID: 3593120963358456493, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -331,6 +374,10 @@ PrefabInstance:
     - target: {fileID: 5479332537988671551, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722452020556545427, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9079179243907353795, guid: 03b22df661bffba4ebfa2e4077deebff, type: 3}
       propertyPath: m_AnchoredPosition.x

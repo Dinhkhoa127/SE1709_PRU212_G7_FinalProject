@@ -6,6 +6,7 @@ public class InventoryManager : MonoBehaviour
 
     public static bool IsInventoryOpen = false;
     public static InventoryManager Instance;
+    private PlayerKnight PlayerKnight;
 
     void Awake()
     {
@@ -20,21 +21,21 @@ public class InventoryManager : MonoBehaviour
         {
             TryFindInventoryPanel();
         }
-        
+
         // Đảm bảo inventory panel bị ẩn khi start
         if (inventoryPanel != null)
         {
             inventoryPanel.SetActive(false);
             IsInventoryOpen = false;
         }
-        
+
         // Subscribe to GameManager state changes
         if (GameManager.Instance != null)
         {
             GameManager.OnGameStateChanged += OnGameStateChanged;
         }
     }
-    
+
     void TryFindInventoryPanel()
     {
         // Tìm theo tên GameObject
@@ -47,7 +48,7 @@ public class InventoryManager : MonoBehaviour
         {
             foundPanel = GameObject.Find("Inventory");
         }
-        
+
         // Tìm theo Canvas children
         if (foundPanel == null)
         {
@@ -57,7 +58,7 @@ public class InventoryManager : MonoBehaviour
                 Transform found = canvas.transform.Find("InventoryPanel");
                 if (found == null) found = canvas.transform.Find("Inventory Panel");
                 if (found == null) found = canvas.transform.Find("Inventory");
-                
+
                 if (found != null)
                 {
                     foundPanel = found.gameObject;
@@ -65,7 +66,7 @@ public class InventoryManager : MonoBehaviour
                 }
             }
         }
-        
+
         if (foundPanel != null)
         {
             inventoryPanel = foundPanel;
@@ -90,18 +91,45 @@ public class InventoryManager : MonoBehaviour
     {
         // Chỉ handle input nếu GameManager cho phép
         if (GameManager.Instance == null) return;
-
-        if (Input.GetKeyDown(KeyCode.Tab))
+        
+        // Safety check: Cleanup drag operations if inventory is closed but drag handlers exist
+        if (!IsInventoryOpen && GameManager.Instance.currentGameState != GameManager.GameState.InventoryOpen)
         {
-            if (GameManager.Instance.currentGameState == GameManager.GameState.Playing)
+            // Check for any stuck drag handlers
+            InventoryItemDragHandler[] dragHandlers = FindObjectsOfType<InventoryItemDragHandler>();
+            if (dragHandlers.Length > 0)
             {
-                OpenInventory();
-            }
-            else if (GameManager.Instance.currentGameState == GameManager.GameState.InventoryOpen)
-            {
-                CloseInventory();
+                foreach (var dragHandler in dragHandlers)
+                {
+                    if (dragHandler != null)
+                    {
+                        dragHandler.ForceCleanup();
+                    }
+                }
             }
         }
+        
+        //if (PlayerKnight.IsAttackLockedScene())
+        //{
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                if (GameManager.Instance.currentGameState == GameManager.GameState.Playing)
+                {
+                    OpenInventory();
+                }
+                else if (GameManager.Instance.currentGameState == GameManager.GameState.InventoryOpen)
+                {
+                    CloseInventory();
+                }
+            }
+            
+            // Emergency cleanup hotkey: Ctrl+R
+            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.R))
+            {
+                Debug.Log("🚨 EMERGENCY CLEANUP TRIGGERED");
+                ForceCleanupDragOperations();
+            }
+        //}
     }
 
     void OnGameStateChanged(GameManager.GameState newState, GameManager.GameState oldState)
@@ -116,6 +144,15 @@ public class InventoryManager : MonoBehaviour
                 if (oldState == GameManager.GameState.InventoryOpen)
                 {
                     HideInventoryUI();
+                }
+                break;
+            case GameManager.GameState.Paused:
+            case GameManager.GameState.SettingsOpen:
+            case GameManager.GameState.ShopOpen:
+                // Cleanup drag operations when switching to other UI states
+                if (oldState == GameManager.GameState.InventoryOpen)
+                {
+                    CleanupDragOperations();
                 }
                 break;
         }
@@ -151,6 +188,9 @@ public class InventoryManager : MonoBehaviour
     {
         if (inventoryPanel != null)
         {
+            // Preventive cleanup before showing inventory
+            CleanupDragOperations();
+            
             inventoryPanel.SetActive(true);
             IsInventoryOpen = true;
             Debug.Log("Inventory UI opened");
@@ -160,14 +200,88 @@ public class InventoryManager : MonoBehaviour
             Debug.LogWarning("InventoryPanel reference is null! Please assign in Inspector.");
         }
     }
-
+    
     void HideInventoryUI()
     {
         if (inventoryPanel != null)
         {
+            // CRITICAL: Cleanup any ongoing drag operations before hiding
+            CleanupDragOperations();
+            
             inventoryPanel.SetActive(false);
             IsInventoryOpen = false;
             Debug.Log("Inventory UI closed");
+        }
+    }
+    
+    /// <summary>
+    /// Cleanup any ongoing drag operations to prevent UI sticking
+    /// </summary>
+    void CleanupDragOperations()
+    {
+        // Find all drag handlers and force cleanup
+        InventoryItemDragHandler[] dragHandlers = FindObjectsOfType<InventoryItemDragHandler>();
+        foreach (var dragHandler in dragHandlers)
+        {
+            if (dragHandler != null)
+            {
+                dragHandler.ForceCleanup();
+            }
+        }
+        
+        // Reset any canvas groups that might be stuck
+        CanvasGroup[] canvasGroups = FindObjectsOfType<CanvasGroup>();
+        foreach (var cg in canvasGroups)
+        {
+            if (cg != null && (cg.alpha < 1f || !cg.blocksRaycasts))
+            {
+                cg.alpha = 1f;
+                cg.blocksRaycasts = true;
+            }
+        }
+        
+        // Force stop any ongoing drag operations by simulating mouse up
+        if (Input.GetMouseButton(0))
+        {
+            // This will help end any stuck drag operations
+            Canvas.ForceUpdateCanvases();
+        }
+        
+        Debug.Log("Cleaned up drag operations");
+    }
+    
+    /// <summary>
+    /// Public method to manually cleanup drag operations - can be called from anywhere
+    /// </summary>
+    public static void ForceCleanupDragOperations()
+    {
+        if (Instance != null)
+        {
+            Instance.CleanupDragOperations();
+        }
+        else
+        {
+            // Static fallback cleanup
+            InventoryItemDragHandler[] dragHandlers = FindObjectsOfType<InventoryItemDragHandler>();
+            foreach (var dragHandler in dragHandlers)
+            {
+                if (dragHandler != null)
+                {
+                    dragHandler.ForceCleanup();
+                }
+            }
+            
+            CanvasGroup[] canvasGroups = FindObjectsOfType<CanvasGroup>();
+            foreach (var cg in canvasGroups)
+            {
+                if (cg != null && (cg.alpha < 1f || !cg.blocksRaycasts))
+                {
+                    cg.alpha = 1f;
+                    cg.blocksRaycasts = true;
+                }
+            }
+            
+            Debug.Log("Static cleanup completed");
         }
     }
 

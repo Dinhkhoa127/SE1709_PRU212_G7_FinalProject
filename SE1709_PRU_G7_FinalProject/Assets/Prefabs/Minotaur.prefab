@@ -701,7 +701,7 @@ MonoBehaviour:
   playerLayers:
     serializedVersion: 2
     m_Bits: 1024
-  attackDamage: 3
+  attackDamage: 5
   healthBar: {fileID: 1694118848055128876}
 --- !u!1 &8912150064717972943
 GameObject:
