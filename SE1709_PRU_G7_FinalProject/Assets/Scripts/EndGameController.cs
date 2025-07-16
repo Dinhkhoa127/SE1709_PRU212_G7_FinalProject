@@ -14,7 +14,7 @@ public class EndGameController : MonoBehaviour
     public Button restartButton;
     public Button mainMenuButton;
     public Button quitButton;
-    
+
     public TMPro.TextMeshProUGUI playTimeText;
     public TMPro.TextMeshProUGUI enemiesKilledText;
     [SerializeField] private TMP_InputField nameInputField;
@@ -32,10 +32,10 @@ public class EndGameController : MonoBehaviour
         // Setup button events
         if (restartButton != null)
             restartButton.onClick.AddListener(RestartGame);
-            
+
         if (mainMenuButton != null)
             mainMenuButton.onClick.AddListener(GoToMainMenu);
-            
+
         if (quitButton != null)
             quitButton.onClick.AddListener(QuitGame);
 
@@ -50,7 +50,7 @@ public class EndGameController : MonoBehaviour
         if (enemiesKilledText != null)
         {
             int killed = GameManager.Instance.totalEnemiesKilled;
-           
+
             enemiesKilledText.text = $"{killed}";
         }
         if (nameInputField != null)
@@ -58,7 +58,7 @@ public class EndGameController : MonoBehaviour
             nameInputField.onSubmit.AddListener(OnNameSubmitted);
         }
     }
-    
+
     public void RestartGame()
     {
         // Sử dụng GameManager để restart
@@ -73,7 +73,7 @@ public class EndGameController : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene("Map1");
         }
     }
-    
+
     public void GoToMainMenu()
     {
         // Load main menu
@@ -88,11 +88,11 @@ public class EndGameController : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
         }
     }
-    
+
     public void QuitGame()
     {
         AudioController.instance?.PlayClickSound();
-        
+
         if (GameManager.Instance != null)
         {
             GameManager.Instance.QuitGame();
@@ -100,11 +100,11 @@ public class EndGameController : MonoBehaviour
         else
         {
             // Fallback quit
-            #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-            #else
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
                 Application.Quit();
-            #endif
+#endif
         }
     }
     public void BackLeaderBoard()
@@ -149,4 +149,4 @@ public class EndGameController : MonoBehaviour
 
         Debug.Log($"Result saved to {path}");
     }
-} 
+}
