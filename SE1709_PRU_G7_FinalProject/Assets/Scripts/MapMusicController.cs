@@ -11,6 +11,7 @@ public class MapMusicController : MonoBehaviour
 
         if (AudioController.instance != null)
         {
+            float volume = 0.8f;
             switch (sceneName)
             {
                 case "Map1":
@@ -25,12 +26,14 @@ public class MapMusicController : MonoBehaviour
                 case "MapRest":
                 case "Example":
                     currentMapClip = AudioController.instance.restMapMusic;
+                    volume = 0.1f;
                     break;
                 case "MainMenu":
                 case "EndGame":
                 case "Instruction":
                 case "LeaderBoard":
                     currentMapClip = AudioController.instance.menu;
+                    volume = 0.1f;
                     break;
                 default:
                     Debug.Log("No music assigned for: " + sceneName);
@@ -40,7 +43,7 @@ public class MapMusicController : MonoBehaviour
             // Nếu có nhạc phù hợp thì gọi PlayMapMusic
             if (currentMapClip != null)
             {
-                AudioController.instance.PlayMapMusic(currentMapClip);
+                AudioController.instance.PlayMapMusic(currentMapClip,volume);
             }
         }
         else

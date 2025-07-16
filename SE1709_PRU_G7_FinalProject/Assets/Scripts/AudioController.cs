@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿    using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class AudioController : MonoBehaviour
@@ -26,7 +26,7 @@ public class AudioController : MonoBehaviour
     public AudioClip map2Music;
     public AudioClip map3Music;
     public AudioClip restMapMusic;
-
+    public AudioClip winMusic;
     private AudioClip lastMusicClip;
     public bool isSoundOn = true;
     public bool isMusicOn = true;
@@ -169,7 +169,7 @@ public class AudioController : MonoBehaviour
             sfxSource.PlayOneShot(clip, volume);
     }
 
-    public void PlayMapMusic(AudioClip music, float volume = 0.05f)
+    public void PlayMapMusic(AudioClip music, float volume = 1f)
     {
         if (musicSource == null || music == null)
         {
@@ -208,20 +208,23 @@ public class AudioController : MonoBehaviour
     }
     public void PlayMap1Music()
     {
-        PlayMapMusic(map1Music, 0.3f);
+        PlayMapMusic(map1Music, 1f);
     }
     public void PlayMap2Music()
     {
-        PlayMapMusic(map2Music, 0.2f);
+        PlayMapMusic(map2Music, 1f);
     }
     public void PlayMap3Music()
     {
-        PlayMapMusic(map3Music, 0.2f);
+        PlayMapMusic(map3Music, 1f);
     }
     public void PlayClickSound()
     {
         PlaySFX(click, 0.3f);
     }
 
-
+    public void PlayWinMusic()
+    {
+        PlaySFX(winMusic, 0.8f);
+    }
 }

@@ -139,7 +139,7 @@ public class EndGameManager : MonoBehaviour
         {
             victoryUI.SetActive(true);
         }
-        
+        AudioController.instance.PlayWinMusic();
         // Bắt đầu coroutine chuyển scene
         StartCoroutine(LoadEndGameScene());
     }
