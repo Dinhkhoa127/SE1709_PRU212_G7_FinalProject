@@ -11,7 +11,7 @@ public class MapMusicController : MonoBehaviour
 
         if (AudioController.instance != null)
         {
-            float volume = 0.8f;
+            float volume = 0.9f;
             switch (sceneName)
             {
                 case "Map1":

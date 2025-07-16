@@ -524,8 +524,8 @@ MonoBehaviour:
   detectionRange: 13
   attackRange: 3
   moveSpeed: 13
-  attack1Damage: 5
-  attack2Damage: 3
+  attack1Damage: 6
+  attack2Damage: 5
   attackCooldown: 1.5
   attackSwitchInterval: 3
   maxHealth: 15

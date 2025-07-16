@@ -717,7 +717,7 @@ MonoBehaviour:
   detectionRange: 13
   attackRange: 3
   moveSpeed: 14
-  attack1Damage: 4
+  attack1Damage: 5
   attack2Damage: 6
   attackCooldown: 2
   maxHealth: 15
