@@ -557,6 +557,7 @@ public class BossController : MonoBehaviour, IDamageable
         GetComponent<Collider2D>().enabled = false;
         StopAllCoroutines();
         effectFire.SetActive(false);
+        AudioController.instance.PlayWinMusic();
 
         // Kiểm tra nếu cần trigger EndGame
         if (triggerEndGame)
